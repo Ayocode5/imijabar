@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\{DB, Hash};
 
 class ResetPasswordController extends Controller
 {
@@ -31,7 +29,7 @@ class ResetPasswordController extends Controller
 
         $data['password'] = Hash::make($request->new_password);
         $data['token'] = '';
-        Admin::where('id',1)->update($data);
+        User::where('id',1)->update($data);
 
         return redirect()->route('admin.login')->with('success', 'Password is reset successfully!');
     }

@@ -3,22 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordChangeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
-        $admin_data = Admin::where('id',session('id'))->first();
+        $admin_data = User::where('id', auth()->user()->id)->first();
         return view('admin.auth.password_change', compact('admin_data'));
     }
 
@@ -30,7 +28,7 @@ class PasswordChangeController extends Controller
         ]);
 
         $data['password'] = Hash::make($request->password);
-        Admin::where('id',session('id'))->update($data);
+        User::where('id',auth()->user()->id)->update($data);
 
         return redirect()->back()->with('success', 'Password is updated successfully!');
 

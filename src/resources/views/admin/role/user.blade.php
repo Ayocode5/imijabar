@@ -23,18 +23,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($admin_users as $row)
+                    @foreach($admin_users as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->photo) }}" alt="" class="w_100"></td>
-                            <td>{{ $row->name }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->role_name }}</td>
+                            <td><img src="{{ asset('public/uploads/'.$user->photo) }}" alt="" class="w_100"></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->roles[0]->name }}</td>
                             <td>
-                                @if($row->id != 1)
-                                    <a href="{{ URL::to('admin/role/user/edit/password/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fas fa-key"></i></a>
-                                    <a href="{{ URL::to('admin/role/user/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                    <a href="{{ URL::to('admin/role/user/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                {{-- {{dd($roles)}} --}}
+                                @if($user->roles[0]->name != 'admin')
+                                    <a href="{{ URL::to('admin/role/user/edit/password/'.$user->id) }}" class="btn btn-success btn-sm"><i class="fas fa-key"></i></a>
+                                    <a href="{{ URL::to('admin/role/user/edit/'.$user->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ URL::to('admin/role/user/delete/'.$user->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                                 @endif
                             </td>
                         </tr>

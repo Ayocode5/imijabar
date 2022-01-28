@@ -11,12 +11,13 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailToAllSubscribers;
 use DB;
+use Ramsey\Uuid\Uuid;
 
 class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -41,12 +42,11 @@ class BlogController extends Controller
             'blog_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'blogs'");
-        $ai_id = $statement[0]->Auto_increment;
-
-        $ext = $request->file('blog_photo')->extension();
-        $final_name = 'blog-'.$ai_id.'.'.$ext;
+        $ext = $request->file('blog_photo')->getClientOriginalExtension();
+        $final_name = 'blog-'.Uuid::uuid4()->toString().'.'.$ext;
+        
         $request->file('blog_photo')->move(public_path('uploads'), $final_name);
+
 
         $blog = new Blog();
         $data = $request->only($blog->getFillable());
@@ -79,7 +79,7 @@ class BlogController extends Controller
             }
         }
 
-        return redirect()->route('admin.blog.index')->with('success', 'Blog is added successfully!');
+        return redirect()->route('admin.news.index')->with('success', 'News is added successfully!');
     }
 
     public function edit($id)
@@ -94,32 +94,30 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $data = $request->only($blog->getFillable());
 
+        $request->validate([
+            'blog_title'   =>  ['required',Rule::unique('blogs')->ignore($id),],
+            'blog_slug'   =>  [Rule::unique('blogs')->ignore($id),],
+            'blog_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
         if ($request->hasFile('blog_photo')) {
 
-            $request->validate([
-                'blog_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
+            //remove old photo
+            !empty($blog->blog_photo) ? unlink(public_path('uploads/'.$blog->blog_photo)) : null;
 
-            unlink(public_path('uploads/'.$blog->blog_photo));
+            //Separates photo name and extension
+            preg_match('/(blog-)(.*).(jpg|png|jpeg|gif)/', $blog->blog_photo, $blog_photo_split);
 
-            // Uploading the file
-            $ext = $request->file('blog_photo')->extension();
-            $final_name = 'blog-'.$id.'.'.$ext;
-            $request->file('blog_photo')->move(public_path('uploads/'), $final_name);
+            // Rebuild the name of photo 
+            $filename = $blog_photo_split[1].$blog_photo_split[2].'.'.$request->file('blog_photo')->getClientOriginalExtension();
+            // Save The Photo
+            $request->file('blog_photo')->move(public_path('uploads/'), $filename);
 
+            //set new file photo
             unset($data['blog_photo']);
-            $data['blog_photo'] = $final_name;
+            $data['blog_photo'] = $filename;
         }
 
-        $request->validate([
-            'blog_title'   =>  [
-                'required',
-                Rule::unique('blogs')->ignore($id),
-            ],
-            'blog_slug'   =>  [
-                Rule::unique('blogs')->ignore($id),
-            ]
-        ]);
 
         if(empty($data['blog_slug']))
         {
@@ -129,7 +127,7 @@ class BlogController extends Controller
 
         $blog->fill($data)->save();
 
-        return redirect()->route('admin.blog.index')->with('success', 'Blog is updated successfully!');
+        return redirect()->route('admin.news.index')->with('success', 'News is updated successfully!');
     }
 
     public function destroy($id)
@@ -139,7 +137,7 @@ class BlogController extends Controller
         $blog->delete();
 
         // Success Message and redirect
-        return Redirect()->back()->with('success', 'Blog is deleted successfully!');
+        return Redirect()->back()->with('success', 'News is deleted successfully!');
     }
 
 }

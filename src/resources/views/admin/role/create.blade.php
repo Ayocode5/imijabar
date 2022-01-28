@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Name *</label>
-                            <input type="text" name="role_name" class="form-control" value="{{ old('role_name') }}" autofocus>
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
                         </div>
                     </div>
                     <div class="card-body">

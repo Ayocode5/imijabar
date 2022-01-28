@@ -14,7 +14,7 @@
                         <th>SL</th>
                         <th>Person Name & Email</th>
                         <th>Person Message</th>
-                        <th>Blog Title</th>
+                        <th>News Title</th>
                         <th>Action</th>
                     </tr>
                     </thead>

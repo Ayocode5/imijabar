@@ -1,34 +1,34 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Edit Blog</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit News</h1>
 
-    <form action="{{ url('admin/blog/update/'.$blog->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/news/update/'.$blog->id) }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="current_photo" value="{{ $blog->blog_photo }}">
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Blog</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit News</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.blog.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.news.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Blog Name *</label>
+                    <label for="">News Name *</label>
                     <input type="text" name="blog_title" class="form-control" value="{{ $blog->blog_title }}" autofocus>
                 </div>
-                <div class="form-group">
-                    <label for="">Blog Slug</label>
+                {{-- <div class="form-group">
+                    <label for="">News Slug</label>
                     <input type="text" name="blog_slug" class="form-control" value="{{ $blog->blog_slug }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
-                    <label for="">Blog Content *</label>
+                    <label for="">News Content *</label>
                     <textarea name="blog_content" class="form-control editor" cols="30" rows="10">{{ $blog->blog_content }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Blog Short Content *</label>
+                    <label for="">News Short Content *</label>
                     <textarea name="blog_content_short" class="form-control h_100" cols="30" rows="10">{{ $blog->blog_content_short }}</textarea>
                 </div>
                 <div class="form-group">

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
 
 class ProfileChangeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
-        $admin_data = Admin::where('id',session('id'))->first();
+        $admin_data = User::where('id', auth()->user()->id)->first();
         return view('admin.auth.profile_change', compact('admin_data'));
     }
 
@@ -30,10 +28,8 @@ class ProfileChangeController extends Controller
 
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-        Admin::where('id',session('id'))->update($data);
 
-        session(['name' => $request->name]);
-        session(['email' => $request->email]);
+        User::where('id', auth()->user()->id)->update($data);
 
         return redirect()->back()->with('success', 'Profile Information is updated successfully!');
 

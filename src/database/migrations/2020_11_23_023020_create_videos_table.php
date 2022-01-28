@@ -15,6 +15,7 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
             $table->text('video_youtube');
             $table->text('video_caption')->nullable();
             $table->smallInteger('video_order')->default(0);

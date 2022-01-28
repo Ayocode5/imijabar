@@ -22,4 +22,12 @@ class Blog extends Model
         return $this->belongsTo('App\Models\Admin\Category');
     }
 
+    public function scopeLatest($query) {
+        return $query->orderBy('created_at', 'DESC');
+    }
+
+    public function scopeActive($query) {
+        return $query->where('deleted_at', null);
+    }
+
 }

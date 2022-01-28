@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ResetPasswordMessageToAdmin;
-use App\Models\Admin\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Hash;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class ForgetPasswordController extends Controller
@@ -23,7 +22,7 @@ class ForgetPasswordController extends Controller
             'email' => 'required|email'
         ]);
 
-        $check_email = Admin::where('email',$request->email)->first();
+        $check_email = User::where('email',$request->email)->first();
         if(!$check_email)
         {
         	return redirect()->back()->with('error', 'Email address not found');
@@ -39,7 +38,7 @@ class ForgetPasswordController extends Controller
             $message = str_replace('[[reset_link]]', $reset_link, $message);
 
             $data['token'] = $token;
-            Admin::where('id',1)->update($data);
+            User::where('id',1)->update($data);
 
             Mail::to($request->email)->send(new ResetPasswordMessageToAdmin($subject,$message));
         }

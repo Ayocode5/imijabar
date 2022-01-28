@@ -1,35 +1,35 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Add Blog</h1>
+    <h1 class="h3 mb-3 text-gray-800">Add News</h1>
 
-    <form action="{{ route('admin.blog.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Blog</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add News</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.blog.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.news.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Blog Title *</label>
+                    <label for="">News Title *</label>
                     <input type="text" name="blog_title" class="form-control" value="{{ old('blog_title') }}" autofocus>
                 </div>
-                <div class="form-group">
-                    <label for="">Blog Slug</label>
+                <div hidden class="form-group">
+                    <label for="">News Slug</label>
                     <input type="text" name="blog_slug" class="form-control" value="{{ old('blog_slug') }}">
                 </div>
                 <div class="form-group">
-                    <label for="">Blog Content *</label>
+                    <label for="">News Content *</label>
                     <textarea name="blog_content" class="form-control editor" cols="30" rows="10">{{ old('blog_content') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Blog Short Content *</label>
+                    <label for="">News Short Content *</label>
                     <textarea name="blog_content_short" class="form-control h_100" cols="30" rows="10">{{ old('blog_content_short') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Blog Photo *</label>
+                    <label for="">News Photo *</label>
                     <div>
                         <input type="file" name="blog_photo">
                     </div>

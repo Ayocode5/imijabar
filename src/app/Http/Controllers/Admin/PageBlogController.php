@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PageBlogItem;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
 
 class PageBlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function edit()

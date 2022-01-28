@@ -40,10 +40,10 @@
                             <label for="">Select Role *</label>
                             <select name="role_id" class="form-control">
                                 @foreach($roles as $row)
-                                    @if($row->role_name == 'Super Admin')
+                                    @if($row->name == 'super_admin')
                                         @continue
                                     @endif
-                                    <option value="{{ $row->id }}">{{ $row->role_name }}</option>
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Role Name *</label>
-                            <input type="text" name="role_name" class="form-control" value="{{ $role->role_name }}" autofocus>
+                            <input type="text" name="name" class="form-control" value="{{ $role->name }}" autofocus>
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>

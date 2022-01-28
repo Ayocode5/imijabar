@@ -15,6 +15,7 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
             $table->text('photo_name');
             $table->text('photo_caption')->nullable();
             $table->smallInteger('photo_order')->default(0);

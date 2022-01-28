@@ -39,11 +39,11 @@
                         <div class="form-group">
                             <label for="">Select Role *</label>
                             <select name="role_id" class="form-control">
-                                @foreach($roles as $row)
-                                    @if($row->role_name == 'Super Admin')
+                                @foreach($roles as $role)
+                                    @if($role->name == 'super_admin')
                                         @continue
                                     @endif
-                                    <option value="{{ $row->id }}" @if($row->id == $admin_user->role_id) selected @endif>{{ $row->role_name }}</option>
+                                    <option value="{{ $role->id }}" @if($role->id == $admin_user->roles[0]->id) selected @endif>{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>

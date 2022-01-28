@@ -10,13 +10,20 @@ use Hash;
 
 class LogoutController extends Controller
 {
-    public function index(Request $request)
+
+    public function __construct()
     {
-        session()->forget('role');
-        session()->forget('id');
-        session()->forget('name');
-        session()->forget('email');
-        session()->forget('photo');
+        
+        $this->middleware('auth:web');
+
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect()->route('admin.login');
     }
 }

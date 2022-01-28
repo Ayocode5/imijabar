@@ -13,11 +13,12 @@ class GeneralSettingController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function logo_edit()
     {
+        $this->authorize('isAdmin');
         $general_setting = GeneralSetting::where('id',1)->first();
         return view('admin.general_setting.logo', compact('general_setting'));
     }
@@ -29,7 +30,8 @@ class GeneralSettingController extends Controller
         ]);
 
         // Unlink old photo
-        unlink(public_path('uploads/'.$request->current_photo));
+        is_null($request->current_photo) ? 
+           null : unlink(public_path('uploads/'.$request->current_photo));
 
         // Uploading new photo
         $ext = $request->file('logo')->extension();

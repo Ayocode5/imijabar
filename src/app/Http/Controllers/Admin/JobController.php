@@ -14,12 +14,12 @@ class JobController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
-        $job = Job::orderByRaw('LENGTH(job_order)', 'asc')->get();
+        $job = Job::orderBy('job_order', 'asc')->get();
         return view('admin.job.index', compact('job'));
     }
 

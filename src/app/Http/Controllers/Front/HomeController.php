@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Event;
 use Illuminate\Http\Request;
 use DB;
 
@@ -9,7 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-		// dd("wkwk");
+
+		$events = Event::with('category')->get();
+		// dd($events);
     	$sliders = DB::table('sliders')->get();
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
     	$why_choose_items = DB::table('why_choose_items')->get();
