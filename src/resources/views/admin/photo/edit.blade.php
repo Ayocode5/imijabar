@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="">Change Photo</label>
                     <div>
-                        <input type="file" name="photo_name">
+                        <input type="file" name="photo_name" id="photo_name">
                     </div>
                 </div>
                 <div class="row">
@@ -33,6 +33,19 @@
                         <div class="form-group">
                             <label for="">Order</label>
                             <input type="text" name="photo_order" class="form-control" value="{{ $photo->photo_order }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Category</label>
+                            <select type="text" name="category_id" class="form-control"
+                                value="{{ old('category_id') }}">
+                                @if (!empty($categories))
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" @if ($category->id == $photo->category_id)
+                                            selected
+                                        @endif>{{ $category->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>        
                     </div>
                 </div>

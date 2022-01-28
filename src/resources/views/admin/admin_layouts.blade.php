@@ -55,8 +55,8 @@
                 </a>
             </li>
 
-            <!-- General Settings -->
             @can('isAdmin')
+                <!-- General Settings -->
                 <li class="nav-item @if ($conName[1] == 'setting' && $conName[2] == 'general') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"
                         aria-expanded="true" aria-controls="collapseSetting">
@@ -142,8 +142,15 @@
                     </div>
                 </li>
 
+                <!-- Menu Manage -->
+                <li class="nav-item @if ($conName[1] == 'menu') active @endif">
+                    <a class="nav-link" href="{{ route('admin.menu.index') }}">
+                        <i class="fas fa-bars"></i>
+                        <span>Menu Manage</span>
+                    </a>
+                </li>
 
-                <!-- Admin Users and Roles Permission Control Section -->
+                <!-- User Role Manager -->
                 <li class="nav-item @if ($conName[1] == 'role' || $conName[1] == 'admin-user') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminUser"
                         aria-expanded="true" aria-controls="collapseAdminUser">
@@ -159,15 +166,6 @@
                     </div>
                 </li>
 
-                <!-- Footer Columns -->
-                <li class="nav-item @if ($conName[1] == 'footer') active @endif">
-                    <a class="nav-link" href="{{ route('admin.footer.index') }}">
-                        <i class="fas fa-fw fa-list-alt"></i>
-                        <span>Footer Columns</span>
-                    </a>
-                </li>
-
-
                 <!-- Sliders -->
                 <li class="nav-item @if ($conName[1] == 'slider') active @endif">
                     <a class="nav-link" href="{{ route('admin.slider.index') }}">
@@ -175,8 +173,6 @@
                         <span>Sliders</span>
                     </a>
                 </li>
-
-
 
                 <!-- Dynamic Pages -->
                 <li class="nav-item @if ($conName[1] == 'dynamic-page') active @endif">
@@ -186,12 +182,11 @@
                     </a>
                 </li>
 
-
-                <!-- Menu Manage -->
-                <li class="nav-item @if ($conName[1] == 'menu') active @endif">
-                    <a class="nav-link" href="{{ route('admin.menu.index') }}">
-                        <i class="fas fa-bars"></i>
-                        <span>Menu Manage</span>
+                <!-- Footer Columns -->
+                <li class="nav-item @if ($conName[1] == 'footer') active @endif">
+                    <a class="nav-link" href="{{ route('admin.footer.index') }}">
+                        <i class="fas fa-fw fa-list-alt"></i>
+                        <span>Footer Columns</span>
                     </a>
                 </li>
             @endcan
@@ -251,13 +246,13 @@
                 </li>
 
                 <!-- Event Section -->
-                <li class="nav-item @if ($conName[1] == 'event-category' || $conName[1] == 'event' || $conName[1] == 'comment') active @endif">
+                <li class="nav-item @if ($conName[1] == 'event-category' || $conName[1] == 'event') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
                         aria-expanded="true" aria-controls="collapseEvent">
                         <i class="fas fa-flag"></i>
                         <span>Event Section</span>
                     </a>
-                    <div id="collapseEvent" class="collapse @if ($conName[1] == 'event-category' || $conName[1] == 'event' || $conName[1] == 'comment') show @endif" aria-labelledby="headingPages"
+                    <div id="collapseEvent" class="collapse @if ($conName[1] == 'event-category' || $conName[1] == 'event') show @endif" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('admin.event_category.index') }}">Categories</a>

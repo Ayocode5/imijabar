@@ -1,6 +1,6 @@
 <script src="{{ asset('public/frontend/js/custom.js') }}"></script>
 
-@if($g_setting->sticky_header_status == 'Show')
+@if($g_setting?->sticky_header_status == 'Show')
 <script>
     //StickyHeader
     function stickyHeader()
@@ -66,7 +66,7 @@
 @endif
 
 
-@if($g_setting->tawk_live_chat_status == 'Show')
+@if($g_setting?->tawk_live_chat_status == 'Show')
 <!--Start of Tawk.to Script-->
 {!! $g_setting->tawk_live_chat_code !!}
 <!--End of Tawk.to Script-->

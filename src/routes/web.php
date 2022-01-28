@@ -1,59 +1,76 @@
 <?php
 
-use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\CouponController;
-use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\DynamicPageController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\FooterColumnController;
 use App\Http\Controllers\Admin\GeneralSettingController;
-use App\Http\Controllers\Admin\LoginController as LoginControllerForAdmin;
-use App\Http\Controllers\Admin\LogoutController as LogoutControllerForAdmin;
-use App\Http\Controllers\Admin\ForgetPasswordController as ForgetPasswordControllerForAdmin;
+
+//Admin PanelADMIN AUTHENTICATIONS
+use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\ResetPasswordController as ResetPasswordControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
+use App\Http\Controllers\Admin\Auth\PhotoChangeController;
+
+//Admin PanelROLE CONTROLLER
+use App\Http\Controllers\Admin\Role\RoleController;
+
+//Admin PanelSHOP
+use App\Http\Controllers\Admin\Shop\CouponController;
+use App\Http\Controllers\Admin\Shop\CustomerController;
+use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
+use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
+use App\Http\Controllers\Admin\Shop\ShippingController;
+
+//Admin PanelMenu
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\PageAboutController;
-use App\Http\Controllers\Admin\PageBlogController;
-use App\Http\Controllers\Admin\PageCareerController;
-use App\Http\Controllers\Admin\PageContactController;
-use App\Http\Controllers\Admin\PageFaqController;
-use App\Http\Controllers\Admin\PageHomeController;
-use App\Http\Controllers\Admin\PageOtherController;
-use App\Http\Controllers\Admin\PagePhotoGalleryController;
-use App\Http\Controllers\Admin\PagePrivacyController;
-use App\Http\Controllers\Admin\PageProjectController;
-use App\Http\Controllers\Admin\PageEventController;
-use App\Http\Controllers\Admin\PageServiceController;
-use App\Http\Controllers\Admin\PageShopController;
-use App\Http\Controllers\Admin\PageTeamController;
-use App\Http\Controllers\Admin\PageTermController;
-use App\Http\Controllers\Admin\PageVideoGalleryController;
-use App\Http\Controllers\Admin\PhotoChangeController;
-use App\Http\Controllers\Admin\PhotoController;
-use App\Http\Controllers\Admin\ResetPasswordController as ResetPasswordControllerForAdmin;
-use App\Http\Controllers\Admin\PasswordChangeController as PasswordChangeControllerForAdmin;
-use App\Http\Controllers\Admin\ProfileChangeController as ProfileChangeControllerForAdmin;
-use App\Http\Controllers\Admin\CategoryController as CategoryControllerForAdmin;
-use App\Http\Controllers\Admin\EventCategoryController as EventCategoryControllerForAdmin;
-use App\Http\Controllers\Admin\GalleryCategoryController as GalleryCategoryControllerForAdmin;
-use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
-use App\Http\Controllers\Admin\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
-use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
-use App\Http\Controllers\Admin\ProductController as ProductControllerForAdmin;
-use App\Http\Controllers\Admin\OrderController as OrderControllerForAdmin;
-use App\Http\Controllers\Admin\RoleController;
 
+//Admin PanelPages
+use App\Http\Controllers\Admin\Page\PageAboutController;
+use App\Http\Controllers\Admin\Page\PageBlogController;
+use App\Http\Controllers\Admin\Page\PageCareerController;
+use App\Http\Controllers\Admin\Page\PageContactController;
+use App\Http\Controllers\Admin\Page\PageFaqController;
+use App\Http\Controllers\Admin\Page\PageHomeController;
+use App\Http\Controllers\Admin\Page\PageOtherController;
+use App\Http\Controllers\Admin\Page\PagePhotoGalleryController;
+use App\Http\Controllers\Admin\Page\PagePrivacyController;
+use App\Http\Controllers\Admin\Page\PageProjectController;
+use App\Http\Controllers\Admin\Page\PageEventController;
+use App\Http\Controllers\Admin\Page\PageServiceController;
+use App\Http\Controllers\Admin\Page\PageShopController;
+use App\Http\Controllers\Admin\Page\PageTeamController;
+use App\Http\Controllers\Admin\Page\PageTermController;
+use App\Http\Controllers\Admin\Page\PageVideoGalleryController;
+
+//Admin Panel Gallery
+use App\Http\Controllers\Admin\Gallery\PhotoController;
+use App\Http\Controllers\Admin\Gallery\VideoController;
+use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCategoryControllerForAdmin;
+
+//Admin Panel BLOG
+use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
+use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
+use App\Http\Controllers\Admin\Blog\CommentController;
+
+//Admin Panel EVENT
+use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
+use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
+
+//Front Panel CUSTOMER
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
 use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
@@ -175,12 +192,16 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     // Profile Management
     Route::get('/forget-password', [ForgetPasswordControllerForAdmin::class, 'index'])->name('admin.forget_password');
     Route::post('/forget-password/store', [ForgetPasswordControllerForAdmin::class, 'store'])->name('admin.forget_password.store');
+    
     Route::get('/reset-password/{token}/{email}', [ResetPasswordControllerForAdmin::class, 'index']);
     Route::post('/reset-password/update', [ResetPasswordControllerForAdmin::class, 'update']);
+    
     Route::get('/password-change', [PasswordChangeControllerForAdmin::class, 'index'])->name('admin.password_change');
     Route::post('/password-change/update', [PasswordChangeControllerForAdmin::class, 'update']);
+    
     Route::get('/profile-change', [ProfileChangeControllerForAdmin::class, 'index'])->name('admin.profile_change');
     Route::post('/profile-change/update', [ProfileChangeControllerForAdmin::class, 'update']);
+    
     Route::get('/photo-change', [PhotoChangeController::class, 'index'])->name('admin.photo_change');
     Route::post('/photo-change/update', [PhotoChangeController::class, 'update']);
 
@@ -227,7 +248,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Slider - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'slider', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
         Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
         Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
         Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
@@ -418,7 +439,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Dynamic Pages - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'dynamic-page', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/view', [DynamicPageController::class, 'index'])->name('admin.dynamic_page.index');
+        Route::get('/', [DynamicPageController::class, 'index'])->name('admin.dynamic_page.index');
         Route::get('/create', [DynamicPageController::class, 'create'])->name('admin.dynamic_page.create');
         Route::post('/store', [DynamicPageController::class, 'store'])->name('admin.dynamic_page.store');
         Route::get('/delete/{id}', [DynamicPageController::class, 'destroy']);
@@ -632,7 +653,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Coupon - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'coupon', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/view', [CouponController::class, 'index'])->name('admin.coupon.index');
+        Route::get('/', [CouponController::class, 'index'])->name('admin.coupon.index');
         Route::get('/create', [CouponController::class, 'create'])->name('admin.coupon.create');
         Route::post('/store', [CouponController::class, 'store'])->name('admin.coupon.store');
         Route::get('/delete/{id}', [CouponController::class, 'destroy']);
@@ -645,7 +666,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Shipping - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'shipping', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/view', [ShippingController::class, 'index'])->name('admin.shipping.index');
+        Route::get('/', [ShippingController::class, 'index'])->name('admin.shipping.index');
         Route::get('/create', [ShippingController::class, 'create'])->name('admin.shipping.create');
         Route::post('/store', [ShippingController::class, 'store'])->name('admin.shipping.store');
         Route::get('/delete/{id}', [ShippingController::class, 'destroy']);
@@ -658,7 +679,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Product - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'product', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/view', [ProductControllerForAdmin::class, 'index'])->name('admin.product.index');
+        Route::get('/', [ProductControllerForAdmin::class, 'index'])->name('admin.product.index');
         Route::get('/create', [ProductControllerForAdmin::class, 'create'])->name('admin.product.create');
         Route::post('/store', [ProductControllerForAdmin::class, 'store'])->name('admin.product.store');
         Route::get('/delete/{id}', [ProductControllerForAdmin::class, 'destroy']);
@@ -671,7 +692,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Order - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'order', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/view', [OrderControllerForAdmin::class, 'index'])->name('admin.order.index');
+        Route::get('/', [OrderControllerForAdmin::class, 'index'])->name('admin.order.index');
         Route::get('/create', [OrderControllerForAdmin::class, 'create'])->name('admin.order.create');
         Route::post('/store', [OrderControllerForAdmin::class, 'store'])->name('admin.order.store');
         Route::get('/detail/{id}', [OrderControllerForAdmin::class, 'detail']);
@@ -684,7 +705,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Customer - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'customer', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/view', [CustomerController::class, 'index'])->name('admin.customer.index');
+        Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
         Route::get('/detail/{id}', [CustomerController::class, 'detail']);
         Route::get('/make-active/{id}', [CustomerController::class, 'make_active']);
         Route::get('/make-pending/{id}', [CustomerController::class, 'make_pending']);
@@ -696,7 +717,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Footer Columns - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'footer', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/view', [FooterColumnController::class, 'index'])->name('admin.footer.index');
+        Route::get('/', [FooterColumnController::class, 'index'])->name('admin.footer.index');
         Route::get('/create', [FooterColumnController::class, 'create'])->name('admin.footer.create');
         Route::post('/store', [FooterColumnController::class, 'store'])->name('admin.footer.store');
         Route::get('/delete/{id}', [FooterColumnController::class, 'destroy']);
@@ -709,7 +730,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Menu - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'menu', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/view', [MenuController::class, 'index'])->name('admin.menu.index');
+        Route::get('/', [MenuController::class, 'index'])->name('admin.menu.index');
         Route::post('/update', [MenuController::class, 'update']);
     });
 

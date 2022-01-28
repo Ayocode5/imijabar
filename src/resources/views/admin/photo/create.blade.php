@@ -8,7 +8,8 @@
             <div class="card-header py-3">
                 <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Photo</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.photo.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.photo.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
+                        View All</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,11 +23,24 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Caption</label>
-                            <input type="text" name="photo_caption" class="form-control" value="{{ old('photo_caption') }}" autofocus>
+                            <input type="text" name="photo_caption" class="form-control"
+                                value="{{ old('photo_caption') }}" autofocus>
                         </div>
                         <div class="form-group">
                             <label for="">Order</label>
-                            <input type="text" name="photo_order" class="form-control" value="{{ old('photo_order', '0') }}">
+                            <input type="text" name="photo_order" class="form-control"
+                                value="{{ old('photo_order', '0') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Category</label>
+                            <select type="text" name="category_id" class="form-control"
+                                value="{{ old('category_id') }}">
+                                @if (!empty($categories))
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                 </div>

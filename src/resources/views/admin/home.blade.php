@@ -1,17 +1,6 @@
 @extends('admin.admin_layouts')
 
 @section('admin_content')
-    
-    @php
-    $total_post = DB::table('blogs')->count();
-    $total_projects = DB::table('projects')->count();
-    $total_services = DB::table('services')->count();
-    $total_team_members = DB::table('team_members')->count();
-    $total_photos = DB::table('photos')->count();
-    $total_videos = DB::table('videos')->count();
-    $total_completed_orders = DB::table('orders')->where('payment_status','Completed')->count();
-    $total_pending_orders = DB::table('orders')->where('payment_status','Pending')->count();
-    @endphp
 
     <div class="row">
         <div class="col-xl-12 col-md-12 mb-2">
@@ -28,7 +17,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="h4 font-weight-bold text-success mb-1">Total Posts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_post }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_news }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>

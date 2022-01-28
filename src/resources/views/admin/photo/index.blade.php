@@ -17,20 +17,22 @@
                         <th>SL</th>
                         <th>Photo</th>
                         <th>Caption</th>
+                        <th>Category</th>
                         <th>Order</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($photo as $row)
+                        @foreach($photos as $photo)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->photo_name) }}" alt="" class="w_200"></td>
-                            <td>{{ $row->photo_caption }}</td>
-                            <td>{{ $row->photo_order }}</td>
+                            <td><img src="{{ asset('public/uploads/'.$photo->photo_name) }}" alt="" class="w_200"></td>
+                            <td>{{ $photo->photo_caption }}</td>
+                            <td>{{ $photo->category->name }}</td>
+                            <td>{{ $photo->photo_order }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/photo-gallery/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/photo-gallery/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/photo-gallery/edit/'.$photo->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/photo-gallery/delete/'.$photo->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

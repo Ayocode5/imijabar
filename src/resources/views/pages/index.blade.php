@@ -37,7 +37,7 @@
 </div>
 
 
-@if($page_home->why_choose_status == 'Show')
+@if($page_home?->why_choose_status == 'Show')
 <div class="feature">
     <div class="container">
         <div class="row">
@@ -68,7 +68,7 @@
 @endif
 
 
-@if($page_home->special_status == 'Show')
+@if($page_home?->special_status == 'Show')
 <div class="special" style="background-image: url({{ asset('public/uploads/'.$page_home->special_bg) }});">
     <div class="bg"></div>
     <div class="container">
@@ -97,7 +97,7 @@
 @endif
 
 
-@if($page_home->service_status == 'Show')
+@if($page_home?->service_status == 'Show')
 <div class="service">
     <div class="container">
         <div class="row">
@@ -135,7 +135,7 @@
 @endif
 
 
-@if($page_home->testimonial_status == 'Show')
+@if($page_home?->testimonial_status == 'Show')
 <div class="testimonial" style="background-image: url({{ asset('public/uploads/'.$page_home->testimonial_bg) }});">
     <div class="testimonial-bg"></div>
     <div class="container">
@@ -172,7 +172,7 @@
 @endif
 
 
-@if($page_home->project_status == 'Show')
+@if($page_home?->project_status == 'Show')
 <div class="project">
     <div class="container">
         <div class="row">
@@ -210,7 +210,7 @@
 @endif
 
 
-@if($page_home->team_member_status == 'Show')
+@if($page_home?->team_member_status == 'Show')
 <div class="team bg-lightblue">
     <div class="container">
         <div class="row">
@@ -248,7 +248,7 @@
 
 
 
-@if($page_home->appointment_status == 'Show')
+@if($page_home?->appointment_status == 'Show')
 <div class="cta" style="background-image: url({{ asset('public/uploads/'.$page_home->appointment_bg) }});">
     <div class="overlay"></div>
     <div class="container">
@@ -269,7 +269,7 @@
 
 
 
-@if($page_home->latest_blog_status == 'Show')
+@if($page_home?->latest_blog_status == 'Show')
 <div class="blog-area">
     <div class="container wow fadeIn">
 
@@ -317,7 +317,7 @@
 @endif
 
 
-@if($page_home->newsletter_status == 'Show')
+@if($page_home?->newsletter_status == 'Show')
 <div class="newsletter-area" style="background-image: url({{ asset('public/uploads/'.$page_home->newsletter_bg) }});">
     <div class="overlay"></div>
     <div class="container">

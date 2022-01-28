@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\Admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class RoleAndPermissionSeeder extends Seeder
 {
@@ -15,7 +15,12 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
-        Admin::create(['role_name' => 'Admin']);
-        
+        $roles = array(
+            ['name'=>'admin'],
+            ['name'=>'editor'],
+            ['name'=>'seller']
+        );
+        Role::create($roles);
+
     }
 }

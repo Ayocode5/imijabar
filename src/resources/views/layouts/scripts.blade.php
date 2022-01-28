@@ -1,4 +1,4 @@
-@if($g_setting->google_analytic_status == 'Show')
+@if($g_setting?->google_analytic_status == 'Show')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ $g_setting->google_analytic_tracking_id }}"></script>
 <script>
@@ -11,7 +11,7 @@
 @endif
 
 
-@if($g_setting->cookie_consent_status == 'Show')
+@if($g_setting?->cookie_consent_status == 'Show')
 <script>
     window.addEventListener("load", function(){
         window.cookieconsent.initialise({

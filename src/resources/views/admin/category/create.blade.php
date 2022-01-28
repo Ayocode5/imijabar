@@ -16,10 +16,10 @@
                     <label for="">Category Name *</label>
                     <input type="text" name="category_name" class="form-control" value="{{ old('category_name') }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Category Slug</label>
                     <input type="text" name="category_slug" class="form-control" value="{{ old('category_slug') }}">
-                </div>
+                </div> --}}
             </div>
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
