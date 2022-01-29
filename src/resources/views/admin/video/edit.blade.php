@@ -34,6 +34,18 @@
                             <label for="">Order</label>
                             <input type="text" name="video_order" class="form-control" value="{{ $video->video_order }}">
                         </div>
+                        <div class="form-group">
+                            <label for="">Category</label>
+                            <select type="text" name="category_id" class="form-control" value="{{ old('category_id') }}">
+                                @if (!empty($categories))
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" @if ($category->id == $video->category_id)
+                                            selected
+                                        @endif>{{ $category->name }}</option>
+                                @endforeach
+                                @endif
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>

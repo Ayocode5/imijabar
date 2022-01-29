@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'CMSVilla',
+    'name' => 'IMI-JABAR',
     'env' => 'local',
     'debug' => true,
     'url' => '',
@@ -221,7 +221,7 @@
         'endpoint' => NULL,
       ),
     ),
-    'prefix' => 'cmsvilla_cache',
+    'prefix' => 'imi_jabar_cache',
   ),
   'cors' => 
   array (
@@ -320,7 +320,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'cmsvilla_database_',
+        'prefix' => 'imi_jabar_database_',
       ),
       'default' => 
       array (
@@ -475,8 +475,8 @@
         'host' => 'smtp.mailtrap.io',
         'port' => '2525',
         'encryption' => 'tls',
-        'username' => '0343e582dbb240',
-        'password' => '94efedcfe63882',
+        'username' => 'ae28d81f825244',
+        'password' => 'd2d34a69892ba4',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -510,7 +510,7 @@
     'from' => 
     array (
       'address' => 'contact@phpscriptpoint.com',
-      'name' => 'CMSVilla',
+      'name' => 'IMI-JABAR',
     ),
     'markdown' => 
     array (
@@ -657,7 +657,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'cmsvilla_session',
+    'cookie' => 'imi_jabar_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,

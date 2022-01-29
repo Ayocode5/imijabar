@@ -16,10 +16,10 @@
                     <label for="">Name *</label>
                     <input type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="event_slug" class="form-control" value="{{ $event->event_slug }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Content</label>
                     <textarea name="event_content" class="form-control editor" cols="30" rows="10">{{ $event->event_content }}</textarea>
@@ -29,12 +29,12 @@
                     <textarea name="event_content_short" class="form-control h_100" cols="30" rows="10">{{ $event->event_content_short }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="" Event Start Date</label>
-                    <input type="text" name="event_start_date" class="form-control" value="{{ $event->event_start_date }}">
+                    <label for="">Event Start Date</label>
+                    <input type="date" name="event_start_date" class="form-control" value="{{ $event->event_start_date }}">
                 </div>
                 <div class="form-group">
-                    <label for="" Event End Date</label>
-                    <input type="text" name="event_end_date" class="form-control" value="{{ $event->event_end_date }}">
+                    <label for="">Event End Date</label>
+                    <input type="date" name="event_end_date" class="form-control" value="{{ $event->event_end_date }}">
                 </div>
                 <div class="form-group">
                     <label for="">Location</label>
@@ -59,6 +59,22 @@
                     <div>
                         <input type="file" name="event_featured_photo">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Category</label>
+                    @if (count($categories) <= 0)
+                        <select class="form-control" disabled>
+                            <option value="">There is no Event Category Available, Create first</option>
+                        </select>
+                    @else
+                    <select name="category_id" class="form-control" value="{{ old('category_id') }}" autofocus>
+                        @foreach ($categories as $category)
+                            <option value={{ $category->id }} @if ($category->id == $event->category_id)
+                                selected
+                            @endif>{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @endif
                 </div>
             </div>
             <div class="card-header py-3">

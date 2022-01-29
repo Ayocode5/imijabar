@@ -9,7 +9,8 @@ class Video extends Model
     protected $fillable = [
         'video_youtube',
         'video_caption',
-        'video_order'
+        'video_order',
+        'category_id'
     ];
 
     public function category() {

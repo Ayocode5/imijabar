@@ -23,18 +23,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($event as $row)
+                        @foreach($events as $event)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->event_featured_photo) }}" alt="" class="w_200"></td>
-                            <td>{{ $row->event_name }}</td>
+                            <td><img src="{{ asset('public/uploads/'.$event->event_featured_photo) }}" alt="" class="w_200"></td>
+                            <td>{{ $event->event_name }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/event/gallery/'.$row->id) }}" class="btn btn-success btn-sm">Manage Gallery</a>
+                                <a href="{{ URL::to('admin/event/gallery/'.$event->id) }}" class="btn btn-success btn-sm">Manage Gallery</a>
                             </td>
-                            <td>Upcoming</td>
+                            <td>{{$event->status}}</td>
                             <td>
-                                <a href="{{ URL::to('admin/event/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/event/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/event/edit/'.$event->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/event/delete/'.$event->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

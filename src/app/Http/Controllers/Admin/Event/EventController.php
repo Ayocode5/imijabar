@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class EventController extends Controller
 {
@@ -19,14 +20,13 @@ class EventController extends Controller
 
     public function index()
     {
-        $event = Event::all();
-        return view('admin.event.index', compact('event'));
+        $events = Event::all();
+        return view('admin.event.index', compact('events'));
     }
 
     public function create()
     {
         $categories = DB::table('event_categories')->select(['name', 'id'])->get();
-        // dd(count($categories));
         return view('admin.event.create', compact('categories'));
     }
 
@@ -36,30 +36,28 @@ class EventController extends Controller
         $event = new Event();
         $data = $request->only($event->getFillable());
 
-        // dd($request);
-
         $request->validate([
             'category_id' => 'required',
             'event_map' => 'required',
             'event_content' => 'required',
+            'event_content_short' => 'required',
             'event_location' => 'required',
+            'event_start_date' => 'required',
+            'event_end_date' => 'required',
             'event_name' => 'required|unique:events',
             'event_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'events'");
-        $ai_id = $statement[0]->Auto_increment;
-        $ext = $request->file('event_featured_photo')->extension();
-        $final_name = 'event-featured-photo-'.$ai_id.'.'.$ext;
+
+        $ext = $request->file('event_featured_photo')->getClientOriginalExtension();
+        $fileName = 'event-featured-photo-'. Uuid::uuid4() .'.'.$ext;
 
         //TAKE IMAGE and MOVE TO PUBLIC FOLDER 
-        $request->file('event_featured_photo')->move(public_path('uploads/'), $final_name);
+        $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
 
         $data['category_id'] = $request->category_id;
-        $data['event_featured_photo'] = $final_name;
+        $data['event_featured_photo'] = $fileName;
         $data['event_slug'] = Str::slug($request->event_name);
-
-        // dd($data);
 
         $event->create($data);
         
@@ -69,8 +67,8 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::findOrFail($id);
-        // dd($event);
-        return view('admin.event.edit', compact('event'));
+        $categories = DB::table('event_categories')->select(['name', 'id'])->get();
+        return view('admin.event.edit', compact(['event','categories']));
     }
 
     public function update(Request $request, $id)
@@ -78,36 +76,35 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $data = $request->only($event->getFillable());
 
+        $request->validate([
+            'event_name' =>  ['required', Rule::unique('events')->ignore($id),],
+            'event_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
         if($request->hasFile('event_featured_photo')) {
-            $request->validate([
-                'event_name'   =>  [
-                    'required',
-                    Rule::unique('events')->ignore($id),
-                ],
-                'event_slug'   =>  [
-                    Rule::unique('events')->ignore($id),
-                ],
-                'event_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-            unlink(public_path('uploads/'.$event->event_featured_photo));
-            $ext = $request->file('event_featured_photo')->extension();
-            $final_name = 'event-featured-photo-'.$id.'.'.$ext;
-            $request->file('event_featured_photo')->move(public_path('uploads/'), $final_name);
-            $data['event_featured_photo'] = $final_name;
+            
+            if(!empty($event->event_featured_photo)) {
+                
+                unlink(public_path('uploads/'.$event->event_featured_photo));
+               
+                preg_match('/(event-featured-photo-)(.*).(jpg|png|jpeg|gif)/', $event->event_featured_photo, $event_photo_format_split);
+                $fileName = $event_photo_format_split[1]. $event_photo_format_split[2]. '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
+                $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+                $data['event_featured_photo'] = $fileName;
+
+            } else {
+                $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
+                $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+                $data['event_featured_photo'] = $fileName;
+            }
+
         } else {
-            $request->validate([
-                'event_name'   =>  [
-                    'required',
-                    Rule::unique('events')->ignore($id),
-                ],
-                'event_slug'   =>  [
-                    Rule::unique('events')->ignore($id),
-                ]
-            ]);
+
             $data['event_featured_photo'] = $event->event_featured_photo;
         }
 
-        $event->fill($data)->save();
+        $data['event_slug'] = Str::slug($request->event_name);
+        $event->update($data);
         return redirect()->route('admin.event.index')->with('success', 'Event is updated successfully!');
     }
 

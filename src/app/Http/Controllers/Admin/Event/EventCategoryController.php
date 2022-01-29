@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\EventCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class EventCategoryController extends Controller
@@ -106,8 +107,14 @@ class EventCategoryController extends Controller
      */
     public function destroy($id)
     {
-        EventCategory::find($id)->delete();
 
+        $events = DB::table('events')->where('category_id', $id)->count();
+
+        if($events > 0) {
+            return redirect()->route('admin.event_category.index')->withErrors("Category can't be deleted, some event are under this category");
+        }
+
+        EventCategory::find($id)->delete();
         return redirect()->route('admin.event_category.index')->with('success', 'Event Category deleted successfuly');
 
     }

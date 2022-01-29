@@ -32,4 +32,22 @@ class Event extends Model
     public function category() {
         return $this->belongsTo(EventCategory::class, 'category_id', 'id');
     }
+
+    public function getStatusAttribute() {
+        
+        $event_start_date = intval(date_format(date_create($this->event_start_date), 'Ymd'));
+        $event_end_date = intval(date_format(date_create($this->event_end_date), 'Ymd'));
+        $date_today = intval(date('Ymd'));
+
+        // Set Event Status
+        if($date_today < $event_start_date) {
+            return 'Upcoming';
+        } elseif ($event_start_date <= $date_today && $date_today <= $event_end_date) {
+            return 'Current';
+        } elseif ($event_end_date < $date_today) {
+            return 'Past';
+        } else {
+            return "Invalid Logic";
+        }
+    }
 }

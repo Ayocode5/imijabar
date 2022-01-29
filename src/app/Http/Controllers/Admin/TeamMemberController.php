@@ -83,6 +83,7 @@ class TeamMemberController extends Controller
             $final_name = 'team-member-'.$id.'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $data['photo'] = $final_name;
+            
         } else {
             $request->validate([
                 'name'   =>  [

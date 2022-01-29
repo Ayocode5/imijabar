@@ -75,18 +75,17 @@ class CategoryController extends Controller
     }
 
     public function destroy($id)
-    {
-        // Deleting data from "categories" table
-        $category = Category::findOrFail($id);
-        $category->delete();
+    {       
 
         // Deleting data from "blogs" table
-        $all_data = DB::table('blogs')->where('category_id', $id)->get();
-        foreach($all_data as $row)
-        {
-            unlink(public_path('uploads/'.$row->blog_photo));
+        $all_blog = DB::table('blogs')->where('category_id', $id)->count();
+
+        if($all_blog > 0) {
+            return Redirect()->back()->withErrors("Category can't be deleted, some posts under this category!");
         }
-        DB::table('blogs')->where('category_id',$id)->delete();
+       
+        $category = Category::findOrFail($id);
+        $category->delete();
 
         // Success Message and redirect
         return Redirect()->back()->with('success', 'Category is deleted successfully!');

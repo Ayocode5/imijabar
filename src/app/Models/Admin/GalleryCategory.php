@@ -23,4 +23,13 @@ class GalleryCategory extends Model
     public function photos() {
         return $this->hasMany(Photo::class, 'category_id', 'id');
     }
+
+    public function getCanDeleteAttribute() {
+
+        if($this->videos_count > 0 || $this->photos_count > 0) {
+            return false;
+        }
+
+        return true;
+    }
 }

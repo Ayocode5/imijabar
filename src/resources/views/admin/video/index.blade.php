@@ -17,22 +17,24 @@
                         <th>SL</th>
                         <th>Video Thumbnail</th>
                         <th>Caption</th>
+                        <th>Category</th>
                         <th>Order</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($video as $row)
+                        @foreach($videos as $video)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td class="iframe-container-300">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $row->video_youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $video->video_youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </td>
-                            <td>{{ $row->video_caption }}</td>
-                            <td>{{ $row->video_order }}</td>
+                            <td>{{ $video->video_caption }}</td>
+                            <td>{{ $video->category->name }}</td>
+                            <td>{{ $video->video_order }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/video-gallery/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/video-gallery/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/video-gallery/edit/'.$video->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/video-gallery/delete/'.$video->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach
