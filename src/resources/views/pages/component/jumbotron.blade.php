@@ -31,7 +31,7 @@
                             width="100%" height="600">
                         <div class="carousel-caption">
                             <p class="date_author">23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
+                            <h2 class="text-white">Ford Mustang Shelby GT 500 1967</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
                                 Id eu
                                 ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit

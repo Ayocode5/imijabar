@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Admin Panel</title>
+    <title>IMI Jawa Barat | Admin Panel</title>
 
     @include('admin.includes.styles')
 
@@ -39,7 +39,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                 href="{{ route('admin.dashboard') }}">
-                <div class="sidebar-brand-text mx-3">Admin Panel</div>
+                <div class="sidebar-brand-text mx-3">IMI Jawa Barat</div>
             </a>
 
             <!-- Divider -->
@@ -160,11 +160,20 @@
                     <div id="collapseAdminUser" class="collapse @if ($conName[1] == 'role' || $conName[1] == 'admin-user') show @endif" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.role.index') }}">Roles</a>
-                            <a class="collapse-item" href="{{ route('admin.role.user') }}">Users</a>
+                            <a class="collapse-item @if ($conName[1] == 'role' && $conName[2] == '') active @endif" href="{{ route('admin.role.index') }}">Roles</a>
+                            <a class="collapse-item @if ($conName[2] == 'user') active @endif" href="{{ route('admin.role.user') }}">Users</a>
                         </div>
                     </div>
                 </li>
+
+                <!-- Email Template -->
+                <li class="nav-item @if ($conName[1] == 'email-template') active @endif">
+                    <a class="nav-link" href="{{ route('admin.email_template.index') }}">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Template</span>
+                    </a>
+                </li>
+
 
                 <!-- Sliders -->
                 <li class="nav-item @if ($conName[1] == 'slider') active @endif">
@@ -239,8 +248,8 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('admin.category.index') }}">Categories</a>
                             <a class="collapse-item" href="{{ route('admin.news.index') }}">News</a>
-                            <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
-                            <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a>
+                            {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
+                            <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
                         </div>
                     </div>
                 </li>
@@ -266,7 +275,7 @@
                 <li class="nav-item @if ($conName[1] == 'gallery' || $conName[1] == 'photo-gallery' || $conName[1] == 'video-gallery' || $conName[1] == 'gallery-category') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery"
                         aria-expanded="true" aria-controls="collapseGallery">
-                        <i class="fas fa-cubes"></i>
+                        <i class="fas fa-image"></i>
                         <span>Gallery Section</span>
                     </a>
                     <div id="collapseGallery" class="collapse @if ($conName[1] == 'photo-gallery' || $conName[1] == 'video-gallery' || $conName[1] == 'gallery-category') show @endif" aria-labelledby="headingPages"
@@ -280,15 +289,15 @@
                 </li>
 
                 <!-- Project -->
-                <li class="nav-item @if ($conName[1] == 'project') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'project') active @endif">
                     <a class="nav-link" href="{{ route('admin.project.index') }}">
                         <i class="fas fa-umbrella"></i>
                         <span>Project</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <!-- Career Section -->
-                <li class="nav-item @if ($conName[1] == 'job' || $conName[1] == 'job-application') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'job' || $conName[1] == 'job-application') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCareer"
                         aria-expanded="true" aria-controls="collapseCareer">
                         <i class="fas fa-user-secret"></i>
@@ -302,15 +311,15 @@
                                 Applications</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <!-- Why Choose Us -->
-                <li class="nav-item @if ($conName[1] == 'why-choose') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'why-choose') active @endif">
                     <a class="nav-link" href="{{ route('admin.why_choose.index') }}">
                         <i class="fas fa-arrows-alt"></i>
                         <span>Why Choose Us</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <!-- Services -->
                 <li class="nav-item @if ($conName[1] == 'service') active @endif">
@@ -321,14 +330,14 @@
                 </li>
 
                 <!-- Testimonials -->
-                <li class="nav-item @if ($conName[1] == 'testimonial') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'testimonial') active @endif">
                     <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
                         <i class="fas fa-award"></i>
                         <span>Testimonial</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <!-- Team Members -->
+                <!-- Team Members / Committee -->
                 <li class="nav-item @if ($conName[1] == 'team-member') active @endif">
                     <a class="nav-link" href="{{ route('admin.team_member.index') }}">
                         <i class="fas fa-user-plus"></i>
@@ -344,14 +353,7 @@
                     </a>
                 </li>
 
-                <!-- Email Template -->
-                <li class="nav-item @if ($conName[1] == 'email-template') active @endif">
-                    <a class="nav-link" href="{{ route('admin.email_template.index') }}">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email Template</span>
-                    </a>
-                </li>
-
+                
                 <!-- Subscriber -->
                 <li class="nav-item @if ($conName[1] == 'subscriber') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber"

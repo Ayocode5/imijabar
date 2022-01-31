@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Slider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use DB;
+use Ramsey\Uuid\Uuid;
 
 class SliderController extends Controller
 {
@@ -33,18 +31,14 @@ class SliderController extends Controller
             'slider_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'sliders'");
-        $ai_id = $statement[0]->Auto_increment;
-
-        $ext = $request->file('slider_photo')->extension();
-        $final_name = 'slider-'.$ai_id.'.'.$ext;
-        $request->file('slider_photo')->move(public_path('uploads'), $final_name);
+        $fileName = 'slider-'.Uuid::uuid4().'.'.$request->file('slider_photo')->getClientOriginalExtension();
+        $request->file('slider_photo')->move(public_path('uploads'), $fileName);
 
         $slider = new Slider();
         $data = $request->only($slider->getFillable());
 
         unset($data['slider_photo']);
-        $data['slider_photo'] = $final_name;
+        $data['slider_photo'] = $fileName;
 
         $slider->fill($data)->save();
 
@@ -71,8 +65,8 @@ class SliderController extends Controller
             unlink(public_path('uploads/'.$slider->slider_photo));
 
             // Uploading the file
-            $ext = $request->file('slider_photo')->extension();
-            $final_name = 'slider-'.$id.'.'.$ext;
+            preg_match('/(slider-)(.*).(jpg|png|jpeg|gif)/', $slider->slider_photo, $slider_photo_format_split);
+            $final_name = $slider_photo_format_split[1].$slider_photo_format_split[2].'.'.$request->file('slider_photo')->getClientOriginalExtension();
             $request->file('slider_photo')->move(public_path('uploads/'), $final_name);
 
             unset($data['slider_photo']);
@@ -80,7 +74,6 @@ class SliderController extends Controller
         }
 
         $slider->fill($data)->save();
-
         return redirect()->route('admin.slider.index')->with('success', 'Slider is updated successfully!');
     }
 

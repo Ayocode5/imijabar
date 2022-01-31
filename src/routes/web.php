@@ -497,17 +497,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Project - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'project', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [ProjectControllerForAdmin::class, 'index'])->name('admin.project.index');
-        Route::get('/create', [ProjectControllerForAdmin::class, 'create'])->name('admin.project.create');
-        Route::post('/store', [ProjectControllerForAdmin::class, 'store'])->name('admin.project.store');
-        Route::get('/delete/{id}', [ProjectControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [ProjectControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [ProjectControllerForAdmin::class, 'update']);
-        Route::get('/gallery/{id}', [ProjectControllerForAdmin::class, 'gallerysection']);
-        Route::get('/gallery-delete/{id}', [ProjectControllerForAdmin::class, 'gallerydelete']);
-        Route::post('/gallery-store', [ProjectControllerForAdmin::class, 'gallerystore'])->name('admin.project.gallery-store');
-    });
+    // Route::group(['prefix' => 'project', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [ProjectControllerForAdmin::class, 'index'])->name('admin.project.index');
+    //     Route::get('/create', [ProjectControllerForAdmin::class, 'create'])->name('admin.project.create');
+    //     Route::post('/store', [ProjectControllerForAdmin::class, 'store'])->name('admin.project.store');
+    //     Route::get('/delete/{id}', [ProjectControllerForAdmin::class, 'destroy']);
+    //     Route::get('/edit/{id}', [ProjectControllerForAdmin::class, 'edit']);
+    //     Route::post('/update/{id}', [ProjectControllerForAdmin::class, 'update']);
+    //     Route::get('/gallery/{id}', [ProjectControllerForAdmin::class, 'gallerysection']);
+    //     Route::get('/gallery-delete/{id}', [ProjectControllerForAdmin::class, 'gallerydelete']);
+    //     Route::post('/gallery-store', [ProjectControllerForAdmin::class, 'gallerystore'])->name('admin.project.gallery-store');
+    // });
 
 
     /* --------------------------------------- */
@@ -552,14 +552,14 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Why Choose Us - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'why-choose', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [WhyChooseController::class, 'index'])->name('admin.why_choose.index');
-        Route::get('/create', [WhyChooseController::class, 'create'])->name('admin.why_choose.create');
-        Route::post('/store', [WhyChooseController::class, 'store'])->name('admin.why_choose.store');
-        Route::get('/delete/{id}', [WhyChooseController::class, 'destroy']);
-        Route::get('/edit/{id}', [WhyChooseController::class, 'edit']);
-        Route::post('/update/{id}', [WhyChooseController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'why-choose', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [WhyChooseController::class, 'index'])->name('admin.why_choose.index');
+    //     Route::get('/create', [WhyChooseController::class, 'create'])->name('admin.why_choose.create');
+    //     Route::post('/store', [WhyChooseController::class, 'store'])->name('admin.why_choose.store');
+    //     Route::get('/delete/{id}', [WhyChooseController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [WhyChooseController::class, 'edit']);
+    //     Route::post('/update/{id}', [WhyChooseController::class, 'update']);
+    // });
 
 
 
@@ -578,14 +578,14 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Testimonial - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'testimonial', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [TestimonialController::class, 'index'])->name('admin.testimonial.index');
-        Route::get('/create', [TestimonialController::class, 'create'])->name('admin.testimonial.create');
-        Route::post('/store', [TestimonialController::class, 'store'])->name('admin.testimonial.store');
-        Route::get('/delete/{id}', [TestimonialController::class, 'destroy']);
-        Route::get('/edit/{id}', [TestimonialController::class, 'edit']);
-        Route::post('/update/{id}', [TestimonialController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'testimonial', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [TestimonialController::class, 'index'])->name('admin.testimonial.index');
+    //     Route::get('/create', [TestimonialController::class, 'create'])->name('admin.testimonial.create');
+    //     Route::post('/store', [TestimonialController::class, 'store'])->name('admin.testimonial.store');
+    //     Route::get('/delete/{id}', [TestimonialController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [TestimonialController::class, 'edit']);
+    //     Route::post('/update/{id}', [TestimonialController::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
@@ -604,16 +604,16 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Job or Career - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'job', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [JobControllerForAdmin::class, 'index'])->name('admin.job.index');
-        Route::get('/create', [JobControllerForAdmin::class, 'create'])->name('admin.job.create');
-        Route::post('/store', [JobControllerForAdmin::class, 'store'])->name('admin.job.store');
-        Route::get('/delete/{id}', [JobControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [JobControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [JobControllerForAdmin::class, 'update']);
-        Route::get('/application', [JobControllerForAdmin::class, 'view_application'])->name('admin.job.view_application');
-        Route::get('/application/delete/{id}', [JobControllerForAdmin::class, 'delete_application']);
-    });
+    // Route::group(['prefix' => 'job', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [JobControllerForAdmin::class, 'index'])->name('admin.job.index');
+    //     Route::get('/create', [JobControllerForAdmin::class, 'create'])->name('admin.job.create');
+    //     Route::post('/store', [JobControllerForAdmin::class, 'store'])->name('admin.job.store');
+    //     Route::get('/delete/{id}', [JobControllerForAdmin::class, 'destroy']);
+    //     Route::get('/edit/{id}', [JobControllerForAdmin::class, 'edit']);
+    //     Route::post('/update/{id}', [JobControllerForAdmin::class, 'update']);
+    //     Route::get('/application', [JobControllerForAdmin::class, 'view_application'])->name('admin.job.view_application');
+    //     Route::get('/application/delete/{id}', [JobControllerForAdmin::class, 'delete_application']);
+    // });
 
 
     /* --------------------------------------- */
@@ -632,7 +632,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Email Template - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'email-template', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'email-template', 'middleware' => 'can:isAdmin'], function () {
         Route::get('/', [EmailTemplateController::class, 'index'])->name('admin.email_template.index');
         Route::get('/edit/{id}', [EmailTemplateController::class, 'edit']);
         Route::post('/update/{id}', [EmailTemplateController::class, 'update']);
