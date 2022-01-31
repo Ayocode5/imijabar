@@ -30,4 +30,10 @@ class Blog extends Model
         return $query->where('deleted_at', null);
     }
 
+    public function getCreatedAtAttribute()
+    {
+        return date_format(date_create($this->create_at), 'd M Y');
+    }
+    
+
 }

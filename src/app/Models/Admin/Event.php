@@ -10,7 +10,6 @@ class Event extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'category_id',
         'event_name',
         'event_slug',
         'event_content',
@@ -29,8 +28,8 @@ class Event extends Model
         return $this->hasMany(EventPhoto::class);
     }
 
-    public function category() {
-        return $this->belongsTo(EventCategory::class, 'category_id', 'id');
+    public function sports() {
+        return $this->belongsToMany(Sport::class, 'event_sport', 'event_id', 'sport_id');
     }
 
     public function getStatusAttribute() {
@@ -49,5 +48,9 @@ class Event extends Model
         } else {
             return "Invalid Logic";
         }
+    }
+
+    public function scopeEventActive($query) {
+        return $query->where('event_end_date', '>=', date('Y-m-d'));
     }
 }

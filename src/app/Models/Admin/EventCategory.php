@@ -15,8 +15,12 @@ class EventCategory extends Model
         'seo_title',
         'seo_meta_description'
     ];
-    
-    public function events() {
-        return $this->hasMany(Event::class, 'category_id', 'id');
+
+    public function sports() {
+        return $this->hasMany(Sport::class, 'category_id', 'id');
     }
+
+    // public function events() {
+    //     return $this->hasManyThrough(Event::class, EventSport::class, 'category_id', 'sport_id', 'id', 'id');
+    // }
 }

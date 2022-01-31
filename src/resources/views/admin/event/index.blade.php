@@ -17,6 +17,8 @@
                         <th>SL</th>
                         <th>Featured Photo</th>
                         <th>Event Name</th>
+                        <th>Sport</th>
+                        <th>Category</th>
                         <th>Manage Gallery</th>
                         <th>Event Status</th>
                         <th>Action</th>
@@ -26,8 +28,10 @@
                         @foreach($events as $event)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$event->event_featured_photo) }}" alt="" class="w_200"></td>
-                            <td>{{ $event->event_name }}</td>
+                            <td><img src="{{ asset('public/uploads/'.$event->featured_photo) }}" alt="" class="w_200"></td>
+                            <td>{{ $event->name }}</td>
+                            <td>{{ $event->sports}}</td>
+                            <td>{{ $event->categories}}</td>
                             <td>
                                 <a href="{{ URL::to('admin/event/gallery/'.$event->id) }}" class="btn btn-success btn-sm">Manage Gallery</a>
                             </td>

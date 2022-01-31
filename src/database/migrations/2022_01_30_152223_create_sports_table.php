@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolePagesTable extends Migration
+class CreateSportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateRolePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_pages', function (Blueprint $table) {
+        Schema::create('sports', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title');
+            $table->foreignId('category_id');
+            $table->string('name');
+            $table->string('slug');
+            $table->string('seo_title')->nullable();
+            $table->string('seo_meta_description')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateRolePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_pages');
+        Schema::dropIfExists('sports');
     }
 }

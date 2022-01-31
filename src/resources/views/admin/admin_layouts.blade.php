@@ -17,7 +17,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top">    
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -256,6 +256,7 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('admin.event_category.index') }}">Categories</a>
+                            <a class="collapse-item" href="{{ route('admin.event_sport.index') }}">Sports</a>
                             <a class="collapse-item" href="{{ route('admin.event.index') }}">Events</a>
                         </div>
                     </div>

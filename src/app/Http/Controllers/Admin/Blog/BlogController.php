@@ -48,7 +48,6 @@ class BlogController extends Controller
 
         $request->file('blog_photo')->move(public_path('uploads'), $final_name);
 
-
         $blog = new Blog();
         $data = $request->only($blog->getFillable());
         if (empty($data['blog_slug'])) {
@@ -92,6 +91,7 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $data = $request->only($blog->getFillable());
 
+        // dd($blog);
         $request->validate([
             'blog_title'   =>  ['required', Rule::unique('blogs')->ignore($id),],
             'blog_slug'   =>  [Rule::unique('blogs')->ignore($id),],

@@ -7,3 +7,6 @@
 <link rel="stylesheet" href="{{ asset('public/backend/css/summernote-bs4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('public/backend/css/spacing.css') }}">
 <link rel="stylesheet" href="{{ asset('public/backend/css/style.css') }}">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">

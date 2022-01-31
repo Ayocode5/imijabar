@@ -16,10 +16,6 @@
                     <label for="">Name *</label>
                     <input type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="">Slug</label>
-                    <input type="text" name="event_slug" class="form-control" value="{{ $event->event_slug }}">
-                </div> --}}
                 <div class="form-group">
                     <label for="">Content</label>
                     <textarea name="event_content" class="form-control editor" cols="30" rows="10">{{ $event->event_content }}</textarea>
@@ -61,17 +57,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Category</label>
-                    @if (count($categories) <= 0)
+                    {{-- {{ dd($event->sports->pluck('id')) }} --}}
+                    <label for="">Sports</label>
+                    @if (count($sports) <= 0)
                         <select class="form-control" disabled>
-                            <option value="">There is no Event Category Available, Create first</option>
+                            <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                    <select name="category_id" class="form-control" value="{{ old('category_id') }}" autofocus>
-                        @foreach ($categories as $category)
-                            <option value={{ $category->id }} @if ($category->id == $event->category_id)
+                    <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
+                        @foreach ($sports as $sport)
+                            <option value={{ $sport->id }} @if (in_array($sport->id, $event->sports->pluck('id')->toArray()))
                                 selected
-                            @endif>{{ $category->name }}</option>
+                            @endif>{{ $sport->name }}</option>
                         @endforeach
                     </select>
                     @endif

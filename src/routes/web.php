@@ -69,6 +69,7 @@ use App\Http\Controllers\Admin\Blog\CommentController;
 //Admin Panel EVENT
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
+use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 
 //Front Panel CUSTOMER
 use App\Http\Controllers\Customer\CheckoutController;
@@ -192,16 +193,16 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     // Profile Management
     Route::get('/forget-password', [ForgetPasswordControllerForAdmin::class, 'index'])->name('admin.forget_password');
     Route::post('/forget-password/store', [ForgetPasswordControllerForAdmin::class, 'store'])->name('admin.forget_password.store');
-    
+
     Route::get('/reset-password/{token}/{email}', [ResetPasswordControllerForAdmin::class, 'index']);
     Route::post('/reset-password/update', [ResetPasswordControllerForAdmin::class, 'update']);
-    
+
     Route::get('/password-change', [PasswordChangeControllerForAdmin::class, 'index'])->name('admin.password_change');
     Route::post('/password-change/update', [PasswordChangeControllerForAdmin::class, 'update']);
-    
+
     Route::get('/profile-change', [ProfileChangeControllerForAdmin::class, 'index'])->name('admin.profile_change');
     Route::post('/profile-change/update', [ProfileChangeControllerForAdmin::class, 'update']);
-    
+
     Route::get('/photo-change', [PhotoChangeController::class, 'index'])->name('admin.photo_change');
     Route::post('/photo-change/update', [PhotoChangeController::class, 'update']);
 
@@ -462,20 +463,35 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/gallery/{id}', [EventControllerForAdmin::class, 'gallerysection']);
         Route::get('/gallery-delete/{id}', [EventControllerForAdmin::class, 'gallerydelete']);
         Route::post('/gallery-store', [EventControllerForAdmin::class, 'gallerystore'])->name('admin.event.gallery-store');
+
+        /* --------------------------------------- */
+        /* Event Category - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
+            Route::get('/', [EventCategoryControllerForAdmin::class, 'index'])->name('admin.event_category.index');
+            Route::get('/create', [EventCategoryControllerForAdmin::class, 'create'])->name('admin.event_category.create');
+            Route::post('/store', [EventCategoryControllerForAdmin::class, 'store'])->name('admin.event_category.store');
+            Route::get('/delete/{id}', [EventCategoryControllerForAdmin::class, 'destroy']);
+            Route::get('/edit/{id}', [EventCategoryControllerForAdmin::class, 'edit']);
+            Route::post('/update/{id}', [EventCategoryControllerForAdmin::class, 'update']);
+        });
+
+
+        /* --------------------------------------- */
+        /* Event Sports - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'sport', 'middleware' => 'can:isEditor'], function () {
+            Route::get('/', [EventSportControllerForAdmin::class, 'index'])->name('admin.event_sport.index');
+            Route::get('/create', [EventSportControllerForAdmin::class, 'create'])->name('admin.event_sport.create');
+            Route::post('/store', [EventSportControllerForAdmin::class, 'store'])->name('admin.event_sport.store');
+            Route::get('/delete/{id}', [EventSportControllerForAdmin::class, 'destroy']);
+            Route::get('/edit/{id}', [EventSportControllerForAdmin::class, 'edit']);
+            Route::post('/update/{id}', [EventSportControllerForAdmin::class, 'update']);
+        });
     });
 
 
-    /* --------------------------------------- */
-    /* Event Category - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'event-category', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [EventCategoryControllerForAdmin::class, 'index'])->name('admin.event_category.index');
-        Route::get('/create', [EventCategoryControllerForAdmin::class, 'create'])->name('admin.event_category.create');
-        Route::post('/store', [EventCategoryControllerForAdmin::class, 'store'])->name('admin.event_category.store');
-        Route::get('/delete/{id}', [EventCategoryControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [EventCategoryControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [EventCategoryControllerForAdmin::class, 'update']);
-    });
+
 
 
     /* --------------------------------------- */

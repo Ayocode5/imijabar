@@ -108,9 +108,9 @@ class EventCategoryController extends Controller
     public function destroy($id)
     {
 
-        $events = DB::table('events')->where('category_id', $id)->count();
+        $sports = DB::table('sports')->where('category_id', $id)->count();
 
-        if($events > 0) {
+        if($sports > 0) {
             return redirect()->route('admin.event_category.index')->withErrors("Category can't be deleted, some event are under this category");
         }
 

@@ -56,20 +56,23 @@
                     <input type="text" name="event_video" class="form-control" value="{{ old('event_video') }}"
                         autofocus>
                 </div>
+
                 <div class="form-group">
-                    <label for="">Category</label>
-                    @if (count($categories) <= 0)
+                    <label for="">Sports</label>
+                    @if (count($sports) <= 0)
                         <select class="form-control" disabled>
-                            <option value="">There is no Event Category Available, Create first</option>
+                            <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                    <select name="category_id" class="form-control" value="{{ old('category_id') }}" autofocus>
-                        @foreach ($categories as $category)
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                    <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
+                        @foreach ($sports as $sport)
+                            <option value={{ $sport->id }}>{{ $sport->name }}</option>
                         @endforeach
                     </select>
                     @endif
                 </div>
+                
+                  
                 <div class="form-group">
                     <label for="">Featured Photo</label>
                     <div>

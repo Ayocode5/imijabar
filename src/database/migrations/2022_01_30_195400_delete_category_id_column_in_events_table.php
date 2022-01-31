@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolePermissionsTable extends Migration
+class DeleteCategoryIdColumnInEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateRolePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_permissions', function (Blueprint $table) {
-            $table->id();
-            $table->integer('role_id');
-            $table->integer('role_page_id');
-            $table->integer('access_status');
-            $table->timestamps();
+        Schema::table('events', function (Blueprint $table) {
+            //
         });
     }
 
@@ -29,6 +25,8 @@ class CreateRolePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_permissions');
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 }
