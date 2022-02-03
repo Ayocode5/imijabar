@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
+use Ramsey\Uuid\Uuid;
 
 class TeamMemberController extends Controller
 {
@@ -39,19 +40,14 @@ class TeamMemberController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        if(empty($data['slug'])) {
-            $data['slug'] = Str::slug($request->name);
-        }
+        $fileName = 'team-member-'.Uuid::uuid4().'.'.$request->file('photo')->getClientOriginalExtension();
+        $request->file('photo')->move(public_path('uploads/'), $fileName);
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'team_members'");
-        $ai_id = $statement[0]->Auto_increment;
-        $ext = $request->file('photo')->extension();
-        $final_name = 'team-member-'.$ai_id.'.'.$ext;
-        $request->file('photo')->move(public_path('uploads/'), $final_name);
-        $data['photo'] = $final_name;
+        $data['photo'] = $fileName;
+        $data['slug'] = Str::slug($request->name);
 
         $team_member->fill($data)->save();
-        return redirect()->route('admin.team_member.index')->with('success', 'Team Member is added successfully!');
+        return redirect()->route('admin.team_member.index')->with('success', 'Committee is added successfully!');
     }
 
     public function edit($id)
@@ -62,52 +58,50 @@ class TeamMemberController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'   =>  'required',
+            'slug'   =>  [Rule::unique('team_members')->ignore($id),],
+            'designation'   =>  'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $fileName = '';
+
         $team_member = TeamMember::findOrFail($id);
         $data = $request->only($team_member->getFillable());
 
         if($request->hasFile('photo')) {
-            $request->validate([
-                'name'   =>  [
-                    'required'
-                ],
-                'slug'   =>  [
-                    Rule::unique('team_members')->ignore($id),
-                ],
-                'designation'   =>  [
-                    'required'
-                ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-            unlink(public_path('uploads/'.$team_member->photo));
-            $ext = $request->file('photo')->extension();
-            $final_name = 'team-member-'.$id.'.'.$ext;
-            $request->file('photo')->move(public_path('uploads/'), $final_name);
-            $data['photo'] = $final_name;
             
-        } else {
-            $request->validate([
-                'name'   =>  [
-                    'required'
-                ],
-                'slug'   =>  [
-                    Rule::unique('team_members')->ignore($id),
-                ],
-                'designation'   =>  [
-                    'required'
-                ]
-            ]);
-            $data['photo'] = $team_member->photo;
-        }
+            if(!empty($team_member->photo) && file_exists(public_path('uploads/'.$team_member->photo))) {
+
+                unlink(public_path('uploads/' . $team_member->photo));
+                preg_match('/(team-member-)(.*).(jpg|png|jpeg|gif)/', $team_member->photo, $team_member_photo_format_name_split);
+            
+                $fileName = $team_member_photo_format_name_split[1].
+                    $team_member_photo_format_name_split[2].
+                    '.'.$request->file('photo')->getClientOriginalExtension();
+
+            } else {
+
+                $fileName = 'team-member-'.Uuid::uuid4().'.'.$request->file('photo')->getClientOriginalExtension();
+            }
+
+            $request->file('photo')->move(public_path('uploads/'), $fileName);
+            $data['photo'] = $fileName;
+            
+        } 
 
         $team_member->fill($data)->save();
-        return redirect()->route('admin.team_member.index')->with('success', 'Team Member is updated successfully!');
+        return redirect()->route('admin.team_member.index')->with('success', 'Committee is updated successfully!');
     }
 
     public function destroy($id)
     {
         $team_member = TeamMember::findOrFail($id);
-        unlink(public_path('uploads/'.$team_member->photo));
+        if(!($team_member->photo == '') && file_exists(public_path('uploads/'.$team_member->photo))) {
+            unlink(public_path('uploads/'.$team_member->photo));
+        }
         $team_member->delete();
-        return Redirect()->back()->with('success', 'Team Member is deleted successfully!');
+        return Redirect()->back()->with('success', 'Committee is deleted successfully!');
     }
 }

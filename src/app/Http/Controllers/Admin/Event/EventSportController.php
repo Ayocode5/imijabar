@@ -17,6 +17,7 @@ class EventSportController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Sport::class);
         $sports = Sport::with(['category' => fn($q) => $q->select('id','name'), ])->get();
         return view('admin.event_sports.index', compact('sports'));
     }
@@ -28,6 +29,7 @@ class EventSportController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Sport::class);
         $categories = DB::table('event_categories')->get();
         return view('admin.event_sports.create', compact('categories'));
     }
@@ -40,6 +42,8 @@ class EventSportController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Sport::class);
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|numeric',
@@ -65,6 +69,8 @@ class EventSportController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Sport::class);
+
         $categories = DB::table('event_categories')->get()->toArray();
         $sport = Sport::with(['category' => fn($q) => $q->select('id','name'), ])->find($id);
         // dd($sport);
@@ -80,6 +86,8 @@ class EventSportController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Sport::class);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|numeric',
@@ -109,6 +117,8 @@ class EventSportController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Sport::class);
+
         $sport = Sport::withCount('events')->findOrFail($id);
         // dd($sport);
         if($sport->events_count > 0) {

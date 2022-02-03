@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    @php
+        $fav = Illuminate\Support\Facades\DB::table('general_settings')->select('favicon')->first();
+    @endphp
+    
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads')."/$fav->favicon" }}">
+
     <title>IMI Jawa Barat | Admin Panel</title>
 
     @include('admin.includes.styles')
@@ -112,14 +118,14 @@
                                 href="{{ route('admin.page_home.edit') }}">Home</a>
                             <a class="collapse-item @if ($conName[2] == 'about') active @endif"
                                 href="{{ route('admin.page_about.edit') }}">About</a>
-                            <a class="collapse-item @if ($conName[2] == 'service') active @endif"
-                                href="{{ route('admin.page_service.edit') }}">Service</a>
-                            <a class="collapse-item @if ($conName[2] == 'shop') active @endif"
-                                href="{{ route('admin.page_shop.edit') }}">Shop</a>
+                            {{-- <a class="collapse-item @if ($conName[2] == 'service') active @endif"
+                                href="{{ route('admin.page_service.edit') }}">Service</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[2] == 'shop') active @endif"
+                                href="{{ route('admin.page_shop.edit') }}">Shop</a> --}}
                             <a class="collapse-item @if ($conName[2] == 'blog') active @endif"
-                                href="{{ route('admin.page_blog.edit') }}">Blog</a>
-                            <a class="collapse-item @if ($conName[2] == 'project') active @endif"
-                                href="{{ route('admin.page_project.edit') }}">Project</a>
+                                href="{{ route('admin.page_blog.edit') }}">News</a>
+                            {{-- <a class="collapse-item @if ($conName[2] == 'project') active @endif"
+                                href="{{ route('admin.page_project.edit') }}">Project</a> --}}
                             <a class="collapse-item @if ($conName[2] == 'faq') active @endif"
                                 href="{{ route('admin.page_faq.edit') }}">FAQ</a>
                             <a class="collapse-item @if ($conName[2] == 'team') active @endif"
@@ -128,14 +134,14 @@
                                 href="{{ route('admin.page_photo_gallery.edit') }}">Photo Gallery</a>
                             <a class="collapse-item @if ($conName[2] == 'video-gallery') active @endif"
                                 href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a>
-                            <a class="collapse-item @if ($conName[2] == 'contact') active @endif"
-                                href="{{ route('admin.page_contact.edit') }}">Contact</a>
-                            <a class="collapse-item @if ($conName[2] == 'career') active @endif"
-                                href="{{ route('admin.page_career.edit') }}">Career</a>
-                            <a class="collapse-item @if ($conName[2] == 'term') active @endif"
-                                href="{{ route('admin.page_term.edit') }}">Term</a>
-                            <a class="collapse-item @if ($conName[2] == 'privacy') active @endif"
-                                href="{{ route('admin.page_privacy.edit') }}">Privacy</a>
+                            {{-- <a class="collapse-item @if ($conName[2] == 'contact') active @endif"
+                                href="{{ route('admin.page_contact.edit') }}">Contact</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[2] == 'career') active @endif"
+                                href="{{ route('admin.page_career.edit') }}">Career</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[2] == 'term') active @endif"
+                                href="{{ route('admin.page_term.edit') }}">Term</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[2] == 'privacy') active @endif"
+                                href="{{ route('admin.page_privacy.edit') }}">Privacy</a> --}}
                             <a class="collapse-item @if ($conName[2] == 'other') active @endif"
                                 href="{{ route('admin.page_other.edit') }}">Other</a>
                         </div>
@@ -237,17 +243,17 @@
 
             @can('isEditor')
                 <!-- Blog / News Section -->
-                <li class="nav-item @if ($conName[1] == 'category' || $conName[1] == 'news' || $conName[1] == 'comment') active @endif">
+                <li class="nav-item @if ($conName[1] == 'news') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog"
                         aria-expanded="true" aria-controls="collapseBlog">
-                        <i class="fas fa-cubes"></i>
+                        <i class="fas fa-newspaper"></i>
                         <span>News Section</span>
                     </a>
-                    <div id="collapseBlog" class="collapse @if ($conName[1] == 'category' || $conName[1] == 'news' || $conName[1] == 'comment') show @endif" aria-labelledby="headingPages"
+                    <div id="collapseBlog" class="collapse @if ($conName[1] == 'news') show @endif" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.category.index') }}">Categories</a>
-                            <a class="collapse-item" href="{{ route('admin.news.index') }}">News</a>
+                            <a class="collapse-item @if($conName[1] == 'news' && $conName[2] === 'category') active @endif" href="{{ route('admin.category.index') }}">Categories</a>
+                            <a class="collapse-item @if($conName[1] === 'news' && $conName[2] == '') active @endif" href="{{ route('admin.news.index') }}">News</a>
                             {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                             <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
                         </div>
@@ -255,35 +261,52 @@
                 </li>
 
                 <!-- Event Section -->
-                <li class="nav-item @if ($conName[1] == 'event-category' || $conName[1] == 'event') active @endif">
+                <li class="nav-item @if ($conName[1] == 'event') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
                         aria-expanded="true" aria-controls="collapseEvent">
                         <i class="fas fa-flag"></i>
                         <span>Event Section</span>
                     </a>
-                    <div id="collapseEvent" class="collapse @if ($conName[1] == 'event-category' || $conName[1] == 'event') show @endif" aria-labelledby="headingPages"
+                    <div id="collapseEvent" class="collapse @if ($conName[1] == 'event') show @endif" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.event_category.index') }}">Categories</a>
-                            <a class="collapse-item" href="{{ route('admin.event_sport.index') }}">Sports</a>
-                            <a class="collapse-item" href="{{ route('admin.event.index') }}">Events</a>
+                            <a class="collapse-item @if($conName[1] === 'event' && $conName[2] == 'category') active @endif" href="{{ route('admin.event_category.index') }}">Categories</a>
+                            <a class="collapse-item @if($conName[1] === 'event' && $conName[2] == 'sport') active @endif" href="{{ route('admin.event_sport.index') }}">Sports</a>
+                            <a class="collapse-item @if($conName[1] === 'event' && $conName[2] == '') active @endif" href="{{ route('admin.event.index') }}">Events</a>
                         </div>
                     </div>
                 </li>
 
                 <!-- Gallery Section -->
-                <li class="nav-item @if ($conName[1] == 'gallery' || $conName[1] == 'photo-gallery' || $conName[1] == 'video-gallery' || $conName[1] == 'gallery-category') active @endif">
+                <li class="nav-item @if ($conName[1] == 'gallery') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery"
                         aria-expanded="true" aria-controls="collapseGallery">
                         <i class="fas fa-image"></i>
                         <span>Gallery Section</span>
                     </a>
-                    <div id="collapseGallery" class="collapse @if ($conName[1] == 'photo-gallery' || $conName[1] == 'video-gallery' || $conName[1] == 'gallery-category') show @endif" aria-labelledby="headingPages"
+                    <div id="collapseGallery" class="collapse @if ($conName[1] == 'gallery' || $conName[2] == 'photo' || $conName[2] == 'video') show @endif" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.gallery_category.index') }}">Categories</a>
-                            <a class="collapse-item" href="{{ route('admin.photo.index') }}">Photos</a>
-                            <a class="collapse-item" href="{{ route('admin.video.index') }}">Videos</a>
+                            <a class="collapse-item @if($conName[1] == 'gallery' && $conName[2] === 'category') active @endif" href="{{ route('admin.gallery_category.index') }}">Categories</a>
+                            <a class="collapse-item @if($conName[1] == 'gallery' && $conName[2] === 'photo') active @endif" href="{{ route('admin.photo.index') }}">Photos</a>
+                            <a class="collapse-item @if($conName[1] == 'gallery' && $conName[2] === 'video') active @endif" href="{{ route('admin.video.index') }}">Videos</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Subscriber -->
+                <li class="nav-item @if ($conName[1] == 'subscriber') active @endif">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
+                        aria-expanded="true" aria-controls="collapseSubscriber">
+                        <i class="fas fa-share-alt-square"></i>
+                        <span>Subscriber Section</span>
+                    </a>
+                    <div id="collapseSubscriber" class="collapse @if ($conName[1] == 'subscriber') show @endif" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == '') active @endif" href="{{ route('admin.subscriber.index') }}">All Subscribers</a>
+                            <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == 'send-email') active @endif" href="{{ route('admin.subscriber.send_email') }}">Send Email to
+                                Subscribers</a>
                         </div>
                     </div>
                 </li>
@@ -341,7 +364,15 @@
                 <li class="nav-item @if ($conName[1] == 'team-member') active @endif">
                     <a class="nav-link" href="{{ route('admin.team_member.index') }}">
                         <i class="fas fa-user-plus"></i>
-                        <span>Team Member</span>
+                        <span>Committee</span>
+                    </a>
+                </li>
+                
+                <!-- Social Media -->
+                <li class="nav-item @if ($conName[1] == 'social-media') active @endif">
+                    <a class="nav-link" href="{{ route('admin.social_media.index') }}">
+                        <i class="fas fa-basketball-ball"></i>
+                        <span>Social Media</span>
                     </a>
                 </li>
 
@@ -353,31 +384,6 @@
                     </a>
                 </li>
 
-                
-                <!-- Subscriber -->
-                <li class="nav-item @if ($conName[1] == 'subscriber') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
-                        aria-expanded="true" aria-controls="collapseSubscriber">
-                        <i class="fas fa-share-alt-square"></i>
-                        <span>Subscriber Section</span>
-                    </a>
-                    <div id="collapseSubscriber" class="collapse @if ($conName[1] == 'subscriber') show @endif" aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.subscriber.index') }}">All Subscribers</a>
-                            <a class="collapse-item" href="{{ route('admin.subscriber.send_email') }}">Send Email to
-                                Subscribers</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Social Media -->
-                <li class="nav-item @if ($conName[1] == 'social-media') active @endif">
-                    <a class="nav-link" href="{{ route('admin.social_media.index') }}">
-                        <i class="fas fa-basketball-ball"></i>
-                        <span>Social Media</span>
-                    </a>
-                </li>
             @endcan
 
             <!-- Divider -->

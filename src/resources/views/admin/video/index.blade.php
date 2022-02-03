@@ -33,8 +33,8 @@
                             <td>{{ $video->category->name }}</td>
                             <td>{{ $video->video_order }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/video-gallery/edit/'.$video->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/video-gallery/delete/'.$video->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/gallery/video/edit/'.$video->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/gallery/video/delete/'.$video->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

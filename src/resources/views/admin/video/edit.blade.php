@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Video</h1>
 
-    <form action="{{ url('admin/video-gallery/update/'.$video->id) }}" method="post">
+    <form action="{{ url('admin/gallery/video/update/'.$video->id) }}" method="post">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">

@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PageHomeItem;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
 
 class PageHomeController extends Controller
 {
@@ -17,199 +15,134 @@ class PageHomeController extends Controller
 
     public function edit()
     {
-        $page_home = PageHomeItem::where('id',1)->first();
+        $page_home = PageHomeItem::where('id', 1)->first();
+        // dd($page_home);
         return view('admin.page_setting.page_home', compact('page_home'));
     }
 
-    public function update1(Request $request)
+    // Update HomePage Metadata
+    public function metadata(Request $request)
     {
         $data['seo_title'] = $request->input('seo_title');
         $data['seo_meta_description'] = $request->input('seo_meta_description');
 
-        PageHomeItem::where('id',1)->update($data);
+        PageHomeItem::where('id', 1)->update($data);
         return redirect()->back()->with('success', 'Home Page Meta Information is updated successfully!');
     }
 
-    public function update2(Request $request)
+    // Update HomePage Jumbotron Section
+    public function jumbotron(Request $request)
     {
-        $data['why_choose_title'] = $request->input('why_choose_title');
-        $data['why_choose_subtitle'] = $request->input('why_choose_subtitle');
-        $data['why_choose_status'] = $request->input('why_choose_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
-    }
-
-    public function update3(Request $request)
-    {
-        if($request->hasFile('special_bg'))
-        {
+        if ($request->hasFile('jumbotron_bg')) {
             $request->validate([
-                'special_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'jumbotron_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
-            unlink(public_path('uploads/'.$request->input('current_photo')));
+            unlink(public_path('uploads/' . $request->input('current_photo')));
 
             // Uploading new photo
-            $ext = $request->file('special_bg')->extension();
-            $final_name = 'special_bg'.'.'.$ext;
-            $request->file('special_bg')->move(public_path('uploads/'), $final_name);
+            $ext = $request->file('jumbotron_bg')->extension();
+            $final_name = 'jumbotron_bg' . '.' . $ext;
+            $request->file('jumbotron_bg')->move(public_path('uploads/'), $final_name);
 
-            $data['special_bg'] = $final_name;
+            $data['jumbotron_bg'] = $final_name;
         }
 
-        if($request->hasFile('special_video_bg'))
-        {
+        $data['jumbotron_title'] = $request->input('jumbotron_title');
+        $data['jumbotron_detail'] = $request->input('jumbotron_detail');
+        $data['jumbotron_status'] = intval($request->input('jumbotron_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Newsletter Section is updated successfully!');
+    }
+
+    // Update HomePage News Section
+    public function news(Request $request)
+    {
+        $data['news_title'] = $request->input('news_title');
+        $data['news_total'] = $request->input('news_total');
+        $data['news_status'] = intval($request->input('news_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page News Information is updated successfully!');
+    }
+
+    // Update HomePage Events Section
+    public function events(Request $request) {
+
+        $data['events_title'] = $request->input('events_title');
+        $data['events_total'] = $request->input('events_total');
+        $data['events_status'] = intval($request->input('events_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page Events Information is updated successfully!');
+    }
+
+    // Update HomePage About Section
+    public function about(Request $request) {
+
+        $data['about_title'] = $request->input('about_title');
+        $data['about_detail'] = $request->input('about_detail');
+        $data['about_status'] = intval($request->input('about_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page About Information is updated successfully!');
+    }
+    
+    // Update HomePage Gallery Section
+    public function gallery(Request $request) {
+
+        $data['gallery_title'] = $request->input('gallery_title');
+        $data['gallery_detail'] = $request->input('gallery_detail');
+        $data['gallery_status'] = intval($request->input('gallery_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page Gallery Information is updated successfully!');
+    }
+
+    // Update HomePage Committee Section
+    public function committee(Request $request) {
+
+        $data['committee_title'] = $request->input('committee_title');
+        $data['committee_detail'] = $request->input('committee_detail');
+        $data['committee_status'] = intval($request->input('committee_status'));
+
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page Committee Information is updated successfully!');
+    }
+
+    // Update HomePage Newsletter Section
+    public function newsletter(Request $request)
+    {
+        if ($request->hasFile('newsletter_bg')) {
             $request->validate([
-                'special_video_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
-            unlink(public_path('uploads/'.$request->input('current_photo1')));
-
-            // Uploading new photo
-            $ext = $request->file('special_video_bg')->extension();
-            $final_name = 'special_video_bg'.'.'.$ext;
-            $request->file('special_video_bg')->move(public_path('uploads/'), $final_name);
-
-            $data['special_video_bg'] = $final_name;
-        }
-
-        $data['special_title'] = $request->input('special_title');
-        $data['special_subtitle'] = $request->input('special_subtitle');
-        $data['special_content'] = $request->input('special_content');
-        $data['special_btn_text'] = $request->input('special_btn_text');
-        $data['special_btn_url'] = $request->input('special_btn_url');
-        $data['special_yt_video'] = $request->input('special_yt_video');
-        $data['special_status'] = $request->input('special_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Special Section is updated successfully!');
-    }
-
-    public function update4(Request $request)
-    {
-        $data['service_title'] = $request->input('service_title');
-        $data['service_subtitle'] = $request->input('service_subtitle');
-        $data['service_status'] = $request->input('service_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Service Section is updated successfully!');
-    }
-
-
-    public function update5(Request $request)
-    {
-        if($request->hasFile('testimonial_bg'))
-        {
-            $request->validate([
-                'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-
-            // Unlink old photo
-            unlink(public_path('uploads/'.$request->input('current_photo')));
-
-            // Uploading new photo
-            $ext = $request->file('testimonial_bg')->extension();
-            $final_name = 'testimonial_bg'.'.'.$ext;
-            $request->file('testimonial_bg')->move(public_path('uploads/'), $final_name);
-
-            $data['testimonial_bg'] = $final_name;
-        }
-
-        $data['testimonial_title'] = $request->input('testimonial_title');
-        $data['testimonial_subtitle'] = $request->input('testimonial_subtitle');
-        $data['testimonial_status'] = $request->input('testimonial_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Testimonial Section is updated successfully!');
-    }
-
-    public function update6(Request $request)
-    {
-        $data['project_title'] = $request->input('project_title');
-        $data['project_subtitle'] = $request->input('project_subtitle');
-        $data['project_status'] = $request->input('project_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Project Section is updated successfully!');
-    }
-
-    public function update7(Request $request)
-    {
-        $data['team_member_title'] = $request->input('team_member_title');
-        $data['team_member_subtitle'] = $request->input('team_member_subtitle');
-        $data['team_member_status'] = $request->input('team_member_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Team Member Section is updated successfully!');
-    }
-
-    public function update8(Request $request)
-    {
-        if($request->hasFile('appointment_bg'))
-        {
-            $request->validate([
-                'appointment_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-
-            // Unlink old photo
-            unlink(public_path('uploads/'.$request->input('current_photo')));
-
-            // Uploading new photo
-            $ext = $request->file('appointment_bg')->extension();
-            $final_name = 'appointment_bg'.'.'.$ext;
-            $request->file('appointment_bg')->move(public_path('uploads/'), $final_name);
-
-            $data['appointment_bg'] = $final_name;
-        }
-
-        $data['appointment_title'] = $request->input('appointment_title');
-        $data['appointment_text'] = $request->input('appointment_text');
-        $data['appointment_btn_text'] = $request->input('appointment_btn_text');
-        $data['appointment_btn_url'] = $request->input('appointment_btn_url');
-        $data['appointment_status'] = $request->input('appointment_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Appointment Section is updated successfully!');
-    }
-
-    public function update9(Request $request)
-    {
-        $data['latest_blog_title'] = $request->input('latest_blog_title');
-        $data['latest_blog_subtitle'] = $request->input('latest_blog_subtitle');
-        $data['latest_blog_status'] = $request->input('latest_blog_status');
-
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Latest Blog Section is updated successfully!');
-    }
-
-    public function update10(Request $request)
-    {
-        if($request->hasFile('newsletter_bg'))
-        {
-            $request->validate([
-                'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-            ]);
-
-            // Unlink old photo
-            unlink(public_path('uploads/'.$request->input('current_photo')));
+            unlink(public_path('uploads/' . $request->input('current_photo')));
 
             // Uploading new photo
             $ext = $request->file('newsletter_bg')->extension();
-            $final_name = 'newsletter_bg'.'.'.$ext;
+            $final_name = 'newsletter_bg' . '.' . $ext;
             $request->file('newsletter_bg')->move(public_path('uploads/'), $final_name);
 
             $data['newsletter_bg'] = $final_name;
         }
 
         $data['newsletter_title'] = $request->input('newsletter_title');
-        $data['newsletter_text'] = $request->input('newsletter_text');
-        $data['newsletter_status'] = $request->input('newsletter_status');
+        $data['newsletter_detail'] = $request->input('newsletter_detail');
+        $data['newsletter_status'] = intval($request->input('newsletter_status'));
 
-        PageHomeItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Newsletter Section is updated successfully!');
+        PageHomeItem::where('id', 1)->update($data);
+
+        return redirect()->back()->with('success', 'Home Page Newsletter Information is updated successfully!');
     }
-
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailToAllSubscribers;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
 class BlogController extends Controller
@@ -23,12 +23,14 @@ class BlogController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Blog::class);
         $blog = Blog::all();
         return view('admin.blog.index', compact('blog'));
     }
 
     public function create()
     {
+        $this->authorize('create', Blog::class);
         $category = DB::table('categories')->get();
         return view('admin.blog.create', compact('category'));
     }
@@ -81,6 +83,8 @@ class BlogController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Blog::class);
+
         $blog = Blog::findOrFail($id);
         $category = DB::table('categories')->get();
         return view('admin.blog.edit', compact('blog', 'category'));
@@ -88,6 +92,8 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Blog::class);
+
         $blog = Blog::findOrFail($id);
         $data = $request->only($blog->getFillable());
 
@@ -129,6 +135,7 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', Blog::class);
         $blog = Blog::findOrFail($id);
         unlink(public_path('uploads/' . $blog->blog_photo));
         $blog->delete();

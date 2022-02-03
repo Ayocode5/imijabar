@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Admin\Blog;
-use App\Policies\NewsPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +14,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        'App\Model\Admin\Blog' => 'App\Policies\NewsPolicy',
+        'App\Models\Admin\Blog' => 'App\Policies\BlogPolicy',
+        'App\Models\Admin\Event' => 'App\Policies\EventPolicy',
+        'App\Models\Admin\Sport' => 'App\Policies\SportPolicy',
+        'App\Models\Admin\Photo' => 'App\Policies\PhotoPolicy',
+        'App\Models\Admin\Video' => 'App\Policies\VideoPolicy'
     ];
 
     /**
@@ -29,6 +31,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         /* define a admin user role */
+
+        // Gate::before(function ($user, $ability) {
+        //     if ($user->hasRole('admin')) {
+        //         return true;
+        //     }
+        // });
 
         Gate::define('isAdmin', function ($user) {
             return $user->hasRole('admin');

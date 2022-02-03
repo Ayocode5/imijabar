@@ -28,8 +28,8 @@
                             <td>{{ $row->category_name }}</td>
                             <td>{{ $row->category_slug }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/category/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/category/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/news/category/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/news/category/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

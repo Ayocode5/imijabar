@@ -31,8 +31,8 @@
                             <td>{{ $photo->category->name }}</td>
                             <td>{{ $photo->photo_order }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/photo-gallery/edit/'.$photo->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ URL::to('admin/photo-gallery/delete/'.$photo->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ URL::to('admin/gallery/photo/edit/'.$photo->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ URL::to('admin/gallery/photo/delete/'.$photo->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

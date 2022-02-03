@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin\Event;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Category;
 use App\Models\Admin\Event;
-use App\Models\Admin\EventCategory;
 use App\Models\Admin\EventPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -22,8 +20,10 @@ class EventController extends Controller
 
     public function index()
     {
-        $date_today = date('Y-m-d');
 
+        $this->authorize('viewAny', Event::class);
+
+        $date_today = date('Y-m-d');
         $events = DB::table('events as e')
             ->join('event_sport as es', 'es.event_id', '=', 'e.id')
             ->join('sports as sp', 'sp.id', '=', 'es.sport_id')
@@ -39,6 +39,7 @@ class EventController extends Controller
                 GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
                 GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
             ")
+            ->where('e.deleted_at', null)
             ->groupBy('id')
             ->get();
 
@@ -65,12 +66,17 @@ class EventController extends Controller
 
     public function create()
     {
+
+        $this->authorize('create', Event::class);
+
         $sports = DB::table('sports')->select(['name', 'id'])->get();
         return view('admin.event.create', compact('sports'));
     }
 
     public function store(Request $request)
     {
+
+        $this->authorize('create', Event::class);
 
         $event = new Event();
         $data = $request->only($event->getFillable());
@@ -104,6 +110,8 @@ class EventController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Event::class);
+
         $event = Event::with(['sports' => fn($q) => $q->select('id') ])->findOrFail($id);
         $sports = DB::table('sports')->select(['name', 'id'])->get();
         return view('admin.event.edit', compact(['event', 'sports']));
@@ -111,6 +119,9 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $this->authorize('update', Event::class);
+
         $event = Event::findOrFail($id);
         $data = $request->only($event->getFillable());
 
@@ -149,6 +160,8 @@ class EventController extends Controller
 
     public function destroy($id)
     {
+
+        $this->authorize('delete', Event::class);
         $event = Event::findOrFail($id);
         unlink(public_path('uploads/' . $event->event_featured_photo));
         $event->delete();

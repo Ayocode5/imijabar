@@ -1,16 +1,18 @@
 <section>
-    <div class="row no-gutters">
+    <div @if (!$home_settings->jumbotron_status)
+        hidden
+    @endif class="row no-gutters">
         <div class="col-12 col-lg-5 order-2 order-lg-1">
             <div class="row no-gutters">
-                <div class="row col-6 col-lg-12 no-gutters">
+                <div class="col-6 col-lg-12 no-gutters">
                     <img class="jumbotron_logo position-absolute"
-                        src="{{ asset('storage/app/public/assets/img') }}/logoImiJumbotron.svg" alt="Logo IMI">
-                    <img class="jumbotron_batik" src="{{ asset('storage/app/public/assets/img') }}/jumbotron-batik.png"
+                        src="" alt="Logo IMI">
+                    <img class="jumbotron_batik" src="{{ asset('public/uploads/') . "/$home_settings->jumbotron_bg" }}"
                         alt="jumbotron-batik">
                 </div>
-                <div class="row col-6 col-lg-12 no-gutters row-cols-1">
+                <div class="col-6 col-lg-12 no-gutters row-cols-1 wrap_welcome-text">
                     <div class="welcome_text">
-                        <h1>Selamat Datang,</h1>
+                        <h1>{{ $home_settings->jumbotron_title }}</h1>
                         <p id="typed"></p>
                     </div>
                 </div>
@@ -26,19 +28,19 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="overlay_jumbotron">
+
                         </div>
                         <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" alt="Los Angeles"
                             width="100%" height="600">
                         <div class="carousel-caption">
                             <p class="date_author">23 Januari 2022 | Admin</p>
-                            <h2 class="text-white">Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
+                            <h2>Ford Mustang Shelby GT 500 1967</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci. Id
+                                eu
+                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit mattis.
+                                Cras ipsum et
                                 blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                More</button>
+                            <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show More</button>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -50,10 +52,10 @@
                         <div style="text-align: right;" class="carousel-caption">
                             <p>23 Januari 2022 | Admin</p>
                             <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci. Id
+                                eu
+                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit mattis.
+                                Cras ipsum et
                                 blandit auctor.</p>
                             <button type="button" class="btn btn-outline-light">Show More</button>
 
@@ -68,10 +70,10 @@
                         <div class="carousel-caption">
                             <p>23 Januari 2022 | Admin</p>
                             <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci. Id
+                                eu
+                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit mattis.
+                                Cras ipsum et
                                 blandit auctor.</p>
                             <button type="button" class="btn btn-outline-light">Show More</button>
 

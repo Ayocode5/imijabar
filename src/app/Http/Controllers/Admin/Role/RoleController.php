@@ -187,7 +187,6 @@ class RoleController extends Controller
     public function access_setup_update(Request $request, $id)
     {
 
-        // dd($request->input('input'));
         $role = Role::find($id);
         $role->syncPermissions($request->input('input'));
 
@@ -199,7 +198,7 @@ class RoleController extends Controller
         $role = Role::select('id')->withCount('users')->find($id);
 
         if ($role->users_count > 0) {
-            return Redirect()->back()->with('error', 'You can not delete this role, because there is user under this role.');
+            return Redirect()->back()->with('error', 'You can not delete this role, there are user under this role.');
         } else {
             //Delete the roles and permissions
             $role = Role::find($id);

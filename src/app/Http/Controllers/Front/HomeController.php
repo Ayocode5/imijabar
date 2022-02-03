@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Blog;
-use App\Models\Admin\Event;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -13,6 +11,9 @@ class HomeController extends Controller
 	public function index()
 	{
 		$date_today = date('Y-m-d');
+
+		$home_settings = DB::table('page_home_items')->first();
+
 		// Get Active Events With Categories
 		$events = DB::table('events as e')
 			->join('event_sport as es', 'es.event_id', '=', 'e.id')
@@ -30,6 +31,7 @@ class HomeController extends Controller
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('event_end_date', '>=', $date_today)
+			->limit($home_settings->events_total)
 			->groupBy('id')
 			->get();
 
@@ -50,23 +52,24 @@ class HomeController extends Controller
 				return $event->status = "Invalid Logic";
 			}
 		});
-		// dd($events);
 
 		$event_categories = DB::table('event_categories')->select(['name', 'id'])->get();
-		// dd($event_categories);
 
-		// $sliders = DB::table('sliders')->get();
-		// $page_home = DB::table('page_home_items')->where('id',1)->first();
-		// $why_choose_items = DB::table('why_choose_items')->get();
-		// $services = DB::table('services')->get();
-		// $testimonials = DB::table('testimonials')->get();
-		// $projects = DB::table('projects')->get();
-		// $team_members = DB::table('team_members')->get();
-		// $blogs = DB::table('blogs')->get();
+		$news = Blog::limit($home_settings->news_total)->orderBy('created_at', 'DESC')->get();
 
-		$news = Blog::limit(4)->orderBy('created_at', 'DESC')->get();
-		// dd($news[0]->created_at);
-		//return view('pages.index', compact('news','sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs'));
-		return view('pages.index', compact('news', 'events', 'event_categories'));
+		$settings = DB::table('general_settings')->select(
+			'logo',
+			'top_bar_email',
+			'top_bar_phone',
+			'footer_address',
+			'footer_email',
+			'footer_phone',
+			'footer_copyright',
+			'footer_column1_heading',
+			'footer_column2_heading',
+			'footer_column3_heading',
+		)->first();
+
+		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings'));
 	}
 }

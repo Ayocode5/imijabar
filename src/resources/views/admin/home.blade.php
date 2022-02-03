@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h4 font-weight-bold text-success mb-1">Total Posts</div>
+                            <div class="h4 font-weight-bold text-success mb-1">Total News</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_news }}</div>
                         </div>
                         <div class="col-auto">
@@ -28,6 +28,38 @@
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h4 font-weight-bold text-success mb-1">Total Events</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_events }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-flag fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h4 font-weight-bold text-success mb-1">Total Sports</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_sports }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-flag fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -41,10 +73,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        {{-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -58,14 +90,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h4 font-weight-bold text-success mb-1">Team Members</div>
+                            <div class="h4 font-weight-bold text-success mb-1">Committee</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_team_members }}</div>
                         </div>
                         <div class="col-auto">
@@ -108,7 +140,7 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        {{-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -122,9 +154,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        {{-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -138,7 +170,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
     <!-- // Box End -->

@@ -109,7 +109,7 @@ use Illuminate\Support\Facades\Route;
 /* --------------------------------------- */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('about', [AboutController::class, 'index'])->name('front.about');
+Route::get('about', AboutController::class)->name('front.about');
 Route::get('services', [ServiceControllerForFront::class, 'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class, 'detail']);
 Route::get('blog', [BlogControllerForFront::class, 'index'])->name('front.blogs');
@@ -205,59 +205,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
     Route::get('/photo-change', [PhotoChangeController::class, 'index'])->name('admin.photo_change');
     Route::post('/photo-change/update', [PhotoChangeController::class, 'update']);
-
-
-
-    /* --------------------------------------- */
-    /* Blog / News - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'news', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [BlogControllerForAdmin::class, 'index'])->name('admin.news.index');
-        Route::get('/create', [BlogControllerForAdmin::class, 'create'])->name('admin.news.create');
-        Route::post('/store', [BlogControllerForAdmin::class, 'store'])->name('admin.news.store');
-        Route::get('/delete/{id}', [BlogControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [BlogControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [BlogControllerForAdmin::class, 'update']);
-    });
-
-
-    /* --------------------------------------- */
-    /* Blog / News Comment - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'comment', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/approved', [CommentController::class, 'approved'])->name('admin.comment.approved');
-        Route::get('/make-pending/{id}', [CommentController::class, 'make_pending']);
-        Route::get('/pending', [CommentController::class, 'pending'])->name('admin.comment.pending');
-        Route::get('/make-approved/{id}', [CommentController::class, 'make_approved']);
-        Route::get('/delete/{id}', [CommentController::class, 'destroy']);
-    });
-
-
-    /* --------------------------------------- */
-    /* Blog / News Category - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [CategoryControllerForAdmin::class, 'index'])->name('admin.category.index');
-        Route::get('/create', [CategoryControllerForAdmin::class, 'create'])->name('admin.category.create');
-        Route::post('/store', [CategoryControllerForAdmin::class, 'store'])->name('admin.category.store');
-        Route::get('/delete/{id}', [CategoryControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [CategoryControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [CategoryControllerForAdmin::class, 'update']);
-    });
-
-
-    /* --------------------------------------- */
-    /* Slider - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
-        Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
-        Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
-        Route::get('/delete/{id}', [SliderController::class, 'destroy']);
-        Route::get('/edit/{id}', [SliderController::class, 'edit']);
-        Route::post('/update/{id}', [SliderController::class, 'update']);
-    });
-
 
 
     Route::group(['prefix' => 'setting/general', 'middleware' => 'can:isAdmin'], function () {
@@ -366,34 +313,31 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'page', 'middleware' => 'can:isAdmin'], function () {
 
         Route::group(['prefix' => 'home'], function () {
-
             Route::get('/edit', [PageHomeController::class, 'edit'])->name('admin.page_home.edit');
-            Route::post('/1', [PageHomeController::class, 'update1']);
-            Route::post('/2', [PageHomeController::class, 'update2']);
-            Route::post('/3', [PageHomeController::class, 'update3']);
-            Route::post('/4', [PageHomeController::class, 'update4']);
-            Route::post('/5', [PageHomeController::class, 'update5']);
-            Route::post('/6', [PageHomeController::class, 'update6']);
-            Route::post('/7', [PageHomeController::class, 'update7']);
-            Route::post('/8', [PageHomeController::class, 'update8']);
-            Route::post('/9', [PageHomeController::class, 'update9']);
-            Route::post('/10', [PageHomeController::class, 'update10']);
+            Route::patch('/metadata', [PageHomeController::class, 'metadata']);
+            Route::patch('/jumbotron', [PageHomeController::class, 'jumbotron']);
+            Route::patch('/news', [PageHomeController::class, 'news']);
+            Route::patch('/events', [PageHomeController::class, 'events']);
+            Route::patch('/about', [PageHomeController::class, 'about']);
+            Route::patch('/gallery', [PageHomeController::class, 'gallery']);
+            Route::patch('/committee', [PageHomeController::class, 'committee']);
+            Route::patch('/newsletter', [PageHomeController::class, 'newsletter']);
         });
 
         Route::get('/about/edit', [PageAboutController::class, 'edit'])->name('admin.page_about.edit');
         Route::post('/about/update', [PageAboutController::class, 'update']);
 
-        Route::get('/service/edit', [PageServiceController::class, 'edit'])->name('admin.page_service.edit');
-        Route::post('/service/update', [PageServiceController::class, 'update']);
+        // Route::get('/service/edit', [PageServiceController::class, 'edit'])->name('admin.page_service.edit');
+        // Route::post('/service/update', [PageServiceController::class, 'update']);
 
-        Route::get('/shop/edit', [PageShopController::class, 'edit'])->name('admin.page_shop.edit');
-        Route::post('/shop/update', [PageShopController::class, 'update']);
+        // Route::get('/shop/edit', [PageShopController::class, 'edit'])->name('admin.page_shop.edit');
+        // Route::post('/shop/update', [PageShopController::class, 'update']);
 
         Route::get('/blog/edit', [PageBlogController::class, 'edit'])->name('admin.page_blog.edit');
         Route::post('/blog/update', [PageBlogController::class, 'update']);
 
-        Route::get('/project/edit', [PageProjectController::class, 'edit'])->name('admin.page_project.edit');
-        Route::post('/project/update', [PageProjectController::class, 'update']);
+        // Route::get('/project/edit', [PageProjectController::class, 'edit'])->name('admin.page_project.edit');
+        // Route::post('/project/update', [PageProjectController::class, 'update']);
 
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
@@ -410,17 +354,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/video-gallery/edit', [PageVideoGalleryController::class, 'edit'])->name('admin.page_video_gallery.edit');
         Route::post('/video-gallery/update', [PageVideoGalleryController::class, 'update']);
 
-        Route::get('/contact/edit', [PageContactController::class, 'edit'])->name('admin.page_contact.edit');
-        Route::post('/contact/update', [PageContactController::class, 'update']);
+        // Route::get('/contact/edit', [PageContactController::class, 'edit'])->name('admin.page_contact.edit');
+        // Route::post('/contact/update', [PageContactController::class, 'update']);
 
-        Route::get('/career/edit', [PageCareerController::class, 'edit'])->name('admin.page_career.edit');
-        Route::post('/career/update', [PageCareerController::class, 'update']);
+        // Route::get('/career/edit', [PageCareerController::class, 'edit'])->name('admin.page_career.edit');
+        // Route::post('/career/update', [PageCareerController::class, 'update']);
 
-        Route::get('/term/edit', [PageTermController::class, 'edit'])->name('admin.page_term.edit');
-        Route::post('/term/update', [PageTermController::class, 'update']);
+        // Route::get('/term/edit', [PageTermController::class, 'edit'])->name('admin.page_term.edit');
+        // Route::post('/term/update', [PageTermController::class, 'update']);
 
-        Route::get('/privacy/edit', [PagePrivacyController::class, 'edit'])->name('admin.page_privacy.edit');
-        Route::post('/privacy/update', [PagePrivacyController::class, 'update']);
+        // Route::get('/privacy/edit', [PagePrivacyController::class, 'edit'])->name('admin.page_privacy.edit');
+        // Route::post('/privacy/update', [PagePrivacyController::class, 'update']);
 
         Route::group(['prefix' => 'other'], function () {
             Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
@@ -433,6 +377,55 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::post('/7', [PageOtherController::class, 'update7']);
             Route::post('/8', [PageOtherController::class, 'update8']);
         });
+    });
+
+    /* --------------------------------------- */
+    /* Blog / News - Admin */
+    /* --------------------------------------- */
+    Route::group(['prefix' => 'news', 'middleware' => 'can:isEditor'], function () {
+        Route::get('/', [BlogControllerForAdmin::class, 'index'])->name('admin.news.index');
+        Route::get('/create', [BlogControllerForAdmin::class, 'create'])->name('admin.news.create');
+        Route::post('/store', [BlogControllerForAdmin::class, 'store'])->name('admin.news.store');
+        Route::get('/delete/{id}', [BlogControllerForAdmin::class, 'destroy']);
+        Route::get('/edit/{id}', [BlogControllerForAdmin::class, 'edit']);
+        Route::post('/update/{id}', [BlogControllerForAdmin::class, 'update']);
+
+        /* --------------------------------------- */
+        /* Blog / News Category - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
+            Route::get('/', [CategoryControllerForAdmin::class, 'index'])->name('admin.category.index');
+            Route::get('/create', [CategoryControllerForAdmin::class, 'create'])->name('admin.category.create');
+            Route::post('/store', [CategoryControllerForAdmin::class, 'store'])->name('admin.category.store');
+            Route::get('/delete/{id}', [CategoryControllerForAdmin::class, 'destroy']);
+            Route::get('/edit/{id}', [CategoryControllerForAdmin::class, 'edit']);
+            Route::post('/update/{id}', [CategoryControllerForAdmin::class, 'update']);
+        });
+    });
+
+
+    /* --------------------------------------- */
+    /* Blog / News Comment - Admin */
+    /* --------------------------------------- */
+    // Route::group(['prefix' => 'comment', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/approved', [CommentController::class, 'approved'])->name('admin.comment.approved');
+    //     Route::get('/make-pending/{id}', [CommentController::class, 'make_pending']);
+    //     Route::get('/pending', [CommentController::class, 'pending'])->name('admin.comment.pending');
+    //     Route::get('/make-approved/{id}', [CommentController::class, 'make_approved']);
+    //     Route::get('/delete/{id}', [CommentController::class, 'destroy']);
+    // });
+
+
+    /* --------------------------------------- */
+    /* Slider - Admin */
+    /* --------------------------------------- */
+    Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
+        Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
+        Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
+        Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
+        Route::get('/delete/{id}', [SliderController::class, 'destroy']);
+        Route::get('/edit/{id}', [SliderController::class, 'edit']);
+        Route::post('/update/{id}', [SliderController::class, 'update']);
     });
 
 
@@ -491,9 +484,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     });
 
 
-
-
-
     /* --------------------------------------- */
     /* Project - Admin */
     /* --------------------------------------- */
@@ -511,44 +501,49 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
 
     /* --------------------------------------- */
-    /* Photo Gallery - Admin */
+    /* Gallery - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'photo-gallery', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [PhotoController::class, 'index'])->name('admin.photo.index');
-        Route::get('/create', [PhotoController::class, 'create'])->name('admin.photo.create');
-        Route::post('/store', [PhotoController::class, 'store'])->name('admin.photo.store');
-        Route::get('/delete/{id}', [PhotoController::class, 'destroy']);
-        Route::get('/edit/{id}', [PhotoController::class, 'edit']);
-        Route::post('/update/{id}', [PhotoController::class, 'update']);
+    Route::group(['prefix' => 'gallery', 'middleware' => 'can:isEditor'], function () {
+
+        /* --------------------------------------- */
+        /* Photo Gallery - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'photo'], function () {
+            Route::get('/', [PhotoController::class, 'index'])->name('admin.photo.index');
+            Route::get('/create', [PhotoController::class, 'create'])->name('admin.photo.create');
+            Route::post('/store', [PhotoController::class, 'store'])->name('admin.photo.store');
+            Route::get('/delete/{id}', [PhotoController::class, 'destroy']);
+            Route::get('/edit/{id}', [PhotoController::class, 'edit']);
+            Route::post('/update/{id}', [PhotoController::class, 'update']);
+        });
+
+        /* --------------------------------------- */
+        /* Video Gallery - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'video'], function () {
+            Route::get('/', [VideoController::class, 'index'])->name('admin.video.index');
+            Route::get('/create', [VideoController::class, 'create'])->name('admin.video.create');
+            Route::post('/store', [VideoController::class, 'store'])->name('admin.video.store');
+            Route::get('/delete/{id}', [VideoController::class, 'destroy']);
+            Route::get('/edit/{id}', [VideoController::class, 'edit']);
+            Route::post('/update/{id}', [VideoController::class, 'update']);
+        });
+
+        /* --------------------------------------- */
+        /* Gallery Category - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('/', [GalleryCategoryControllerForAdmin::class, 'index'])->name('admin.gallery_category.index');
+            Route::get('/create', [GalleryCategoryControllerForAdmin::class, 'create'])->name('admin.gallery_category.create');
+            Route::post('/store', [GalleryCategoryControllerForAdmin::class, 'store'])->name('admin.gallery_category.store');
+            Route::get('/delete/{id}', [GalleryCategoryControllerForAdmin::class, 'destroy']);
+            Route::get('/edit/{id}', [GalleryCategoryControllerForAdmin::class, 'edit']);
+            Route::post('/update/{id}', [GalleryCategoryControllerForAdmin::class, 'update']);
+        });
+
     });
-
-
-    /* --------------------------------------- */
-    /* Video Gallery - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'video-gallery', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [VideoController::class, 'index'])->name('admin.video.index');
-        Route::get('/create', [VideoController::class, 'create'])->name('admin.video.create');
-        Route::post('/store', [VideoController::class, 'store'])->name('admin.video.store');
-        Route::get('/delete/{id}', [VideoController::class, 'destroy']);
-        Route::get('/edit/{id}', [VideoController::class, 'edit']);
-        Route::post('/update/{id}', [VideoController::class, 'update']);
-    });
-
-
-    /* --------------------------------------- */
-    /* Gallery Category - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'gallery-category', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [GalleryCategoryControllerForAdmin::class, 'index'])->name('admin.gallery_category.index');
-        Route::get('/create', [GalleryCategoryControllerForAdmin::class, 'create'])->name('admin.gallery_category.create');
-        Route::post('/store', [GalleryCategoryControllerForAdmin::class, 'store'])->name('admin.gallery_category.store');
-        Route::get('/delete/{id}', [GalleryCategoryControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [GalleryCategoryControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [GalleryCategoryControllerForAdmin::class, 'update']);
-    });
-
-
+    
+    
     /* --------------------------------------- */
     /* Why Choose Us - Admin */
     /* --------------------------------------- */
@@ -749,7 +744,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/', [MenuController::class, 'index'])->name('admin.menu.index');
         Route::post('/update', [MenuController::class, 'update']);
     });
-
 
 
     /* --------------------------------------- */

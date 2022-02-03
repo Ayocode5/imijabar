@@ -6,27 +6,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    @include('layouts.styles')
+    @include('layouts.assets.styles')
 
+    @php
+        $fav = Illuminate\Support\Facades\DB::table('general_settings')->select('favicon')->first();
+    @endphp
+    
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads')."/$fav->favicon" }}">
     <title>IMI Jawa Barat</title>
 </head>
 
 <body>
-  
-    {{-- Navbar --}}
-    @include('layouts.nav')
-   
-    @yield('jumbotron-section')
+    @php
+        $url = request()->path();
+    @endphp
 
-    {{-- Main Content --}}
-    <main>
-        @yield('main-section')
-    </main>
+    <!-- Navbar -->
+    @include('layouts.components.nav')
 
-    @include('layouts.footer')
+    <!-- Main Content -->
+    @yield('content')
 
-    <!-- Optional JavaScript -->
-    @include('layouts.scripts')
+    <!-- Footer -->
+    @include('layouts.components.footer')
+
+    {{-- Scripts --}}
+    @include('layouts.assets.scripts')
 </body>
 
 </html>

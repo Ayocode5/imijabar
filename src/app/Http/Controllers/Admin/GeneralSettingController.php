@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\GeneralSetting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use DB;
 
 class GeneralSettingController extends Controller
 {
@@ -26,7 +23,7 @@ class GeneralSettingController extends Controller
     public function logo_update(Request $request)
     {
         $request->validate([
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         // Unlink old photo
@@ -55,7 +52,7 @@ class GeneralSettingController extends Controller
     public function favicon_update(Request $request)
     {
         $request->validate([
-            'favicon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'favicon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         // Unlink old photo

@@ -16,18 +16,24 @@ class VideoController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Video::class);
+
         $videos = Video::with(['category' => fn($q) => $q->select(['id','name']) ])->orderBy('video_order')->get();
         return view('admin.video.index', compact('videos'));
     }
 
     public function create()
     {
+        $this->authorize('create', Video::class);
+
         $categories = DB::table('gallery_categories')->get();
         return view('admin.video.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Video::class);
+
         $request->validate([
             'video_youtube' => 'required',
             'video_order' => 'numeric|min:0|max:32767',
@@ -46,6 +52,8 @@ class VideoController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Video::class);
+
         $video = Video::findOrFail($id);
         $categories = DB::table('gallery_categories')->get();
         return view('admin.video.edit', compact(['video', 'categories']));
@@ -53,6 +61,8 @@ class VideoController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Video::class);
+
         $video = Video::findOrFail($id);
         
         $request->validate([
@@ -67,6 +77,8 @@ class VideoController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', Video::class);
+
         $video = Video::findOrFail($id);
         $video->delete();
         return Redirect()->back()->with('success', 'Video is deleted successfully!');

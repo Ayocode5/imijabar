@@ -17,25 +17,30 @@ class PhotoController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Photo::class);
+
         $photos = Photo::with([
             'category' => function ($q) {
                 $q->select('id','name');
             }
 
         ])->orderBy('photo_order')->get();
-        // dd($photos[0]->category);
+
         return view('admin.photo.index', compact('photos'));
     }
 
     public function create()
     {
-        $categories = DB::table('gallery_categories')->select(['name', 'id'])->get();
+        $this->authorize('create', Photo::class);
 
+        $categories = DB::table('gallery_categories')->select(['name', 'id'])->get();
         return view('admin.photo.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Photo::class);
+
         $request->validate([
             'photo_name' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'photo_order' => 'numeric|min:0|max:32767',
@@ -57,6 +62,8 @@ class PhotoController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Photo::class);
+
         $photo = Photo::findOrFail($id);
         $categories = DB::table('gallery_categories')->select(['name', 'id'])->get();
 
@@ -65,6 +72,8 @@ class PhotoController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Photo::class);
+
         $fileName = '';
         $photo = Photo::findOrFail($id);
 
@@ -100,6 +109,8 @@ class PhotoController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', Photo::class);
+
         $photo = Photo::findOrFail($id);
         $photo->photo_name != '' ?
             unlink(public_path('uploads/' . $photo->photo_name)) :

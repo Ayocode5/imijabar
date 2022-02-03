@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Category</h1>
 
-    <form action="{{ url('admin/category/update/'.$category->id) }}" method="post">
+    <form action="{{ url('admin/news/category/update/'.$category->id) }}" method="post">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">

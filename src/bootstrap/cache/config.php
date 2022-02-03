@@ -6,7 +6,7 @@
     'debug' => true,
     'url' => '',
     'asset_url' => NULL,
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
@@ -509,7 +509,7 @@
     ),
     'from' => 
     array (
-      'address' => 'contact@phpscriptpoint.com',
+      'address' => 'contact@ayocode.com',
       'name' => 'IMI-JABAR',
     ),
     'markdown' => 
@@ -575,7 +575,7 @@
   ),
   'queue' => 
   array (
-    'default' => 'sync',
+    'default' => 'database',
     'connections' => 
     array (
       'sync' => 

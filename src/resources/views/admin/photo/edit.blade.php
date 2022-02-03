@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Photo</h1>
 
-    <form action="{{ url('admin/photo-gallery/update/'.$photo->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/gallery/photo/update/'.$photo->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
