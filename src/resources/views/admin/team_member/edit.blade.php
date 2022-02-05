@@ -1,12 +1,12 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Edit Team Member</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit Committe Member</h1>
 
     <form action="{{ url('admin/team-member/update/'.$team_member->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Team Member</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Member</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.team_member.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
@@ -16,10 +16,10 @@
                     <label for="">Name *</label>
                     <input type="text" name="name" class="form-control" value="{{ $team_member->name }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="slug" class="form-control" value="{{ $team_member->slug }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Designation *</label>
                     <input type="text" name="designation" class="form-control" value="{{ $team_member->designation }}">
@@ -75,13 +75,13 @@
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$team_member->photo) }}" alt="" class="w_150">
+                        <img id="team_member_preview_image" src="{{ asset('public/uploads/'.$team_member->photo) }}" alt="" class="w_150">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Change Photo</label>
                     <div>
-                        <input type="file" name="photo">
+                        <input type="file" id="photo" name="photo">
                     </div>
                 </div>
             </div>
@@ -101,5 +101,17 @@
             </div>
         </div>
     </form>
+
+    <script>
+        photo.onchange = (event) => {
+            const [file] = photo.files
+            if (file) {
+                team_member_preview_image.src = URL.createObjectURL(file)
+            }
+            team_member_preview_image.onload = () => {
+                URL.revokeObjectURL(team_member_preview_image.src)
+            }
+        }
+    </script>
 
 @endsection
