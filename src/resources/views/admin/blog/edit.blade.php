@@ -9,14 +9,14 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit News</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">News</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.news.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">News Name *</label>
+                    <label for="">Name *</label>
                     <input type="text" name="blog_title" class="form-control" value="{{ $blog->blog_title }}" autofocus>
                 </div>
                 {{-- <div class="form-group">
@@ -24,23 +24,23 @@
                     <input type="text" name="blog_slug" class="form-control" value="{{ $blog->blog_slug }}">
                 </div> --}}
                 <div class="form-group">
-                    <label for="">News Content *</label>
+                    <label for="">Content *</label>
                     <textarea name="blog_content" class="form-control editor" cols="30" rows="10">{{ $blog->blog_content }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">News Short Content *</label>
+                    <label for="">Summary *</label>
                     <textarea name="blog_content_short" class="form-control h_100" cols="30" rows="10">{{ $blog->blog_content_short }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Existing Blog Photo</label>
+                    <label for="">Existing Image</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$blog->blog_photo) }}" alt="" class="w_200">
+                        <img id="preview_news_image" src="{{ asset('public/uploads/'.$blog->blog_photo) }}" alt="" class="w_200">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Change Blog Photo</label>
+                    <label for="">Change Image</label>
                     <div>
-                        <input type="file" name="blog_photo">
+                        <input type="file" id="blog_photo" name="blog_photo">
                     </div>
                 </div>
                 <div class="row">
@@ -72,5 +72,19 @@
             </div>
         </div>
     </form>
+
+    <script>
+        
+        blog_photo.onchange = evt => {
+            console.log(blog_photo.files);
+            const [file] = blog_photo.files
+            if (file) {
+                preview_news_image.src = URL.createObjectURL(file)
+            }
+            preview_news_image.onload = () => {
+                URL.revokeObjectURL(preview_news_image.src)
+            }
+        }
+    </script>
 
 @endsection

@@ -51,7 +51,7 @@ class VideoPolicy
      * @param  \App\Models\Video  $video
      * @return mixed
      */
-    public function update(User $user, Video $video)
+    public function update(User $user)
     {
         return in_array('update-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
@@ -63,7 +63,7 @@ class VideoPolicy
      * @param  \App\Models\Video  $video
      * @return mixed
      */
-    public function delete(User $user, Video $video)
+    public function delete(User $user)
     {
         return in_array('delete-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }

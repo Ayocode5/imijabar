@@ -23,7 +23,7 @@ class PageEventController extends Controller
      {
          $data['name'] = $request->input('name');
          $data['detail'] = $request->input('detail');
-         $data['status'] = $request->input('status');
+         $data['status'] = intval($request->input('status'));
          $data['seo_title'] = $request->input('seo_title');
          $data['seo_meta_description'] = $request->input('seo_meta_description');
 

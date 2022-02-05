@@ -17,7 +17,7 @@
                             <label for="">Top Bar Phone</label>
                             <input type="text" name="top_bar_phone" class="form-control" value="{{ $general_setting->top_bar_phone }}">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Top Bar Social Status</label>
                             <div>
                                 <div class="form-check form-check-inline">
@@ -68,7 +68,7 @@
                                     <label class="form-check-label font-weight-normal" for="rr8">Hide</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </div>

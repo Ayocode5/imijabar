@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Sports</h1>
 
-    <form action="{{ route('admin.event_sport.store') }}" method="post">
+    <form action="{{ route('admin.event_sport.store') }}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -14,14 +14,17 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Sport Name *</label>
+                    <label for="">Name *</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
                 </div>
-            </div>
-            <div class="card-body">
                 <div class="form-group">
-                    <label for="">Category *</label>
-                    <select name="category_id" id="category_id">
+                    <label for="">Image *</label><br>
+                    <img id="sport_preview_image" src="" alt="" class="w_300"><br><br>
+                    <input type="file" name="image" id="image" value="{{ old('image') }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Category *</label><br>
+                    <select name="category_id" id="category_id" class="selectpicker">
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>
                         @endif
@@ -31,6 +34,7 @@
                     </select>
                 </div>
             </div>
+            
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
             </div>
@@ -49,4 +53,16 @@
         </div>
     </form>
 
+    <script>
+
+        image.onchange = (event) => {
+            const [file] = image.files
+            if (file) {
+                sport_preview_image.src = URL.createObjectURL(file)
+            }
+            sport_preview_image.onload = () => {
+                URL.revokeObjectURL(sport_preview_image.src)
+            }
+        }
+    </script>
 @endsection

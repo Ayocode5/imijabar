@@ -6,20 +6,16 @@
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Category</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Category</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.category.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.event_category.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Category Name *</label>
+                    <label for="">Name *</label>
                     <input type="text" name="name" class="form-control" value="{{ $category->name }}" autofocus>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="">Category Slug</label>
-                    <input type="text" name="category_slug" class="form-control" value="{{ $category->slug }}">
-                </div> --}}
             </div>
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>

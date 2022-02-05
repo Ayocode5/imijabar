@@ -1,25 +1,25 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Edit Category</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit News Category</h1>
 
     <form action="{{ url('admin/news/category/update/'.$category->id) }}" method="post">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Category</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Category</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.category.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Category Name *</label>
+                    <label for="">Name *</label>
                     <input type="text" name="category_name" class="form-control" value="{{ $category->category_name }}" autofocus>
                 </div>
-                <div class="form-group">
-                    <label for="">Category Slug</label>
+                {{-- <div class="form-group">
+                    <label for="">Slug </label>
                     <input type="text" name="category_slug" class="form-control" value="{{ $category->category_slug }}">
-                </div>
+                </div> --}}
             </div>
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>

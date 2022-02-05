@@ -4,7 +4,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 mt-2 font-weight-bold text-primary">Categories</h6>
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">Sports</h6>
             <div class="float-right d-inline">
                 <a href="{{ route('admin.event_sport.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
             </div>
@@ -15,8 +15,9 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Sport Name</th>
-                        <th>Sport Slug</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Slug</th>
                         <th>Category</th>
                         <th>Action</th>
                     </tr>
@@ -26,6 +27,7 @@
                         @foreach($sports as $sport)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ asset('public/uploads/'.$sport->image) }}" alt="" class="w_200"></td>
                             <td>{{ $sport->name }}</td>
                             <td>{{ $sport->slug }}</td>
                             <td>{{ $sport->category->name }}</td>

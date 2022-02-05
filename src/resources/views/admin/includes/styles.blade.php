@@ -10,3 +10,11 @@
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+<style>
+    .bg-gradient-primary {
+        background-color: #323c5c;
+        background-image: linear-gradient(180deg, #141c34 10%, #224abe 100%);
+        background-size: cover;
+    }
+</style>

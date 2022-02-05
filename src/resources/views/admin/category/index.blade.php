@@ -15,8 +15,8 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Category Name</th>
-                        <th>Category Slug</th>
+                        <th>Name</th>
+                        <th>Slug</th>
                         <th>Action</th>
                     </tr>
                     </thead>

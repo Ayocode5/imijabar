@@ -13,9 +13,9 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Project Photo</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Photo</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Back to Project Page</a>
+                    <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Back </a>
                 </div>
             </div>
             <div class="card-body">
@@ -40,7 +40,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 mt-2 font-weight-bold text-primary">All Existing Photos</h6>
             <div class="float-right d-inline">
-                <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Back to Project Page</a>
+                <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Back </a>
             </div>
         </div>
         <div class="card-body">

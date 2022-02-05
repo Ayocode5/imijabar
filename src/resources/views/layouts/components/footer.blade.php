@@ -1,4 +1,4 @@
-<footer class="position-relative">
+<footer class="position-relative border-top border-bottom">
     <div class="container-fluid content_footer">
 
         <div class="row my-auto justify-content-md-between h-100">
@@ -57,8 +57,6 @@
 
 <div class="credit">
     <div class="container text-center p-3 wrap_credit">
-        <p class="my-auto">© Copyright 2022 IMI Jawa Barat | Web Developed by Rumah Koding X Ayocode.id | All
-            Right
-            Reserved</p>
+        <p class="my-auto">{{ $settings?->footer_copyright }}</p>
     </div>
 </div>

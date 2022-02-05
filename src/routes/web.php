@@ -70,6 +70,7 @@ use App\Http\Controllers\Admin\Blog\CommentController;
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
+use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
 
 //Front Panel CUSTOMER
 use App\Http\Controllers\Customer\CheckoutController;
@@ -366,17 +367,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         // Route::get('/privacy/edit', [PagePrivacyController::class, 'edit'])->name('admin.page_privacy.edit');
         // Route::post('/privacy/update', [PagePrivacyController::class, 'update']);
 
-        Route::group(['prefix' => 'other'], function () {
-            Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
-            Route::post('/1', [PageOtherController::class, 'update1']);
-            Route::post('/2', [PageOtherController::class, 'update2']);
-            Route::post('/3', [PageOtherController::class, 'update3']);
-            Route::post('/4', [PageOtherController::class, 'update4']);
-            Route::post('/5', [PageOtherController::class, 'update5']);
-            Route::post('/6', [PageOtherController::class, 'update6']);
-            Route::post('/7', [PageOtherController::class, 'update7']);
-            Route::post('/8', [PageOtherController::class, 'update8']);
-        });
+        // Route::group(['prefix' => 'other'], function () {
+        //     Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
+        //     Route::post('/1', [PageOtherController::class, 'update1']);
+        //     Route::post('/2', [PageOtherController::class, 'update2']);
+        //     Route::post('/3', [PageOtherController::class, 'update3']);
+        //     Route::post('/4', [PageOtherController::class, 'update4']);
+        //     Route::post('/5', [PageOtherController::class, 'update5']);
+        //     Route::post('/6', [PageOtherController::class, 'update6']);
+        //     Route::post('/7', [PageOtherController::class, 'update7']);
+        //     Route::post('/8', [PageOtherController::class, 'update8']);
+        // });
     });
 
     /* --------------------------------------- */
@@ -481,6 +482,21 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::get('/edit/{id}', [EventSportControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [EventSportControllerForAdmin::class, 'update']);
         });
+
+
+        /* --------------------------------------- */
+        /* Event Sponsor - Admin */
+        /* --------------------------------------- */
+        Route::group(['prefix' => 'sponsor', 'middleware' => 'can:isEditor'], function () {
+            Route::get('/', [EventSponsorControllerForAdmin::class, 'index'])->name('admin.event_sponsor.index');
+            Route::get('/create', [EventSponsorControllerForAdmin::class, 'create'])->name('admin.event_sponsor.create');
+            Route::post('/store', [EventSponsorControllerForAdmin::class, 'store'])->name('admin.event_sponsor.store');
+            Route::get('/delete/{id}', [EventSponsorControllerForAdmin::class, 'destroy']);
+            Route::get('/edit/{id}', [EventSponsorControllerForAdmin::class, 'edit']);
+            Route::post('/update/{id}', [EventSponsorControllerForAdmin::class, 'update']);
+        });
+
+        
     });
 
 

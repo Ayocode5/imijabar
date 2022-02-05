@@ -6,7 +6,7 @@
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Photo</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Photo</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.photo.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
                         View All</a>
@@ -14,15 +14,16 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Photo *</label>
+                    <label for="">Photo *</label><br>
+                    <img id="photo_preview_image" src="" alt="" class="w_300"><br><br>
                     <div>
-                        <input type="file" name="photo_name">
+                        <input type="file" id="photo_name" name="photo_name">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Caption</label>
+                            <label for="">Caption *</label>
                             <input type="text" name="photo_caption" class="form-control"
                                 value="{{ old('photo_caption') }}" autofocus>
                         </div>
@@ -48,5 +49,18 @@
             </div>
         </div>
     </form>
+
+    <script>
+
+        photo_name.onchange = (event) => {
+            const [file] = photo_name.files
+            if (file) {
+                photo_preview_image.src = URL.createObjectURL(file)
+            }
+            photo_name.onload = () => {
+                URL.revokeObjectURL(photo_preview_image.src)
+            }
+        }
+    </script>
 
 @endsection

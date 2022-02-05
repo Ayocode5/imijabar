@@ -7,6 +7,7 @@ use App\Models\Admin\Sport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 class EventSportController extends Controller
 {
@@ -46,12 +47,18 @@ class EventSportController extends Controller
         
         $request->validate([
             'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|numeric',
         ]);
+
+        $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
+
+        $request->file('image')->move(public_path('uploads/'), $fileName);
 
         Sport::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'image' => $fileName,
             'category_id' => $request->category_id,
             'seo_title' => $request->seo_title ?? '',
             'seo_meta_description' => $request->seo_meta_description ?? ''
@@ -90,14 +97,39 @@ class EventSportController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|numeric',
         ]);
 
         $sport = Sport::findOrFail($id);
 
+        $fileName = '';
+
+        if ($request->hasFile('image')) {
+            if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
+                //remove old photo
+                unlink(public_path('uploads/') . $sport->image);
+
+                
+                preg_match('/(sport-)(.*).(jpg|png|jpeg|gif|svg)/', $sport->image, $sport_photo_split);
+
+                // Rebuild the name of photo 
+                $fileName = $sport_photo_split[1] . $sport_photo_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
+                //Separates photo name and extension
+
+                $request->file('image')->move(public_path('uploads/'), $fileName);
+
+            } else {
+
+                $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
+                $request->file('image')->move(public_path('uploads/'), $fileName);
+            }
+        }
+
         if($sport->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
+                'image' => !empty($fileName) ? $fileName : $sport->image,
                 'category_id' => $request->category_id,
                 'seo_title' => $request->seo_title ?? '',
                 'seo_meta_description' => $request->seo_meta_description ?? ''
@@ -124,7 +156,13 @@ class EventSportController extends Controller
         if($sport->events_count > 0) {
             return redirect()->route('admin.event_sport.index')->withErrors("Selected sport can't be deleted, there are some events under this sport");
         } else {
+            if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
+                # code...
+                unlink(public_path('uploads/') . $sport->image);
+            }
+
             $sport->delete();
+            
             return redirect()->route('admin.event_sport.index')->with('success', 'Sport deleted successfully');
 
         }

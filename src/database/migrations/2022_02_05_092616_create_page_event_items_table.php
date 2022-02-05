@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageAboutItemsTable extends Migration
+class CreatePageEventItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePageAboutItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_about_items', function (Blueprint $table) {
+        Schema::create('page_event_items', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->text('detail')->nullable();
-            $table->text('status');
+            $table->boolean('status');
             $table->text('seo_title')->nullable();
             $table->text('seo_meta_description')->nullable();
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreatePageAboutItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_about_items');
+        Schema::dropIfExists('page_event_items');
     }
 }

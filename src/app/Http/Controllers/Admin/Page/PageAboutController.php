@@ -23,11 +23,22 @@ class PageAboutController extends Controller
 
     public function update(Request $request)
     {
-        $data['name'] = $request->input('name');
+
+        // dd($request->request);
+        $data['title'] = $request->input('title');
+        $data['subtitle'] = $request->input('subtitle');
         $data['detail'] = $request->input('detail');
-        $data['status'] = $request->input('status');
+
+        foreach(range(1,11) as $headnbody) {
+            $data["heading$headnbody"] = $request->input("heading$headnbody");
+            $data["body$headnbody"] = $request->input("body$headnbody");
+        }
+
+        $data['status'] = intval($request->input('status'));
         $data['seo_title'] = $request->input('seo_title');
         $data['seo_meta_description'] = $request->input('seo_meta_description');
+
+        // dd($data);
 
         PageAboutItem::where('id',1)->update($data);
 

@@ -70,7 +70,8 @@ class EventController extends Controller
         $this->authorize('create', Event::class);
 
         $sports = DB::table('sports')->select(['name', 'id'])->get();
-        return view('admin.event.create', compact('sports'));
+        $sponsors = DB::table('sponsors')->select(['name', 'id'])->get();
+        return view('admin.event.create', compact(['sports', 'sponsors']));
     }
 
     public function store(Request $request)
@@ -83,7 +84,7 @@ class EventController extends Controller
 
         $request->validate([
             'sports_id' => 'required',
-            'event_map' => 'required',
+            // 'event_map' => 'required',
             'event_content' => 'required',
             'event_content_short' => 'required',
             'event_location' => 'required',
@@ -104,6 +105,7 @@ class EventController extends Controller
 
         $event->fill($data)->save();
         $event->sports()->sync($request->sports_id);
+        $event->sponsors()->sync($request->sponsor_id);
 
         return redirect()->route('admin.event.index')->with('success', 'Event is added successfully!');
     }
@@ -114,7 +116,8 @@ class EventController extends Controller
 
         $event = Event::with(['sports' => fn($q) => $q->select('id') ])->findOrFail($id);
         $sports = DB::table('sports')->select(['name', 'id'])->get();
-        return view('admin.event.edit', compact(['event', 'sports']));
+        $sponsors = DB::table('sponsors')->select(['name', 'id'])->get();
+        return view('admin.event.edit', compact(['event', 'sports', 'sponsors']));
     }
 
     public function update(Request $request, $id)
@@ -128,8 +131,11 @@ class EventController extends Controller
         $request->validate([
             'event_name' =>  ['required', Rule::unique('events')->ignore($id),],
             'event_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'sports_id' => 'required'
+            'sports_id' => 'required',
+            // 'sponsors_id' => 'required'
         ]);
+
+        // dd($request);
 
         $data['event_slug'] = Str::slug($request->event_name);
 
@@ -148,12 +154,14 @@ class EventController extends Controller
                 $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
                 $data['event_featured_photo'] = $fileName;
             }
+
         } else {
             $data['event_featured_photo'] = $event->event_featured_photo;
         }
 
         $event->update($data);
         $event->sports()->sync($request->sports_id);
+        $event->sponsors()->sync($request->sponsors_id);
 
         return redirect()->route('admin.event.index')->with('success', 'Event is updated successfully!');
     }

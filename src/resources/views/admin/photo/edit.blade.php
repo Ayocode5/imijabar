@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$photo->photo_name) }}" alt="" class="w_300">
+                        <img id="photo_preview_image" src="{{ asset('public/uploads/'.$photo->photo_name) }}" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Caption</label>
+                            <label for="">Caption *</label>
                             <input type="text" name="photo_caption" class="form-control" value="{{ $photo->photo_caption }}" autofocus>
                         </div>
                         <div class="form-group">
@@ -53,5 +53,18 @@
             </div>
         </div>
     </form>
+
+    <script>
+
+        photo_name.onchange = (event) => {
+            const [file] = photo_name.files
+            if (file) {
+                photo_preview_image.src = URL.createObjectURL(file)
+            }
+            photo_name.onload = () => {
+                URL.revokeObjectURL(photo_preview_image.src)
+            }
+        }
+    </script>
 
 @endsection

@@ -13,6 +13,7 @@ class Sport extends Model
         'category_id',
         'name',
         'slug',
+        'image',
         'seo_title',
         'seo_meta_description'    
     ];

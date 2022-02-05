@@ -9,6 +9,11 @@ class AboutController extends Controller
 {
     public function __invoke()
     {
+		$home_settings = DB::table('page_home_items')->select(
+			'committee_title',
+			'committee_detail'
+		)->first();
+
         $settings = DB::table('general_settings')->select(
 			'logo',
 			'top_bar_email',
@@ -22,7 +27,8 @@ class AboutController extends Controller
 			'footer_column3_heading',
 		)->first();
         
-        // $about = DB::table('page_about_items')->where('id', 1)->first();
-        return view('pages.about', compact('settings'));
+        $about_settings = DB::table('page_about_items')->where('id', 1)->first();
+
+        return view('pages.about', compact(['settings', 'home_settings', 'about_settings']));
     }
 }

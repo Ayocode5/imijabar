@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $fillable = [
         'event_name',
         'event_slug',
@@ -30,6 +31,10 @@ class Event extends Model
 
     public function sports() {
         return $this->belongsToMany(Sport::class, 'event_sport', 'event_id', 'sport_id');
+    }
+
+    public function sponsors() {
+        return $this->belongsToMany(Sponsor::class, 'event_sponsor', 'event_id', 'sponsor_id');
     }
 
     public function getStatusAttribute() {

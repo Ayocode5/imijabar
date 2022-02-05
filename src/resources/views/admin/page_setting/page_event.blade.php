@@ -16,16 +16,14 @@
                 </div>
                 <div class="form-group">
                     <label for="">Status</label>
-                    <div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="rr1" value="Show" @if($page_event->status == 'Show') checked @endif>
-                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="rr2" value="Hide" @if($page_event->status == 'Hide') checked @endif>
-                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
-                        </div>
-                    </div>
+                    <select name="status" class="form-control">
+                        <option value="1" @if ($page_event?->status == 1)
+                            selected
+                            @endif>Show</option>
+                        <option value="0" @if ($page_event?->status == 0)
+                            selected
+                            @endif>Hide</option>
+                    </select>
                 </div>
             </div>
             <div class="card-header py-3">
