@@ -7,7 +7,6 @@ use App\Models\Admin\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use DB;
 use Ramsey\Uuid\Uuid;
 
 class TeamMemberController extends Controller

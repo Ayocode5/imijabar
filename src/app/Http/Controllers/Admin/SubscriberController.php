@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailToAllSubscribers;
-use DB;
 
 class SubscriberController extends Controller
 {
@@ -46,11 +43,10 @@ class SubscriberController extends Controller
         $subject = $request->subject;
         $message = $request->message;
 
-        $all_subscribers = Subscriber::where('subs_active', 1)->get();
-        foreach($all_subscribers as $row)
+        $subscribers = Subscriber::where('subs_active', 1)->get();
+        foreach($subscribers as $subscriber)
         {
-            $subs_email = $row->subs_email;
-            Mail::to($subs_email)->send(new MailToAllSubscribers($subject,$message));
+            Mail::to($subscriber->subs_email)->send(new MailToAllSubscribers($subject,$message));
         }
 
         return redirect()->back()->with('success', 'Email is sent successfully to all subscribers!');

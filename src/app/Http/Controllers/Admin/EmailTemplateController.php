@@ -3,9 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\EmailTemplate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use DB;
 
 class EmailTemplateController extends Controller
 {

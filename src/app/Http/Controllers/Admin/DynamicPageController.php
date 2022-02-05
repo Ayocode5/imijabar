@@ -7,7 +7,7 @@ use App\Models\Admin\DynamicPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class DynamicPageController extends Controller
 {

@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Menu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {

@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Faq;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use DB;
 
 class FaqController extends Controller
 {
