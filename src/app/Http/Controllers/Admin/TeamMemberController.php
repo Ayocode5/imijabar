@@ -18,17 +18,23 @@ class TeamMemberController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', TeamMember::class);
+
         $team_member = TeamMember::all();
         return view('admin.team_member.index', compact('team_member'));
     }
 
     public function create()
     {
+        $this->authorize('create', TeamMember::class);
+
         return view('admin.team_member.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', TeamMember::class);
+
         $team_member = new TeamMember();
         $data = $request->only($team_member->getFillable());
 
@@ -51,12 +57,16 @@ class TeamMemberController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', TeamMember::class);
+
         $team_member = TeamMember::findOrFail($id);
         return view('admin.team_member.edit', compact('team_member'));
     }
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', TeamMember::class);
+
         $request->validate([
             'name'   =>  'required',
             'slug'   =>  [Rule::unique('team_members')->ignore($id),],
@@ -96,6 +106,8 @@ class TeamMemberController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', TeamMember::class);
+
         $team_member = TeamMember::findOrFail($id);
         if(!($team_member->photo == '') && file_exists(public_path('uploads/'.$team_member->photo))) {
             unlink(public_path('uploads/'.$team_member->photo));

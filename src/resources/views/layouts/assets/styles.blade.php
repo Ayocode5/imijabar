@@ -6,3 +6,4 @@ rel="stylesheet">
 
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/style.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/about.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/list-berita.css">

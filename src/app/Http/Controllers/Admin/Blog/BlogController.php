@@ -24,6 +24,7 @@ class BlogController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Blog::class);
+
         $blog = Blog::all();
         return view('admin.blog.index', compact('blog'));
     }
@@ -31,12 +32,15 @@ class BlogController extends Controller
     public function create()
     {
         $this->authorize('create', Blog::class);
+        
         $category = DB::table('categories')->get();
         return view('admin.blog.create', compact('category'));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Blog::class);
+
         $request->validate([
             'blog_title' => 'required|unique:blogs',
             'blog_slug' => 'unique:blogs',
@@ -136,6 +140,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $this->authorize('delete', Blog::class);
+
         $blog = Blog::findOrFail($id);
         unlink(public_path('uploads/' . $blog->blog_photo));
         $blog->delete();

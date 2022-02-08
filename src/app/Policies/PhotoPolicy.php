@@ -18,7 +18,7 @@ class PhotoPolicy
      */
     public function viewAny(User $user)
     {
-        return in_array('view-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('view-gallery-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -41,7 +41,7 @@ class PhotoPolicy
      */
     public function create(User $user)
     {
-        return in_array('create-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('create-gallery-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -53,7 +53,7 @@ class PhotoPolicy
      */
     public function update(User $user)
     {
-        return in_array('update-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('update-gallery-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -65,7 +65,7 @@ class PhotoPolicy
      */
     public function delete(User $user)
     {
-        return in_array('delete-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('delete-gallery-photo', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**

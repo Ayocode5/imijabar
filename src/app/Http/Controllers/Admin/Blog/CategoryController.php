@@ -7,7 +7,7 @@ use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -18,17 +18,23 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Category::class);
+
         $category = Category::all();
         return view('admin.category.index', compact('category'));
     }
 
     public function create()
     {
+        $this->authorize('create', Category::class);
+
         return view('admin.category.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Category::class);
+
         $request->validate([
             'category_name' => 'required|unique:categories',
             'category_slug' => 'unique:categories'
@@ -46,12 +52,16 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Category::class);
+
         $category = Category::findOrFail($id);
         return view('admin.category.edit', compact('category'));
     }
 
     public function update(Request $request, $id)
     {
+
+        $this->authorize('update', Category::class);
 
         $request->validate([
             'category_name'   =>  [
@@ -76,6 +86,8 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {       
+
+        $this->authorize('delete', Category::class);
 
         // Deleting data from "blogs" table
         $all_blog = DB::table('blogs')->where('category_id', $id)->count();

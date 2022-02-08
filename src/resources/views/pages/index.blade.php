@@ -14,7 +14,8 @@
                 <div class="border_title"></div>
                 <!-- BERITA 1 -->
                 @foreach ($news as $item)
-                    <div class="content-berita mb-3 mb-md-2" style="border-radius: 6px">
+                <a href="#" class="text-decoration-none text-dark">
+                    <div class="content-berita mb-3 mb-md-2 border-bottom" style="">
                         <div class="row">
                             <div class="col-12 col-md-8 order-2 order-md-1 my-auto">
                                 <p class="tanggal-berita">{{ $item->created_at }}
@@ -34,6 +35,7 @@
                             </div>
                         </div>
                     </div>
+                </a>
                 @endforeach
                 <button type="button" class="btn mt-4 btn-outline-dark bg-dark text-white d-block mx-auto">Show
                     More</button>
@@ -112,7 +114,7 @@
         <div class="row mx-lg-5 no-gutters wrap_tentangImi">
             <div class="col-12 col-lg-6 slide_tentangImi1">
                 <p>
-                    {{ $home_settings->about_detail }}
+                    {!! $home_settings->about_detail !!}
                 </p>
             </div>
             <div class="col-12 col-lg-6 ml-auto my-auto signature_imijabar position-relative">

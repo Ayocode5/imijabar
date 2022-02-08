@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\PageAboutItem;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use DB;
 
 class PageAboutController extends Controller
 {
@@ -23,15 +21,13 @@ class PageAboutController extends Controller
 
     public function update(Request $request)
     {
-
-        // dd($request->request);
         $data['title'] = $request->input('title');
         $data['subtitle'] = $request->input('subtitle');
         $data['detail'] = $request->input('detail');
 
-        foreach(range(1,11) as $headnbody) {
-            $data["heading$headnbody"] = $request->input("heading$headnbody");
-            $data["body$headnbody"] = $request->input("body$headnbody");
+        foreach(range(1,11) as $num) {
+            $data["heading$num"] = $request->input("heading$num");
+            $data["body$num"] = $request->input("body$num");
         }
 
         $data['status'] = intval($request->input('status'));

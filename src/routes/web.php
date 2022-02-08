@@ -15,46 +15,34 @@ use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeCo
 use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
-//Admin PanelROLE CONTROLLER
+//Admin Panel ROLE CONTROLLER
 use App\Http\Controllers\Admin\Role\RoleController;
 
-//Admin PanelSHOP
+//Admin Panel SHOP
 use App\Http\Controllers\Admin\Shop\CouponController;
 use App\Http\Controllers\Admin\Shop\CustomerController;
 use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
 use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
 use App\Http\Controllers\Admin\Shop\ShippingController;
 
-//Admin PanelMenu
+//Admin Panel Menu
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
-use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\WhyChooseController;
-use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 
-//Admin PanelPages
-use App\Http\Controllers\Admin\Page\PageAboutController;
-use App\Http\Controllers\Admin\Page\PageBlogController;
-use App\Http\Controllers\Admin\Page\PageCareerController;
-use App\Http\Controllers\Admin\Page\PageContactController;
-use App\Http\Controllers\Admin\Page\PageFaqController;
+//Admin Panel Pages Settings
 use App\Http\Controllers\Admin\Page\PageHomeController;
-use App\Http\Controllers\Admin\Page\PageOtherController;
-use App\Http\Controllers\Admin\Page\PagePhotoGalleryController;
-use App\Http\Controllers\Admin\Page\PagePrivacyController;
-use App\Http\Controllers\Admin\Page\PageProjectController;
+use App\Http\Controllers\Admin\Page\PageBlogController;
+use App\Http\Controllers\Admin\Page\PageAboutController;
 use App\Http\Controllers\Admin\Page\PageEventController;
-use App\Http\Controllers\Admin\Page\PageServiceController;
-use App\Http\Controllers\Admin\Page\PageShopController;
+use App\Http\Controllers\Admin\Page\PageGalleryController;
+use App\Http\Controllers\Admin\Page\PageFaqController;
+use App\Http\Controllers\Admin\Page\PagePhotoGalleryController;
 use App\Http\Controllers\Admin\Page\PageTeamController;
-use App\Http\Controllers\Admin\Page\PageTermController;
-use App\Http\Controllers\Admin\Page\PageVideoGalleryController;
+
 
 //Admin Panel Gallery
 use App\Http\Controllers\Admin\Gallery\PhotoController;
@@ -90,14 +78,14 @@ use App\Http\Controllers\Front\CategoryController as CategoryControllerForFront;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController as FaqControllerForFront;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\JobController as JobControllerForFront;
+
+//News Controller [Front]
+use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
+
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PhotoGalleryController;
-use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\ProductController as ProductControllerForFront;
-use App\Http\Controllers\Front\ProjectController as ProjectControllerForFront;
 use App\Http\Controllers\Front\SearchController;
-use App\Http\Controllers\Front\ServiceController as ServiceControllerForFront;
 use App\Http\Controllers\Front\SubscriptionController;
 use App\Http\Controllers\Front\TeamMemberController as TeamMemberControllerForFront;
 use App\Http\Controllers\Front\TermController;
@@ -111,8 +99,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('about', AboutController::class)->name('front.about');
-Route::get('services', [ServiceControllerForFront::class, 'index'])->name('front.services');
-Route::get('service/{slug}', [ServiceControllerForFront::class, 'detail']);
+
+// News Controller [Front]
+Route::get('/news', NewsIndexController::class);
+
 Route::get('blog', [BlogControllerForFront::class, 'index'])->name('front.blogs');
 Route::get('blog/{slug}', [BlogControllerForFront::class, 'detail']);
 Route::post('blog/comment', [BlogControllerForFront::class, 'comment'])->name('front.comment');
@@ -121,8 +111,7 @@ Route::post('search', [SearchController::class, 'index']);
 Route::get('search', function () {
     abort(404);
 });
-Route::get('projects', [ProjectControllerForFront::class, 'index'])->name('front.projects');
-Route::get('project/{slug}', [ProjectControllerForFront::class, 'detail']);
+
 Route::get('faq', [FaqControllerForFront::class, 'index'])->name('front.faq');
 Route::get('team-members', [TeamMemberControllerForFront::class, 'index'])->name('front.team_members');
 Route::get('team-member/{slug}', [TeamMemberControllerForFront::class, 'detail']);
@@ -132,9 +121,7 @@ Route::get('page/{slug}', [PageController::class, 'detail']);
 Route::get('contact', [ContactController::class, 'index'])->name('front.contact');
 Route::post('contact/store', [ContactController::class, 'send_email'])->name('front.contact_form');
 Route::get('career', [JobControllerForFront::class, 'index'])->name('front.career');
-Route::get('job/{slug}', [JobControllerForFront::class, 'detail']);
-Route::get('job/apply/{slug}', [JobControllerForFront::class, 'apply']);
-Route::post('job/apply/store', [JobControllerForFront::class, 'apply_form'])->name('front.apply_form');
+
 Route::get('shop', [ProductControllerForFront::class, 'index'])->name('front.shop');
 Route::get('product/{slug}', [ProductControllerForFront::class, 'detail']);
 Route::post('product/cart/add', [ProductControllerForFront::class, 'add_to_cart'])->name('front.add_to_cart');
@@ -147,8 +134,6 @@ Route::post('checkout/coupon/update', [ProductControllerForFront::class, 'coupon
 Route::post('subscription', [SubscriptionController::class, 'index'])->name('front.subscription');
 Route::get('subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
 Route::get('terms-and-conditions', [TermController::class, 'index'])->name('front.term');
-Route::get('privacy-policy', [PrivacyController::class, 'index'])->name('front.privacy');
-
 
 /* --------------------------------------- */
 /* Customer Login and profile management */
@@ -182,7 +167,7 @@ Route::get('customer/execute-payment', [CheckoutController::class, 'paypal']);
 
 Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
-    // Dashboatd
+    // Dashboard
     Route::get('/', fn () => redirect('admin/login'));
     Route::get('/dashboard', [DashboardControllerForAdmin::class, 'index'])->name('admin.dashboard');
 
@@ -328,17 +313,11 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/about/edit', [PageAboutController::class, 'edit'])->name('admin.page_about.edit');
         Route::post('/about/update', [PageAboutController::class, 'update']);
 
-        // Route::get('/service/edit', [PageServiceController::class, 'edit'])->name('admin.page_service.edit');
-        // Route::post('/service/update', [PageServiceController::class, 'update']);
-
         // Route::get('/shop/edit', [PageShopController::class, 'edit'])->name('admin.page_shop.edit');
         // Route::post('/shop/update', [PageShopController::class, 'update']);
 
         Route::get('/blog/edit', [PageBlogController::class, 'edit'])->name('admin.page_blog.edit');
         Route::post('/blog/update', [PageBlogController::class, 'update']);
-
-        // Route::get('/project/edit', [PageProjectController::class, 'edit'])->name('admin.page_project.edit');
-        // Route::post('/project/update', [PageProjectController::class, 'update']);
 
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
@@ -349,23 +328,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/team/edit', [PageTeamController::class, 'edit'])->name('admin.page_team.edit');
         Route::post('/team/update', [PageTeamController::class, 'update']);
 
-        Route::get('/photo-gallery/edit', [PagePhotoGalleryController::class, 'edit'])->name('admin.page_photo_gallery.edit');
-        Route::post('/photo-gallery/update', [PagePhotoGalleryController::class, 'update']);
+        Route::get('/gallery/edit', [PageGalleryController::class, 'edit'])->name('admin.page_gallery.edit');
+        Route::post('/gallery/update', [PageGalleryController::class, 'update']);
 
-        Route::get('/video-gallery/edit', [PageVideoGalleryController::class, 'edit'])->name('admin.page_video_gallery.edit');
-        Route::post('/video-gallery/update', [PageVideoGalleryController::class, 'update']);
+        // Route::get('/photo-gallery/edit', [PagePhotoGalleryController::class, 'edit'])->name('admin.page_photo_gallery.edit');
+        // Route::post('/photo-gallery/update', [PagePhotoGalleryController::class, 'update']);
+
+        // Route::get('/video-gallery/edit', [PageVideoGalleryController::class, 'edit'])->name('admin.page_video_gallery.edit');
+        // Route::post('/video-gallery/update', [PageVideoGalleryController::class, 'update']);
 
         // Route::get('/contact/edit', [PageContactController::class, 'edit'])->name('admin.page_contact.edit');
         // Route::post('/contact/update', [PageContactController::class, 'update']);
-
-        // Route::get('/career/edit', [PageCareerController::class, 'edit'])->name('admin.page_career.edit');
-        // Route::post('/career/update', [PageCareerController::class, 'update']);
-
-        // Route::get('/term/edit', [PageTermController::class, 'edit'])->name('admin.page_term.edit');
-        // Route::post('/term/update', [PageTermController::class, 'update']);
-
-        // Route::get('/privacy/edit', [PagePrivacyController::class, 'edit'])->name('admin.page_privacy.edit');
-        // Route::post('/privacy/update', [PagePrivacyController::class, 'update']);
 
         // Route::group(['prefix' => 'other'], function () {
         //     Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
@@ -443,7 +416,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     });
 
 
-
     /* --------------------------------------- */
     /* Event - Admin */
     /* --------------------------------------- */
@@ -501,22 +473,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
 
     /* --------------------------------------- */
-    /* Project - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'project', 'middleware' => 'can:isEditor'], function () {
-    //     Route::get('/', [ProjectControllerForAdmin::class, 'index'])->name('admin.project.index');
-    //     Route::get('/create', [ProjectControllerForAdmin::class, 'create'])->name('admin.project.create');
-    //     Route::post('/store', [ProjectControllerForAdmin::class, 'store'])->name('admin.project.store');
-    //     Route::get('/delete/{id}', [ProjectControllerForAdmin::class, 'destroy']);
-    //     Route::get('/edit/{id}', [ProjectControllerForAdmin::class, 'edit']);
-    //     Route::post('/update/{id}', [ProjectControllerForAdmin::class, 'update']);
-    //     Route::get('/gallery/{id}', [ProjectControllerForAdmin::class, 'gallerysection']);
-    //     Route::get('/gallery-delete/{id}', [ProjectControllerForAdmin::class, 'gallerydelete']);
-    //     Route::post('/gallery-store', [ProjectControllerForAdmin::class, 'gallerystore'])->name('admin.project.gallery-store');
-    // });
-
-
-    /* --------------------------------------- */
     /* Gallery - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'gallery', 'middleware' => 'can:isEditor'], function () {
@@ -559,50 +515,11 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
     });
     
-    
-    /* --------------------------------------- */
-    /* Why Choose Us - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'why-choose', 'middleware' => 'can:isEditor'], function () {
-    //     Route::get('/', [WhyChooseController::class, 'index'])->name('admin.why_choose.index');
-    //     Route::get('/create', [WhyChooseController::class, 'create'])->name('admin.why_choose.create');
-    //     Route::post('/store', [WhyChooseController::class, 'store'])->name('admin.why_choose.store');
-    //     Route::get('/delete/{id}', [WhyChooseController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [WhyChooseController::class, 'edit']);
-    //     Route::post('/update/{id}', [WhyChooseController::class, 'update']);
-    // });
-
-
-
-    /* --------------------------------------- */
-    /* Service - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'service', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [ServiceControllerForAdmin::class, 'index'])->name('admin.service.index');
-        Route::get('/create', [ServiceControllerForAdmin::class, 'create'])->name('admin.service.create');
-        Route::post('/store', [ServiceControllerForAdmin::class, 'store'])->name('admin.service.store');
-        Route::get('/delete/{id}', [ServiceControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [ServiceControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [ServiceControllerForAdmin::class, 'update']);
-    });
-
-    /* --------------------------------------- */
-    /* Testimonial - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'testimonial', 'middleware' => 'can:isEditor'], function () {
-    //     Route::get('/', [TestimonialController::class, 'index'])->name('admin.testimonial.index');
-    //     Route::get('/create', [TestimonialController::class, 'create'])->name('admin.testimonial.create');
-    //     Route::post('/store', [TestimonialController::class, 'store'])->name('admin.testimonial.store');
-    //     Route::get('/delete/{id}', [TestimonialController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [TestimonialController::class, 'edit']);
-    //     Route::post('/update/{id}', [TestimonialController::class, 'update']);
-    // });
-
 
     /* --------------------------------------- */
     /* Team Member - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'team-member', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'committee', 'middleware' => 'can:isEditor'], function () {
         Route::get('/', [TeamMemberControllerForAdmin::class, 'index'])->name('admin.team_member.index');
         Route::get('/create', [TeamMemberControllerForAdmin::class, 'create'])->name('admin.team_member.create');
         Route::post('/store', [TeamMemberControllerForAdmin::class, 'store'])->name('admin.team_member.store');
@@ -610,21 +527,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/edit/{id}', [TeamMemberControllerForAdmin::class, 'edit']);
         Route::post('/update/{id}', [TeamMemberControllerForAdmin::class, 'update']);
     });
-
-
-    /* --------------------------------------- */
-    /* Job or Career - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'job', 'middleware' => 'can:isEditor'], function () {
-    //     Route::get('/', [JobControllerForAdmin::class, 'index'])->name('admin.job.index');
-    //     Route::get('/create', [JobControllerForAdmin::class, 'create'])->name('admin.job.create');
-    //     Route::post('/store', [JobControllerForAdmin::class, 'store'])->name('admin.job.store');
-    //     Route::get('/delete/{id}', [JobControllerForAdmin::class, 'destroy']);
-    //     Route::get('/edit/{id}', [JobControllerForAdmin::class, 'edit']);
-    //     Route::post('/update/{id}', [JobControllerForAdmin::class, 'update']);
-    //     Route::get('/application', [JobControllerForAdmin::class, 'view_application'])->name('admin.job.view_application');
-    //     Route::get('/application/delete/{id}', [JobControllerForAdmin::class, 'delete_application']);
-    // });
 
 
     /* --------------------------------------- */

@@ -154,7 +154,7 @@
 
                                 <div class="form-group">
                                     <label for="">Details</label>
-                                    <textarea name="about_detail" class="form-control h_100" cols="30" rows="10" >{{ $page_home->about_detail }}</textarea>
+                                    <textarea name="about_detail" class="form-control editor h_100" cols="30" rows="10" >{{ $page_home->about_detail }}</textarea>
                                 </div>
 
                                 <div class="form-group">

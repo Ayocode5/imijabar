@@ -127,17 +127,17 @@
                             <a class="collapse-item @if ($conName[2] == 'event') active @endif"
                                 href="{{ route('admin.page_event.edit') }}">Events</a>
                             <a disable class="collapse-item @if ($conName[2] == 'gallery') active @endif"
-                                href="#">Gallery</a>
+                                href="{{ route('admin.page_gallery.edit') }}">Gallery</a>
                             {{-- <a class="collapse-item @if ($conName[2] == 'project') active @endif"
                                 href="{{ route('admin.page_project.edit') }}">Project</a> --}}
-                            <a class="collapse-item @if ($conName[2] == 'faq') active @endif"
+                            {{-- <a class="collapse-item @if ($conName[2] == 'faq') active @endif"
                                 href="{{ route('admin.page_faq.edit') }}">FAQ</a>
                             <a class="collapse-item @if ($conName[2] == 'team') active @endif"
                                 href="{{ route('admin.page_team.edit') }}">Team Member</a>
                             <a class="collapse-item @if ($conName[2] == 'photo-gallery') active @endif"
                                 href="{{ route('admin.page_photo_gallery.edit') }}">Photo Gallery</a>
                             <a class="collapse-item @if ($conName[2] == 'video-gallery') active @endif"
-                                href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a>
+                                href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a> --}}
                             {{-- <a class="collapse-item @if ($conName[2] == 'contact') active @endif"
                                 href="{{ route('admin.page_contact.edit') }}">Contact</a> --}}
                             {{-- <a class="collapse-item @if ($conName[2] == 'career') active @endif"

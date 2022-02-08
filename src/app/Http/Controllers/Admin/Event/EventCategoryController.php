@@ -23,8 +23,10 @@ class EventCategoryController extends Controller
      */
     public function index()
     {
-       $categories = EventCategory::all();
-       return view('admin.event_category.index', compact('categories'));
+        $this->authorize('viewAny', EventCategory::class);
+
+        $categories = EventCategory::all();
+        return view('admin.event_category.index', compact('categories'));
     }
 
     /**
@@ -34,6 +36,8 @@ class EventCategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', EventCategory::class);
+
         return view('admin.event_category.create');
     }
 
@@ -45,6 +49,8 @@ class EventCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', EventCategory::class);
+
         $request->validate([
             'name' => 'required|unique:event_categories',
         ]);
@@ -59,7 +65,6 @@ class EventCategoryController extends Controller
         $newCategory->save();
 
         return redirect()->route('admin.event_category.index')->with('success', 'Event Category Successfuly added!');
-
     }
 
     /**
@@ -70,6 +75,8 @@ class EventCategoryController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', EventCategory::class);
+
         $category = EventCategory::findOrFail($id);
         // dd($category);
         return view('admin.event_category.edit', compact('category'));
@@ -84,6 +91,8 @@ class EventCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', EventCategory::class);
+
         $request->validate([
             'name' => 'required',
             'seo_title' => 'max:255',
@@ -107,15 +116,15 @@ class EventCategoryController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', EventCategory::class);
 
         $sports = DB::table('sports')->where('category_id', $id)->count();
 
-        if($sports > 0) {
+        if ($sports > 0) {
             return redirect()->route('admin.event_category.index')->withErrors("Category can't be deleted, some event are under this category");
         }
 
         EventCategory::find($id)->delete();
         return redirect()->route('admin.event_category.index')->with('success', 'Event Category deleted successfuly');
-
     }
 }

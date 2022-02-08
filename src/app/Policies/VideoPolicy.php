@@ -18,7 +18,7 @@ class VideoPolicy
      */
     public function viewAny(User $user)
     {
-        return in_array('view-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('view-gallery-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -41,7 +41,7 @@ class VideoPolicy
      */
     public function create(User $user)
     {
-        return in_array('create-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('create-gallery-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -53,7 +53,7 @@ class VideoPolicy
      */
     public function update(User $user)
     {
-        return in_array('update-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('update-gallery-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -65,7 +65,7 @@ class VideoPolicy
      */
     public function delete(User $user)
     {
-        return in_array('delete-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('delete-gallery-video', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**

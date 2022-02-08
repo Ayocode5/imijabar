@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Committe Member</h1>
 
-    <form action="{{ url('admin/team-member/update/'.$team_member->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/committee/update/'.$team_member->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">

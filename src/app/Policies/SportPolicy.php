@@ -18,7 +18,7 @@ class SportPolicy
      */
     public function viewAny(User $user)
     {
-        return in_array('view-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('view-event-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -41,7 +41,7 @@ class SportPolicy
      */
     public function create(User $user)
     {
-        return in_array('create-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('create-event-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -53,7 +53,7 @@ class SportPolicy
      */
     public function update(User $user)
     {
-        return in_array('update-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('update-event-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**
@@ -65,7 +65,7 @@ class SportPolicy
      */
     public function delete(User $user)
     {
-        return in_array('delete-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        return in_array('delete-event-sport', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 
     /**

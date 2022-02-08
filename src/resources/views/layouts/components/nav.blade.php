@@ -11,17 +11,17 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto navbar_list">
                 <li class="nav-item mr-lg-3">
-                    <a class="nav-link @if($url == 'about') active @endif" href="{{ url('/about') }}">Tentang IMI<span
+                    <a class="nav-link @if ($url == 'about') active @endif" href="{{ url('/about') }}">Tentang IMI<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if($url == 'news') active @endif" href="/berita">Berita</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'news') active @endif" href="/news">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if($url == 'galleries') active @endif" href="#">Galeri</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if($url == 'events') active @endif" href="#">Acara</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'events') active @endif" href="#">Acara</a>
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -38,19 +38,33 @@
             </ul>
             <ul class="navbar-nav ml-auto navbar_list">
                 <li class="nav-item mr-lg-3">
-                    <input type="checkbox" checked data-toggle="toggle" data-on="IND" data-off="ENG" data-style="ios"
-                        data-onstyle="primary" data-offstyle="danger">
+                    <div class="switch_language">
+                        <input type="checkbox" class="checkbox_switch_language" id="chk" />
+                        <label class="label_switch_language" for="chk">
+                            <div class="ball"></div>
+                            <div class="flags">
+                                <img class="ball_us flag"
+                                    src="{{ asset('storage/app/public/assets/img') }}/flag-us.svg" alt="us flag">
+                                <img class="ball_id flag"
+                                    src="{{ asset('storage/app/public/assets/img') }}/flag-indonesia.svg" alt="is flag">
+                            </div>
+                            <!-- <div class="ball"></div> -->
+                        </label>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{asset('storage/app/public/assets/img')}}/Telephone-Icon.svg" alt="icon contact telephone">
+                        <img class="mb-1 mr-2"
+                            src="{{ asset('storage/app/public/assets/img') }}/Telephone-Icon.svg"
+                            alt="icon contact telephone">
                         {{-- 0857-XXXX-XXXX --}}
                         {{ $settings?->top_bar_phone }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1" src="{{asset('storage/app/public/assets/img')}}/Email-Icon.svg" alt="icon contact email">
+                        <img class="mb-1 mr-2" src="{{ asset('storage/app/public/assets/img') }}/Email-Icon.svg"
+                            alt="icon contact email">
                         {{ $settings?->top_bar_email }}
                     </a>
                 </li>

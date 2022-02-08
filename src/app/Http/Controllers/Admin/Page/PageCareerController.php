@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\PageCareerItem;
 use Illuminate\Http\Request;
 
-
 class PageCareerController extends Controller
 {
     public function __construct()

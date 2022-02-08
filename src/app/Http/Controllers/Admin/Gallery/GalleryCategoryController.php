@@ -20,9 +20,12 @@ class GalleryCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       $categories = GalleryCategory::all();
-       return view('admin.gallery_category.index', compact('categories'));
+    {   
+
+        $this->authorize('viewAny', GalleryCategory::class);
+
+        $categories = GalleryCategory::all();
+        return view('admin.gallery_category.index', compact('categories'));
     }
 
     /**
@@ -32,6 +35,8 @@ class GalleryCategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', GalleryCategory::class);
+
         return view('admin.gallery_category.create');
     }
 
@@ -43,6 +48,8 @@ class GalleryCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', GalleryCategory::class);
+
         $request->validate([
             'name' => 'required|unique:gallery_categories',
         ]);
@@ -57,7 +64,6 @@ class GalleryCategoryController extends Controller
         $newCategory->save();
 
         return redirect()->route('admin.gallery_category.index')->with('success', 'Category Successfuly added!');
-
     }
 
     /**
@@ -68,6 +74,8 @@ class GalleryCategoryController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', GalleryCategory::class);
+
         $category = GalleryCategory::findOrFail($id);
         // dd($category);
         return view('admin.gallery_category.edit', compact('category'));
@@ -82,6 +90,8 @@ class GalleryCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', GalleryCategory::class);
+
         $request->validate([
             'name' => 'required',
             'seo_title' => 'max:255',
@@ -105,12 +115,13 @@ class GalleryCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $g = GalleryCategory::withCount(['videos','photos'])->find($id);
-        if($g->can_delete) {
+        $this->authorize('delete', GalleryCategory::class);
+
+        $g = GalleryCategory::withCount(['videos', 'photos'])->find($id);
+        if ($g->can_delete) {
             $g->delete();
             return redirect()->route('admin.gallery_category.index')->with('success', 'Category deleted successfuly');
         }
         return redirect()->route('admin.gallery_category.index')->withErrors("Category can't be deleted, there are posts under this category");
-
     }
 }

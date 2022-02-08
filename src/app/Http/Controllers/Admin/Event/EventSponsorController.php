@@ -18,6 +18,8 @@ class EventSponsorController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Sponsor::class);
+
         $sponsors = Sponsor::all();
         return view('admin.event_sponsor.index', compact('sponsors'));
     }
@@ -29,6 +31,8 @@ class EventSponsorController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Sponsor::class);
+
         return view('admin.event_sponsor.create');
     }
 
@@ -40,6 +44,8 @@ class EventSponsorController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Sponsor::class);
+
         $request->validate([
             'name' => 'required|unique:sponsors',
             'image' => 'required|image|mimes:png,jpg,jpeg,svg,gif|max:2048'
@@ -69,6 +75,8 @@ class EventSponsorController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Sponsor::class);
+
         $sponsor = Sponsor::findOrFail($id);
         return view('admin.event_sponsor.edit', compact('sponsor'));
     }
@@ -82,6 +90,8 @@ class EventSponsorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Sponsor::class);
+
         $request->validate([
             'name' => [Rule::unique('sponsors', 'name')->ignore($id)],
             'image' => 'image|mimes:png,jpg,jpeg,svg,gif|max:2048'
@@ -136,6 +146,8 @@ class EventSponsorController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Sponsor::class);
+
         $sponsor = Sponsor::find($id);
 
         if($sponsor) {

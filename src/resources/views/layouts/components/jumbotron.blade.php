@@ -6,7 +6,7 @@
             <div class="row no-gutters">
                 <div class="col-6 col-lg-12 no-gutters">
                     <img class="jumbotron_logo position-absolute"
-                        src="" alt="Logo IMI">
+                        src="{{ asset('storage/app/public/assets/img/logoImiJumbotron.svg') }}" alt="Logo IMI">
                     <img class="jumbotron_batik" src="{{ asset('public/uploads/') . "/$home_settings->jumbotron_bg" }}"
                         alt="jumbotron-batik">
                 </div>

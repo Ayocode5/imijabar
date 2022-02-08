@@ -29,7 +29,7 @@ class PageBlogController extends Controller
 
          PageBlogItem::where('id',1)->update($data);
 
-         return redirect()->back()->with('success', 'Blog Page Content is updated successfully!');
+         return redirect()->back()->with('success', 'News Page Content is updated successfully!');
 
      }
 

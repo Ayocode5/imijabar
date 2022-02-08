@@ -25,11 +25,11 @@
                                     <input type="hidden" name="menu_id[]" value="{{ $row->id }}">
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $row->menu_name }}</td>
+                                        <td>{{ $row->name }}</td>
                                         <td>
-                                            <select name="menu_status[]" class="form-control">
-                                                <option value="Show" @if($row->menu_status == 'Show') selected @endif>Show</option>
-                                                <option value="Hide" @if($row->menu_status == 'Hide') selected @endif>Hide</option>
+                                            <select name="status[]" class="form-control">
+                                                <option value="1" @if($row->status ==  1) selected @endif>Show</option>
+                                                <option value="0" @if($row->status ==  0) selected @endif>Hide</option>
                                             </select>
                                         </td>
                                     </tr>

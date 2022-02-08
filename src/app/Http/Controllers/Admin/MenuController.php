@@ -23,23 +23,15 @@ class MenuController extends Controller
     public function update(Request $request)
     {
 
-        echo '<pre>';
-        print_r(request('menu_id'));
-        echo '</pre>';
-
-        echo '<pre>';
-        print_r(request('menu_status'));
-        echo '</pre>';
-
         $i=0;
-        foreach(request('menu_id') as $value)
+        foreach($request->menu_id as $value)
         {
             $arr1[$i] = $value;
             $i++;
         }
 
         $i=0;
-        foreach(request('menu_status') as $value)
+        foreach($request->status as $value)
         {
             $arr2[$i] = $value;
             $i++;
@@ -48,7 +40,7 @@ class MenuController extends Controller
         for($i=0;$i<count($arr1);$i++)
         {
             $data = array();
-            $data['menu_status'] = $arr2[$i];
+            $data['status'] = $arr2[$i];
             DB::table('menus')->where('id', $arr1[$i])->update($data);
         }
 
