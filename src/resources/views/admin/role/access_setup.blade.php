@@ -1,5 +1,6 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
+
     <h1 class="h3 mb-3 text-gray-800">Setup Roles for {{ $attachedPermissionsRole->name }}</h1>
 
     <form action="{{ url('admin/role/access-setup-update/'.$attachedPermissionsRole->id) }}" method="post">
@@ -31,5 +32,6 @@
             </div>
         </div>
     </form>
+    @endif
 
 @endsection

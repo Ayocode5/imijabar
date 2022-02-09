@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
-use App\Http\Controllers\Admin\DynamicPageController;
-use App\Http\Controllers\Admin\EmailTemplateController;
-use App\Http\Controllers\Admin\FooterColumnController;
-use App\Http\Controllers\Admin\GeneralSettingController;
 
-//Admin PanelADMIN AUTHENTICATIONS
+
+//Admin Panel ADMIN AUTHENTICATIONS
 use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
@@ -15,34 +11,24 @@ use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeCo
 use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
-//Admin Panel ROLE CONTROLLER
+
+/**
+ * Admin Panel - Feature
+ */
+use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
+use App\Http\Controllers\Admin\RegistrationMember\ClubController;
+use App\Http\Controllers\Admin\RegistrationMember\KisController;
+use App\Http\Controllers\Admin\DynamicPageController;
+use App\Http\Controllers\Admin\EmailTemplateController;
+use App\Http\Controllers\Admin\FooterColumnController;
+use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\Role\RoleController;
-
-//Admin Panel SHOP
-use App\Http\Controllers\Admin\Shop\CouponController;
-use App\Http\Controllers\Admin\Shop\CustomerController;
-use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
-use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
-use App\Http\Controllers\Admin\Shop\ShippingController;
-
-//Admin Panel Menu
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
-
-//Admin Panel Pages Settings
-use App\Http\Controllers\Admin\Page\PageHomeController;
-use App\Http\Controllers\Admin\Page\PageBlogController;
-use App\Http\Controllers\Admin\Page\PageAboutController;
-use App\Http\Controllers\Admin\Page\PageEventController;
-use App\Http\Controllers\Admin\Page\PageGalleryController;
-use App\Http\Controllers\Admin\Page\PageFaqController;
-use App\Http\Controllers\Admin\Page\PagePhotoGalleryController;
-use App\Http\Controllers\Admin\Page\PageTeamController;
-
 
 //Admin Panel Gallery
 use App\Http\Controllers\Admin\Gallery\PhotoController;
@@ -52,7 +38,6 @@ use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCateg
 //Admin Panel BLOG
 use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
-use App\Http\Controllers\Admin\Blog\CommentController;
 
 //Admin Panel EVENT
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
@@ -60,7 +45,29 @@ use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryCon
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
 
-//Front Panel CUSTOMER
+/**
+ * Admin Panel - Page Settings
+ */
+use App\Http\Controllers\Admin\Page\PageHomeController;
+use App\Http\Controllers\Admin\Page\PageBlogController;
+use App\Http\Controllers\Admin\Page\PageAboutController;
+use App\Http\Controllers\Admin\Page\PageEventController;
+use App\Http\Controllers\Admin\Page\PageGalleryController;
+use App\Http\Controllers\Admin\Page\PageFaqController;
+use App\Http\Controllers\Admin\Page\PageTeamController;
+
+
+//Admin Panel SHOP
+use App\Http\Controllers\Admin\Shop\CouponController;
+use App\Http\Controllers\Admin\Shop\CustomerController;
+use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
+use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
+use App\Http\Controllers\Admin\Shop\ShippingController;
+
+
+/**
+ * Front Panel - Customer
+ */
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
 use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
@@ -467,8 +474,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::get('/edit/{id}', [EventSponsorControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [EventSponsorControllerForAdmin::class, 'update']);
         });
-
-        
     });
 
 
@@ -512,9 +517,8 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::get('/edit/{id}', [GalleryCategoryControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [GalleryCategoryControllerForAdmin::class, 'update']);
         });
-
     });
-    
+
 
     /* --------------------------------------- */
     /* Team Member - Admin */
@@ -668,14 +672,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* Admin Users and Roles - Admin */
     /* --------------------------------------- */
     Route::group(['prefix' => 'role', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/user', [RoleController::class, 'user'])->name('admin.role.user');
-        Route::get('/user-create', [RoleController::class, 'user_create'])->name('admin.role.user-create');
-        Route::post('/user-store', [RoleController::class, 'user_store'])->name('admin.role.user-store');
-        Route::get('/user/edit/{id}', [RoleController::class, 'user_edit']);
-        Route::post('/user/update/{id}', [RoleController::class, 'user_update']);
-        Route::get('/user/edit/password/{id}', [RoleController::class, 'user_edit_password']);
-        Route::post('/user/update/password/{id}', [RoleController::class, 'user_update_password']);
-        Route::get('/user/delete/{id}', [RoleController::class, 'user_destroy']);
         Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
         Route::get('/create', [RoleController::class, 'create'])->name('admin.role.create');
         Route::post('/store', [RoleController::class, 'store'])->name('admin.role.store');
@@ -684,5 +680,21 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::post('/update/{id}', [RoleController::class, 'update']);
         Route::get('/access-setup/{id}', [RoleController::class, 'access_setup']);
         Route::post('/access-setup-update/{id}', [RoleController::class, 'access_setup_update']);
+        Route::get('/user', [RoleController::class, 'user'])->name('admin.role.user');
+        Route::get('/user-create', [RoleController::class, 'user_create'])->name('admin.role.user-create');
+        Route::post('/user-store', [RoleController::class, 'user_store'])->name('admin.role.user-store');
+        Route::get('/user/edit/{id}', [RoleController::class, 'user_edit']);
+        Route::post('/user/update/{id}', [RoleController::class, 'user_update']);
+        Route::get('/user/edit/password/{id}', [RoleController::class, 'user_edit_password']);
+        Route::post('/user/update/password/{id}', [RoleController::class, 'user_update_password']);
+        Route::get('/user/delete/{id}', [RoleController::class, 'user_destroy']);
+    });
+
+    /**
+     * IMI Member Registration - Admin
+     */
+    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function() {
+        Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
+        Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
     });
 });

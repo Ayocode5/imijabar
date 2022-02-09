@@ -118,8 +118,6 @@
                                 href="{{ route('admin.page_home.edit') }}">Home</a>
                             <a class="collapse-item @if ($conName[2] == 'about') active @endif"
                                 href="{{ route('admin.page_about.edit') }}">About</a>
-                            {{-- <a class="collapse-item @if ($conName[2] == 'service') active @endif"
-                                href="{{ route('admin.page_service.edit') }}">Service</a> --}}
                             {{-- <a class="collapse-item @if ($conName[2] == 'shop') active @endif"
                                 href="{{ route('admin.page_shop.edit') }}">Shop</a> --}}
                             <a class="collapse-item @if ($conName[2] == 'blog') active @endif"
@@ -128,8 +126,7 @@
                                 href="{{ route('admin.page_event.edit') }}">Events</a>
                             <a disable class="collapse-item @if ($conName[2] == 'gallery') active @endif"
                                 href="{{ route('admin.page_gallery.edit') }}">Gallery</a>
-                            {{-- <a class="collapse-item @if ($conName[2] == 'project') active @endif"
-                                href="{{ route('admin.page_project.edit') }}">Project</a> --}}
+                
                             {{-- <a class="collapse-item @if ($conName[2] == 'faq') active @endif"
                                 href="{{ route('admin.page_faq.edit') }}">FAQ</a>
                             <a class="collapse-item @if ($conName[2] == 'team') active @endif"
@@ -140,12 +137,8 @@
                                 href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a> --}}
                             {{-- <a class="collapse-item @if ($conName[2] == 'contact') active @endif"
                                 href="{{ route('admin.page_contact.edit') }}">Contact</a> --}}
-                            {{-- <a class="collapse-item @if ($conName[2] == 'career') active @endif"
-                                href="{{ route('admin.page_career.edit') }}">Career</a> --}}
-                            {{-- <a class="collapse-item @if ($conName[2] == 'term') active @endif"
-                                href="{{ route('admin.page_term.edit') }}">Term</a> --}}
-                            {{-- <a class="collapse-item @if ($conName[2] == 'privacy') active @endif"
-                                href="{{ route('admin.page_privacy.edit') }}">Privacy</a> --}}
+                      
+                
                             {{-- <a class="collapse-item @if ($conName[2] == 'other') active @endif"
                                 href="{{ route('admin.page_other.edit') }}">Other</a> --}}
                         </div>
@@ -172,6 +165,22 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item @if ($conName[1] == 'role' && $conName[2] == '') active @endif" href="{{ route('admin.role.index') }}">Roles</a>
                             <a class="collapse-item @if ($conName[2] == 'user') active @endif" href="{{ route('admin.role.user') }}">Users</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Member Registration -->
+                <li class="nav-item @if ($conName[1] == 'registration') active @endif">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRegistration"
+                        aria-expanded="true" aria-controls="collapseRegistration">
+                        <i class="fas fa-user-secret"></i>
+                        <span>Member Registration</span>
+                    </a>
+                    <div id="collapseRegistration" class="collapse @if ($conName[1] == 'registration') show @endif" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item @if ($conName[2] == 'kis') active @endif" href="{{ route('admin.register.kis') }}">KIS</a>
+                            <a class="collapse-item @if ($conName[2] == 'club') active @endif" href="{{ route('admin.register.club') }}">CLUB</a>
                         </div>
                     </div>
                 </li>

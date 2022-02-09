@@ -35,7 +35,7 @@ class DynamicPageController extends Controller
         $request->validate([
             'dynamic_page_name' => 'required|unique:dynamic_pages',
             'dynamic_page_slug' => 'unique:dynamic_pages',
-            'dynamic_page_banner' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'dynamic_page_banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if(empty($data['dynamic_page_slug'])) {

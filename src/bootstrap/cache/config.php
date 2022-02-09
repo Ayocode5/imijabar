@@ -373,6 +373,31 @@
       '/var/www/html/public/storage' => '/var/www/html/storage/app/public',
     ),
   ),
+  'google' => 
+  array (
+    'application_name' => 'PHPLaravelSheets',
+    'client_id' => '103864966889689275315',
+    'client_secret' => '',
+    'redirect_uri' => '',
+    'scopes' => 
+    array (
+      0 => 'https://www.googleapis.com/auth/drive',
+      1 => 'https://www.googleapis.com/auth/spreadsheets',
+    ),
+    'access_type' => 'online',
+    'approval_prompt' => 'auto',
+    'developer_key' => 'AIzaSyDfkS79Is1hImWVn8D7NJI8z739xbML-Ic',
+    'service' => 
+    array (
+      'enable' => true,
+      'file' => '/var/www/html/credentials.json',
+    ),
+    'config' => 
+    array (
+      'kis_spreadsheet_id' => '11Ph35qXm7vLI6wLCbeQ1ctx4eam5bjR4B7FQX4FQnRI',
+      'club_spreadsheet_id' => '1LOQENywoEr1SVzULmQptwWPF0sFVYZ9edFGpqVU-JUI',
+    ),
+  ),
   'hashing' => 
   array (
     'driver' => 'bcrypt',
@@ -663,6 +688,10 @@
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',
+  ),
+  'test' => 
+  array (
+    'test' => 'wwlwlw',
   ),
   'view' => 
   array (
