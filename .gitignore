@@ -1,6 +1,7 @@
 /containers/mysql/*
 /src/node_modules
 /src/public/hot
+!/src/storage/public/app
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key
