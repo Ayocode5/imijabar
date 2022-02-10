@@ -1,131 +1,120 @@
-<!-- START KEPENGURUSAN -->
 <section id="strukturPengurus">
     <div class="container-fluid py-5">
         <div class="head_strukturPengurus mb-5">
-            <h2>{{ $home_settings->committee_title }}</h2>
+            <h2>{{ $title }}</h2>
             <div class="border_heading_strukturPengurus mb-4"></div>
             <div class="d-flex flex-wrap justify-content-between">
-                <p>{{ $home_settings->committee_detail }}</p>
+                <p>{{ $detail }}</p>
                 <a style="background-color: #F8F8F8; color: #263840;"
                     class="px-3 py-2 mt-2 mt-md-1 link_selengkapnya_struktur_pengurus" href="#">Selengkapnya
                     <span>→</span></a>
             </div>
         </div>
-        <div class="carousel slide multi-item-carousel" id="theCarousel">
-            <div class="carousel-inner row w-100 mx-auto">
-
-                <!-- Orang 1 -->
-                <div style="z-index: 100;" class="carousel-item active col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person1.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+        <div class="multi-item-carousel">
+            <div class="owl-carousel owl-theme carousel_kepengurusan">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person1.png" alt="commite1">
                 </div>
-
-                <!-- Orang 2 -->
-                <div style="z-index: 100;" class="carousel-item col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person2.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person2.png" alt="commite2">
                 </div>
-
-                <!-- Orang 3 -->
-                <div style="z-index: 100;" class="carousel-item col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person3.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person3.png" alt="commite3">
                 </div>
-
-                <!-- Orang 4 -->
-                <div style="z-index: 100;" class="carousel-item col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person4.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person4.png" alt="commite4">
                 </div>
-
-                <!-- Orang 5 -->
-                <div style="z-index: 100;" class="carousel-item col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person5.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person5.png" alt="commite5">
                 </div>
-
-                <!-- Orang 6 -->
-                <div style="z-index: 100;" class="carousel-item col-md-3">
-                    <div class="overlay_struktur_pengurus"></div>
-                    <img src="{{ asset('storage/app/public/assets/img') }}/person6.png"
-                        class="img-fluid mx-auto d-block">
-                    <div class="text_profile_pengurus">
-                        <h3>Jhon Doe</h3>
-                        <p>Ketua Umum</p>
-                        <div class="d-inline">
-                            <img class="mr-3"
-                                src="{{ asset('storage/app/public/assets/img') }}/instagram.svg" alt="">
-                            <img src="{{ asset('storage/app/public/assets/img') }}/facebook.svg" alt="">
+                <div class="item position-relative">
+                    <div class="overlay_multiple_item_carousel position-absolute">
+                        <div class="content_overlay_multiple_item_carousel">
+                            <p class="name_text_overlay">Jhon Doe</p>
+                            <p class="role_text_overlay">Ketua Umum</p>
+                            <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/instagram.svg"
+                                        alt="instagram commite"></a>
+                                <a href="#"><img style="height: 22px; width: 22px;"
+                                        src="{{ asset('public/frontend/assets') }}/img/facebook.svg"
+                                        alt="facebook commite"></a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{ asset('public/frontend/assets') }}/img/person6.png" alt="commite6">
                 </div>
-
             </div>
-            <a style="z-index: 200;" class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
-                <img class="carousel_control_img_prev"
-                    src="{{ asset('storage/app/public/assets/img') }}/arrow-left-carousel.svg"
-                    alt="prev slide carousel">
-                <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span> -->
-            </a>
-            <a style="z-index: 200;" class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
-                <img class="carousel_control_img_next"
-                    src="{{ asset('storage/app/public/assets/img') }}/arrow-right-carousel.svg"
-                    alt="next slide carousel">
-                <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span> -->
-            </a>
         </div>
     </div>
 </section>
-<!-- END KEPENGURUSAN -->

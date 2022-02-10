@@ -155,12 +155,16 @@
                         </div>
                         <div class="card-header" id="showMoreHistory" style="background-color: #F8F8F8;">
                             <h2 class="mb-0 d-flex justify-content-center">
-                                <button class="btn btn-link showmore_history" type="button" data-toggle="collapse"
-                                    data-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory">
-                                    Tampilkan Lebih Banyak
-
-                                    <img src="{{ asset('storage/app/public/assets/') }}/img/icon-arrow-down.svg" alt="arrow down" class="showmore-icon">
-                                </button>
+                                <div class="showmore_history">
+                                    <input type="checkbox" class="show_more_tentang_imi" id="shwmr"
+                                        data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true"
+                                        aria-controls="collapseHistory" />
+                                    <label class="label_show_more_history d-flex align-items-center" for="shwmr">
+                                        <div class="text_show_more_tentang_imi"></div>
+                                        <img src="{{ asset('public/frontend/assets/') }}/img/icon-arrow-down.svg" alt="arrow down"
+                                            class="showmore-icon">
+                                    </label>
+                                </div>
                             </h2>
                         </div>
                     </div>
@@ -175,7 +179,10 @@
     <!-- END GALERI -->
 
     <!-- START KEPENGURUSAN -->
-    @include('layouts.components.committee')
+    @include('layouts.components.committee', [
+        'title' => $home_settings->committee_title, 
+        'detail' => $home_settings->committee_detail
+    ])
     <!-- END KEPENGURUSAN -->
 
     <!-- START ANGGARAN -->

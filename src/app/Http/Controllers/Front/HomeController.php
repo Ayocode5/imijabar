@@ -31,6 +31,7 @@ class HomeController extends Controller
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('event_end_date', '>=', $date_today)
+			->where('deleted_at', null)
 			->limit($home_settings->events_total)
 			->groupBy('id')
 			->get();
@@ -49,7 +50,7 @@ class HomeController extends Controller
 			} elseif ($event->event_end_date < $date_today) {
 				return $event->status = 'Past';
 			} else {
-				return $event->status = "Invalid Logic";
+				return $event->status = "Invalid Date";
 			}
 		});
 
@@ -70,6 +71,12 @@ class HomeController extends Controller
 			'footer_column3_heading',
 		)->first();
 
-		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings'));
+		$event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content as content')->where('dynamic_page_slug', 'section-pendaftaran-event')->first();  
+
+		// dd($events);
+		// dd($news);
+		// dd($home_settings);
+		// dd($event_registration_section);
+		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'event_registration_section'));
 	}
 }

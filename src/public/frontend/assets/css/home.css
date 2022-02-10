@@ -1,0 +1,798 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+@import url(./reusable-css/navbar.css);
+@import url(./reusable-css/kepengurusan.css);
+@import url(./reusable-css/footer.css);
+/* 
+    font-family: 'Barlow', sans-serif;  
+    font-family: 'Tinos', serif;
+    font-family: 'Zeyada', cursive;
+*/
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+    Start Jumbotron 
+*/
+.jumbotron_logo {
+    width: 100px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+
+.jumbotron_batik {
+    height: 200px;
+    width: 100%;
+}
+
+.wrap_welcome-text {
+    background-color: #F4F4F9;
+    border-top: 1px solid rgba(38, 56, 64, 0.5);
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+    ;
+}
+
+.jumbotron_carousel {
+    width: 100%;
+}
+
+.jumbotron_carousel .carousel-inner .carousel-item img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.jumbotron_carousel .carousel-item .carousel-caption {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.jumbotron_carousel .carousel-item .carousel-caption h2 {
+    text-decoration: underline;
+    font-family: 'Tinos', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+
+.jumbotron_carousel .carousel-item .carousel-caption p {
+    font-family: 'Tinos', serif;
+    font-weight: 400;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.jumbotron_carousel .carousel-item .carousel-caption .date_author {
+    font-weight: 500;
+}
+
+.jumbotron_carousel .carousel-item .carousel-caption .btn_show_jumbotron {
+    font-weight: 500;
+}
+
+.welcome_text {
+    text-align: center;
+    padding: 20% 5%;
+}
+
+.welcome_text h1 {
+    font-size: 1.5em;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: .6s;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-prev {
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+}
+
+
+.carousel-fade .carousel-item .carousel-caption button {
+    opacity: 0;
+    transform: translate(-100px, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
+.carousel-fade .carousel-item.active .carousel-caption button {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
+.overlay_jumbotron {
+    position: absolute;
+    background: rgba(38, 56, 64, 0.5);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-indicators .active {
+    width: 137px;
+    transition: all 0.3s ease-in-out;
+    background-color: #0078C1 !important;
+}
+
+/* 
+    End Jumbotron 
+*/
+
+main {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* 
+    Start Style Berita Acara
+*/
+.berita-acara {
+    margin: 0px 8px;
+}
+
+.title-berita-acara {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+.subtitle-berita {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.border_title {
+    background-color: #5996ec;
+    padding: 2px;
+    margin-bottom: 35px;
+    width: 65px;
+}
+
+.border_acara {
+    background-color: #5996ec;
+    padding: 2px;
+    margin-bottom: 35px;
+    width: 150px;
+}
+
+.title-berita-acara {
+    margin-top: 30px;
+}
+
+.tanggal-berita {
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.title-berita {
+    font-weight: 700;
+    font-size: 1.5em;
+    font-family: 'Tinos', serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.content-berita {
+    overflow: hidden;
+    padding: 8px 8px;
+    background-color: #F8F8F8;
+}
+
+.content-berita p {
+    font-size: 1em;
+}
+
+.content-berita .cover-berita {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.content-berita:hover .cover-berita {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.img-wrap {
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.btn_switch_category_event {
+    width: 100%;
+    background-color: #F8F8F8;
+    border: 0px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.btn_switch_category_event:hover {
+    background-color: #F8F8F8;
+    border: 1px solid #5996ec;
+    color: #000;
+}
+
+.show>.btn-secondary.btn_switch_category_event {
+    background-color: #F8F8F8;
+    border: 1px solid #5996ec;
+    color: #000;
+}
+
+.item_event {
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    background-color: #F8F8F8;
+}
+
+.content-event {
+    background-color: #263840;
+    margin-bottom: 20px;
+}
+
+.tgl-event {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.month-event {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+.loc-event,
+.name-event {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.name-event {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.title-event {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.detail-event {
+    font-size: 12px;
+    font-weight: medium;
+}
+
+.btn_show_more_berita_landing {
+    background-color: transparent;
+    padding: 7px 24px;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn_show_more_berita_landing:hover,
+.btn_show_more_berita_landing:focus,
+.btn_show_more_berita_landing:active {
+    background-color: #FFCE51;
+    outline: none;
+    border: none;
+    transform: translate(0, -5px);
+}
+
+/* 
+    End Style Berita Acara
+*/
+
+
+/* 
+    START STYLE TENTANG IMI
+*/
+#tentangIMI {
+    background-color: #F4F4F9;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.wrap_tentangImi {
+    padding: 8% 5%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.wrap_tentangImi .signature_imijabar {
+    font-family: 'Tinos', serif;
+    text-align: center;
+    font-size: 1.15em;
+}
+
+.wrap_tentangImi .signature_imijabar img {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 45px;
+    width: 70%;
+}
+
+.wrap_tentangImi .signature_imijabar p span {
+    font-size: 64px;
+    top: -24px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.wrap_tentangImi .signature_imijabar .signature_text {
+    font-family: 'Zeyada', cursive;
+    font-size: 1.5em;
+}
+
+.selengkapnya_tentangImi {
+    font-family: 'Barlow', sans-serif;
+    color: #000000;
+    font-size: 0.7em;
+    text-decoration: none;
+}
+
+.selengkapnya_tentangImi:hover {
+    text-decoration: none;
+}
+
+.slide_tentangImi1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.slide_tentangImi2 {
+    margin-top: 16px;
+}
+
+.wrap_background_imi {
+    border-top: 1px solid rgba(38, 56, 64, 0.5);
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+
+}
+
+.image_border_right {
+    border-right: 1px solid rgba(38, 56, 64, 0.5);
+    ;
+}
+
+.image_border_left {
+    border-left: 1px solid rgba(38, 56, 64, 0.5);
+}
+
+/* 
+    END STYLE TENTANG
+*/
+
+
+/* 
+    Start Style Newsletter
+*/
+#newsletter {
+    background-color: #F4F4F9;
+}
+
+.wrap_newsletter {
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 8% 5%;
+}
+
+.wrap_newsletter h3 {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.wrap_newsletter h3 span {
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.postMailIcon {
+    width: 40%;
+    margin-bottom: 8%;
+}
+
+
+.input_newsletter {
+    width: 100%;
+    border: none;
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-weight: 500;
+    color: #7a7a7a;
+    height: 32px;
+    padding: 8px;
+}
+
+.button_newsletter {
+    cursor: pointer;
+    height: 32px;
+    position: absolute;
+    right: 0;
+}
+
+/* 
+    End Style Newsletter
+*/
+
+
+
+/* Tablet Style */
+@media screen and (min-width: 768px) {
+
+    /* 
+        Start Jumbotron style
+    */
+    .jumbotron-img {
+        height: 456px;
+    }
+
+    .jumbotron_carousel .carousel-inner .carousel-item img {
+        height: 400px;
+    }
+
+    .jumbotron_batik {
+        height: 250px;
+    }
+
+    .jumbotron_logo {
+        width: 120px;
+    }
+
+    .welcome_text {
+        padding: 15% 5%;
+        text-align: left;
+    }
+
+
+    .welcome_text h1 {
+        font-size: 40px;
+    }
+
+    .jumbotron_carousel .carousel-item .carousel-caption {
+        text-align: left;
+        margin-bottom: 32px;
+        margin-left: -20px;
+        margin-right: 0;
+    }
+
+
+
+    .jumbotron_carousel .carousel-item .carousel-caption p {
+        font-size: 1em;
+        white-space: unset;
+        overflow: visible;
+        text-overflow: unset;
+    }
+
+    /* 
+        End Jumbotron style
+    */
+
+
+    /* 
+        Start Style Berita Acara
+    */
+    .content-berita {
+        border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+        padding: 16px 16px;
+    }
+
+    .title-berita-acara {
+        font-size: 30px;
+    }
+
+    .title-berita {
+        font-size: 32px;
+    }
+
+    .border_title {
+        width: 80px;
+    }
+
+    .border_acara {
+        width: 180px;
+    }
+
+    /* 
+        End Style Berita Acara
+    */
+
+
+    /* 
+        Start TentangIMI style
+    */
+    .wrap_tentangImi {
+        padding: 8% 4%;
+    }
+
+    .wrap_tentangImi .signature_imijabar .signature_text {
+        font-size: 48px;
+    }
+
+    /* 
+        End TentangIMI style
+    */
+
+    /* 
+        Start Newsletter style
+    */
+    .wrap_newsletter {
+        padding: 8% 4%;
+    }
+
+    .wrap_newsletter h3 {
+        font-size: 48px;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    .wrap_newsletter h3 span {
+        font-size: 32px;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .postMailIcon {
+        width: 25%;
+        margin-bottom: 8%;
+    }
+
+    .input_newsletter {
+        width: 100%;
+        border: none;
+        background-color: #F8F8F8;
+        font-size: 24px;
+        font-weight: 500;
+        color: #7a7a7a;
+        height: 68px;
+        padding: 8px;
+    }
+
+    .button_newsletter {
+        height: 68px;
+    }
+
+    /* 
+        End Newsletter style
+    */
+
+
+}
+
+@media screen and (min-width: 992px) {
+
+    /* 
+        Start Jumbotron Style
+    */
+    .jumbotron_logo {
+        width: 164px;
+        margin-left: 97px;
+    }
+
+    .jumbotron_batik {
+        height: 340px;
+    }
+
+    .welcome_text {
+        padding: 80px 0 0px 100px;
+        height: 259px;
+        max-height: 260px;
+    }
+
+    .welcome_text h1 {
+        font-size: 48px;
+    }
+
+    .jumbotron_carousel .carousel-item .carousel-caption {
+        text-align: left;
+        margin-bottom: 130px;
+        margin-left: -20px;
+        margin-right: 0px;
+    }
+
+    .jumbotron_carousel .carousel-inner .carousel-item img {
+        height: 601px;
+    }
+
+    .jumbotron_carousel .carousel-item .carousel-caption h2 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .jumbotron_carousel .carousel-item .carousel-caption p {
+        font-size: 1em;
+    }
+
+    /* 
+        End Jumbotron Style
+    */
+
+    /* 
+        Start Berita Acara style
+    */
+    .title-berita-acara {
+        font-size: 48px;
+        font-weight: bold;
+        padding-bottom: 3px;
+    }
+
+    .berita-acara {
+        margin: 0px 90px;
+    }
+
+    .border_title {
+        width: 130px;
+    }
+
+    .border_acara {
+        width: 290px;
+    }
+
+    .content-berita {
+        border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+        padding: 28px 32px;
+    }
+
+    .tanggal-berita {
+        margin-top: 0px;
+    }
+
+    .title-berita {
+        font-size: 36px;
+    }
+
+    .content-berita .cover-berita {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+
+
+    .content-event {
+        /* padding: 19px 16px; */
+        background-color: #263840;
+        margin-bottom: 20px;
+    }
+
+
+    .tgl-event {
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .card-body {
+        background-color: #F8F8F8;
+    }
+
+    .title-event {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .detail-event {
+        font-weight: medium;
+    }
+
+
+    /* 
+        End Style Berita Acara
+    */
+
+    /* 
+        Start TentangIMI Style
+    */
+    .wrap_tentangImi .signature_imijabar p span {
+        font-size: 144px;
+        top: -90px;
+    }
+
+    .wrap_tentangImi .signature_imijabar {
+        text-align: right;
+        font-size: 32px;
+    }
+
+    .wrap_tentangImi .signature_imijabar img {
+        margin-left: unset;
+        margin-right: unset;
+        left: unset;
+        right: 0;
+        /* text-align: center; */
+        bottom: 60px;
+        width: 45%;
+    }
+
+    .selengkapnya_tentangImi {
+        font-family: 'Barlow', sans-serif;
+        font-size: 24px;
+    }
+
+    .slide_tentangImi2 {
+        line-height: 38px;
+    }
+
+    #tentangIMI {
+        font-size: 24px;
+    }
+
+    /* 
+        End TentangIMI Style
+    */
+
+
+    /* 
+        Start Newsletter Style
+    */
+    .postMailIcon {
+        width: 75%;
+        margin-bottom: 8%;
+        float: right;
+    }
+
+    /* 
+        End  Newsletter Style
+    */
+}
+
+@media screen and (min-width: 2300px) {
+    main {
+        max-width: 2300px;
+    }
+}
