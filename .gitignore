@@ -1,10 +1,10 @@
 /containers/mysql/*
 /src/node_modules
 /src/public/hot
-/src/public/storage
+/src/public/storage/framework
+/src/public/storage/logs
 /src/storage/*.key
 /src/vendor
-/src/.env
 /src/.env.backup
 /src/.phpunit.result.cache
 docker-compose.override.yml
