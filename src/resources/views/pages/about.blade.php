@@ -161,7 +161,7 @@
                                         aria-controls="collapseHistory" />
                                     <label class="label_show_more_history d-flex align-items-center" for="shwmr">
                                         <div class="text_show_more_tentang_imi"></div>
-                                        <img src="{{ asset('public/frontend/assets/') }}/img/icon-arrow-down.svg" alt="arrow down"
+                                        <img src="{{ asset('storage/app/public/assets/') }}/img/icon-arrow-down.svg" alt="arrow down"
                                             class="showmore-icon">
                                     </label>
                                 </div>

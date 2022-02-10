@@ -6,15 +6,15 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 rel="stylesheet">
 
 
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/owl-carousel/owl.carousel.min.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/owl-carousel/owl.theme.default.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/component/breadcumb.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/component/navbar.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/component/footer.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/component/committee.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/component/section-gallery.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/home.css">
-<link rel="stylesheet" href="{{ asset('public/frontend/assets/css') }}/about.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/owl-carousel/owl.theme.default.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/breadcumb.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/navbar.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/footer.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/committee.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/section-gallery.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/home.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/about.css">
 
 
 

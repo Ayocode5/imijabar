@@ -14,5 +14,5 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <!-- <script src="typewriter.js"></script> -->
 
-<script src="{{ asset('public/frontend/assets/js') }}/owl-carousel/owl.carousel.min.js"></script>
-<script src="{{ asset('public/frontend/assets/js') }}/script.js"></script>
+<script src="{{ asset('storage/app/public/assets/js') }}/owl-carousel/owl.carousel.min.js"></script>
+<script src="{{ asset('storage/app/public/assets/js') }}/script.js"></script>
