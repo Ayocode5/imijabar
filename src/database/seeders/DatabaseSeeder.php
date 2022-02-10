@@ -15,7 +15,18 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            // PageHomeItemSeeder::class
+            AdminSeeder::class,
+            GeneralSettingSeeder::class,
+            RoleAndPermissionSeeder::class,
+            PageAboutItemSeeder::class,
+            PageEventItemSeeder::class,
+            PageNewsItemSeeder::class,
+            PageHomeItemSeeder::class,
+            PageGalleryItemSeeder::class,
+            CommitteeSeeder::class,
+            EmailTemplateSeeder::class,
+            SubscriberSeeder::class,
+            WebsiteMenuStatusSeeder::class
         ]);
     }
 }
