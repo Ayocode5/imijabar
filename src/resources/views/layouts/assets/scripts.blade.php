@@ -52,7 +52,6 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
             const filteredEvents = [];
             events.forEach(event => {
                 const categories = event.getAttribute('categories').split(",")
-        
                 categories.forEach(category => {
                     if (listFilter.includes(category)) {
                         if (!filteredEvents.includes(event)) {
