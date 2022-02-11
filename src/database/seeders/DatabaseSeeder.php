@@ -26,7 +26,10 @@ class DatabaseSeeder extends Seeder
             CommitteeSeeder::class,
             EmailTemplateSeeder::class,
             SubscriberSeeder::class,
-            WebsiteMenuStatusSeeder::class
+            WebsiteMenuStatusSeeder::class,
+            DynamicPageRegistrationEventSeeder::class,
+            NewsSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }
