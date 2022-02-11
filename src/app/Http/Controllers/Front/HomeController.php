@@ -35,6 +35,7 @@ class HomeController extends Controller
 			->where('deleted_at', null)
 			->limit($home_settings->events_total)
 			->groupBy('id')
+			->orderBy('e.event_start_date')
 			->get();
 
 
