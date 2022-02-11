@@ -16,11 +16,13 @@
                     </div>
                     <div class="card-body">
 
+                        <label for="">Select All</label>
+                        <input class="permission-select-all" type="checkbox">
                         <table class="table table-bordered">
 
                             @foreach ($permissions as $permission)
                                 <tr>
-                                    <td>{{ str_replace('-', ' ', $permission->name) }} <input name="input[]" type="checkbox" value="{{$permission->id}}" @if (in_array($permission->id, $attachedPermissionsRole->permissions->pluck('id')->toArray())) checked @endif></td>
+                                    <td>{{ str_replace('-', ' ', $permission->name) }} <input name="input[]" type="checkbox" class="permission-item" value="{{$permission->id}}" @if (in_array($permission->id, $attachedPermissionsRole->permissions->pluck('id')->toArray())) checked @endif></td>
                                 </tr>
                             @endforeach
 
