@@ -19,22 +19,23 @@
             </div>
         </div>
         <div class="col-12 col-lg-7 order-1 order-lg-2">
+            <!-- CAROUSEL BERITA JUMBOTRON-->
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
                     <li data-target="#demo" data-slide-to="0" class="active"></li>
                     <li data-target="#demo" data-slide-to="1"></li>
                     <li data-target="#demo" data-slide-to="2"></li>
                 </ul>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="overlay_jumbotron">
 
-                        </div>
+                <div class="carousel-inner">
+                    <!-- ITEMS CAROUSEL -->
+                    <div class="carousel-item active">
+                        <div class="overlay_jumbotron"></div>
                         <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" alt="Los Angeles"
                             width="100%" height="600">
                         <div class="carousel-caption">
                             <p class="date_author">23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
+                            <h2>Ford Mustang Shelby GT 500 1967 LOREM</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci. Id
                                 eu
                                 ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit mattis.
@@ -87,6 +88,7 @@
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
+            <!-- CAROUSEL BERITA JUMBOTRON-->
         </div>
     </div>
 </section>
