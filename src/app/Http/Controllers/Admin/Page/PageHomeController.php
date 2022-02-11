@@ -39,7 +39,9 @@ class PageHomeController extends Controller
             ]);
 
             // Unlink old photo
-            unlink(public_path('uploads/' . $request->input('current_photo')));
+            if(file_exists(public_path('uploads/' . $request->input('current_photo'))) && !empty($request->input('current_photo'))) {
+                unlink(public_path('uploads/' . $request->input('current_photo')));
+            }
 
             // Uploading new photo
             $ext = $request->file('jumbotron_bg')->extension();
