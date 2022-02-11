@@ -4,13 +4,13 @@
     @endif class="row no-gutters">
         <div class="col-12 col-lg-5 order-2 order-lg-1">
             <div class="row no-gutters">
-                <div class="col-6 col-lg-12 no-gutters">
+                <div class="col-6 col-lg-12 no-gutters border-bottom">
                     <img class="jumbotron_logo position-absolute"
                         src="{{ asset('storage/app/public/assets/img/logoImiJumbotron.svg') }}" alt="Logo IMI">
                     <img class="jumbotron_batik" src="{{ asset('public/uploads/') . "/$home_settings->jumbotron_bg" }}"
                         alt="jumbotron-batik">
                 </div>
-                <div class="col-6 col-lg-12 no-gutters row-cols-1 wrap_welcome-text">
+                <div class="col-6 col-lg-12 no-gutters row-cols-1 border-bottom wrap_welcome-text">
                     <div class="welcome_text">
                         <h1>{{ $home_settings->jumbotron_title }}</h1>
                         <p id="typed"></p>

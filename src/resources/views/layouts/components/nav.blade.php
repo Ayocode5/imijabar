@@ -1,5 +1,5 @@
 <!-- START NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div style="margin: -9px 0;" class="container-fluid mx-lg-5">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('public/uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">

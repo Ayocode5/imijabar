@@ -30,7 +30,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'id' => 3,
                 'et_subject' => 'Verify Subscription', 
-                'et_content' => '<p>Dear Sir,</p><p>You have requested to be a subscriber in our website. Please click on the following link to confirm the subscription:</p><p><a href=\"[[verification_link]]\" target=\"_blank\">Verification Link</a></p><p>Thank you so much!<br>Marketing Team</p>', 
+                'et_content' => '<p>Dear Sir,</p><p>You have requested to be a subscriber in our website. Please click on the following link to confirm the subscription:</p><p><a href=[[verification_link]] target=\"_blank\">Verification Link</a></p><p>Thank you so much!<br>Marketing Team</p>', 
                 'et_name' => 'Subscriber Message for Verification',
             ],
             [

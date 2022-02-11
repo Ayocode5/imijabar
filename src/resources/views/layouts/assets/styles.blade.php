@@ -15,6 +15,7 @@ rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/component/section-gallery.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/home.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/about.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/news.css">
 
 
 

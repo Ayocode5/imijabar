@@ -1,31 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Front;
+
 use App\Http\Controllers\Controller;
-use App\Mail\SubscriberMessageForVerification;
+use App\Jobs\SendEmailVerificationSubscriber;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
     public function index(Request $request)
     {
-        $token = hash('sha256',time());
+        $token = hash('sha256', time());
 
-        $request->validate(
-            [
-                'subs_email' => 'required|email|unique:subscribers'
-            ],
-            [],
-            [
-                'subs_email' => 'Subscriber Email Address'
-            ]
-        );
+        $request->validate(['subs_email' => 'required|email|unique:subscribers'],);
 
         // Save data into database
-        $data['subs_email'] = request('subs_email');
+        $data['subs_email'] = $request->subs_email;
         $data['subs_token'] = $token;
         $data['subs_active'] = 0;
         DB::table('subscribers')->insert($data);
@@ -35,13 +27,20 @@ class SubscriptionController extends Controller
         $subject = $email_template_data->et_subject;
         $message = $email_template_data->et_content;
 
-        $verification_link = url('subscriber/verify/'.$token.'/'.request('subs_email'));
+        $verification_link = url('subscriber/verify/' . $token . '/' . $request->subs_email);
 
         $message = str_replace('[[verification_link]]', $verification_link, $message);
 
-        Mail::to(request('subs_email'))->send(new SubscriberMessageForVerification($subject,$message));
+        // Send Email Verification to subscriber  
+        SendEmailVerificationSubscriber::dispatch([
+            'recipent' => $request->subs_email,
+            'subject' => $subject, 
+            'message' => $message
+        ]);
 
-        return redirect()->back()->with('success', 'To activate your subscription please check your email and follow instruction there.');
+        return response()->json([
+            'message' => 'Terimas kasih sudah berlangganan berita, silahkan verifikasi email anda'
+        ], 200);
     }
 
     public function verify()
@@ -49,20 +48,20 @@ class SubscriptionController extends Controller
         $email_from_url = request()->segment(count(request()->segments()));
         $aa = DB::table('subscribers')->where('subs_email', $email_from_url)->first();
 
-        if(!$aa) {
+        if (!$aa) {
             return abort(404);
         }
 
-        $expected_url = url('subscriber/verify/'.$aa->subs_token.'/'.$aa->subs_email);
+        $expected_url = url('subscriber/verify/' . $aa->subs_token . '/' . $aa->subs_email);
         $current_url = url()->current();
-        if($expected_url != $current_url) {
+        if ($expected_url != $current_url) {
             return abort(404);
         }
 
         $data['subs_active'] = 1;
         $data['subs_token'] = '';
-        Subscriber::where('subs_email',$email_from_url)->update($data);
+        Subscriber::where('subs_email', $email_from_url)->update($data);
 
-        return redirect()->to('/')->with('success', 'Subscription is successful. Thank you.');
+        return 'Subscription is successful. Thank you.';
     }
 }

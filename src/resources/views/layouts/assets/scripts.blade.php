@@ -1,8 +1,7 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
@@ -16,3 +15,36 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 
 <script src="{{ asset('storage/app/public/assets/js') }}/owl-carousel/owl.carousel.min.js"></script>
 <script src="{{ asset('storage/app/public/assets/js') }}/script.js"></script>
+
+{{-- Newsletter Subscribtion Scripts --}}
+<script>
+    $(document).ready(function() {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(".button_newsletter").click(function() {
+
+            $.ajax({
+                url: "/subscription",
+                type: 'POST',
+                data: {
+                    'subs_email': $(".input_newsletter").val()
+                },
+                success: function(result) {
+                    $(".input_newsletter").addClass("is-valid")
+                    $(".input_newsletter").removeClass("is-invalid")
+                    $(".input-newsletter-valid").text(result.message)
+                },
+                error: function(err) {
+                    $(".input-newsletter-invalid").text(err.responseJSON.errors.subs_email[0])
+                    $(".input_newsletter").removeClass("is-valid")
+                    $(".input_newsletter").addClass("is-invalid")
+                }
+            });
+        })
+    })
+</script>
