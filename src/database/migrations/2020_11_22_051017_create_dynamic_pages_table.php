@@ -16,9 +16,9 @@ class CreateDynamicPagesTable extends Migration
         Schema::create('dynamic_pages', function (Blueprint $table) {
             $table->id();
             $table->text('dynamic_page_name');
-            $table->text('dynamic_page_slug')->nullable();
+            $table->text('dynamic_page_slug');
             $table->text('dynamic_page_content')->nullable();;
-            $table->text('dynamic_page_banner');
+            $table->text('dynamic_page_banner')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_meta_description')->nullable();
             $table->timestamps();
