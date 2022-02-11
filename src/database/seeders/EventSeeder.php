@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Admin\EventCategory;
 use App\Models\Admin\Sponsor;
 use App\Models\Admin\Sport;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -79,7 +80,9 @@ class EventSeeder extends Seeder
                 'event_end_date' => date_format(date_create('2022-02-28 0:0:0'), 'Y-m-d h:m:s'),
                 'event_location' => 'Jakarta, Indonesia',
                 'event_map' => "https://www.google.com/maps/d/viewer?ie=UTF8&t=h&oe=UTF8&msa=0&mid=1pRr96dk8bzZtAoXcOJjjIJXcmjU&ll=-6.175392999999987%2C106.82702099999997&z=17",
-                'event_featured_photo' => 'event-featured.jpeg', 
+                'event_featured_photo' => 'event-featured.jpeg',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
 
