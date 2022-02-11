@@ -46,5 +46,37 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                 }
             });
         })
+
+    // Filter Events by it's category
+        function filterEvents(events, listFilter) {
+            const filteredEvents = [];
+            events.forEach(event => {
+                const categories = event.getAttribute('categories').split(",")
+        
+                categories.forEach(category => {
+                    if (listFilter.includes(category)) {
+                        if (!filteredEvents.includes(event)) {
+                            filteredEvents.push(event)
+                        }
+                    }
+                });
+            });
+        
+            return filteredEvents;
+        }
+        
+        const wrapEvents = document.querySelector('.events_wrapper')
+        const events = document.querySelectorAll(".item_event");
+        
+        $(".event-category .list-dropdown .dropdown-item").click(function () {
+            $(".select_category:first-child").text($(this).text());
+            $(".select_category:first-child").val($(this).text());
+            wrapEvents.innerHTML = '';
+            filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
+                wrapEvents.append(event);
+            })
+        });
+
+
     })
 </script>
