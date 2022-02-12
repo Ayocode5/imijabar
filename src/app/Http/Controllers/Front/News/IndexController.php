@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\News;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Blog;
+use App\Models\Admin\Blog as News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,17 +26,14 @@ class IndexController extends Controller
 
 		$page_news_settings = DB::table('page_blog_items')->first();
 
-		// dd($page_news_settings);
 		$news_categories = DB::table('categories')->select(
 			'category_name as name',
 			'category_slug as slug'
 		)->get();
 
-		// dd($news_categories);
-
 		$news_category_filter = $request->has('category') ? $request->category : '';
 
-		$news = Blog::select([
+		$news = News::select([
 			'category_id',
 			'blog_title as title',
 			'blog_content_short as summary',
@@ -50,8 +47,6 @@ class IndexController extends Controller
 				$query->where('category_slug', $news_category_filter);
 			}
 		})->orderBy('created_at', 'DESC')->paginate(6);
-
-		// dd($news);
 
 		return view('pages.news', compact('settings', 'news', 'news_categories', 'page_news_settings'));
 	}

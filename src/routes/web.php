@@ -91,11 +91,7 @@ use App\Http\Controllers\Front\SubscriptionController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
 use App\Http\Controllers\Front\News\DetailController as NewsDetailControler;
-
-
-
-use App\Http\Controllers\Front\ProductController as ProductControllerForFront;
-
+use App\Http\Controllers\Front\News\SearchController as NewsSearchController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -107,18 +103,8 @@ Route::post('/subscription', [SubscriptionController::class, 'index'])->name('fr
 Route::get('/subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
 Route::get('/about', AboutController::class)->name('front.about');
 Route::get('/news', NewsIndexController::class)->name('front.news');
+Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
 Route::get('/news/{slug}', NewsDetailControler::class);
-
-// Route::get('shop', [ProductControllerForFront::class, 'index'])->name('front.shop');
-// Route::get('product/{slug}', [ProductControllerForFront::class, 'detail']);
-// Route::post('product/cart/add', [ProductControllerForFront::class, 'add_to_cart'])->name('front.add_to_cart');
-// Route::get('cart', [ProductControllerForFront::class, 'cart'])->name('front.cart');
-// Route::get('cart/delete/{id}', [ProductControllerForFront::class, 'cart_item_delete']);
-// Route::post('cart/update', [ProductControllerForFront::class, 'update_cart']);
-// Route::get('checkout', [ProductControllerForFront::class, 'checkout'])->name('front.checkout');
-// Route::post('checkout/shipping/update', [ProductControllerForFront::class, 'shipping_update'])->name('front.shipping_update');
-// Route::post('checkout/coupon/update', [ProductControllerForFront::class, 'coupon_update'])->name('front.coupon_update');
-
 
 /* --------------------------------------- */
 /* Customer Login and profile management */

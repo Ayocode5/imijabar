@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-    public function index(Request $request)
+    public function subscribe(Request $request)
     {
         $token = hash('sha256', time());
 

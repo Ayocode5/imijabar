@@ -6,8 +6,8 @@
 
     <section id="header_page_list_berita">
         <div class="head_list_berita">
-            <h1>{{ $page_news_settings->name }}</h1>
-            <p>{!! $page_news_settings->detail !!}</p>
+            <h1>Cari Berita </h1>
+            <p>Kata Kunci : <strong>{{ request()->input('q') }}</strong></p>
 
         </div>
         <div class="carousel_head_list_berita">
@@ -34,11 +34,8 @@
                                 <p>
                                     {{ $news_carousel->summary }}
                                 </p>
-                                <a href="{{ url("news/$news_carousel->slug") }}">
-                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                        More
-                                    </button>
-                                </a>
+                                <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                    More</button>
                             </div>
                         </div>
                     @endforeach
@@ -59,11 +56,20 @@
             <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
                 <div class="col">
                     <div class="d-flex justify-content-around">
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a>
+                        
+                        {{-- URL FILETR CATEGORY FORMAT --}}
+                        @php
+                            $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
+                        @endphp
+
+                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="{{ $url_filter_prefix . "#content_list_berita" }}">All</a>
+                    
                         @foreach ($news_categories as $news_category)
                             <a style="height: 44px;" class="d-flex align-items-center px-3"
-                                href="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</a>
+                                href="{{ $url_filter_prefix."&category=".$news_category->slug . "#content_list_berita" }}">{{ $news_category->name }}
+                            </a>
                         @endforeach
+
                     </div>
                 </div>
                 <div class="col">
@@ -94,7 +100,7 @@
                         @foreach ($news as $news_data)
                             <div class="col mb-4" categories="{{ $news_data->category->slug }}">
                                 <a href="/news/{{ $news_data->slug }}" class="text-decoration-none text-white"
-                                    style="display: inline;">
+                                    >
                                     <div class="card">
 
                                         <div class="header_card_image">
