@@ -86,6 +86,7 @@ use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
 use App\Http\Controllers\Front\News\DetailController as NewsDetailControler;
 use App\Http\Controllers\Front\News\SearchController as NewsSearchController;
 use App\Http\Controllers\Front\Event\IndexController as EventIndexController;
+use App\Http\Controllers\Front\Event\SearchController as EventSearchController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -100,6 +101,7 @@ Route::get('/news', NewsIndexController::class)->name('front.news');
 Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
 Route::get('/news/{slug}', NewsDetailControler::class);
 Route::get('/event', EventIndexController::class)->name('front.event');
+Route::get('/event/search/', EventSearchController::class)->name('front.event.search');
 
 
 /* --------------------------------------- */

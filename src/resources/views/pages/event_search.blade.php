@@ -6,9 +6,9 @@
 
     <section id="header_page_list_events">
         <div class="head_list_events">
-            <h1>{{ $page_event_settings->name }}</h1>
+            <h1>Pencarian Event</h1>
             <div class="border_head_title"></div>
-            <p>{!! $page_event_settings->detail !!}</p>
+            <p>Kata Kunci : <strong>{{ request()->q }}</strong></p>
         </div>
         <div class="carousel_head_list_events">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
@@ -90,10 +90,10 @@
             <div class="wrap_content_list_events row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
                 <div class="col">
                     <div class="d-flex justify-content-around">
-                        
+
                         {{-- URL FILETR CATEGORY FORMAT --}}
                         @php
-                            $url_filter_prefix = url()->current()."?page=1"
+                            $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
                         @endphp
 
                         <a style="height: 44px;" class="d-flex align-items-center px-3" href="{{ $url_filter_prefix . "#content_list_events" }}">All</a>
@@ -102,19 +102,19 @@
                             <a href="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events"}}" style="height: 44px;" class="d-flex align-items-center px-3">{{ $sport->name }}</a>
                         @endforeach
 
+
+
                     </div>
                 </div>
                 <div class="col">
                     <div class="wrap_search_events">
                         <div class="input-group">
-                            <form action="{{ route('front.event.search') }}" method="GET">
-                                <input name="q" style="background-color: transparent;" type="text"
-                                    class="form-control rounded border-0" placeholder="Search" aria-label="Search"
-                                    aria-describedby="search-addon" />
-                                <button type="submit" class="btn"><img
-                                        src="{{ asset('storage/app/public/assets') }}/img/search-icon.svg"
-                                        alt="search icon"></button>
-                            </form>
+                            <input style="background-color: transparent;" type="search"
+                                class="form-control rounded border-0" placeholder="Search" aria-label="Search"
+                                aria-describedby="search-addon" />
+                            <button type="button" class="btn"><img
+                                    src="{{ asset('storage/app/public/assets') }}/img/search-icon.svg"
+                                    alt="search icon"></button>
                         </div>
                     </div>
                 </div>
@@ -146,10 +146,10 @@
                                                 class="card-img-top" alt="featured image">
                                         </div>
                                         <!-- <div
-                                                        class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                                        <p style="height: 8px;" class="category_events">Roda Empat</p>
-                                                        <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                                    </div> -->
+                                                    class="label_header_card_image d-flex justify-content-between align-items-center px-3">
+                                                    <p style="height: 8px;" class="category_events">Roda Empat</p>
+                                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
+                                                </div> -->
 
                                     </div>
                                     <div class="card-body shadow">
@@ -172,13 +172,11 @@
                                             <div class="col-12 col-md-5 date_events_list pl-0">
                                                 <div class="mx-md-4">
                                                     <p>
-                                                        {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
-                                                        -
+                                                        {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }} -
                                                         {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
-                                                        <br />
+                                                        <br /> 
                                                         <span>
-                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
-                                                            -
+                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }} - 
                                                             {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
                                                         </span>
                                                     </p>
