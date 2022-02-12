@@ -52,7 +52,6 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
             const filteredEvents = [];
             events.forEach(event => {
                 const categories = event.getAttribute('categories').split(",")
-                console.log(categories)
                 categories.forEach(category => {
                     if (listFilter.includes(category)) {
                         if (!filteredEvents.includes(event)) {
@@ -77,5 +76,169 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
             })
         });
 
+
     })
+
+
+    $(document).ready(function() { 
+        
+
+        const dataBerita = [
+            {
+                id: 1,
+                name_berita: "Hot pelajar tawuran",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua','roda-empat']
+            },
+            {
+                id: 2,
+                name_berita: "Hot Kurama ngamuk",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            },
+            {
+                id: 3,
+                name_berita: "Hot lele lepas",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-empat']
+            },
+            {
+                id: 4,
+                name_berita: "Hot lele nyelem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua','roda-empat']
+            },
+            {
+                id: 5,
+                name_berita: "Hot lorem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            },
+            {
+                id: 6,
+                name_berita: "Hot lorem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            },
+            {
+                id: 7,
+                name_berita: "Hot pelajar tawuran",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua','roda-empat']
+            },
+            {
+                id: 8,
+                name_berita: "Hot Kurama ngamuk",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            },
+            {
+                id: 9,
+                name_berita: "Hot lele lepas",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-empat']
+            },
+            {
+                id: 10,
+                name_berita: "Hot lele nyelem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua','roda-empat']
+            },
+            {
+                id: 11,
+                name_berita: "Hot lorem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            },
+            {
+                id: 12,
+                name_berita: "Hot lorem",
+                author: "Admin",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
+                category: ['roda-dua']
+            }
+        ]
+
+        const cardNews = (id, name_berita, author, desc, categories) => {
+            return `
+                    <div class="col mb-4 news_item" category_news="roda-dua">
+                        <div class="card">
+                            <div class="header_card_image">
+                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="news-${id}">
+                                ${categories.map((item) => {
+                                    return '<div class="label_header_card_image d-flex justify-content-between align-items-center px-3"> <p style="height: 8px;" class="category_berita">' + item + '</p>' + '<p style="height: 8px;" class="realease_date">5 menit lalu</p> </div>'
+                                }).join("")}
+                            </div>
+                            <div class="card-body">
+                                <a href="/detail-berita.html">
+                                    <h3 class="card-title">${name_berita}</h3>
+                                </a>
+                                <p class="author_date_list_berita">${author} | <span>30 Januari 2022</span></p>
+                                <p class="card-text">${desc}
+                                    <span>→</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+        }
+
+        let state = 6;
+
+        const wrapNews = document.querySelector('.wrap_card_news')
+        const newsCardElement = document.querySelectorAll(".news_item");
+
+        const render = () => {
+            for (let i = 0; i < state; i++) {
+                // console.log( dataBerita[i].category)
+                wrapNews.innerHTML += cardNews(dataBerita[i].id, dataBerita[i].name_berita, dataBerita[i].author, dataBerita[i].description, dataBerita[i].category);
+            }
+        }
+
+        render();   
+
+        const showMore = document.querySelector('.btn_load_more_list_berita');
+
+        showMore.addEventListener('click', () => {
+            if (dataBerita.length !== state) {
+                wrapNews.innerHTML = ''
+                state += 3;
+                render();
+            }
+        })
+        // function filterNews(news, listFilter) {
+        //     const filteredNews = [];
+        //     news.forEach(newsItem => {
+        //         const categories = newsItem.getAttribute('category_news').split(",")
+        //         categories.forEach(category => {
+        //             if (listFilter.includes(category)) {
+        //                 if (!filteredNews.includes(newsItem)) {
+        //                     filteredNews.push(newsItem)
+        //                 }
+        //             }
+        //         });
+        //     });
+        
+        //     return filteredNews;
+        // }
+       
+        
+        // $(".filter_news").click(function () {
+        //     wrapNews.innerHTML = '';
+        //     filterNews(newsCardElement, this.getAttribute('filters').split(','))
+        //         .forEach((newsItem) => wrapNews.append(newsItem))
+        // });
+    })
+
 </script>

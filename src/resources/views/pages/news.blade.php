@@ -75,15 +75,16 @@
             </div>
         </div>
     </section>
+
     <main id="main_content_list_berita">
         <section id="content_list_berita">
             <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
                 <div class="col">
                     <div class="d-flex justify-content-around">
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">All</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Dua</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Empat</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Wisata</a>
+                        <a filters="roda-dua,roda-empat" style="height: 44px; cursor: pointer;" class="d-flex align-items-center px-3 filter_news">All</a>
+                        <a  filters="roda-dua" style="height: 44px; cursor: pointer;" class="d-flex align-items-center px-3 filter_news">Roda Dua</a>
+                        <a filters="roda-empat" style="height: 44px; cursor: pointer;" class="d-flex align-items-center px-3 filter_news">Roda Empat</a>
+                        <a  filters="wisata" style="height: 44px; cursor: pointer;" class="d-flex align-items-center px-3 filter_news">Wisata</a>
                     </div>
                 </div>
                 <div class="col">
@@ -102,8 +103,8 @@
 
         <section class="pb-5" id="list_card_berita">
             <div class="wrap_list_berita">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                    <div class="col mb-4">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 wrap_card_news">
+                    <!-- <div class="col mb-4 news_item" category_news="roda-dua">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -129,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4 news_item" category_news="roda-empat">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -155,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4 news_item" category_news="roda-dua">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -181,7 +182,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4 news_item" category_news="roda-empat">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -207,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4 news_item" category_news="roda-dua,roda-empat">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -233,7 +234,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4 news_item" category_news="roda-dua">
                         <div class="card">
                             <div class="header_card_image">
                                 <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
@@ -259,7 +260,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <button class="btn_load_more_list_berita mx-auto d-block">
