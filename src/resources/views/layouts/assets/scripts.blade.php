@@ -20,12 +20,19 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <script>
     $(document).ready(function() {
 
+        /**
+         * Setup Ajax Header
+         */ 
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
+
+        /**
+         * Newsletter Subscription
+         */
         $(".button_newsletter").click(function() {
 
             $.ajax({
@@ -40,39 +47,43 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                     $(".input-newsletter-valid").text(result.message)
                 },
                 error: function(err) {
-                    $(".input-newsletter-invalid").text(err.responseJSON.errors.subs_email[0])
+                    $(".input-newsletter-invalid").text(err.responseJSON.errors.subs_email[
+                        0])
                     $(".input_newsletter").removeClass("is-valid")
                     $(".input_newsletter").addClass("is-invalid")
                 }
             });
         })
 
-    // Filter Events by it's category
-        function filterEvents(events, listFilter) {
+
+        /**
+         * Filter Events by it's category
+         */
+        function filterEvents(events, filter) {
             const filteredEvents = [];
             events.forEach(event => {
                 const categories = event.getAttribute('categories').split(",")
                 categories.forEach(category => {
-                    if (listFilter.includes(category)) {
+                    if (filter.includes(category)) {
                         if (!filteredEvents.includes(event)) {
                             filteredEvents.push(event)
                         }
                     }
                 });
             });
-        
+
             return filteredEvents;
         }
-        
-        const wrapEvents = document.querySelector('.events_wrapper')
+
+        const eventListsWrapper = document.querySelector('.events_wrapper')
         const events = document.querySelectorAll(".item_event");
-        
-        $(".event-category .list-dropdown .dropdown-item").click(function () {
+
+        $(".event-category .list-dropdown .dropdown-item").click(function() {
             $(".select_category:first-child").text($(this).text());
             $(".select_category:first-child").val($(this).text());
-            wrapEvents.innerHTML = '';
+            eventListsWrapper.innerHTML = '';
             filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
-                wrapEvents.append(event);
+                eventListsWrapper.append(event);
             })
         });
 
@@ -80,16 +91,15 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
     })
 
 
-    $(document).ready(function() { 
-        
+    $(document).ready(function() {
 
-        const dataBerita = [
-            {
+
+        const dataBerita = [{
                 id: 1,
                 name_berita: "Hot pelajar tawuran",
                 author: "Admin",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
-                category: ['roda-dua','roda-empat']
+                category: ['roda-dua', 'roda-empat']
             },
             {
                 id: 2,
@@ -110,7 +120,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                 name_berita: "Hot lele nyelem",
                 author: "Admin",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
-                category: ['roda-dua','roda-empat']
+                category: ['roda-dua', 'roda-empat']
             },
             {
                 id: 5,
@@ -131,7 +141,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                 name_berita: "Hot pelajar tawuran",
                 author: "Admin",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
-                category: ['roda-dua','roda-empat']
+                category: ['roda-dua', 'roda-empat']
             },
             {
                 id: 8,
@@ -152,7 +162,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                 name_berita: "Hot lele nyelem",
                 author: "Admin",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac dui dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames fermentum at libero, nuncio",
-                category: ['roda-dua','roda-empat']
+                category: ['roda-dua', 'roda-empat']
             },
             {
                 id: 11,
@@ -202,11 +212,12 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
         const render = () => {
             for (let i = 0; i < state; i++) {
                 // console.log( dataBerita[i].category)
-                wrapNews.innerHTML += cardNews(dataBerita[i].id, dataBerita[i].name_berita, dataBerita[i].author, dataBerita[i].description, dataBerita[i].category);
+                wrapNews.innerHTML += cardNews(dataBerita[i].id, dataBerita[i].name_berita, dataBerita[i]
+                    .author, dataBerita[i].description, dataBerita[i].category);
             }
         }
 
-        render();   
+        render();
 
         const showMore = document.querySelector('.btn_load_more_list_berita');
 
@@ -217,28 +228,27 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
                 render();
             }
         })
-        // function filterNews(news, listFilter) {
+        // function filterNews(news, filter) {
         //     const filteredNews = [];
         //     news.forEach(newsItem => {
         //         const categories = newsItem.getAttribute('category_news').split(",")
         //         categories.forEach(category => {
-        //             if (listFilter.includes(category)) {
+        //             if (filter.includes(category)) {
         //                 if (!filteredNews.includes(newsItem)) {
         //                     filteredNews.push(newsItem)
         //                 }
         //             }
         //         });
         //     });
-        
+
         //     return filteredNews;
         // }
-       
-        
+
+
         // $(".filter_news").click(function () {
         //     wrapNews.innerHTML = '';
         //     filterNews(newsCardElement, this.getAttribute('filters').split(','))
         //         .forEach((newsItem) => wrapNews.append(newsItem))
         // });
     })
-
 </script>

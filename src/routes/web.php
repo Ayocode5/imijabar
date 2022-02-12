@@ -5,8 +5,7 @@
  * Admin Panel Controllers
  */
 
-
-//Admin Panel ADMIN AUTHENTICATIONS
+//Admin Auth Controller
 use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
@@ -16,9 +15,7 @@ use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeCont
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
 
-/**
- * Admin Panel - Feature
- */
+// Admin Menu Controller
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\RegistrationMember\ClubController;
 use App\Http\Controllers\Admin\RegistrationMember\KisController;
@@ -32,26 +29,23 @@ use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
+// use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 
-//Admin Panel Gallery
 use App\Http\Controllers\Admin\Gallery\PhotoController;
 use App\Http\Controllers\Admin\Gallery\VideoController;
 use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCategoryControllerForAdmin;
 
-//Admin Panel BLOG
+//Admin Panel Blog Menu
 use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
 
-//Admin Panel EVENT
+//Admin Panel Event Menu
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
 
-/**
- * Admin Panel - Page Settings
- */
+//Admin Panel Page Front Setting
 use App\Http\Controllers\Admin\Page\PageHomeController;
 use App\Http\Controllers\Admin\Page\PageBlogController;
 use App\Http\Controllers\Admin\Page\PageAboutController;
@@ -59,7 +53,6 @@ use App\Http\Controllers\Admin\Page\PageEventController;
 use App\Http\Controllers\Admin\Page\PageGalleryController;
 use App\Http\Controllers\Admin\Page\PageFaqController;
 use App\Http\Controllers\Admin\Page\PageTeamController;
-
 
 //Admin Panel SHOP
 use App\Http\Controllers\Admin\Shop\CouponController;
@@ -92,6 +85,7 @@ use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
 use App\Http\Controllers\Front\News\DetailController as NewsDetailControler;
 use App\Http\Controllers\Front\News\SearchController as NewsSearchController;
+use App\Http\Controllers\Front\Event\IndexController as EventIndexController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -105,6 +99,8 @@ Route::get('/about', AboutController::class)->name('front.about');
 Route::get('/news', NewsIndexController::class)->name('front.news');
 Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
 Route::get('/news/{slug}', NewsDetailControler::class);
+Route::get('/event', EventIndexController::class)->name('front.event');
+
 
 /* --------------------------------------- */
 /* Customer Login and profile management */
@@ -293,8 +289,8 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
 
-        Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
-        Route::post('/faq/update', [PageFaqController::class, 'update']);
+        // Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
+        // Route::post('/faq/update', [PageFaqController::class, 'update']);
 
         Route::get('/team/edit', [PageTeamController::class, 'edit'])->name('admin.page_team.edit');
         Route::post('/team/update', [PageTeamController::class, 'update']);
@@ -497,17 +493,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     });
 
 
-    /* --------------------------------------- */
-    /* FAQ - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
-        Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
-        Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
-        Route::get('/delete/{id}', [FaqControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [FaqControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [FaqControllerForAdmin::class, 'update']);
-    });
+    // /* --------------------------------------- */
+    // /* FAQ - Admin */
+    // /* --------------------------------------- */
+    // Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
+    //     Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
+    //     Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
+    //     Route::get('/delete/{id}', [FaqControllerForAdmin::class, 'destroy']);
+    //     Route::get('/edit/{id}', [FaqControllerForAdmin::class, 'edit']);
+    //     Route::post('/update/{id}', [FaqControllerForAdmin::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */

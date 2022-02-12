@@ -391,12 +391,12 @@
                 </li>
 
                 <!-- FAQ -->
-                <li class="nav-item @if ($conName[1] == 'faq') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'faq') active @endif">
                     <a class="nav-link" href="{{ route('admin.faq.index') }}">
                         <i class="fas fa-question-circle"></i>
                         <span>FAQ</span>
                     </a>
-                </li>
+                </li> --}}
 
             @endcan
 

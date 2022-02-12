@@ -48,6 +48,12 @@ class IndexController extends Controller
 			}
 		})->orderBy('created_at', 'DESC')->paginate(6);
 
+		if($news) {
+			if($news->lastPage() > 1 && $news->currentPage() > 1) {
+				return response()->json($news, 200);
+			}
+		}
+
 		return view('pages.news', compact('settings', 'news', 'news_categories', 'page_news_settings'));
 	}
 }
