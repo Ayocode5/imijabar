@@ -1,32 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('layouts.components.breadcrumb', ['url_path' => url()->current() ])
+
     <section id="header_page_list_berita">
         <div class="head_list_berita">
-            <h1>News & Updates</h1>
-            <p>Berita Terbaru Seputar Otomotif, dan Berita Terbaru dari dunia Olahraga Roda Dua & Roda Empat.</p>
+            <h1>{{ $page_news_settings->name }}</h1>
+            <p>{!! $page_news_settings->detail !!}</p>
+
         </div>
         <div class="carousel_head_list_berita">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    @foreach ($news as $key => $value)
-                        <li data-target="#demo" data-slide-to="{{ $loop->iteration - 1 }}" class="@if ($loop->iteration == 1) active @endif"></li>
+                    @foreach ($news as $key => $v)
+                        <li data-target="#demo" data-slide-to="{{ $loop->iteration - 1 }}"
+                            class="@if ($loop->iteration == 1) active @endif"></li>
                     @endforeach
                 </ul>
                 <div class="carousel-inner">
-                    @foreach ($news as $new)
+                    @foreach ($news as $news_carousel)
                         <div class="carousel-item @if ($loop->iteration == 1) active @endif">
                             <div class="overlay_jumbotron">
 
                             </div>
-                            <img src="{{ asset('public/uploads/') . "/$new->photo" }}" alt="{{ $new->title }}"
-                                width="100%" height="600">
+                            <img src="{{ asset('public/uploads/') . "/$news_carousel->photo" }}"
+                                alt="{{ $news_carousel->title }}" width="100%" height="600">
                             <div class="carousel-caption">
-                                <p class="date_author">{{ date_format(date_create($new->created_at), 'd F Y') }} |
+                                <p class="date_author">
+                                    {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
                                     Editor</p>
-                                <h2>{{ $new->title }}</h2>
+                                <h2>{{ $news_carousel->title }}</h2>
                                 <p>
-                                    {{ $new->summary }}
+                                    {{ $news_carousel->summary }}
                                 </p>
                                 <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
                                     More</button>
@@ -44,15 +50,17 @@
             </div>
         </div>
     </section>
+
     <main id="main_content_list_berita">
         <section id="content_list_berita">
             <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
                 <div class="col">
                     <div class="d-flex justify-content-around">
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">All</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Dua</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Empat</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Wisata</a>
+                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a>
+                        @foreach ($news_categories as $news_category)
+                            <a style="height: 44px;" class="d-flex align-items-center px-3"
+                                href="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col">
@@ -74,47 +82,54 @@
             <div class="wrap_list_berita">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
-                    @foreach ($news as $news)
-                    <a href="/news/{{$news->slug}}" class="" style="display: inline;">
-                        <div class="col mb-4" categories="{{ $news->category->slug }}">
-                            <div class="card">
+                    @if (count($news) == 0)
+                        <h2>Oops, Berita tidak ada! </h2>
+                    @else
+                        @foreach ($news as $news_data)
+                            <div class="col mb-4" categories="{{ $news_data->category->slug }}">
+                                <a href="/news/{{ $news_data->slug }}" class="text-decoration-none" style="display: inline;">
+                                    <div class="card">
 
-                                <div class="header_card_image">
-                                    <img src="{{ asset('public/uploads') . "/$news->photo" }}" class="card-img-top"
-                                        alt="{{ $news->title }}">
-                                    <div
-                                        class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                        <p style="height: 8px;" class="category_berita">{{ $news->category->name }}</p>
-                                        <p style="height: 8px;" class="realease_date">
-                                            {{ Illuminate\Support\Carbon::parse($news->created_at)->diffForHumans() }}
-                                        </p>
+                                        <div class="header_card_image">
+                                            <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
+                                                class="card-img-top" alt="{{ $news_data->title }}">
+                                            <div
+                                                class="label_header_card_image d-flex justify-content-between align-items-center px-3">
+                                                <p style="height: 8px;" class="category_berita">
+                                                    {{ $news_data->category->name }}
+                                                </p>
+                                                <p style="height: 8px;" class="realease_date">
+                                                    {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="/news/{{ $news_data->slug }}">
+                                                <h3 class="card-title">
+                                                    {{ $news_data->title }}
+                                                </h3>
+                                            </a>
+                                            <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
+                                                <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
+                                            </p>
+                                            <p class="card-text">
+                                                {{ $news_data->summary }}
+                                                <span>→</span>
+                                            </p>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <div class="card-body">
-                                    <a href="/news/{{$news->slug}}">
-                                        <h3 class="card-title">
-                                            {{ $news->title }}
-                                        </h3>
-                                    </a>
-                                    <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-                                        <span>{{ date_format(date_create($news->created_at), 'd F Y') }}</span>
-                                    </p>
-                                    <p class="card-text">
-                                        {{ $news->summary }}
-                                        <span>→</span>
-                                    </p>
-                                </div>
+                                </a>
                             </div>
-                        </div>
-                    </a>
-                    @endforeach
-
+                        @endforeach
+                    @endif
                 </div>
             </div>
-            <button class="btn_load_more_list_berita mx-auto d-block">
-                Load More
-            </button>
+            @if (count($news) != 0)
+                <button class="btn_load_more_list_berita mx-auto d-block">
+                    Load More
+                </button>
+            @endif
         </section>
     </main>
 @endsection

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-	public function __invoke()
+	public function __invoke(Request $request)
 	{
 		$settings = DB::table('general_settings')->select(
 			'logo',
@@ -27,6 +27,14 @@ class IndexController extends Controller
 		$page_news_settings = DB::table('page_blog_items')->first();
 
 		// dd($page_news_settings);
+		$news_categories = DB::table('categories')->select(
+			'category_name as name',
+			'category_slug as slug'
+		)->get();
+
+		// dd($news_categories);
+
+		$news_category_filter = $request->has('category') ? $request->category : '';
 
 		$news = Blog::select([
 			'category_id',
@@ -37,10 +45,14 @@ class IndexController extends Controller
 			'created_at'
 		])->with(['category' => function ($query) {
 			$query->select('id', 'category_name as name', 'category_slug as slug');
-		}])->orderBy('created_at', 'DESC')->paginate(6);
+		}])->whereHas('category', function ($query) use ($news_category_filter) {
+			if(!empty($news_category_filter)) {
+				$query->where('category_slug', $news_category_filter);
+			}
+		})->orderBy('created_at', 'DESC')->paginate(6);
 
 		// dd($news);
 
-		return view('pages.news', compact('settings', 'news', 'page_news_settings'));
+		return view('pages.news', compact('settings', 'news', 'news_categories', 'page_news_settings'));
 	}
 }

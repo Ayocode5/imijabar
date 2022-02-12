@@ -36,7 +36,7 @@
                             </div>
                         </a>
                     @endforeach
-                    <a href="/berita" class="text-decoration-none text-dark">
+                    <a href="/news" class="text-decoration-none text-dark">
                         <button type="button" class="btn_show_more_berita_landing mt-4 d-block mx-auto">Show More</button>
                     </a>
                 </div>

@@ -19,7 +19,7 @@ class Blog extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Admin\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function scopeLatest($query) {

@@ -18,10 +18,10 @@
                     <a class="nav-link mr-lg-3 @if ($url == 'news') active @endif" href="/news">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'events') active @endif" href="#">Acara</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'events') active @endif" href="#">Acara</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
