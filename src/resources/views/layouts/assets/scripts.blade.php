@@ -73,11 +73,9 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
             $(".select_category:first-child").val($(this).text());
             wrapEvents.innerHTML = '';
             filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
-
                 wrapEvents.append(event);
             })
         });
-
 
     })
 </script>
