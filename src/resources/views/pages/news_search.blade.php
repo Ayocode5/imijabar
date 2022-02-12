@@ -64,7 +64,8 @@
                                 $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
                             @endphp
                             <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
-
+                            <option value="none" selected disabled hidden>Select Category</option>
+                            <option value="?page=1">Semua</option>
                             @foreach ($news_categories as $news_category)
                                 <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</option>
                             @endforeach
