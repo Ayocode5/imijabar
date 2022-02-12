@@ -28,6 +28,7 @@ class HomeController extends Controller
 			e.event_featured_photo as featured_photo,
 			GROUP_CONCAT(DISTINCT sp.name SEPARATOR ', ') as sports,
 			GROUP_CONCAT(DISTINCT ec.name SEPARATOR ', ') as categories,
+			GROUP_CONCAT(DISTINCT ec.slug SEPARATOR ',') as categories_slug,
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('event_end_date', '>=', $date_today)
@@ -55,7 +56,7 @@ class HomeController extends Controller
 			}
 		});
 
-		$event_categories = DB::table('event_categories')->select(['name', 'id'])->get();
+		$event_categories = DB::table('event_categories')->select(['name', 'slug', 'id'])->get();
 
 		$news = Blog::limit($home_settings->news_total)->orderBy('created_at', 'DESC')->get();
 

@@ -41,6 +41,7 @@
                     </a>
                 </div>
 
+                <!-- Filter -->
                 <div class="col-lg-4">
                     <h2 class="title-berita-acara">{{ $home_settings->events_title }}</h2>
                     <div class="border_acara"></div>
@@ -51,20 +52,21 @@
                             Semua
                         </button>
                         <div class="dropdown-menu event-category" aria-labelledby="dropdownMenuButton">
-                            <li class="list-dropdown"><a class="dropdown-item">Semua</a></li>
+                            <li class="list-dropdown"><a filters="roda-empat,roda-dua" class="dropdown-item">Semua</a></li>
                             @foreach ($event_categories as $event_category)
-                                <li class="list-dropdown"><a class="dropdown-item">{{ $event_category->name }}</a></li>
+                                <li class="list-dropdown"><a filters="{{ $event_category->slug }}" class="dropdown-item">{{ $event_category->name }}</a></li>
                             @endforeach
                         </div>
                     </div>
-                    <div class="accordion" id="accordionExample">
+                    <!-- Events -->
+                    <div class="accordion events_wrapper" id="accordionExample">
                         @foreach ($events as $event)
-                            <div style="cursor: pointer;" class="card item_event" data-toggle="collapse"
+                            <div categories="{{ $event->categories_slug }}" style="cursor: pointer;" class="card item_event" data-toggle="collapse"
                                 data-target="#collapse{{$loop->iteration}}" aria-expanded="true" aria-controls="collapse{{$loop->iteration}}">
                                 <div class="card-header content-event" id="headingOne">
                                     <div class="row align-items-center justify-content-center">
                                         <div class="col-2">
-                                            <h3 class="tgl-event" style="font-size: 45px; margin-right: -10px">{{ date_format(date_create($event->event_start_date), "d") }}</h3>
+                                            <h3 class="tgl-event" style="margin-right: -10px">{{ date_format(date_create($event->event_start_date), "d") }}</h3>
                                         </div>
                                         <div style="border-right: 1px solid #5996EC;" class="col-5 p-0">
                                             <p class="month-event m-0">{{ date_format(date_create($event->event_start_date), "F Y") }}</p>
@@ -104,7 +106,7 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div> 
             </div>
         </section>
         <!-- END BERITA & EVENT -->

@@ -8,7 +8,7 @@
     <section id="visi_misi">
         <div class="container-fluid wrap_visi_misi">
             <div class="row visi_section">
-                <div class="col-12 col-lg-7 order-2 order-lg-1 align-items-center d-flex">
+                <div class="col-12 col-md-7 order-2 order-md-1 align-items-center d-flex">
                     <div>
                         <div class="d-inline">
 
@@ -19,15 +19,15 @@
                        
                     </div>
                 </div>
-                <div class="align-items-center d-flex col-12 col-lg-5 order-1">
+                <div class="align-items-center d-flex col-12 col-md-5 order-1 order-md-2">
                     <img src="{{ asset('storage/app/public/assets/') }}/img/visi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
             </div>
             <div class="row misi_section">
-                <div class="align-items-center d-flex col-12 col-lg-5 order-2 order-lg-1">
+                <div class="align-items-center d-flex col-12 col-md-5 order-1">
                     <img src="{{ asset('storage/app/public/assets/') }}/img/misi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
-                <div class="col-12 col-lg-7 order-2 align-items-center justify-content-end d-flex">
+                <div class="col-12 col-md-7 order-2 align-items-center justify-content-end d-flex">
                     <div>
                         <div class="d-inline">
 
@@ -52,8 +52,8 @@
     <!-- START SEJARAH -->
     <section id="sejarah">
         <div class="container-fluid wrap_sejarah_imi">
-            <div class="row pt-5">
-                <div class="col-12 col-lg-6 order-2 order-lg-1">
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1">
                     <h2 class="sejarah-title">
                         {!! $about_settings?->subtitle !!}
                     </h2>
@@ -62,7 +62,7 @@
                         {!! $about_settings?->body3 !!}
                     </p>
                 </div>
-                <div class="col-12 col-lg-6 order-1 order-lg-2">
+                <div class="col-12 col-md-6 order-1 order-md-2">
                     <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
                 </div>
             </div>
