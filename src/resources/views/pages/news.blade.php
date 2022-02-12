@@ -8,8 +8,9 @@
         <div class="head_list_berita">
             <h1>{{ $page_news_settings->name }}</h1>
             <p>{!! $page_news_settings->detail !!}</p>
-
         </div>
+
+        <!-- Carousel List Berita Terbaru -->
         <div class="carousel_head_list_berita">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
@@ -57,19 +58,28 @@
     <main id="main_content_list_berita">
         <section id="content_list_berita">
             <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col">
-                    <div class="d-flex justify-content-around">
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a>
-                        @foreach ($news_categories as $news_category)
+                <div class="col mb-4 order-2 order-md-1">
+
+                    <div class="d-flex justify-content-start">
+                        <!-- <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a> -->
+                        <div class="position-relative border-0 wrap_select_category_news">
+                            <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
+                            @foreach ($news_categories as $news_category)
+                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <!-- @foreach ($news_categories as $news_category)
                             <a style="height: 44px;" class="d-flex align-items-center px-3"
                                 href="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</a>
-                        @endforeach
+                        @endforeach -->
                     </div>
+                    
                 </div>
-                <div class="col">
-                    <div class="wrap_search_berita">
+                <div class="col mb-4 order-1 order-md-2">
+                    <div class="wrap_search_berita w-100">
                         <div class="input-group">
-                            <form action="{{ route('front.news.search') }}" method="GET">
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}" method="GET">
                                 <input style="background-color: transparent;" type="text" name="q"
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />

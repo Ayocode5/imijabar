@@ -15,25 +15,11 @@
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
-<<<<<<< HEAD
-
-<script>
-    $(document).ready(function() {
-
-        // PERMISSIONS SELECTOR 
-        $(".permission-select-all").click(() => {
-
-            const permissions = Array.from($(".permission-item"));
-
-            var total_permissions = permissions.length
-            var total_checked_permissions = 0;
-
-=======
 <script>
     $(document).ready(function() {
         const selectAllCheckbox = document.querySelector(".permission-select-all");
+
         $(".permission-item").each((index, item) => {
-            
             if(!item.checked) {
                 selectAllCheckbox.checked = false;
                 return false;
@@ -47,66 +33,30 @@
         $(".permission-select-all").click(() => {
             const total_permissions = permissions.length;
             let total_checked_permissions = 0;
->>>>>>> iqbal
             permissions.forEach(permission => {
                 if (permission.checked) {
                     total_checked_permissions += 1;
                 }
             });
-<<<<<<< HEAD
-
-            if (total_checked_permissions != total_permissions) {
-                if ($(".permission-select-all").checked == null) {
-                    permissions.forEach(permission => {
-                        permission.checked = true;
-                    });
-                }
-=======
             if (total_checked_permissions != total_permissions) {
                 permissions.forEach(permission => {
                     permission.checked = true;
                 });
->>>>>>> iqbal
             } else {
                 permissions.forEach(permission => {
                     permission.checked = null;
                 });
             }
         })
-<<<<<<< HEAD
-
-
-        $(".permission-item").click((e) => {
-
-            const permissions = Array.from($(".permission-item"));
-
-            if (e.currentTarget.checked) {
-                var total_permissions = permissions.length
-                var total_checked_permissions = 0;
-
-=======
         $(".permission-item").click((e) => {
             if (e.currentTarget.checked) {
                 const total_permissions = permissions.length
                 let total_checked_permissions = 0;
->>>>>>> iqbal
                 permissions.forEach(permission => {
                     if (permission.checked) {
                         total_checked_permissions += 1;
                     }
                 });
-<<<<<<< HEAD
-
-                if (total_checked_permissions == total_permissions) {
-                    $(".permission-select-all")[0].checked = true;
-                } else {
-                    $(".permission-select-all")[0].checked = null;
-                }
-            } else {
-                $(".permission-select-all")[0].checked = null;
-            }
-
-=======
                 if (total_checked_permissions == total_permissions) {
                      selectAllCheckbox.checked = true;
                 } else {
@@ -115,7 +65,6 @@
             } else {
                 selectAllCheckbox.checked = null;
             }
->>>>>>> iqbal
         })
     })
 </script>

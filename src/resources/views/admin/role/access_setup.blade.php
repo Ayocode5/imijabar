@@ -15,9 +15,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        <label for="">Select All</label>
-                        <input class="permission-select-all" type="checkbox">
                         <table class="table table-bordered">
                             <input class="permission-select-all" type="checkbox" name="select-all-permission" id="selectAll">
                             <label for="selectAll">Select All</label>

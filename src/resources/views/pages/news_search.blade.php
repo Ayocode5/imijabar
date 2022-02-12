@@ -54,28 +54,30 @@
     <main id="main_content_list_berita">
         <section id="content_list_berita">
             <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col">
-                    <div class="d-flex justify-content-around">
+                <div class="col mb-4 order-2 order-md-1">
+
+                    <div class="d-flex justify-content-start">
+                        <div class="position-relative border-0 wrap_select_category_news">
+
+                            {{-- URL FILETR CATEGORY FORMAT --}}
+                            @php
+                                $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
+                            @endphp
+                            <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
+
+                            @foreach ($news_categories as $news_category)
+                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
                         
-                        {{-- URL FILETR CATEGORY FORMAT --}}
-                        @php
-                            $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
-                        @endphp
-
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="{{ $url_filter_prefix . "#content_list_berita" }}">All</a>
-                    
-                        @foreach ($news_categories as $news_category)
-                            <a style="height: 44px;" class="d-flex align-items-center px-3"
-                                href="{{ $url_filter_prefix."&category=".$news_category->slug . "#content_list_berita" }}">{{ $news_category->name }}
-                            </a>
-                        @endforeach
-
                     </div>
+
                 </div>
-                <div class="col">
-                    <div class="wrap_search_berita">
+                <div class="col mb-4 order-1 order-md-2">
+                    <div class="wrap_search_berita w-100">
                         <div class="input-group">
-                            <form action="{{ route('front.news.search') }}" method="GET">
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}" method="GET">
                                 <input style="background-color: transparent;" type="text" name="q"
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
