@@ -78,14 +78,12 @@
                 <div class="col">
                     <div class="wrap_search_events">
                         <div class="input-group">
-                            <form action="{{ route('front.event.search') }}" method="GET">
-                                <input name="q" style="background-color: transparent;" type="text"
-                                    class="form-control rounded border-0" placeholder="Search" aria-label="Search"
-                                    aria-describedby="search-addon" />
-                                <button type="submit" class="btn"><img
-                                        src="{{ asset('storage/app/public/assets') }}/img/search-icon.svg"
-                                        alt="search icon"></button>
-                            </form>
+                            <input style="background-color: transparent;" type="search"
+                                class="form-control rounded border-0" placeholder="Search" aria-label="Search"
+                                aria-describedby="search-addon" />
+                            <button type="button" class="btn"><img
+                                    src="{{ asset('storage/app/public/assets') }}/img/search-icon.svg"
+                                    alt="search icon"></button>
                         </div>
                     </div>
                 </div>
@@ -137,13 +135,11 @@
                                             <div class="col-12 col-md-5 date_events_list pl-0">
                                                 <div class="mx-md-4">
                                                     <p>
-                                                        {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
-                                                        -
+                                                        {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }} -
                                                         {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
-                                                        <br />
+                                                        <br /> 
                                                         <span>
-                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
-                                                            -
+                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }} - 
                                                             {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
                                                         </span>
                                                     </p>
