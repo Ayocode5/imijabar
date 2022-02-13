@@ -52,13 +52,14 @@ class SearchController extends Controller
                     $query->where('category_slug', $news_category_filter);
                 }
             })->orderBy('created_at', 'DESC')->paginate(6);
+			
+			if($news) {
+				if($news->lastPage() > 1 && $news->currentPage() > 1) {
+					return response()->json($news, 200);
+				}
+			}
         }
 
-        if($news) {
-			if($news->lastPage() > 1 && $news->currentPage() > 1) {
-				return response()->json($news, 200);
-			}
-		}
 
 		return view('pages.news_search', compact('settings', 'news', 'news_categories', 'page_news_settings'));
 	}
