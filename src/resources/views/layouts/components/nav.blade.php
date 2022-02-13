@@ -18,7 +18,7 @@
                     <a class="nav-link mr-lg-3 @if ($url == 'news') active @endif" href="/news">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'events') active @endif" href="#">Acara</a>
+                    <a class="nav-link mr-lg-3 @if ($url == 'event') active @endif" href="/event">Acara</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
