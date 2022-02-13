@@ -104,7 +104,7 @@ class EventSeeder extends Seeder
         }
 
         foreach ($events_id as $key => $event_id) {
-            array_push($event_sport_payload, [
+            array_push($event_sponsor_payload, [
                 'event_id' => $event_id,
                 'sponsor_id' => $sponsors_id[array_rand($sponsors_id, 1)],
             ]);

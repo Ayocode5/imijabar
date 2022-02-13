@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/about.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/news.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/news-detail.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/event.css">
 
 
 
@@ -24,5 +25,4 @@
         background-color: #263840;
         border-radius: 0 0 5 px 5 px;
     }
-
 </style>

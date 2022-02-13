@@ -25,7 +25,7 @@ class BlogController extends Controller
     {
         $this->authorize('viewAny', Blog::class);
 
-        $blog = Blog::all();
+        $blog = Blog::orderBy('created_at', 'DESC')->get();
         return view('admin.blog.index', compact('blog'));
     }
 

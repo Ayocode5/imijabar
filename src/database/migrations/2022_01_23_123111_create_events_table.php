@@ -23,7 +23,7 @@ class CreateEventsTable extends Migration
             $table->date('event_end_date');
             $table->enum('event_status', ['rejected','approved','applying'])->nullable();
             $table->text('event_location');
-            $table->text('event_map');
+            $table->text('event_map')->nullable();
             $table->text('event_video')->nullable();
             $table->text('event_featured_photo');
             $table->text('seo_title')->nullable();
