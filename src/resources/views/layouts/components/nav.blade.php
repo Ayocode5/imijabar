@@ -11,17 +11,17 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto navbar_list">
                 <li class="nav-item mr-lg-3">
-                    <a class="nav-link @if ($url == 'about') active @endif" href="{{ url('/about') }}">Tentang IMI<span
+                    <a class="nav-link @if (in_array('about', $url)) active @endif" href="{{ url('/about') }}">Tentang IMI<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'news') active @endif" href="/news">Berita</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('news', $url)) active @endif" href="/news">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'event') active @endif" href="/event">Acara</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif" href="/event">Acara</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('galleries', $url)) active @endif" href="#">Galeri</a>
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -31,8 +31,7 @@
                     <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">KIS</a>
                         <a class="dropdown-item" href="#">KTA</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Club</a>
                     </div>
                 </li>
             </ul>

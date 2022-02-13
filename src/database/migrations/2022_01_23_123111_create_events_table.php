@@ -17,12 +17,16 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->text('event_name');
             $table->text('event_slug');
+            $table->string('event_organizer');
             $table->text('event_content');
             $table->text('event_content_short');
             $table->date('event_start_date');
             $table->date('event_end_date');
             $table->enum('event_status', ['rejected','approved','applying'])->nullable();
             $table->text('event_location');
+            $table->text('event_location_city');
+            $table->text('event_location_province');
+            $table->text('event_link')->nullable();
             $table->text('event_map');
             $table->text('event_video')->nullable();
             $table->text('event_featured_photo');

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/news.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/news-detail.css">
 <link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/event.css">
+<link rel="stylesheet" href="{{ asset('storage/app/public/assets/css') }}/event-detail.css">
 
 
 

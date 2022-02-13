@@ -32,6 +32,7 @@ class SearchController extends Controller
         $sports = DB::table('sports')->select('name', 'slug')->get();
 
         $events = collect([]);
+
         if ($request->has('q') && !empty($request->q)) {
 
             $events = Event::with([
@@ -49,7 +50,7 @@ class SearchController extends Controller
                 'id',
                 'event_name as name',
                 'event_slug as slug',
-                'event_content as summary',
+                'event_content_short as summary',
                 'event_start_date as start_date',
                 'event_end_date as date',
                 'event_status as status',
@@ -58,7 +59,7 @@ class SearchController extends Controller
                 'created_at',
                 'deleted_at'
             ])->where('deleted_at', null)
-            ->where('event_name', 'like', "%$request->q%")
+                ->where('event_name', 'like', "%$request->q%")
                 ->whereHas('sports', function ($s_query) use ($events_sport_filter) {
                     if ($events_sport_filter) {
                         $s_query->where('slug', $events_sport_filter);
@@ -73,13 +74,14 @@ class SearchController extends Controller
                 });
                 $event->categories = $event->categories->unique();
             });
-        }
 
-        if ($events) {
-            if ($events->lastPage() > 1 && $events->currentPage() > 1) {
-                return response()->json($events, 200);
+            if ($events) {
+                if ($events->lastPage() > 1 && $events->currentPage() > 1) {
+                    return response()->json($events, 200);
+                }
             }
         }
+
 
         return view('pages.event_search', compact('events', 'categories', 'sports', 'settings', 'page_event_settings'));
     }

@@ -24,7 +24,8 @@ class HomeController extends Controller
 			e.event_name as name,
 			e.event_start_date,
 			e.event_end_date,
-			e.event_location,
+			e.event_location_city,
+			e.event_location_province,
 			e.event_featured_photo as featured_photo,
 			GROUP_CONCAT(DISTINCT sp.name SEPARATOR ', ') as sports,
 			GROUP_CONCAT(DISTINCT ec.name SEPARATOR ', ') as categories,
@@ -37,7 +38,6 @@ class HomeController extends Controller
 			->groupBy('id')
 			->orderBy('e.event_start_date')
 			->get();
-
 
 		$events->map(function ($event) use ($date_today) {
 

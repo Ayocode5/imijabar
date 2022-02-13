@@ -13,66 +13,35 @@
         <div class="carousel_head_list_events">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
+                    @foreach ($events as $key => $item)
+                        <li data-target="#demo" data-slide-to="{{ $key }}" class="@if($key == 0) active @endif"></li>
+                    @endforeach
                 </ul>
                 {{-- Carousel Banner --}}
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="overlay_jumbotron">
+                    @foreach ($events as $key => $crl_event)
+                        <div class="carousel-item @if($key == 0) active @endif">
+                            <div class="overlay_jumbotron">
 
+                            </div>
+                            <img src="{{ asset('public/uploads') . "/$crl_event->photo" }}" alt="Los Angeles" width="100%"
+                                height="600">
+                            <div class="carousel-caption">
+                                <p class="date_author">
+                                    {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->format('d F Y') }}
+                                    | Editor</p>
+                                <h2>{{ $crl_event->name }}</h2>
+                                <p>
+                                    {{ $crl_event->summary }}
+                                </p>
+                                <a href="/event/{{ $crl_event->slug }}">
+                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                        More
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                        <img src="{{ asset('storage/app/public/assets') }}/img/jumbotron-img.png" alt="Los Angeles"
-                            width="100%" height="600">
-                        <div class="carousel-caption">
-                            <p class="date_author">23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay_jumbotron">
-
-                        </div>
-                        <img src="{{ asset('storage/app/public/assets') }}/img/jumbotron-img2.png" alt="Chicago"
-                            width="100%" height="600">
-                        <div style="text-align: right;" class="carousel-caption">
-                            <p>23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light">Show More</button>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay_jumbotron">
-
-                        </div>
-                        <img src="{{ asset('storage/app/public/assets') }}/img/jumbotron-img.png" alt="New York"
-                            width="100%" height="600">
-                        <div class="carousel-caption">
-                            <p>23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light">Show More</button>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -90,16 +59,18 @@
             <div class="wrap_content_list_events row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
                 <div class="col">
                     <div class="d-flex justify-content-around">
-                        
+
                         {{-- URL FILETR CATEGORY FORMAT --}}
                         @php
-                            $url_filter_prefix = url()->current()."?page=1"
+                            $url_filter_prefix = url()->current() . '?page=1';
                         @endphp
 
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="{{ $url_filter_prefix . "#content_list_events" }}">All</a>
+                        <a style="height: 44px;" class="d-flex align-items-center px-3"
+                            href="{{ $url_filter_prefix . '#content_list_events' }}">All</a>
 
                         @foreach ($sports as $sport)
-                            <a href="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events"}}" style="height: 44px;" class="d-flex align-items-center px-3">{{ $sport->name }}</a>
+                            <a href="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
+                                style="height: 44px;" class="d-flex align-items-center px-3">{{ $sport->name }}</a>
                         @endforeach
 
                     </div>
@@ -128,12 +99,12 @@
 
                     @foreach ($events as $event)
                         <div class="col mb-4">
-                            <a class="text-decoration-none text-dark" href="detail-event.html">
+                            <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
                                 <div class="card">
                                     <img class="calender_pin"
                                         src="{{ asset('storage/app/public/assets') }}/img/calender_pin.svg"
                                         alt="calender pin image">
-                                    <div class="header_card_image shadow">
+                                    <div class="header_card_image">
                                         <div class="feature_image_event_list">
                                             <div class="ribbon_wrapper">
                                                 @foreach ($event->categories as $category)
@@ -142,23 +113,17 @@
                                                 @endforeach
                                             </div>
 
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/event_featured_photo.png"
+                                            <img src="{{ asset('public/uploads') . "/$event->photo" }}"
                                                 class="card-img-top" alt="featured image">
                                         </div>
-                                        <!-- <div
-                                                        class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                                        <p style="height: 8px;" class="category_events">Roda Empat</p>
-                                                        <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                                    </div> -->
-
                                     </div>
-                                    <div class="card-body shadow">
+                                    <div class="card-body" style="background-color: #f5f5f5">
                                         <div class="card-title">
                                             <h3>
                                                 {{ $event->name }}
                                             </h3>
-                                            <p class="presented_events">Presented by
-                                            <h2>INI APA? Sponsor?</h2>
+                                            <p class="presented_events">
+                                                Presented by : {{ $event->organizer }}
                                             </p>
 
                                             {{-- @foreach ($event->sports as $sport)
@@ -167,7 +132,7 @@
                                         </div>
                                         <div class="d-flex flex-wrap justify-content-between  card_events_list_detail">
                                             <div class="col-12 col-md-7 location_events_list">
-                                                {{ $event->summary }}
+                                                {{ $event->location }}
                                             </div>
                                             <div class="col-12 col-md-5 date_events_list pl-0">
                                                 <div class="mx-md-4">
