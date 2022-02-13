@@ -40,6 +40,7 @@ class EventController extends Controller
                 GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
             ")
             ->where('e.deleted_at', null)
+            ->orderBy('e.created_at')
             ->groupBy('id')
             ->get();
 
@@ -119,7 +120,7 @@ class EventController extends Controller
 
             'sports' => fn ($q) => $q->select('id'),
             'sponsors' => fn ($q) => $q->select('id')
-            
+
             ])->findOrFail($id);
 
         $sports = DB::table('sports')->select(['name', 'id'])->get();
