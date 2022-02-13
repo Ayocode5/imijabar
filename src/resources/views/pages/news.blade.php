@@ -64,10 +64,14 @@
                         <!-- <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a> -->
                         <div class="position-relative border-0 wrap_select_category_news">
                             <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
-                            <option value="none" selected disabled hidden>Select Category</option>
+                           
                             <option value="?page=1">Semua</option>
                             @foreach ($news_categories as $news_category)
-                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</option>
+                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}"
+                                @if(request()->category == $news_category->slug) 
+                                    selected
+                                @endif    
+                                >{{ $news_category->name }}</option>
                             @endforeach
                             </select>
                         </div>
