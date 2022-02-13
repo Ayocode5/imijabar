@@ -71,7 +71,8 @@
                             @endforeach
                             </select>
                         </div>
-                        <!-- @foreach ($news_categories as $news_category)
+                        <!-- @foreach ($news_categorie
+                        s as $news_category)
                             <a style="height: 44px;" class="d-flex align-items-center px-3"
                                 href="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</a>
                         @endforeach -->

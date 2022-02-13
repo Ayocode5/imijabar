@@ -17,6 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 <script>
     $(document).ready(function() {
+<<<<<<< Updated upstream
         const selectAllCheckbox = document.querySelector(".permission-select-all");
 
         $(".permission-item").each((index, item) => {
@@ -25,6 +26,15 @@
                 return false;
             } else {
                 selectAllCheckbox.setAttribute('checked', true)
+=======
+        $(".permission-item").each(() => {
+            console.log(item)
+            if(!item.checked) {
+                $(".permission-select-all").checked = false;
+            }
+            else {
+                $(".permission-select-all").checked = true;
+>>>>>>> Stashed changes
             }
         })
 
