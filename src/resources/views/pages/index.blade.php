@@ -21,7 +21,7 @@
                                         <h1 class="title-berita">{{ $news_data->blog_title }} </h1>
                                         <p class="subtitle-berita">
                                             {!! $news_data->blog_content_short !!}
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/icon-arrow-right.png"
+                                            <img src="{{ asset('public/images') }}/icon-arrow-right.png"
                                                 alt="icon arrow" style="width: 16px; height: 16px;">
                                         </p>
                                     </div>
@@ -76,7 +76,7 @@
                                             <h3 class="name-event">{{ $event->name }} </h3>
                                         </div>
                                         <div class="col-1">
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/icon-arrow-down.svg"
+                                            <img src="{{ asset('public/images') }}/icon-arrow-down.svg"
                                                 alt="icon arrow">
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                     <div class="position-relative slide_tentangImi2">
                         <p>Optimization to Execellence.</p>
                         <p class="signature_text">IMI Jawa Barat</p>
-                        <img class="position-absolute" src="{{ asset('storage/app/public/assets') }}/img/line_blue.svg"
+                        <img class="position-absolute" src="{{ asset('public/images') }}/line_blue.svg"
                             alt="line_blue">
                         <a class="selengkapnya_tentangImi" href="/about">Selengkapnya →</a>
 

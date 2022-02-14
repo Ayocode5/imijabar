@@ -5,20 +5,20 @@
             <div class="col-12 col-lg-5  mb-3 mb-lg-0 align-self-center">
                 <div class="row">
                     <div class="col-12 col-sm-3">
-                        <img class="d-block mb-4 logo_footer" src="{{ asset('storage/app/public/assets/img') }}/logo_footer.svg"
+                        <img class="d-block mb-4 logo_footer" src="{{ asset('public/images') }}/logo_footer.svg"
                             alt="logo imi jawa barat">
                     </div>
                     <div class="footer_ttd col-12 col-sm-9 text-sm-right text-center position-relative">
                         <p>Optimization to Execellence.</p>
                         <p class="text_ttd_footer">IMI Jawa Barat</p>
-                        <img class="position-absolute line_border" src="{{ asset('storage/app/public/assets/img') }}/line_blue.svg" alt="line blue">
+                        <img class="position-absolute line_border" src="{{ asset('public/images') }}/line_blue.svg" alt="line blue">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col sosial_media_footer">
-                        <img class="mr-3" src="{{ asset('storage/app/public/assets/img') }}/icon_globe_web.svg" alt="web imi jabar">
-                        <img class="mr-3" src="{{ asset('storage/app/public/assets/img') }}/icon_facebook.svg" alt="facebook imi jabar">
-                        <img class="mr-3" src="{{ asset('storage/app/public/assets/img') }}/icon_instagram.svg" alt="instagram imi jabar">
+                        <img class="mr-3" src="{{ asset('public/images') }}/icon_globe_web.svg" alt="web imi jabar">
+                        <img class="mr-3" src="{{ asset('public/images') }}/icon_facebook.svg" alt="facebook imi jabar">
+                        <img class="mr-3" src="{{ asset('public/images') }}/icon_instagram.svg" alt="instagram imi jabar">
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
     </div>
 
     </div>
-    <img class="position-absolute background_footer" src="{{ asset('storage/app/public/assets/img') }}/background_footer.png" alt="background footer">
+    <img class="position-absolute background_footer" src="{{ asset('public/images') }}/background_footer.png" alt="background footer">
 </footer>
 
 <div class="credit">

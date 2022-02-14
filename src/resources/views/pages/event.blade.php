@@ -89,7 +89,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('storage/app/public/assets') }}/img/search-icon.svg"
+                                        src="{{ asset('public/images') }}/search-icon.svg"
                                         alt="search icon"></button>
                             </form>
                         </div>
@@ -111,7 +111,7 @@
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
                                     <img class="calender_pin"
-                                        src="{{ asset('storage/app/public/assets') }}/img/calender_pin.svg"
+                                        src="{{ asset('public/images') }}/calender_pin.svg"
                                         alt="calender pin image">
                                     <div class="card">
                                         <div class="header_card_image shadow">

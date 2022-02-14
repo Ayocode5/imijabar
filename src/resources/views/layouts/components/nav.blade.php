@@ -43,9 +43,9 @@
                             <div class="ball"></div>
                             <div class="flags">
                                 <img class="ball_us flag"
-                                    src="{{ asset('storage/app/public/assets/img') }}/flag-us.svg" alt="us flag">
+                                    src="{{ asset('public/images') }}/flag-us.svg" alt="us flag">
                                 <img class="ball_id flag"
-                                    src="{{ asset('storage/app/public/assets/img') }}/flag-indonesia.svg" alt="is flag">
+                                    src="{{ asset('public/images') }}/flag-indonesia.svg" alt="is flag">
                             </div>
                             <!-- <div class="ball"></div> -->
                         </label>
@@ -54,7 +54,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
                         <img class="mb-1 mr-2"
-                            src="{{ asset('storage/app/public/assets/img') }}/Telephone-Icon.svg"
+                            src="{{ asset('public/images') }}/Telephone-Icon.svg"
                             alt="icon contact telephone">
                         {{-- 0857-XXXX-XXXX --}}
                         {{ $settings?->top_bar_phone }}
@@ -62,7 +62,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{ asset('storage/app/public/assets/img') }}/Email-Icon.svg"
+                        <img class="mb-1 mr-2" src="{{ asset('public/images') }}/Email-Icon.svg"
                             alt="icon contact email">
                         {{ $settings?->top_bar_email }}
                     </a>

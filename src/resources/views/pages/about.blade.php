@@ -20,12 +20,12 @@
                     </div>
                 </div>
                 <div class="align-items-center d-flex col-12 col-md-5 order-1 order-md-2">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/visi-img.png" alt="visimisi img" class="img-fluid">
+                    <img src="{{ asset('public/images') }}/visi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
             </div>
             <div class="row misi_section">
                 <div class="align-items-center d-flex col-12 col-md-5 order-1">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/misi-img.png" alt="visimisi img" class="img-fluid">
+                    <img src="{{ asset('public/images') }}/misi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
                 <div class="col-12 col-md-7 order-2 align-items-center justify-content-end d-flex">
                     <div>
@@ -63,10 +63,10 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-6 order-1 order-md-2">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
+                    <img src="{{ asset('public/images') }}/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
                 </div>
             </div>
-            <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+            <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
             <div class="row">
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -75,7 +75,7 @@
                     </p>
                 </div>
                 <div class="col-12 col-lg-2 d-flex justify-content-center">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
+                    <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
                 </div>
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -91,7 +91,7 @@
                             data-parent="#accordionShowMore">
                             <div class="card-body p-0" style="background-color: #fbfbfbfb;">
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -101,7 +101,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
@@ -111,7 +111,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
                                         <p class="sejarah-text">
@@ -120,7 +120,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow2">
                                     </div>
                                     <div class="col-12 col-lg-5">
@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -141,7 +141,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
@@ -161,7 +161,7 @@
                                         aria-controls="collapseHistory" />
                                     <label class="label_show_more_history d-flex align-items-center" for="shwmr">
                                         <div class="text_show_more_tentang_imi"></div>
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/icon-arrow-down.svg" alt="arrow down"
+                                        <img src="{{ asset('public/images') }}/icon-arrow-down.svg" alt="arrow down"
                                             class="showmore-icon">
                                     </label>
                                 </div>
@@ -205,7 +205,7 @@
                             <br />
                             <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                    class="mr-3" src="{{ asset('storage/app/public/assets/') }}/img/pdf-icon.png" alt=""> Download
+                                    class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button>
 
                         </div>
@@ -227,7 +227,7 @@
                             <br />
                             <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                    class="mr-3" src="{{ asset('storage/app/public/assets/') }}/img/pdf-icon.png" alt=""> Download
+                                    class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button>
 
                         </div>

@@ -35,15 +35,15 @@
 
                                 <div class="share_sosmed d-flex flex-row flex-md-column align-content-center">
                                     <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('storage/app/public/assets') }}/img/share_facebook.svg"
+                                            src="{{ asset('public/images') }}/share_facebook.svg"
                                             alt="share to facebook"></a>
 
                                     <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('storage/app/public/assets') }}/img/share_instagram.svg"
+                                            src="{{ asset('public/images') }}/share_instagram.svg"
                                             alt="share to instagram"></a>
 
                                     <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('storage/app/public/assets') }}/img/share_whatsapp.svg"
+                                            src="{{ asset('public/images') }}/share_whatsapp.svg"
                                             alt="share to share_whatsapp"></a>
 
                                 </div>

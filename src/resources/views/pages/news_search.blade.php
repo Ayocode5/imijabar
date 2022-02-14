@@ -87,7 +87,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('storage/app/public/assets/img') }}/search-icon.svg"
+                                        src="{{ asset('public/images/') }}/search-icon.svg"
                                         alt="search icon">
                                 </button>
                             </form>

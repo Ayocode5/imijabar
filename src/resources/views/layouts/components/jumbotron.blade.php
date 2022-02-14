@@ -6,7 +6,7 @@
             <div class="row no-gutters">
                 <div class="col-6 col-lg-12 no-gutters border-bottom">
                     <img class="jumbotron_logo position-absolute"
-                        src="{{ asset('storage/app/public/assets/img/logoImiJumbotron.svg') }}" alt="Logo IMI">
+                        src="{{ asset('public/images/') }}/logoImiJumbotron.svg" alt="Logo IMI">
                     <img class="jumbotron_batik" src="{{ asset('public/uploads/') . "/$home_settings->jumbotron_bg" }}"
                         alt="jumbotron-batik">
                 </div>
@@ -14,6 +14,7 @@
                     <div class="welcome_text">
                         <h1>{{ $home_settings->jumbotron_title }}</h1>
                         <p id="typed"></p>
+                        <span id="welcome_text_jumbotron" hidden>Selamat datang di web resmi IMI Jabar</span>
                     </div>
                 </div>
             </div>

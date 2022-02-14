@@ -3,7 +3,7 @@
     <div class="container-fluid wrap_breadcumb py-3">
         <div class="d-flex align-items-center">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('storage/app/public/assets/') }}/img/icon-arrow-back.png" alt="back icon"
+                <img src="{{ asset('public/images/') }}/icon-arrow-back.png" alt="back icon"
                     style="width: 24px; height: 24px; margin-right: 20px;">
             </a>
             {{-- Breacrumb Url Splitter --}}

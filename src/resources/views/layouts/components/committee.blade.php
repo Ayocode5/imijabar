@@ -19,15 +19,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person1.png" alt="commite1">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person1.png" alt="commite1">
                 </div>
                 <div class="item position-relative">
                     <div class="overlay_multiple_item_carousel position-absolute">
@@ -36,15 +36,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person2.png" alt="commite2">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person2.png" alt="commite2">
                 </div>
                 <div class="item position-relative">
                     <div class="overlay_multiple_item_carousel position-absolute">
@@ -53,15 +53,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person3.png" alt="commite3">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person3.png" alt="commite3">
                 </div>
                 <div class="item position-relative">
                     <div class="overlay_multiple_item_carousel position-absolute">
@@ -70,15 +70,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person4.png" alt="commite4">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person4.png" alt="commite4">
                 </div>
                 <div class="item position-relative">
                     <div class="overlay_multiple_item_carousel position-absolute">
@@ -87,15 +87,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person5.png" alt="commite5">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person5.png" alt="commite5">
                 </div>
                 <div class="item position-relative">
                     <div class="overlay_multiple_item_carousel position-absolute">
@@ -104,15 +104,15 @@
                             <p class="role_text_overlay">Ketua Umum</p>
                             <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/instagram.svg"
+                                        src="{{ asset('/public/images/') }}/instagram.svg"
                                         alt="instagram commite"></a>
                                 <a href="#"><img style="height: 22px; width: 22px;"
-                                        src="{{ asset('storage/app/public/assets') }}/img/facebook.svg"
+                                        src="{{ asset('/public/images/') }}/facebook.svg"
                                         alt="facebook commite"></a>
                             </div>
                         </div>
                     </div>
-                    <img style="height: 100%; object-fit: cover;" src="{{ asset('storage/app/public/assets') }}/img/person6.png" alt="commite6">
+                    <img style="height: 100%; object-fit: cover;" src="{{ asset('/public/images/') }}/person6.png" alt="commite6">
                 </div>
             </div>
         </div>

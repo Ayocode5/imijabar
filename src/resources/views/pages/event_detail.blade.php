@@ -107,7 +107,7 @@
                                 </button>
                             </h3>
                             <div class="col-2">
-                                <img src="{{ asset('storage/app/public/assets/') }}/img/arrow_top.svg" alt="arrow top">
+                                <img src="{{ asset('public/images/') }}/arrow_top.svg" alt="arrow top">
                             </div>
                         </div>
 
@@ -118,7 +118,7 @@
                                 <a href="#" target="_blank" rel="noreferrer nofollow"><button type="button"
                                         class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                             class="mr-3"
-                                            src="{{ asset('storage/app/public/assets/') }}/img/pdf-icon.png" alt="">
+                                            src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
                                         Download
                                         File</button></a>
                             </div>

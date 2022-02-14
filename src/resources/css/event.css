@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
-@import url(./reusable-css/navbar.css);
-@import url(./reusable-css/breadcumb.css);
-@import url(./reusable-css/footer.css);
+
 /* 
     font-family: 'Barlow', sans-serif;  
     font-family: 'Tinos', serif;
@@ -195,7 +193,7 @@ body {
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
-    background-image: url('../img/icon-arrow-down.svg');
+    background-image: url('../../public/images/icon-arrow-down.svg');
     background-repeat: no-repeat;
     background-position-x: 96%;
     background-position-y: 50%;
@@ -214,7 +212,7 @@ body {
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
-    background-image: url('../img/icon-arrow-down.svg');
+    background-image: url('../../public/images/icon-arrow-down.svg');
     background-repeat: no-repeat;
     background-position-x: 96%;
     background-position-y: 50%;

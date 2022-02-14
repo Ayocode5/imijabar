@@ -65,6 +65,7 @@ use App\Http\Controllers\Admin\Shop\ShippingController;
 /**
  * Front Panel - Customer
  */
+
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
 use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
@@ -79,6 +80,7 @@ use App\Http\Controllers\Customer\ResetPasswordController as ResetPasswordContro
 /**
  * Front Panel Controllers
  */
+
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SubscriptionController;
 use App\Http\Controllers\Front\AboutController;
@@ -94,8 +96,9 @@ use Illuminate\Support\Facades\Route;
 /* --------------------------------------- */
 /* Front Panel */
 /* --------------------------------------- */
+
 Route::get('/', [HomeController::class, 'index']);
-Route::post('/subscription', [SubscriptionController::class, 'index'])->name('front.subscription');
+Route::post('/subscription', [SubscriptionController::class, 'subscribe'])->name('front.subscription');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
 Route::get('/about', AboutController::class)->name('front.about');
 Route::get('/news', NewsIndexController::class)->name('front.news');
@@ -657,7 +660,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /**
      * IMI Member Registration - Admin
      */
-    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function() {
+    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
     });

@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
         // Send Email Verification to subscriber  
         SendEmailVerificationSubscriber::dispatch([
             'recipent' => $request->subs_email,
-            'subject' => $subject, 
+            'subject' => $subject,
             'message' => $message
         ]);
 
