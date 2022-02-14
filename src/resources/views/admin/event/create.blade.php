@@ -18,6 +18,11 @@
                     <input type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" autofocus>
                 </div>
                 <div class="form-group">
+                    <label for="">Event Organizer</label>
+                    <input type="text" name="event_organizer" class="form-control"
+                        value="{{ old('event_organizer') }}" autofocus>
+                </div>
+                <div class="form-group">
                     <label for="">Content</label>
                     <textarea name="event_content" class="form-control editor" cols="30"
                         rows="10">{{ old('event_content') }}</textarea>
@@ -43,14 +48,28 @@
                         autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Maps - Optional</label>
-                    <input type="text" name="event_map" class="form-control"
-                        value="{{ old('event_map') }}" autofocus>
+                    <label for="">City</label>
+                    <input type="text" name="event_location_city" class="form-control"
+                        value="{{ old('event_location_city') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Video (YouTube ID) - Optional</label>
+                    <label for="">Province</label>
+                    <input type="text" name="event_location_province" class="form-control"
+                        value="{{ old('event_location_province') }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Maps (Optional)</label>
+                    <input type="text" name="event_map" class="form-control" value="{{ old('event_map') }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Video (YouTube ID) - (Optional)</label>
                     <input type="text" name="event_video" class="form-control" value="{{ old('event_video') }}"
                         autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Registration Link (Optional)</label>
+                    <input type="text" name="event_url" class="form-control"
+                        value="{{ old('event_url') }}" autofocus>
                 </div>
 
                 <div class="form-group">
@@ -60,26 +79,28 @@
                             <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                    <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
-                        @foreach ($sports as $sport)
-                            <option value={{ $sport->id }}>{{ $sport->name }}</option>
-                        @endforeach
-                    </select>
+                        <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple"
+                            autofocus>
+                            @foreach ($sports as $sport)
+                                <option value={{ $sport->id }}>{{ $sport->name }}</option>
+                            @endforeach
+                        </select>
                     @endif
                 </div>
 
                 <div class="form-group">
-                    <label for="">Sponsor - Optional</label>
+                    <label for="">Sponsor (Optional)</label>
                     @if (count($sponsors) <= 0)
                         <select class="form-control" disabled>
                             <option value="">There is no Sponsor available, Create first</option>
                         </select>
                     @else
-                    <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple" autofocus>
-                        @foreach ($sponsors as $sponsor)
-                            <option value={{ $sponsor->id }}>{{ $sponsor->name }}</option>
-                        @endforeach
-                    </select>
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple"
+                            autofocus>
+                            @foreach ($sponsors as $sponsor)
+                                <option value={{ $sponsor->id }}>{{ $sponsor->name }}</option>
+                            @endforeach
+                        </select>
                     @endif
                 </div>
 
@@ -88,9 +109,9 @@
                         <img id="event_preview_image" src="" alt="" class="w_300">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="">Image ( max: 2mb )</label>
+                    <label for="">Image (Max: 2MB)</label>
                     <div>
                         <input type="file" name="event_featured_photo" id="event_featured_photo">
                     </div>

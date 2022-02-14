@@ -19,7 +19,6 @@
                         <th>Name</th>
                         <th>Sport</th>
                         <th>Category</th>
-                        {{-- <th>Gallery</th> --}}
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -32,9 +31,6 @@
                             <td>{{ $event->name }}</td>
                             <td>{{ $event->sports}}</td>
                             <td>{{ $event->categories}}</td>
-                            {{-- <td>
-                                <a href="{{ URL::to('admin/event/gallery/'.$event->id) }}" class="btn btn-success btn-sm">Manage Gallery</a>
-                            </td> --}}
                             <td>{{$event->status}}</td>
                             <td>
                                 <a href="{{ URL::to('admin/event/edit/'.$event->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.components.jumbotron')
+    @include('layouts.components.jumbotron', ['news' => $news])
 
     <main>
         <!-- START BERITA & EVENT -->
@@ -70,7 +70,7 @@
                                         </div>
                                         <div style="border-right: 1px solid #5996EC;" class="col-5 p-0">
                                             <p class="month-event m-0">{{ date_format(date_create($event->event_start_date), "F Y") }}</p>
-                                            <h3 class="loc-event">{{ $event->event_location }}</h3>
+                                            <h3 class="loc-event">{{ $event->event_location_city }}, {{ $event->event_location_province }}</h3>
                                         </div>
                                         <div class="col-3 p-2">
                                             <h3 class="name-event">{{ $event->name }} </h3>

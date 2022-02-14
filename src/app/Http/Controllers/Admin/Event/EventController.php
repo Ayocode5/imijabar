@@ -67,7 +67,6 @@ class EventController extends Controller
 
     public function create()
     {
-
         $this->authorize('create', Event::class);
 
         $sports = DB::table('sports')->select(['name', 'id'])->get();
@@ -81,14 +80,17 @@ class EventController extends Controller
         $this->authorize('create', Event::class);
 
         $event = new Event();
+
         $data = $request->only($event->getFillable());
 
         $request->validate([
             'sports_id' => 'required',
-            // 'event_map' => 'required',
+            'event_organizer' => 'required',
             'event_content' => 'required',
             'event_content_short' => 'required',
             'event_location' => 'required',
+            'event_location_city' => 'required',
+            'event_location_province' => 'required',
             'event_start_date' => 'required',
             'event_end_date' => 'required',
             'event_name' => 'required|unique:events',
@@ -99,7 +101,6 @@ class EventController extends Controller
         $ext = $request->file('event_featured_photo')->getClientOriginalExtension();
         $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $ext;
 
-        //TAKE IMAGE and MOVE TO PUBLIC FOLDER 
         $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
         $data['event_featured_photo'] = $fileName;
         $data['event_slug'] = Str::slug($request->event_name);
@@ -115,7 +116,13 @@ class EventController extends Controller
     {
         $this->authorize('update', Event::class);
 
-        $event = Event::with(['sports' => fn($q) => $q->select('id') ])->findOrFail($id);
+        $event = Event::with([
+
+            'sports' => fn ($q) => $q->select('id'),
+            'sponsors' => fn ($q) => $q->select('id')
+
+            ])->findOrFail($id);
+
         $sports = DB::table('sports')->select(['name', 'id'])->get();
         $sponsors = DB::table('sponsors')->select(['name', 'id'])->get();
         return view('admin.event.edit', compact(['event', 'sports', 'sponsors']));
@@ -123,20 +130,25 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $this->authorize('update', Event::class);
 
         $event = Event::findOrFail($id);
+
         $data = $request->only($event->getFillable());
 
         $request->validate([
             'event_name' =>  ['required', Rule::unique('events')->ignore($id),],
             'event_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'sports_id' => 'required',
-            // 'sponsors_id' => 'required'
+            'event_organizer' => 'required',
+            'event_content' => 'required',
+            'event_content_short' => 'required',
+            'event_location' => 'required',
+            'event_location_city' => 'required',
+            'event_location_province' => 'required',
+            'event_start_date' => 'required',
+            'event_end_date' => 'required',
         ]);
-
-        // dd($request);
 
         $data['event_slug'] = Str::slug($request->event_name);
 
@@ -155,8 +167,8 @@ class EventController extends Controller
                 $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
                 $data['event_featured_photo'] = $fileName;
             }
-
         } else {
+
             $data['event_featured_photo'] = $event->event_featured_photo;
         }
 
