@@ -61,7 +61,7 @@
                 <div class="col mb-4 order-2 order-md-1">
 
                     <div class="d-flex justify-content-start">
-                        <!-- <a style="height: 44px;" class="d-flex align-items-center px-3" href="?page=1">All</a> -->
+
                         <div class="position-relative border-0 wrap_select_category_news">
                             <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
                            
@@ -75,11 +75,7 @@
                             @endforeach
                             </select>
                         </div>
-                        <!-- @foreach ($news_categorie
-                        s as $news_category)
-                            <a style="height: 44px;" class="d-flex align-items-center px-3"
-                                href="{{ url()->current() . "?page=1&category=$news_category->slug" }}">{{ $news_category->name }}</a>
-                        @endforeach -->
+
                     </div>
                     
                 </div>
@@ -109,12 +105,10 @@
                         <h2>Oops, Berita tidak ada! </h2>Berita
                     @else
                         @foreach ($news as $news_data)
-                            <div class="col mb-4" categories="{{ $news_data->category->slug }}">
-                                <a href="/news/{{ $news_data->slug }}" class="text-decoration-none text-white"
-                                    style="display: inline;">
-                                    <div class="card">
-
-                                        <div class="header_card_image">
+                        <div class="col mb-4" categories="{{ $news_data->category->slug }}">
+                            <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
+                                <div class="card">
+                                    <div class="header_card_image">
                                             <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
                                                 class="card-img-top" alt="{{ $news_data->title }}">
                                             <div
@@ -126,14 +120,11 @@
                                                     {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
                                                 </p>
                                             </div>
-
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="/news/{{ $news_data->slug }}">
-                                                <h3 class="card-title">
+                                    </div>
+                                    <div class="card-body">
+                                            <h3 class="card-title">
                                                     {{ $news_data->title }}
-                                                </h3>
-                                            </a>
+                                            </h3>
                                             <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
                                                 <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
                                             </p>
@@ -141,10 +132,10 @@
                                                 {{ $news_data->summary }}
                                                 <span>→</span>
                                             </p>
-                                        </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
+                        </div>
                         @endforeach
                     @endif
                 </div>

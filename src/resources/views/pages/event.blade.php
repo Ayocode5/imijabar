@@ -88,26 +88,41 @@
 
         <section id="content_list_events">
             <div class="wrap_content_list_events row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col">
+                <div class="col mb-4 order-2 order-md-1">
                     <div class="d-flex justify-content-around">
-                        
-                        {{-- URL FILETR CATEGORY FORMAT --}}
-                        @php
-                            $url_filter_prefix = url()->current()."?page=1"
-                        @endphp
+                        <div class="position-relative row row-cols-1 row-cols-md-2 border-0 wrap_select_category_events"> 
+                            <select onchange="location = this.value;" class="col" name="filterCategoryEvents" id="filterCategoryEvents" >      
+                                <option value="Semua">Semua</option>
+                                <option value="Roda Dua">Roda Dua</option>
+                                <option value="Roda Dua">Roda Empat</option>
+                            </select>
+    
+                            {{-- URL FILETR CATEGORY FORMAT --}}
+                            @php
+                                $url_filter_prefix = url()->current()."?page=1"
+                            @endphp
+                            <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports" >
+                                
+                                <option value="{{ $url_filter_prefix . "#content_list_events" }}">Semua</option>
+    
+                                @foreach ($sports as $sport)
+                                <option value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events"}}"
+                                    @if(request()->sport == $sport->slug) 
+                                        selected
+                                    @endif    
+                                >{{ $sport->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="{{ $url_filter_prefix . "#content_list_events" }}">All</a>
-
-                        @foreach ($sports as $sport)
-                            <a href="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events"}}" style="height: 44px;" class="d-flex align-items-center px-3">{{ $sport->name }}</a>
-                        @endforeach
+                    
 
                     </div>
                 </div>
-                <div class="col">
-                    <div class="wrap_search_events">
+                <div class="col mb-4 order-1 order-md-2">
+                    <div class="wrap_search_events w-100">
                         <div class="input-group">
-                            <form action="{{ route('front.event.search') }}" method="GET">
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.event.search') }}" method="GET">
                                 <input name="q" style="background-color: transparent;" type="text"
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
@@ -129,49 +144,43 @@
                     @foreach ($events as $event)
                         <div class="col mb-4">
                             <a class="text-decoration-none text-dark" href="detail-event.html">
+                                <img class="calender_pin"
+                                    src="{{ asset('storage/app/public/assets') }}/img/calender_pin.svg"
+                                    alt="calender pin image">
                                 <div class="card">
-                                    <img class="calender_pin"
-                                        src="{{ asset('storage/app/public/assets') }}/img/calender_pin.svg"
-                                        alt="calender pin image">
                                     <div class="header_card_image shadow">
                                         <div class="feature_image_event_list">
+
+                                            <img src="{{ asset('storage/app/public/assets') }}/img/photo_event_detail.png"
+                                                class="card-img-top image_feature_event" alt="featured image">
+                                                
                                             <div class="ribbon_wrapper">
+
                                                 @foreach ($event->categories as $category)
                                                     <div class="ribbon_category_event text-white">{{ $category->name }}
                                                     </div>
                                                 @endforeach
                                             </div>
-
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/event_featured_photo.png"
-                                                class="card-img-top" alt="featured image">
                                         </div>
-                                        <!-- <div
-                                                        class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                                        <p style="height: 8px;" class="category_events">Roda Empat</p>
-                                                        <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                                    </div> -->
-
                                     </div>
                                     <div class="card-body shadow">
                                         <div class="card-title">
                                             <h3>
                                                 {{ $event->name }}
                                             </h3>
-                                            <p class="presented_events">Presented by
-                                            <h2>INI APA? Sponsor?</h2>
-                                            </p>
+                                            <p class="presented_events">Presented By IMI Jabar</p>
 
                                             {{-- @foreach ($event->sports as $sport)
                                                 <p>{{$sport->name}}</p>
                                             @endforeach --}}
                                         </div>
                                         <div class="d-flex flex-wrap justify-content-between  card_events_list_detail">
-                                            <div class="col-12 col-md-7 location_events_list">
+                                            <div class="col-12 col-md-5 pt-3 location_events_list">
                                                 {{ $event->summary }}
                                             </div>
-                                            <div class="col-12 col-md-5 date_events_list pl-0">
-                                                <div class="mx-md-4">
-                                                    <p>
+                                            <div class="col-12 col-md-7 pt-3 date_events_list pl-0 align-self-center">
+                                                <div class="d-flex justify-content-center">
+                                                    <p class="ml-2">
                                                         {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
                                                         -
                                                         {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
@@ -193,6 +202,7 @@
 
                 </div>
             </div>
+
             <button class="btn_load_more_list_events mx-auto d-block">
                 Load More
             </button>
