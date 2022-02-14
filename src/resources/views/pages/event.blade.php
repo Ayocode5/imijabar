@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.components.breadcrumb')
 
     <section id="header_page_list_events">
@@ -85,44 +84,36 @@
     </section>
 
     <main id="main_content_list_events">
-
         <section id="content_list_events">
-            <div class="wrap_content_list_events row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col mb-4 order-2 order-md-1">
-                    <div class="d-flex justify-content-around">
-                        <div class="position-relative row row-cols-1 row-cols-md-2 border-0 wrap_select_category_events"> 
-                            <select onchange="location = this.value;" class="col" name="filterCategoryEvents" id="filterCategoryEvents" >      
-                                <option value="Semua">Semua</option>
-                                <option value="Roda Dua">Roda Dua</option>
-                                <option value="Roda Dua">Roda Empat</option>
-                            </select>
-    
-                            {{-- URL FILETR CATEGORY FORMAT --}}
-                            @php
-                                $url_filter_prefix = url()->current()."?page=1"
-                            @endphp
-                            <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports" >
-                                
-                                <option value="{{ $url_filter_prefix . "#content_list_events" }}">Semua</option>
-    
-                                @foreach ($sports as $sport)
-                                <option value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events"}}"
-                                    @if(request()->sport == $sport->slug) 
-                                        selected
-                                    @endif    
-                                >{{ $sport->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                    
-
-                    </div>
+            <div class="wrap_content_list_events row py-2 py-md-5">
+                <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
+                    <select onchange="location = this.value;" class="col" name="filterCategoryEvents"
+                        id="filterCategoryEvents">
+                        <option value="semua">Semua</option>
+                        <option value="roda-dua">Roda Dua</option>
+                        <option value="roda-empat">Roda Empat</option>
+                    </select>
                 </div>
-                <div class="col mb-4 order-1 order-md-2">
+                <div class="filter_sports_events my-auto col-12 col-md-6 col-lg-5 mb-4 order-3 order-md-2">
+                    {{-- URL FILETR CATEGORY FORMAT --}}
+                    @php
+                        $url_filter_prefix = url()->current() . '?page=1';
+                    @endphp
+                    <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports">
+
+                        <option value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
+
+                        @foreach ($sports as $sport)
+                            <option value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
+                                @if (request()->sport == $sport->slug) selected @endif>{{ $sport->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-12 col-lg-4 my-auto mb-4 order-1 order-lg-3">
                     <div class="wrap_search_events w-100">
                         <div class="input-group">
-                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.event.search') }}" method="GET">
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.event.search') }}"
+                                method="GET">
                                 <input name="q" style="background-color: transparent;" type="text"
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
@@ -153,7 +144,7 @@
 
                                             <img src="{{ asset('storage/app/public/assets') }}/img/photo_event_detail.png"
                                                 class="card-img-top image_feature_event" alt="featured image">
-                                                
+
                                             <div class="ribbon_wrapper">
 
                                                 @foreach ($event->categories as $category)

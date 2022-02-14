@@ -57,32 +57,23 @@
 
     <main id="main_content_list_berita">
         <section id="content_list_berita">
-            <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col mb-4 order-2 order-md-1">
-
-                    <div class="d-flex justify-content-start">
-
-                        <div class="position-relative border-0 wrap_select_category_news">
-                            <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
-                           
-                            <option value="?page=1">Semua</option>
-                            @foreach ($news_categories as $news_category)
-                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}"
-                                @if(request()->category == $news_category->slug) 
-                                    selected
-                                @endif    
-                                >{{ $news_category->name }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-
-                    </div>
-                    
+            <div class="wrap_content_list_berita row py-2 py-md-5">
+                <div class="col-12 col-md-6 mb-4 order-2 order-md-1 filter_news_page">
+                    <select onchange="location = this.value;" style="background-color: transparent;"
+                        name="filterCategoryNews" id="filterCategoryNews">
+                        <option value="?page=1">Semua</option>
+                        @foreach ($news_categories as $news_category)
+                            <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}"
+                                @if (request()->category == $news_category->slug) selected @endif>{{ $news_category->name }}</option>
+                        @endforeach
+                    </select>
+                    </select>
                 </div>
-                <div class="col mb-4 order-1 order-md-2">
+                <div class="col-12 col-md-6 mb-4 order-1 order-md-2">
                     <div class="wrap_search_berita w-100">
                         <div class="input-group">
-                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}" method="GET">
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}"
+                                method="GET">
                                 <input style="background-color: transparent;" type="text" name="q"
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
@@ -96,7 +87,6 @@
                 </div>
             </div>
         </section>
-
         <section class="pb-5" id="list_card_berita">
             <div class="wrap_list_berita">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
@@ -105,10 +95,10 @@
                         <h2>Oops, Berita tidak ada! </h2>Berita
                     @else
                         @foreach ($news as $news_data)
-                        <div class="col mb-4" categories="{{ $news_data->category->slug }}">
-                            <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
-                                <div class="card">
-                                    <div class="header_card_image">
+                            <div class="col mb-4" categories="{{ $news_data->category->slug }}">
+                                <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
+                                    <div class="card">
+                                        <div class="header_card_image">
                                             <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
                                                 class="card-img-top" alt="{{ $news_data->title }}">
                                             <div
@@ -120,10 +110,10 @@
                                                     {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
                                                 </p>
                                             </div>
-                                    </div>
-                                    <div class="card-body">
+                                        </div>
+                                        <div class="card-body">
                                             <h3 class="card-title">
-                                                    {{ $news_data->title }}
+                                                {{ $news_data->title }}
                                             </h3>
                                             <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
                                                 <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
@@ -132,10 +122,10 @@
                                                 {{ $news_data->summary }}
                                                 <span>→</span>
                                             </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
                         @endforeach
                     @endif
                 </div>
