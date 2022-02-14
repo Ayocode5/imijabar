@@ -19,7 +19,7 @@
 
 <body>
     @php
-        $url = request()->path();
+        $url = explode('/', request()->path());
     @endphp
 
     <!-- Navbar -->
