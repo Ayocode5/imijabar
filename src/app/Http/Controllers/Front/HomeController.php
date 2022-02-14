@@ -34,9 +34,9 @@ class HomeController extends Controller
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('event_end_date', '>=', $date_today)
 			->where('deleted_at', null)
-			->limit($home_settings->events_total)
-			->groupBy('id')
 			->orderBy('e.event_start_date')
+			->groupBy('id')
+			->limit($home_settings->events_total)
 			->get();
 
 		$events->map(function ($event) use ($date_today) {
