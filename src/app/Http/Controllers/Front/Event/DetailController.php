@@ -24,8 +24,8 @@ class DetailController extends Controller
             'footer_column3_heading',
         )->first();
 
-        
-        $event_categories = DB::table('event_categories')->select('name','slug')->get();
+
+        $event_categories = DB::table('event_categories')->select('name', 'slug')->get();
 
         $event = Event::with([
             'sports' => function ($query) {
@@ -53,19 +53,22 @@ class DetailController extends Controller
             'created_at',
             'deleted_at'
         ])->where('deleted_at', null)
+            ->where('event_slug', $slug)
             ->orderBy('created_at')
             ->first();
 
 
-        $event->categories = $event->sports->map(function ($sport) {
-            return $sport->category;
-        });
+        if ($event) {
 
-        $event->categories = $event->categories->unique();
+            $event->categories = $event->sports->map(function ($sport) {
+                return $sport->category;
+            });
 
+            $event->categories = $event->categories->unique();
 
-        // dd($event);
-
-        return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
+            return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
+        } else {
+            return abort(404);
+        }
     }
 }

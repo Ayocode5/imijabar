@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.components.breadcrumb')
 
     <header id="header_detail_event">
@@ -9,7 +8,7 @@
             <div class="conten_overlay_header_image_detail_event">
                 <h1>{{ $event->name }}</h1>
                 <p>
-                    {{ $event->location }},
+                    {{ $event->location }}
                     {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
                     -
                     {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F Y') }}
@@ -64,7 +63,7 @@
                     <div class="multiple_item_carousel_cabor">
                         <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                             @foreach ($event->sports as $sport)
-                                <div categories="{{ $sport->category->slug }}"" class="  item">
+                                <div categories="{{ $sport->category->slug }}"" class="      item">
                                     <img src="{{ asset('public/uploads') . "/$sport->image" }}"
                                         alt="{{ $sport->name }}">
                                 </div>
@@ -129,5 +128,4 @@
             </div>
         </section>
     </main>
-
 @endsection

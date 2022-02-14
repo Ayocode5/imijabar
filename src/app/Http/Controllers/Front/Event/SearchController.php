@@ -54,6 +54,7 @@ class SearchController extends Controller
                 'event_start_date as start_date',
                 'event_end_date as date',
                 'event_status as status',
+                'event_organizer as organizer',
                 'event_location as location',
                 'event_featured_photo as photo',
                 'created_at',

@@ -92,14 +92,14 @@ class EventSeeder extends Seeder
 
         Event::insert($eventsPayload);
 
-        
+
         $events_id = Event::select('id')->get()->pluck('id');
         $sports_id = Sport::select('id')->get()->pluck('id')->toArray();
         $sponsors_id = Sponsor::select('id')->get()->pluck('id')->toArray();
-        
+
         $event_sport_payload = [];
         $event_sponsor_payload = [];
-        
+
         foreach ($events_id as $key => $event_id) {
             array_push($event_sport_payload, [
                 'event_id' => $event_id,
