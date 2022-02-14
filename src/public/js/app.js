@@ -42541,9 +42541,44 @@ $('.carousel_cabor_detail_event').owlCarousel({
   !*** ./resources/js/components/lazyload.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// $(document).ready(function() {
+/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
+  var pageCount = 2;
+
+  var newsCardTemplate = function newsCardTemplate(slug, title, summary, photo, category, created_at) {
+    return "\n            <div class=\"col mb-4\" categories=\"".concat(slug, "\">\n                <a href=\"/news/").concat(slug, "\" class=\"text-decoration-none\">\n                    <div class=\"card\">\n                        <div class=\"header_card_image\">\n                            <img src=\"/public/uploads/").concat(photo, "\"\n                                class=\"card-img-top\" alt=\"").concat(title, "\">\n                            <div\n                                class=\"label_header_card_image d-flex justify-content-between align-items-center px-3\">\n                                <p style=\"height: 8px;\" class=\"category_berita\">\n                                    ").concat(category.name, "\n                                </p>\n                                <p style=\"height: 8px;\" class=\"realease_date\">\n                                    ").concat(created_at, " ini belum\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"card-body\">\n                            <h3 class=\"card-title\">\n                                ").concat(title, "\n                            </h3>\n                            <p class=\"author_date_list_berita\">Editor &nbsp; | &nbsp;\n                                <span>").concat(created_at, "</span>\n                            </p>\n                            <p class=\"card-text\">\n                                ").concat(summary, "\n                                <span>\u2192</span>\n                            </p>\n                        </div>\n                    </div>\n                </a>\n            </div>\n        ");
+  };
+
+  var newsWrapper = $('.wrap_list_berita .row');
+  $('.btn_load_more_list_berita').click(function () {
+    $.ajax({
+      url: "http://localhost:8090/news?page=".concat(pageCount),
+      success: function success(result) {
+        console.log(pageCount);
+        console.log('current page => ', result.current_page);
+        console.log('last page => ', result.last_page);
+
+        if (result.current_page <= result.last_page) {
+          var res = [];
+          result.data.forEach(function (data) {
+            res.push(newsCardTemplate(data.slug, data.title, data.summary, data.photo, data.category, data.created_at));
+          });
+          newsWrapper.append(res);
+
+          if (result.current_page === result.last_page) {
+            $('.btn_load_more_list_berita ').remove();
+          }
+        } else {
+          $('.btn_load_more_list_berita ').remove();
+          return false;
+        }
+
+        pageCount += 15;
+      }
+    });
+  });
+}); // $(document).ready(function() {
 //     const dataBerita = [{
 //             id: 1,
 //             name_berita: "Hot pelajar tawuran",
@@ -42672,6 +42707,7 @@ $('.carousel_cabor_detail_event').owlCarousel({
 //         }
 //     })
 // })
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -42723,7 +42759,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var typed_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(typed_js__WEBPACK_IMPORTED_MODULE_0__);
 
 var textJalan = $("#welcome_text_jumbotron").text();
-console.log(textJalan);
 var typed = new typed_js__WEBPACK_IMPORTED_MODULE_0___default.a("#typed", {
   strings: [textJalan],
   showCursor: false,

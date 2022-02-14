@@ -31,6 +31,7 @@
     <!-- Footer -->
     @include('layouts.components.footer')
 
+    <p id="typed" hidden></p>
     {{-- Scripts --}}
     @include('layouts.assets.scripts')
 

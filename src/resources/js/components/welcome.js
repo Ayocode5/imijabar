@@ -1,6 +1,5 @@
 import Typed from 'typed.js';
 let textJalan = $("#welcome_text_jumbotron").text();
-console.log(textJalan);
 
 var typed = new Typed("#typed", {
     strings: [

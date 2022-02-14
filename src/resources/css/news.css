@@ -216,8 +216,8 @@ body {
     border-radius: 0 0 5px 5px;
 }
 
-
 .wrap_list_berita .card .card-body .card-title {
+    text-align: left;
     font-family: 'Tinos', serif;
     font-weight: 700;
     font-size: 18px;
