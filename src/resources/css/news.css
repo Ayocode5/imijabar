@@ -126,7 +126,7 @@ body {
     transition-property: all;
 }
 
-.overlay_jumbotron {
+.carousel_head_list_berita .overlay_jumbotron {
     border-radius: 8px;
     position: absolute;
     background: rgba(38, 56, 64, 0.5);

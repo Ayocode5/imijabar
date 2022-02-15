@@ -1,4 +1,4 @@
-<section>
+<section id="jumbotron_landing">
     <div @if (!$home_settings->jumbotron_status)
         hidden
         @endif class="row no-gutters">
@@ -32,24 +32,26 @@
                     <!-- ITEMS CAROUSEL -->
                     @foreach ($news as $key => $news)
                         <div class="carousel-item @if($key == 0) active @endif">
+                            <div class="carousel-caption">
+                                <div>
+                                    <p class="date_author">
+                                        {{ \Illuminate\Support\Carbon::parse($news->created_at)->format('d F Y') }}
+                                        | Editor
+                                    </p>
+                                    <h2>{{ $news->blog_title }}</h2>
+                                    <p>
+                                        {{ $news->blog_content_short }}
+                                    </p>
+                                    <a href="/news/{{ $news->blog_slug }}">
+                                        <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                            More
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="overlay_jumbotron"></div>
                             <img src="{{ asset('public/uploads/') . "/$news->blog_photo" }}" alt="Los Angeles"
                                 width="100%" height="600">
-                            <div class="carousel-caption">
-                                <p class="date_author">
-                                    {{ \Illuminate\Support\Carbon::parse($news->created_at)->format('d F Y') }}
-                                    | Editor
-                                </p>
-                                <h2>{{ $news->blog_title }}</h2>
-                                <p>
-                                    {{ $news->blog_content_short }}
-                                </p>
-                                <a href="/news/{{ $news->blog_slug }}">
-                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                        More
-                                    </button>
-                                </a>
-                            </div>
                         </div>
                     @endforeach
 

@@ -25,7 +25,6 @@ body {
     text-align: center;
 }
 
-
 .jumbotron_batik {
     height: 200px;
     width: 100%;
@@ -130,7 +129,8 @@ body {
     transition-property: all;
 }
 
-.overlay_jumbotron {
+#jumbotron_landing .overlay_jumbotron {
+    border-radius: 0px !important;
     position: absolute;
     background: rgba(38, 56, 64, 0.5);
     opacity: 0.5;
