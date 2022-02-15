@@ -3531,7 +3531,7 @@ body {
 .wrap_list_berita .card .header_card_image img {
     -o-object-fit: cover;
        object-fit: cover;
-    max-height: 200px;
+    height: 200px;
     border-radius: 5px 5px 0 0;
 }
 

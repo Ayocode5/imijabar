@@ -22,7 +22,6 @@ $(document).ready(() => {
             }
         });
     }
-    console.log(getQueryParams(window.location.href));
 
     $('.btn_load_more_list_berita').click(async () => {
         // search and category
