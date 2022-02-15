@@ -30,22 +30,7 @@
 
 
         // PERMISSIONS SELECTOR 
-<<<<<<< HEAD
         const permissions = Array.from($(".permission-item"));
-=======
-        const selectAllCheckbox = document.querySelector(".permission-select-all");
-
-        $(".permission-item").each((index, item) => {
-            if (!item.checked) {
-                selectAllCheckbox.checked = false;
-                return false;
-            } else {
-                selectAllCheckbox.setAttribute('checked', true)
-            }
-        })
-
-        
->>>>>>> iyan
         $(".permission-select-all").click(() => {
             const total_permissions = permissions.length;
             let total_checked_permissions = 0;

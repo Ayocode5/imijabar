@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
+                    <input type="text" name="name" class="form-control name_sports" value="{{ old('name') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label><br>
@@ -25,6 +25,7 @@
                 <div class="form-group">
                     <label for="">Category *</label><br>
                     <select name="category_id" id="category_id" class="selectpicker">
+                        <option style="display: none" value disabled selected >Select Category</option>
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>
                         @endif
@@ -54,7 +55,17 @@
     </form>
 
     <script>
+        let valNameSports;
+        $('.name_sports').change(() => {
+            valNameSports = $('.name_sports').val();
+        });
 
+        $('.selectpicker').change(() => {
+            let selectedCategory = $('.selectpicker option:selected').text();
+            let addCategoryTemplate = ` - ${selectedCategory}`;
+            $('.name_sports').val(valNameSports + addCategoryTemplate);
+        })
+        
         image.onchange = (event) => {
             const [file] = image.files
             if (file) {
