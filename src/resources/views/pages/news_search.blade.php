@@ -59,7 +59,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
                     @if (count($news) == 0)
-                        <h2>Oops, Berita tidak ada! </h2>
+                        <p style="font-weight: 700; font-size: 20px" class="text-center">Oops, Berita tidak ada! </p>
                     @else
                         @foreach ($news as $news_data)
                             <div class="col mb-4" categories="{{ $news_data->category->slug }}">
