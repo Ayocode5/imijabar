@@ -10,76 +10,30 @@
             <p>Kata Kunci : <strong>{{ request()->input('q') }}</strong></p>
 
         </div>
-        <div class="carousel_head_list_berita">
-            <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
-                <ul class="carousel-indicators">
-                    @foreach ($news as $key => $v)
-                        <li data-target="#demo" data-slide-to="{{ $loop->iteration - 1 }}"
-                            class="@if ($loop->iteration == 1) active @endif"></li>
-                    @endforeach
-                </ul>
-                <div class="carousel-inner">
-                    @foreach ($news as $news_carousel)
-                        <div class="carousel-item @if ($loop->iteration == 1) active @endif">
-                            <div class="overlay_jumbotron">
-
-                            </div>
-                            <img src="{{ asset('public/uploads/') . "/$news_carousel->photo" }}"
-                                alt="{{ $news_carousel->title }}" width="100%" height="600">
-                            <div class="carousel-caption">
-                                <p class="date_author">
-                                    {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
-                                    Editor</p>
-                                <h2>{{ $news_carousel->title }}</h2>
-                                <p>
-                                    {{ $news_carousel->summary }}
-                                </p>
-                                <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                    More</button>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
-            </div>
-        </div>
+        
     </section>
 
     <main id="main_content_list_berita">
         <section id="content_list_berita">
-            <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col mb-4 order-2 order-md-1">
-
-                    <div class="d-flex justify-content-start">
-                        <div class="position-relative border-0 wrap_select_category_news">
-
-                            {{-- URL FILETR CATEGORY FORMAT --}}
-                            @php
-                                $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
-                            @endphp
-
-                            <select onchange="location = this.value;" style="background-color: transparent;" class="w-100" name="filterCategoryNews" id="filterCategoryNews" >
-                            
-                            <option value="?page=1">Semua</option>
-                            @foreach ($news_categories as $news_category)
-                                <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}" 
+            <div class="wrap_content_list_berita row py-2 py-md-5">
+                <div class="col-12 col-md-6 mb-4 order-2 order-md-1 filter_news_page">
+                     {{-- URL FILETR CATEGORY FORMAT --}}
+                    @php
+                        $url_filter_prefix = url()->current()."?q=".request()->input('q')."&page=1"
+                    @endphp
+                    <select onchange="location = this.value;" style="background-color: transparent;"
+                        name="filterCategoryNews" id="filterCategoryNews">
+                        <option value="{{ $url_filter_prefix . '#content_list_berita' }}">Semua</option>
+                        @foreach ($news_categories as $news_category)
+                                <option value="{{ "$url_filter_prefix&category=$news_category->slug#content_list_berita" }}" 
                                 @if(request()->category == $news_category->slug) 
                                     selected
-                                @endif    >{{ $news_category->name }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                        
-                    </div>
-
+                                @endif>{{ $news_category->name }}</option>
+                        @endforeach
+                    </select>
+                    </select>
                 </div>
-                <div class="col mb-4 order-1 order-md-2">
+                <div class="col-12 col-md-6 mb-4 order-1 order-md-2">
                     <div class="wrap_search_berita w-100">
                         <div class="input-group">
                             <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}" method="GET">
@@ -95,6 +49,9 @@
                     </div>
                 </div>
             </div>
+
+
+            
         </section>
 
         <section class="pb-5" id="list_card_berita">

@@ -14,7 +14,6 @@
     <main id="main_content_list_events">
 
         <section id="content_list_events">
-
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
                     <select onchange="location = this.value;" class="col" name="filterCategoryEvents"

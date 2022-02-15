@@ -29,7 +29,6 @@
             <div class="wrap_content_detail_event">
                 <p style="color: rgb(26, 38, 48)">
                     &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp;
                     {!! $event->content !!}</p>
             </div>
         </section>
@@ -38,9 +37,10 @@
             <div class="wrap_cabor_lomba">
                 <div class="d-flex flex-wrap justify-content-md-between">
                     <div class="col-12 col-md-7">
-                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan</h2>
+                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan <span><img class="w-50" src="{{ asset('public/images/') }}/line_blue.svg" alt=""></span> </h2>
+                        
                     </div>
-                    <div class="col-12 col-md-5 align-self-end">
+                    {{-- <div class="col-12 col-md-5 align-self-end">
                         <div class="dropdown select_category_cabor">
                             <button class="btn select_category btn-secondary dropdown-toggle btn_switch_category_event"
                                 type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -54,16 +54,16 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- START CABOR -->
             <div class="pb-5" id="cabor_detail_event">
-                <div class="container-fluid py-5">
+                <div class="container-fluid py-3 py-lg-5">
                     <div class="multiple_item_carousel_cabor">
                         <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                             @foreach ($event->sports as $sport)
-                                <div categories="{{ $sport->category->slug }}"" class="      item">
+                                <div categories="{{ $sport->category->slug }}"" class="item">
                                     <img src="{{ asset('public/uploads') . "/$sport->image" }}"
                                         alt="{{ $sport->name }}">
                                 </div>
@@ -83,10 +83,12 @@
         <section class="sponsor_event mx-auto d-block">
             <div class="wrap_sponsor_event text-center py-5">
                 <h2>Event Ini Di Sponsori Oleh:</h2>
-                <div class="d-flex flex-wrap justify-content-center logo_sponsor_event">
+                <div class="d-flex flex-wrap justify-content-center logo_sponsor_event mt-3 mt-lg-5">
                     {{-- {{ dd($event) }} --}}
                     @foreach ($event->sponsors as $sponsor)
-                        <img src="{{ asset('public/uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
+                        <div>
+                            <img  src="{{ asset('public/uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
+                        </div>
                     @endforeach
                 </div>
             </div>

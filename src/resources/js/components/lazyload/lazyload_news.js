@@ -7,6 +7,8 @@ $(document).ready(() => {
 
     let pageCount = 2;
     let pageCountCategory = 2;
+    let pageCountSearch = 2;
+    let pageCountSearchCategory = 2;
     const newsWrapper = $('.wrap_list_berita .row');
 
     function getAPI(url) {
@@ -20,10 +22,68 @@ $(document).ready(() => {
             }
         });
     }
+    console.log(getQueryParams(window.location.href));
 
     $('.btn_load_more_list_berita').click(async () => {
+        // search and category
+        if (getQueryParams(window.location.href).q && getQueryParams(window.location.href).category) {
+            const resultData = await getAPI(`${API_ENDPOINT.URL_SEARCH_CATEGORY_NEWS(
+                getQueryParams(window.location.href).q,
+                pageCountSearchCategory,
+                getQueryParams(window.location.href).category
+            )}`);
 
-        if (getQueryParams(window.location.href).category) {
+            if (resultData.current_page <= resultData.last_page) {
+                const res = [];
+                resultData.data.forEach(data => {
+                    res.push(newsCardTemplate(
+                        data.slug,
+                        data.title,
+                        data.summary,
+                        data.photo,
+                        data.category,
+                        data.created_at));
+                });
+                newsWrapper.append(res);
+                if (resultData.current_page === resultData.last_page) {
+                    $('.btn_load_more_list_berita ').remove();
+                }
+            } else {
+                $('.btn_load_more_list_berita ').remove();
+                return false;
+            }
+            pageCountSearchCategory += 1;
+        }
+        // Search only
+        else if (getQueryParams(window.location.href).q && !getQueryParams(window.location.href).category) {
+            const resultData = await getAPI(`${API_ENDPOINT.URL_SEARCH_NEWS(
+                getQueryParams(window.location.href).q,
+                pageCountSearch
+            )}`);
+
+            if (resultData.current_page <= resultData.last_page) {
+                const res = [];
+                resultData.data.forEach(data => {
+                    res.push(newsCardTemplate(
+                        data.slug,
+                        data.title,
+                        data.summary,
+                        data.photo,
+                        data.category,
+                        data.created_at));
+                });
+                newsWrapper.append(res);
+                if (resultData.current_page === resultData.last_page) {
+                    $('.btn_load_more_list_berita ').remove();
+                }
+            } else {
+                $('.btn_load_more_list_berita ').remove();
+                return false;
+            }
+            pageCountSearch += 1;
+        }
+        // Category only
+        else if (getQueryParams(window.location.href).category && !getQueryParams(window.location.href).q) {
             const resultDataFiltered = await getAPI(`${API_ENDPOINT.URL_CATEGORY_NEWS(pageCountCategory, getQueryParams(window.location.href).category)}`)
 
             if (resultDataFiltered.current_page <= resultDataFiltered.last_page) {
@@ -73,7 +133,9 @@ $(document).ready(() => {
             //     }
             // });
 
-        } else {
+        }
+        // ALL list
+        else {
             const resultData = await getAPI(`${API_ENDPOINT.URL_NEWS(pageCount)}`);
 
             if (resultData.current_page <= resultData.last_page) {

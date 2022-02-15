@@ -97,7 +97,8 @@ body {
 }
 
 .wrap_content_detail_event {
-    padding: 0 8px;
+    margin-top: 32px;
+    padding: 0 2rem;
 }
 
 .content_detail_event {
@@ -106,7 +107,6 @@ body {
 
 .wrap_content_detail_event p {
     text-align: justify;
-    font-weight: 500;
 }
 
 .wrap_cabor_lomba {
@@ -181,6 +181,18 @@ body {
 
 .logo_sponsor_event {
     padding: 0 8px;
+    gap: 16px;
+}
+
+.logo_sponsor_event img {
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    filter: saturate(0);
+    max-height: 160px;
+}
+
+.logo_sponsor_event img:hover {
+    filter: saturate(1);
 }
 
 /* sponsor */

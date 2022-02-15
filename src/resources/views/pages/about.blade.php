@@ -190,13 +190,16 @@
         <div class="wrap_anggaran">
             <div id="accordion">
                 <div class="card my_card">
-                    <div class="card-header art_imi" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link card-title" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne" style="padding: 0px;">
-                                Anggaran Rumah Tangga IMI Jawa Barat
-                            </button>
-                        </h5>
+                    <div style="cursor: pointer" class="card-header art_imi" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="false" aria-controls="collapseOne">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                               <button class="btn btn-link card-title" style="padding: 0px;">
+                                   Anggaran Rumah Tangga IMI Jawa Barat
+                               </button>
+                           </h5>
+                           <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
+                        </div>
                     </div>
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -211,15 +214,19 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card my_card">
-                    <div class="card-header ad_imi" id="headingTwo">
+                    <div style="cursor: pointer" class="card-header ad_imi" id="headingTwo" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed card-title" data-toggle="collapse"
-                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                            <button class="btn btn-link collapsed card-title" 
                                 style="padding: 0px;">
                                 Anggaran Dasar IMI Jawa Barat
                             </button>
                         </h5>
+                        <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
+                    </div>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body ad_imi">

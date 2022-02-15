@@ -279,6 +279,18 @@ body {
     margin: 0 auto;
 }
 
+.wrap_anggaran #accordion .my_card .card-header[aria-expanded="false"] .d-flex img {
+    width: 16px;
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.wrap_anggaran #accordion .my_card .card-header[aria-expanded="true"] .d-flex img {
+    width: 16px;
+    transform: rotate(180deg);
+    transition: all 0.5s ease-in-out;
+}
+
 .my_card {
     background-color: #fff;
     border: none;
@@ -319,13 +331,19 @@ body {
         font-size: 26px;
     }
 
-}
-
-@media screen and (min-width: 768px) {
     .wrap_visi_misi {
         padding: 50px 2%;
     }
+
+    .wrap_anggaran #accordion .my_card .card-header[aria-expanded="false"] .d-flex img {
+        width: 24px;
+    }
+
+    .wrap_anggaran #accordion .my_card .card-header[aria-expanded="true"] .d-flex img {
+        width: 24px;
+    }
 }
+
 
 @media screen and (min-width: 992px) {
 
@@ -411,6 +429,14 @@ body {
     .wrap_struktur_pengurus {
         padding-top: 100px;
         padding-bottom: 100px;
+    }
+
+    .wrap_anggaran #accordion .my_card .card-header[aria-expanded="false"] .d-flex img {
+        width: 30px;
+    }
+
+    .wrap_anggaran #accordion .my_card .card-header[aria-expanded="true"] .d-flex img {
+        width: 30px;
     }
 
 }
