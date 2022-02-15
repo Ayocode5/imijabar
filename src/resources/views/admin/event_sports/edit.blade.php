@@ -12,10 +12,21 @@
                             class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
+            
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ $sport->name }}" autofocus>
+                    <label for="name">Name *</label>
+                    <div style="gap: 24px" class="d-flex flex-wrap">
+                        <input type="hidden" name="name" class="col-12 col-md-7 form-control true_name_sports" value="{{ $sport->name }}" autofocus>
+
+                        <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show" value="{{ $sport->name }}" autofocus>
+                        @foreach ($categories as $category)
+                            @if ($category->id == $sport->category->id)
+                                <input readonly
+                                " type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value=" {{ $category->name }} ">
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label>
@@ -37,7 +48,7 @@
                                 <option value="{{ $category->id }}" @if ($category->id == $sport->category->id)
                                     selected
                                 @endif>{{ $category->name }}</option>
-                        @endforeach
+                            @endforeach
                         @endif
                     </select>
                 </div>
@@ -55,12 +66,32 @@
                     <textarea name="seo_meta_description" class="form-control h_100" cols="30"
                         rows="10">{{ $sport->seo_meta_description }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Update</button>
+                <button type="submit" class="btn btn-success btn_update_sport">Update</button>
             </div>
         </div>
     </form>
 
     <script>
+        let valNameSports;
+
+        $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
+        console.log($('.name_sports_show').val().split(' - ')[0]);
+
+        $('.name_sports_show').change(() => {
+            valNameSports = $('.name_sports_show').val();
+            $('.true_name_sports').val(valNameSports + ' - ' + $('.name_category_sports').val());
+        });
+
+        $('.selectpicker').change(() => {
+
+            $('.name_category_sports').val($('.selectpicker option:selected').text());
+
+            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
+        })
+ 
+        $('.btn_update_sport').click(() => {
+            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected').text());
+        })
 
         image.onchange = (event) => {
             const [file] = image.files
