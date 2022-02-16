@@ -6,7 +6,6 @@
     <section id="header_page_list_events">
         <div class="head_list_events">
             <h1>{{ $page_event_settings->name }}</h1>
-            <div class="border_head_title"></div>
             <p>{!! $page_event_settings->detail !!}</p>
         </div>
         <div class="carousel_head_list_events">
@@ -102,11 +101,10 @@
         <section class="pb-5 mt-4" id="list_card_events">
             <div class="wrap_list_events">
                 <div class="row row-cols-1 row-cols-md-2">
-
+                    
                     @if (count($events) == 0)
                         <p class="event_not_found">Oops, Event tidak ditemukan</p>
                     @else
-
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
@@ -149,6 +147,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-7 pt-3 date_events_list pl-0 align-self-center">
                                                     <div class="d-flex justify-content-center">
+                                                        
                                                         <p class="ml-2">
                                                             {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
                                                             -
@@ -172,12 +171,17 @@
 
                 </div>
             </div>
-            @if (count($events) != 0)
+            {{-- @if (count($events) != 0)
                 <button class="btn_load_more_list_events mx-auto d-block">
                     Load More
                 </button>
-            @endif
+            @endif --}}
+            <div id="loader" class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div id="load_content_events">
+                
+            </div>
         </section>
-
     </main>
 @endsection

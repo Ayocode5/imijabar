@@ -10,6 +10,7 @@ require('./components/newsletter');
 require('./components/carousel');
 require('./components/eventfilter');
 require('./components/lazyload/lazyload_news');
+require('./components/lazyload/lazyload_events');
 require('./components/welcome');
 
 /**

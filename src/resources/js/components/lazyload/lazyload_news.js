@@ -1,9 +1,10 @@
 import API_ENDPOINT from "../../global/api_endpoint";
-import newsCardTemplate from "../../global/template";
+import { newsCardTemplate } from "../../global/template";
 import getQueryParams from "../../getQueryLink";
 
 
 $(document).ready(() => {
+    $('#loader').hide();
 
     let pageCount = 2;
     let pageCountCategory = 2;
@@ -14,6 +15,12 @@ $(document).ready(() => {
     function getAPI(url) {
         return $.ajax({
             url: url,
+            beforeSend: function () {
+                $('#loader').show();
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
             success: function (result) {
                 return result;
             },
@@ -24,6 +31,8 @@ $(document).ready(() => {
     }
 
     $('.btn_load_more_list_berita').click(async () => {
+
+
         // search and category
         if (getQueryParams(window.location.href).q && getQueryParams(window.location.href).category) {
             const resultData = await getAPI(`${API_ENDPOINT.URL_SEARCH_CATEGORY_NEWS(
@@ -31,7 +40,6 @@ $(document).ready(() => {
                 pageCountSearchCategory,
                 getQueryParams(window.location.href).category
             )}`);
-
             if (resultData.current_page <= resultData.last_page) {
                 const res = [];
                 resultData.data.forEach(data => {
@@ -136,7 +144,6 @@ $(document).ready(() => {
         // ALL list
         else {
             const resultData = await getAPI(`${API_ENDPOINT.URL_NEWS(pageCount)}`);
-
             if (resultData.current_page <= resultData.last_page) {
                 const res = [];
                 resultData.data.forEach(data => {
@@ -158,32 +165,8 @@ $(document).ready(() => {
             }
             pageCount += 1;
 
-            // $.ajax({
-            //     url: `${API_ENDPOINT.URL_NEWS(pageCount)}`, 
-            //     success: function(result){
 
-            //         if (result.current_page <= result.last_page) {
-            //             const res = [];
-            //             result.data.forEach(data => {
-            //                 res.push(newsCardTemplate(
-            //                     data.slug, 
-            //                     data.title, 
-            //                     data.summary, 
-            //                     data.photo, 
-            //                     data.category, 
-            //                     data.created_at));
-            //             });
-            //             newsWrapper.append(res);
-            //             if(result.current_page === result.last_page) {
-            //                 $('.btn_load_more_list_berita ').remove();
-            //             }
-            //         } else {
-            //             $('.btn_load_more_list_berita ').remove();
-            //             return false; 
-            //         } 
-            //         pageCount += 1;
-            //     }
-            // });
+
         }
 
     });

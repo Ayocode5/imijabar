@@ -32,13 +32,10 @@ body {
     font-family: 'Tinos', serif;
     font-size: 28px;
     font-weight: 700;
-}
-
-.border_head_title {
-    border-bottom: 3px solid hsl(215, 79%, 64%);
-    width: 220px;
-    margin: 0 auto;
-    margin-top: -4px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+    text-decoration-color: hsl(215, 79%, 64%);
 }
 
 .head_list_events p {
@@ -409,10 +406,6 @@ body {
         font-size: 32px;
     }
 
-    .border_head_title {
-        width: 250px;
-    }
-
     .carousel_head_list_events {
         margin: 0 50px;
     }
@@ -502,10 +495,6 @@ body {
 
     .head_list_events h1 {
         font-size: 64px;
-    }
-
-    .border_head_title {
-        width: 490px;
     }
 
     .carousel_head_list_events {

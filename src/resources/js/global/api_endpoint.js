@@ -9,7 +9,8 @@ const API_ENDPOINT = {
     URL_SEARCH_CATEGORY_NEWS: (q, pageCount, categoryName) => `${GLOBAL_API_URL.PAGE_API_URL_NEWS}/search?q=${q}&page=${pageCount}&category=${categoryName}`,
 
     // Events
-    URL_EVENTS: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}${pageCount}`,
+    URL_EVENTS: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}?page=${pageCount}`,
+
 }
 
 export default API_ENDPOINT;

@@ -30,7 +30,7 @@
                 <div class="pb-4 container-fluid wrap_content_description_detail">
                     <div class="row">
                         <div class="col-12 col-md-2 order-2 order-md-1">
-                            <div class="d-flex flex-row justify-content-between justify-content-md-end flex-md-column ">
+                            <div class="wrap_share_sosmed d-flex flex-row justify-content-between justify-content-md-end flex-md-column">
                                 <p style="font-weight: 700;" class="ml-md-auto d-block text-md-right my-auto">Shares</p>
 
                                 <div class="share_sosmed d-flex flex-row flex-md-column align-content-center">

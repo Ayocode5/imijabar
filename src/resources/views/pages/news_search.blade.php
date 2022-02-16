@@ -4,10 +4,10 @@
 
     @include('layouts.components.breadcrumb')
 
-    <section id="header_page_list_berita">
+    <section style="border-bottom: none" id="header_page_list_berita">
         <div class="head_list_berita">
             <h1>Cari Berita </h1>
-            <p>Kata Kunci : <strong>{{ request()->input('q') }}</strong></p>
+            <p>Menampilkan Hasil Pencarian : <strong>{{ request()->input('q') }}</strong></p>
 
         </div>
         
@@ -15,7 +15,7 @@
 
     <main id="main_content_list_berita">
         <section id="content_list_berita">
-            <div class="wrap_content_list_berita row py-2 py-md-5">
+            <div class="wrap_content_list_berita row py-2 py-md-3">
                 <div class="col-12 col-md-6 mb-4 order-2 order-md-1 filter_news_page">
                      {{-- URL FILETR CATEGORY FORMAT --}}
                     @php
@@ -101,6 +101,9 @@
                         @endforeach
                     @endif
                 </div>
+            </div>
+            <div id="loader" class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
             @if (count($news) != 0)
                 <button class="btn_load_more_list_berita mx-auto d-block">

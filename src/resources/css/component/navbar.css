@@ -5,6 +5,11 @@
     border-bottom: 1px solid rgba(38, 56, 64, 0.5)
 }
 
+.my_nav .navbar-brand img {
+    max-width: 80px;
+    max-height: 80px;
+}
+
 .toggle.ios,
 .toggle-on.ios,
 .toggle-off.ios {

@@ -12,6 +12,11 @@ body {
     padding: 0;
 }
 
+#loader {
+    display: block;
+    margin: 42px auto;
+}
+
 /* Head List Berita */
 #header_page_list_berita {
     margin: 0 auto;
@@ -30,14 +35,12 @@ body {
     font-family: 'Tinos', serif;
     font-size: 28px;
     font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+    text-decoration-color: hsl(215, 79%, 64%);
 }
 
-.border_head_title {
-    border-bottom: 3px solid hsl(215, 79%, 64%);
-    width: 200px;
-    margin: 0 auto;
-    margin-top: -4px;
-}
 
 .head_list_berita p {
     text-align: center;
@@ -278,12 +281,10 @@ body {
     }
 
     .head_list_berita h1 {
-        font-size: 32px;
+        font-size: 48px;
     }
 
-    .border_head_title {
-        width: 230px;
-    }
+
 
     .carousel_head_list_berita {
         margin: 0 50px;
@@ -346,10 +347,7 @@ body {
 
     .head_list_berita h1 {
         font-size: 64px;
-    }
 
-    .border_head_title {
-        width: 460px;
     }
 
     .carousel_head_list_berita {

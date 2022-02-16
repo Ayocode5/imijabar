@@ -32,7 +32,7 @@ class BlogController extends Controller
     public function create()
     {
         $this->authorize('create', Blog::class);
-        
+
         $category = DB::table('categories')->get();
         return view('admin.blog.create', compact('category'));
     }

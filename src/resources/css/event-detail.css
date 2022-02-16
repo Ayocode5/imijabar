@@ -97,8 +97,7 @@ body {
 }
 
 .wrap_content_detail_event {
-    margin-top: 32px;
-    padding: 0 2rem;
+    margin: 32px 8%;
 }
 
 .content_detail_event {
@@ -267,7 +266,7 @@ body {
 
     /* Start style main detail events */
     .wrap_content_detail_event {
-        padding: 0 50px;
+        margin: 16px 50px;
     }
 
     .wrap_cabor_lomba {
@@ -337,7 +336,7 @@ body {
 
     /* Start style main detail event */
     .wrap_content_detail_event {
-        padding: 0 100px;
+        margin: 0 100px;
     }
 
     .wrap_cabor_lomba {

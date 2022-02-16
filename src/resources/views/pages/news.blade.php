@@ -43,7 +43,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -129,6 +128,9 @@
                         @endforeach
                     @endif
                 </div>
+            </div>
+            <div id="loader" class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
             @if (count($news) != 0)
                 <button class="btn_load_more_list_berita mx-auto d-block">

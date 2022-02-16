@@ -38,7 +38,7 @@ class IndexController extends Controller
                         $q->select('id', 'name', 'slug');
                     }])->distinct();
             },
-            'sponsors' => function($query) {
+            'sponsors' => function ($query) {
                 $query->select('id', 'name', 'slug');
             }
 
@@ -61,7 +61,7 @@ class IndexController extends Controller
                     $s_query->where('slug', $events_sport_filter);
                 }
             })
-            ->orderBy('created_at')
+            ->orderBy('id')
             ->paginate(6);
 
 
