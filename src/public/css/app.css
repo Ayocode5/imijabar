@@ -907,6 +907,15 @@ body {
     margin: 0 auto;
 }
 
+.wrap_anggaran a {
+    text-decoration: none;
+    color: #263840;
+}
+
+.button_download_file:hover a {
+    color: #f8f8f8;
+}
+
 .wrap_anggaran #accordion .my_card .card-header[aria-expanded="false"] .d-flex img {
     width: 16px;
     transform: rotate(0deg);
@@ -1100,6 +1109,15 @@ body {
     font-family: 'Barlow', sans-serif;
     margin: 0;
     padding: 0;
+}
+
+.button_download_file a {
+    text-decoration: none;
+    color: #263840;
+}
+
+.button_download_file:hover a {
+    color: #f8f8f8;
 }
 
 /* 

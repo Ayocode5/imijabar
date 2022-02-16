@@ -117,12 +117,18 @@
                             aria-labelledby="suratRekomendasi_headingOne" data-parent="#suratRekomendasi">
                             <div class="card-body">
                                 <p>Surat Rekomendasi Indo MotoSport Grandprix 2022</p>
-                                <a href="#" target="_blank" rel="noreferrer nofollow"><button type="button"
+                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
+                                <a href="#">
+                                    <img class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
+                                    Download File
+                                </a>
+                            </div>
+                                {{-- <a href="#" target="_blank" rel="noreferrer nofollow"><button type="button"
                                         class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                             class="mr-3"
                                             src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
                                         Download
-                                        File</button></a>
+                                        File</button></a> --}}
                             </div>
                         </div>
                     </div>

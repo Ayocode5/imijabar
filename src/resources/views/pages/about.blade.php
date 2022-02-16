@@ -206,10 +206,17 @@
                         <div class="card-body  art_imi">
                             Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
-                            <button type="button"
+                            {{-- jika ada link foreach  --}}
+                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
+                                <a href="#">
+                                    <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
+                                        Download File
+                                </a>
+                            </div>
+                            {{-- <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
-                                File</button>
+                                File</button> --}}
 
                         </div>
                     </div>
@@ -232,10 +239,16 @@
                         <div class="card-body ad_imi">
                             Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
-                            <button type="button"
+                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
+                                <a href="#">
+                                    <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
+                                        Download File
+                                </a>
+                            </div>
+                            {{-- <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
-                                File</button>
+                                File</button> --}}
 
                         </div>
                     </div>
