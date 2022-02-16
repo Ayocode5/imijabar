@@ -51,7 +51,7 @@ $(document).ready(() => {
         let footerTop = docHeight - (footerHeight + creditWrapper);
 
         // console.log(docHeight, footerHeight, footerTop, winHeight, scrollPosition);
-
+        console.log('hii')
         // console.log(creditWrapper);
         // console.clear();
         // console.log("Scroll ", scrollPosition)
