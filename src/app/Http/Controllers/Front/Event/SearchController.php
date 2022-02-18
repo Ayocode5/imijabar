@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Event;
 use Illuminate\Http\Request;
+use App\Models\Admin\Sport;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -29,7 +30,9 @@ class SearchController extends Controller
         $events_sport_filter = $request->has('sport') ? $request->sport : null;
 
         $categories = DB::table('event_categories')->select('name', 'slug')->get();
-        $sports = DB::table('sports')->select('name', 'slug')->get();
+        $sports = Sport::with(['category' => function ($q) {
+            $q->select('id', 'slug');
+        }])->select('id', 'category_id', 'name', 'slug')->get();
 
         $events = collect([]);
 
@@ -52,7 +55,7 @@ class SearchController extends Controller
                 'event_slug as slug',
                 'event_content_short as summary',
                 'event_start_date as start_date',
-                'event_end_date as date',
+                'event_end_date as end_date',
                 'event_status as status',
                 'event_organizer as organizer',
                 'event_location as location',
@@ -79,11 +82,13 @@ class SearchController extends Controller
             if ($events) {
                 if ($events->lastPage() > 1 && $events->currentPage() > 1) {
                     return response()->json($events, 200);
+                } else if ($events->lastPage() == 1 && $request->page == 2) {
+                    return response()->json($events, 404);
                 }
             }
         }
 
-
+        // dd($events);
         return view('pages.event_search', compact('events', 'categories', 'sports', 'settings', 'page_event_settings'));
     }
 }

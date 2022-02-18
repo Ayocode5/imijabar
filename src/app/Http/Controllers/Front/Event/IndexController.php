@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admin\Sport;
 
 class IndexController extends Controller
 {
@@ -29,7 +30,10 @@ class IndexController extends Controller
         $events_sport_filter = $request->has('sport') ? $request->sport : null;
 
         $categories = DB::table('event_categories')->select('name', 'slug')->get();
-        $sports = DB::table('sports')->select('name', 'slug')->get();
+        // $sports = DB::table('sports')->select('name', 'slug')->get();
+        $sports = Sport::with(['category' => function ($q) {
+            $q->select('id', 'slug');
+        }])->select('id', 'category_id', 'name', 'slug')->get();
 
         $events = Event::with([
             'sports' => function ($query) {
@@ -48,7 +52,7 @@ class IndexController extends Controller
             'event_slug as slug',
             'event_content_short as summary',
             'event_start_date as start_date',
-            'event_end_date as date',
+            'event_end_date as end_date',
             'event_status as status',
             'event_organizer as organizer',
             'event_location as location',
@@ -61,7 +65,7 @@ class IndexController extends Controller
                     $s_query->where('slug', $events_sport_filter);
                 }
             })
-            ->orderBy('id')
+            ->orderBy('event_start_date')
             ->paginate(6);
 
 

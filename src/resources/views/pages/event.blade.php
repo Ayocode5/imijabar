@@ -56,12 +56,14 @@
         <section id="content_list_events">
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
-                    <select onchange="location = this.value;" class="col" name="filterCategoryEvents"
+                    <select class="col categories category-sport" name="filterCategoryEvents"
                         id="filterCategoryEvents">
                         <option style="display:none" value disabled selected>Category</option>
-                        <option value="semua">Semua</option>
-                        <option value="roda-dua">Roda Dua</option>
-                        <option value="roda-empat">Roda Empat</option>
+                        <option categories="all" value="all">Semua</option>
+                        @foreach ($categories as $category)
+                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{ $category->name }}</option>
+                        @endforeach
+
                     </select>
                 </div>
                 <div class="filter_sports_events my-auto col-12 col-md-6 col-lg-5 mb-4 order-3 order-md-2">
@@ -71,10 +73,12 @@
                     @endphp
                     <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports">
                         <option style="display:none" selected value disabled>Sports</option>
-                        <option value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
+                        <option categories="all" value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
                         @foreach ($sports as $sport)
-                            <option value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
+                            <option class="sports sport-menu" categories="{{ $sport->category->slug }}"
+                                id="sport-option"
+                                value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
                                 @if (request()->sport == $sport->slug) selected @endif>{{ $sport->name }}</option>
                         @endforeach
                     </select>
@@ -88,8 +92,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('public/images') }}/search-icon.svg"
-                                        alt="search icon"></button>
+                                        src="{{ asset('public/images') }}/search-icon.svg" alt="search icon"></button>
                             </form>
                         </div>
                     </div>

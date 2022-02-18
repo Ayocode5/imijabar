@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     /**
      * Filter Events by it's category
@@ -22,7 +22,7 @@ $(document).ready(function() {
     const eventListsWrapper = document.querySelector('.events_wrapper')
     const events = document.querySelectorAll(".item_event");
 
-    $(".event-category .list-dropdown .dropdown-item").click(function() {
+    $(".event-category .list-dropdown .dropdown-item").click(function () {
         $(".select_category:first-child").text($(this).text());
         $(".select_category:first-child").val($(this).text());
         eventListsWrapper.innerHTML = '';
@@ -30,6 +30,5 @@ $(document).ready(function() {
             eventListsWrapper.append(event);
         })
     });
-
 
 })

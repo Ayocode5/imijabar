@@ -7,7 +7,10 @@ $(document).ready(() => {
     $('#loader').hide();
 
     let loading = true;
-    let pageCountNews = 2;
+    let pageCountEvents = 2;
+    let pageCountCategoryEvents = 2;
+    let pageCountSearchEvents = 2;
+    let pageCountSearchCategoryEvents = 2;
 
     const eventWrapper = $('.wrap_list_events .row');
 
@@ -22,17 +25,26 @@ $(document).ready(() => {
                 $('#loader').hide();
             },
             success: function (result) {
-                if (result.data.length != 0) {
-                    loading = true;
-                    return result;
-                } else {
-                    $('#loader').hide();
-                    loading = true;
+                try {
+                    if (result.data.length == 0 && !result) {
+                        $('#loader').hide();
+                        loading = false;
+                    } else {
+                        loading = true;
+                        return result;
+                    }
+                } catch (err) {
+                    loading = false;
+                    return err;
+                }
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                if (xhr.status == 404) {
+                    return false;
                 }
             },
-            error: function (err) {
-                console.log(err);
-            }
+
         });
 
     }
@@ -44,55 +56,147 @@ $(document).ready(() => {
 
         let winHeight = $(window).height();
         let scrollPosition = $(document).scrollTop();
-        let creditWrapper = $('.wrap_credit').height()
+        let creditWrapper = $('.wrap_credit').height();
         let cardEvent = $('.wrap_list_events .row .col').height();
 
         let bottomWindowHeight = $(document).scrollTop() + $(window).height();
         let footerTop = docHeight - (footerHeight + creditWrapper);
 
-        // console.log(docHeight, footerHeight, footerTop, winHeight, scrollPosition);
-        console.log('hii')
-        // console.log(creditWrapper);
-        // console.clear();
-        // console.log("Scroll ", scrollPosition)
-        // console.log("window height ", winHeight);
-        // console.log("bootom window ", bottomWindowHeight);
-        // console.log("batas Top ", footerTop - (cardEvent));
-        // console.log("batas bawah ", footerTop);
-        // console.log("footer height ", footerHeight);
-        // console.log("Doc Height / 2", docHeight / 2)
-        // console.log('diluar range : ' + loading)
-
         if (bottomWindowHeight >= (footerTop - (cardEvent)) && bottomWindowHeight <= footerTop && loading) {
             loading = false;
             // console.log('dalem range :' + loading)
-            const resultData = await getAPI(`${API_ENDPOINT.URL_EVENTS(pageCountNews)}`);
+            if (getQueryParams(window.location.href).q && getQueryParams(window.location.href).sport) {
 
-            if (resultData.current_page <= resultData.last_page) {
-                if (pageCountNews <= resultData.last_page) {
-                    const res = [];
-                    resultData.data.forEach(data => {
-                        res.push(eventsCardTemplate(
-                            data.slug,
-                            data.name,
-                            data.summary,
-                            data.photo,
-                            data.categories,
-                            data.organizer,
-                            data.location,
-                            data.sports,
-                            data.start_date,
-                            data.date,
+                const resultData = await getAPI(`${API_ENDPOINT.URL_SEARCH_CATEGORY_EVENTS(
+                    getQueryParams(window.location.href).q,
+                    pageCountSearchCategoryEvents,
+                    getQueryParams(window.location.href).sport)
+                    }`);
+                // console.log(resultData)
 
-                        ));
-                    })
-                    eventWrapper.append(res);
-                    console.log(`${API_ENDPOINT.URL_EVENTS(pageCountNews)}`);
-                    pageCountNews += 1;
+                if (resultData.current_page <= resultData.last_page) {
+                    if (pageCountSearchCategoryEvents <= resultData.last_page) {
+                        const res = [];
+                        resultData.data.forEach(data => {
+                            res.push(eventsCardTemplate(
+                                data.slug,
+                                data.name,
+                                data.summary,
+                                data.photo,
+                                data.categories,
+                                data.organizer,
+                                data.location,
+                                data.sports,
+                                data.start_date,
+                                data.end_date,
+
+                            ));
+                        })
+                        eventWrapper.append(res);
+                        pageCountSearchCategoryEvents += 1;
+                    }
+                } else {
+                    $('#loader').remove();
+                    loading = false;
+
+                }
+
+            } else if (getQueryParams(window.location.href).q && !getQueryParams(window.location.href).sport) {
+                const resultData = await getAPI(`${API_ENDPOINT.URL_SEARCH_EVENTS(
+                    getQueryParams(window.location.href).q,
+                    pageCountSearchEvents)
+                    }`);
+                // console.log(resultData)
+
+                // console.log(resultData)
+                if (resultData.current_page <= resultData.last_page) {
+                    if (pageCountSearchCategoryEvents <= resultData.last_page) {
+                        const res = [];
+                        resultData.data.forEach(data => {
+                            res.push(eventsCardTemplate(
+                                data.slug,
+                                data.name,
+                                data.summary,
+                                data.photo,
+                                data.categories,
+                                data.organizer,
+                                data.location,
+                                data.sports,
+                                data.start_date,
+                                data.end_date,
+
+                            ));
+                        })
+                        eventWrapper.append(res);
+
+                        pageCountSearchEvents += 1;
+                    }
+                } else {
+                    $('#loader').remove();
+                    loading = false;
+                }
+            } else if (getQueryParams(window.location.href).sport && !getQueryParams(window.location.href).q) {
+                const resultData = await getAPI(`${API_ENDPOINT.URL_CATEGORY_EVENTS(
+                    pageCountCategoryEvents,
+                    getQueryParams(window.location.href).sport)
+                    }`);
+
+                if (resultData.current_page <= resultData.last_page) {
+                    if (pageCountSearchCategoryEvents <= resultData.last_page) {
+                        const res = [];
+                        resultData.data.forEach(data => {
+                            res.push(eventsCardTemplate(
+                                data.slug,
+                                data.name,
+                                data.summary,
+                                data.photo,
+                                data.categories,
+                                data.organizer,
+                                data.location,
+                                data.sports,
+                                data.start_date,
+                                data.end_date,
+
+                            ));
+                        })
+                        eventWrapper.append(res);
+
+                        pageCountCategoryEvents += 1;
+                    }
+                } else {
+                    $('#loader').remove();
+                    loading = false;
+
                 }
             } else {
-                console.log('remove')
-                $('#loader').remove();
+                const resultData = await getAPI(`${API_ENDPOINT.URL_EVENTS(pageCountEvents)}`);
+                if (resultData.current_page <= resultData.last_page) {
+                    if (pageCountEvents <= resultData.last_page) {
+                        const res = [];
+                        resultData.data.forEach(data => {
+                            res.push(eventsCardTemplate(
+                                data.slug,
+                                data.name,
+                                data.summary,
+                                data.photo,
+                                data.categories,
+                                data.organizer,
+                                data.location,
+                                data.sports,
+                                data.start_date,
+                                data.end_date,
+
+                            ));
+                        })
+                        console.log(`${API_ENDPOINT.URL_EVENTS(pageCountEvents)}`)
+                        eventWrapper.append(res);
+                        pageCountEvents += 1;
+                    }
+                } else {
+                    $('#loader').remove();
+                    loading = false;
+
+                }
             }
 
         }
