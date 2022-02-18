@@ -3,6 +3,8 @@
 /public/storage
 /storage
 /bootstrap
+/public/js
+/public/css
 /storage/*.key
 /vendor
 .env

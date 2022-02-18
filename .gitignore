@@ -3,6 +3,8 @@
 /src/public/hot
 # /src/storage/app/public/*
 /src/bootstrap
+/src/public/js
+/src/public/css
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key
