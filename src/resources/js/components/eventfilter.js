@@ -19,7 +19,7 @@ $(document).ready(function () {
         return filteredEvents;
     }
 
-    const eventListsWrapper = document.querySelector('.events_wrapper')
+    const eventListsWrapper = document.querySelector('.events_wrapper_home')
     const events = document.querySelectorAll(".item_event");
 
     $(".event-category .list-dropdown .dropdown-item").click(function () {

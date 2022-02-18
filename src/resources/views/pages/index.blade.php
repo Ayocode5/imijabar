@@ -60,7 +60,7 @@
                     <div class="accordion events_wrapper_home" id="accordionExample">
                         @foreach ($events as $event)
                             <div categories="{{ $event->categories_slug }}" style="cursor: pointer;" class="my-2 card item_event" data-toggle="collapse"
-                                data-target="#collapse{{$loop->iteration}}" aria-expanded="true" aria-controls="collapse{{$loop->iteration}}">
+                                data-target="#collapse{{$loop->iteration}}" aria-expanded="false" aria-controls="collapse{{$loop->iteration}}">
                                 <div class="card-header content-event" id="headingOne">
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
                                         <div class="col-11">
