@@ -116,34 +116,19 @@
                         <div id="suratRekomendasi_collapseOne" class="collapse"
                             aria-labelledby="suratRekomendasi_headingOne" data-parent="#suratRekomendasi">
                             <div class="card-body">
-<<<<<<< HEAD
-                                <p>Surat Rekomendasi Indo MotoSport Grandprix 2022</p>
-                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
-                                <a href="#">
-                                    <img class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
-                                    Download File
-                                </a>
-                            </div>
-                                {{-- <a href="#" target="_blank" rel="noreferrer nofollow"><button type="button"
-                                        class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                            class="mr-3"
-                                            src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
-                                        Download
-                                        File</button></a> --}}
-=======
                                 <p>Surat Rekomendasi {{ $event->name }}</p>
                                 @if ($event->document_link)
                                     <a href="{{ $event->document_link }}" target="_blank"
                                         rel="noreferrer nofollow"><button type="button"
                                             class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                                class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png"
-                                                alt="">
+                                                class="mr-3" src="{{ asset('public/images/') }}/file-icon.svg"
+                                                alt="pdf icon ">
                                             Download
                                             File</button></a>
+                                    
                                 @else
-                                    <p>Dokument Tidak Ada</p>
+                                    <p>Dokumen Tidak Ada</p>
                                 @endif
->>>>>>> 5a2f2c15571f35970690c484a83c8875cdb6f223
                             </div>
                         </div>
                     </div>

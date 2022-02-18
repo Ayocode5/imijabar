@@ -194,21 +194,24 @@
     <section>
         <div class="wrap_anggaran">
             <div id="accordion">
+                
                 <div class="card my_card">
-                    <div class="card-header art_imi" id="headingOne">
+                    <div style="cursor: pointer" class="card-header ad_imi" id="headingOne" data-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
-                            <button class="btn btn-link card-title" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne" style="padding: 0px;">
-                                {{ $art_section_page->name }}
+                            <button class="btn btn-link collapsed card-title" 
+                                style="padding: 0px;">
+                                {{ $ad_section_page->name }}
                             </button>
                         </h5>
+                        <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
                     </div>
-
+                    </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body  art_imi">
-                            {{-- Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
+                        <div class="card-body ad_imi">
+                            {{-- Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
-                            {{-- jika ada link foreach  --}}
                             <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
                                 <a href="#">
                                     <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
@@ -219,8 +222,8 @@
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button> --}}
-                            {{-- {{ dd($ad_section_page) }} --}}
-                            {!! $art_section_page->content1 !!}
+                            {!! $ad_section_page->content1 !!}
+                            
                         </div>
                     </div>
                 </div>

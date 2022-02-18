@@ -158,58 +158,6 @@ main {
 
 */
 
-/* .switch_berita_acara {
-    cursor: pointer;
-}
-
-.switch_berita_acara input {
-    display: none;
-}
-
-.switch_berita_acara label {
-    border-radius: 50px;
-    cursor: pointer;
-    position: relative;
-    height: 22px;
-    width: 100%;
-    transform: scale(1.3);
-}
-
-.line_ball {
-    background-color: #5996EC;
-    z-index: 99;
-    padding: 0px;
-    position: absolute;
-    top: 14px;
-    left: 5px;
-    border-radius: 2px;
-    height: 4px;
-    width: 100%;
-    transform: translateX(0px);
-    transition: transform 0.2s linear;
-    line-height: 20px;
-    text-align: center;
-}
-
-.switch_berita_acara label .yellow_ball {
-    background-color: #FFCE51;
-    z-index: 99;
-    border-radius: 50%;
-    position: absolute;
-    top: 1px;
-    left: 2px;
-    height: 28px;
-    width: 28px;
-    transform: translateX(0px);
-    transition: transform 0.5s ease-in-out;
-    line-height: 20px;
-    text-align: center;
-}
-
-.switch_berita_acara input:checked+label .yellow_ball {
-    transform: translateX(200px);
-} */
-
 .berita-acara {
     margin: 0px 8px;
 }
@@ -231,12 +179,6 @@ main {
     overflow: hidden;
 }
 
-/* .border_title {
-    background-color: #5996ec;
-    padding: 2px;
-    margin-bottom: 35px;
-    width: 65px;
-} */
 
 .title-berita-acara {
     margin-top: 30px;
@@ -312,7 +254,7 @@ main {
 .item_event {
     border: none;
     border-radius: 3px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .card-body {
@@ -320,44 +262,38 @@ main {
 }
 
 .content-event {
+    line-height: 20px;
+    color: #FFFFFF;
     background-color: #263840;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.content-event .d-flex .col-12:nth-child(2) {
-    padding: 100px;
+.date_start_event {
+    font-weight: 700;
+    font-size: 20px;
 }
 
-.tgl-event {
-    color: #fff;
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
-.month-event {
-    color: #fff;
+.event_location_province {
     font-size: 1em;
     font-weight: 700;
-}
-
-
-.loc-event,
-.name-event {
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-}
-
-.loc-event {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.name-event {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.border_split {
+    border-bottom: 1px solid #5996EC;
+
+}
+
+.name_event_header {
+    font-size: 1em;
+    padding-top: 12px;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -367,9 +303,34 @@ main {
     font-weight: bold;
 }
 
-.detail-event {
-    font-size: 12px;
+.detail-event p {
+    font-size: 16px;
+    margin-bottom: 0 !important;
     font-weight: medium;
+}
+
+.link_detail_event {
+    font-size: 24px;
+    color: #000;
+    text-decoration-style: none;
+    font-weight: 500;
+}
+
+.link_detail_event:hover {
+    text-decoration: none;
+    text-decoration-style: none;
+    color: #000;
+}
+
+.link_detail_event span {
+    transform: translate(0, 0);
+    display: inline-block;
+    color: #5996EC;
+    transition: all 0.3s ease-in-out;
+}
+
+.link_detail_event:hover span {
+    transform: translate(16px, 0);
 }
 
 .btn_show_more_berita_landing {
@@ -607,10 +568,6 @@ main {
         text-align: left;
     }
 
-    .content-event .d-flex .col-12:nth-child(2) {
-        border-right: 1px solid #5996EC;
-    }
-
     /* 
         End Style Berita Acara
     */
@@ -783,11 +740,6 @@ main {
         font-size: 24px;
         font-weight: bold;
     }
-
-    .detail-event {
-        font-weight: medium;
-    }
-
 
     /* 
         End Style Berita Acara
