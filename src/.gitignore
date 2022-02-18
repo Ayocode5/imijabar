@@ -2,7 +2,7 @@
 /public/hot
 /public/storage
 /storage
-/bootstrap
+/bootstrap/cache/*
 /public/js
 /public/css
 /storage/*.key
