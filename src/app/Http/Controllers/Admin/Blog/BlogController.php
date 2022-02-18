@@ -25,14 +25,14 @@ class BlogController extends Controller
     {
         $this->authorize('viewAny', Blog::class);
 
-        $blog = Blog::all();
+        $blog = Blog::orderBy('created_at', 'DESC')->get();
         return view('admin.blog.index', compact('blog'));
     }
 
     public function create()
     {
         $this->authorize('create', Blog::class);
-        
+
         $category = DB::table('categories')->get();
         return view('admin.blog.create', compact('category'));
     }

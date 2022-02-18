@@ -1,70 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('layouts.components.breadcrumb')
+
     <section id="header_page_list_berita">
         <div class="head_list_berita">
-            <h1>News & Updates</h1>
-            <p>Berita Terbaru Seputar Otomotif, dan Berita Terbaru dari dunia Olahraga Roda Dua & Roda Empat.</p>
+            <h1>{{ $page_news_settings->name }}</h1>
+            <p>{!! $page_news_settings->detail !!}</p>
         </div>
+
+        <!-- Carousel List Berita Terbaru -->
         <div class="carousel_head_list_berita">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
+                    @foreach ($news as $key => $v)
+                        <li data-target="#demo" data-slide-to="{{ $loop->iteration - 1 }}"
+                            class="@if ($loop->iteration == 1) active @endif"></li>
+                    @endforeach
                 </ul>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="overlay_jumbotron">
+                    @foreach ($news as $news_carousel)
+                        <div class="carousel-item @if ($loop->iteration == 1) active @endif">
+                            <div class="overlay_jumbotron">
 
+                            </div>
+                            <img src="{{ asset('public/uploads/') . "/$news_carousel->photo" }}"
+                                alt="{{ $news_carousel->title }}" width="100%" height="600">
+                            <div class="carousel-caption">
+                                <p class="date_author">
+                                    {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
+                                    Editor</p>
+                                <h2>{{ $news_carousel->title }}</h2>
+                                <p>
+                                    {{ $news_carousel->summary }}
+                                </p>
+                                <a href="{{ url("news/$news_carousel->slug") }}">
+                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                        More
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                        <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" alt="Los Angeles" width="100%" height="600">
-                        <div class="carousel-caption">
-                            <p class="date_author">23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay_jumbotron">
-
-                        </div>
-                        <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img2.png" alt="Chicago" width="100%" height="600">
-                        <div style="text-align: right;" class="carousel-caption">
-                            <p>23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light">Show More</button>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay_jumbotron">
-
-                        </div>
-                        <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" alt="New York" width="100%" height="600">
-                        <div class="carousel-caption">
-                            <p>23 Januari 2022 | Admin</p>
-                            <h2>Ford Mustang Shelby GT 500 1967</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit egestas enim id in orci.
-                                Id eu
-                                ullamcorper aliquet platea pretium. Id commodo nisl accumsan, viverra enim sit
-                                mattis. Cras ipsum et
-                                blandit auctor.</p>
-                            <button type="button" class="btn btn-outline-light">Show More</button>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -75,196 +53,91 @@
             </div>
         </div>
     </section>
+
     <main id="main_content_list_berita">
         <section id="content_list_berita">
-            <div class="wrap_content_list_berita row row-cols-1 row-cols-md-2 pt-2 pb-2 pt-md-5 pb-md-5">
-                <div class="col">
-                    <div class="d-flex justify-content-around">
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">All</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Dua</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Empat</a>
-                        <a style="height: 44px;" class="d-flex align-items-center px-3" href="#">Roda Wisata</a>
-                    </div>
+            <div class="wrap_content_list_berita row py-2 py-md-5">
+                <div class="col-12 col-md-6 mb-4 order-2 order-md-1 filter_news_page">
+                    <select onchange="location = this.value;" style="background-color: transparent;"
+                        name="filterCategoryNews" id="filterCategoryNews">
+                        <option value="?page=1">Semua</option>
+                        @foreach ($news_categories as $news_category)
+                            <option value="{{ url()->current() . "?page=1&category=$news_category->slug" }}"
+                                @if (request()->category == $news_category->slug) selected @endif>{{ $news_category->name }}</option>
+                        @endforeach
+                    </select>
+                    </select>
                 </div>
-                <div class="col">
-                    <div class="wrap_search_berita">
+                <div class="col-12 col-md-6 mb-4 order-1 order-md-2">
+                    <div class="wrap_search_berita w-100">
                         <div class="input-group">
-                            <input style="background-color: transparent;" type="search"
-                                class="form-control rounded border-0" placeholder="Search" aria-label="Search"
-                                aria-describedby="search-addon" />
-                            <button type="button" class="btn"><img src="{{ asset('storage/app/public/assets/img') }}/search-icon.svg"
-                                    alt="search icon"></button>
+                            <form class="d-flex w-100 justify-content-end" action="{{ route('front.news.search') }}"
+                                method="GET">
+                                <input style="background-color: transparent;" type="text" name="q"
+                                    class="form-control rounded border-0" placeholder="Search" aria-label="Search"
+                                    aria-describedby="search-addon" />
+                                <button type="submit" class="btn"><img
+                                        src="{{ asset('/public/images/') }}/search-icon.svg"
+                                        alt="search icon">
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <section class="pb-5" id="list_card_berita">
             <div class="wrap_list_berita">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
 
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                    @if (count($news) == 0)
+                        <h2>Oops, Berita tidak ada! </h2>Berita
+                    @else
+                        @foreach ($news as $news_data)
+                            <div class="col mb-4" categories="{{ $news_data->category->slug }}">
+                                <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
+                                    <div class="card">
+                                        <div class="header_card_image">
+                                            <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
+                                                class="card-img-top" alt="{{ $news_data->title }}">
+                                            <div
+                                                class="label_header_card_image d-flex justify-content-between align-items-center px-3">
+                                                <p style="height: 8px;" class="category_berita">
+                                                    {{ $news_data->category->name }}
+                                                </p>
+                                                <p style="height: 8px;" class="realease_date">
+                            
+                                                    {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title">
+                                                {{ $news_data->title }}
+                                            </h3>
+                                            <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
+                                                <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
+                                            </p>
+                                            <p class="card-text">
+                                                {{ $news_data->summary }}
+                                                <span>→</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="header_card_image">
-                                <img src="{{ asset('storage/app/public/assets/img') }}/jumbotron-img.png" class="card-img-top" alt="...">
-                                <div class="label_header_card_image d-flex justify-content-between align-items-center px-3">
-                                    <p style="height: 8px;" class="category_berita">Roda Empat</p>
-                                    <p style="height: 8px;" class="realease_date">5 menit lalu</p>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="/detail-berita.html">
-                                    <h3 class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </h3>
-                                </a>
-                                <p class="author_date_list_berita">Admin | <span>30 Januari 2022</span></p>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac
-                                    dui
-                                    dui nam augue. Mattis mi auctor nunc sed facilisis facilisis sem. Fames
-                                    fermentum at
-                                    libero, nunc non. Ipsum, aliquam tellus suscipit ullamcorper vitae etiam
-                                    integer.
-                                    <span>→</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
-            <button class="btn_load_more_list_berita mx-auto d-block">
-                Load More
-            </button>
+            <div id="loader" class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            @if (count($news) != 0)
+                <button class="btn_load_more_list_berita mx-auto d-block">
+                    Load More
+                </button>
+            @endif
         </section>
     </main>
 @endsection

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.components.jumbotron')
+    @include('layouts.components.jumbotron', ['news' => $news])
 
     <main>
         <!-- START BERITA & EVENT -->
@@ -10,7 +10,6 @@
             <div class="d-flex flex-wrap berita-acara">
                 <div class="col-lg-8 col-12">
                     <h1 class="title-berita-acara">{{ $home_settings->news_title }}</h1>
-                    <div class="border_title"></div>
                     <!-- BERITA 1 -->
                     @foreach ($news as $news_data)
                         <a class="text-decoration-none text-dark" href="/news/{{ $news_data->blog_slug }}">
@@ -21,7 +20,7 @@
                                         <h1 class="title-berita">{{ $news_data->blog_title }} </h1>
                                         <p class="subtitle-berita">
                                             {!! $news_data->blog_content_short !!}
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/icon-arrow-right.png"
+                                            <img src="{{ asset('public/images') }}/icon-arrow-right.png"
                                                 alt="icon arrow" style="width: 16px; height: 16px;">
                                         </p>
                                     </div>
@@ -36,14 +35,14 @@
                             </div>
                         </a>
                     @endforeach
-                    <a href="/berita" class="text-decoration-none text-dark">
+                    <a href="/news" class="text-decoration-none text-dark">
                         <button type="button" class="btn_show_more_berita_landing mt-4 d-block mx-auto">Show More</button>
                     </a>
                 </div>
 
-                <div class="col-lg-4">
+                <!-- Filter -->
+                <div class="col-lg-4 col-12">
                     <h2 class="title-berita-acara">{{ $home_settings->events_title }}</h2>
-                    <div class="border_acara"></div>
                     <div class="dropdown">
                         <button class="btn select_category btn-secondary dropdown-toggle btn_switch_category_event"
                             type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -51,30 +50,31 @@
                             Semua
                         </button>
                         <div class="dropdown-menu event-category" aria-labelledby="dropdownMenuButton">
-                            <li class="list-dropdown"><a class="dropdown-item">Semua</a></li>
+                            <li class="list-dropdown"><a filters="roda-empat,roda-dua" class="dropdown-item">Semua</a></li>
                             @foreach ($event_categories as $event_category)
-                                <li class="list-dropdown"><a class="dropdown-item">{{ $event_category->name }}</a></li>
+                                <li class="list-dropdown"><a filters="{{ $event_category->slug }}" class="dropdown-item">{{ $event_category->name }}</a></li>
                             @endforeach
                         </div>
                     </div>
-                    <div class="accordion" id="accordionExample">
+                    <!-- Events -->
+                    <div class="accordion events_wrapper" id="accordionExample">
                         @foreach ($events as $event)
-                            <div style="cursor: pointer;" class="card item_event" data-toggle="collapse"
+                            <div categories="{{ $event->categories_slug }}" style="cursor: pointer;" class="card item_event" data-toggle="collapse"
                                 data-target="#collapse{{$loop->iteration}}" aria-expanded="true" aria-controls="collapse{{$loop->iteration}}">
                                 <div class="card-header content-event" id="headingOne">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-2">
-                                            <h3 class="tgl-event" style="font-size: 45px; margin-right: -10px">{{ date_format(date_create($event->event_start_date), "d") }}</h3>
+                                    <div class="d-flex flex-wrap align-items-center justify-content-center">
+                                        <div class="col-12 col-md-2">
+                                            <h3 class="tgl-event" style="margin-right: -10px">{{ date_format(date_create($event->event_start_date), "d") }}</h3>
                                         </div>
-                                        <div style="border-right: 1px solid #5996EC;" class="col-5 p-0">
+                                        <div class="col-12 col-md-5 p-0">
                                             <p class="month-event m-0">{{ date_format(date_create($event->event_start_date), "F Y") }}</p>
-                                            <h3 class="loc-event">{{ $event->event_location }}</h3>
+                                            <h3 class="loc-event">{{ $event->event_location_city }}, {{ $event->event_location_province }}</h3>
                                         </div>
-                                        <div class="col-3 p-2">
+                                        <div class="col-12 col-md-3 p-2">
                                             <h3 class="name-event">{{ $event->name }} </h3>
                                         </div>
-                                        <div class="col-1">
-                                            <img src="{{ asset('storage/app/public/assets') }}/img/icon-arrow-down.svg"
+                                        <div class="col-12 col-md-1">
+                                            <img src="{{ asset('public/images') }}/icon-arrow-down.svg"
                                                 alt="icon arrow">
                                         </div>
                                     </div>
@@ -92,10 +92,11 @@
                                         </div>
                                         <div class="col" style="line-height: 16px">
                                             <h3 class="title-event">
-                                                {{ $event_registration_section->name }}
+                                                {{ $home_event_registration_section->name }}
                                             </h3>
                                             <p class="detail-event">
-                                                {!! $event_registration_section->content !!}
+                                                {!! $home_event_registration_section->content1 !!}
+                                                {{ $event->link }}
                                             </p>
                                         </div>
                                     </div>
@@ -104,10 +105,35 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div> 
             </div>
         </section>
         <!-- END BERITA & EVENT -->
+
+        {{-- <section class="py-5 border-bottom">
+            <div class="d-flex flex-wrap berita-acara">
+                <div  class="col-2">
+                    Berita
+                </div>
+                <div class="col-3">
+                    <div class="switch_berita_acara">
+                        <input id="switch" type="checkbox">
+                        <label for="switch">
+                            <span class="line_ball"></span>
+                            <span class="yellow_ball"></span>
+                        </label>
+
+                    </div>
+                    
+                </div>
+                <div class="col-2">
+                    Acara
+                </div>
+                <div class="col-5 text-right">
+                    Selengkapnya
+                </div>
+            </div>
+        </section> --}}
 
         <!-- START TENTANG IMI -->
         <section id="tentangIMI" class="pb-5 border-bottom">
@@ -121,7 +147,7 @@
                     <div class="position-relative slide_tentangImi2">
                         <p>Optimization to Execellence.</p>
                         <p class="signature_text">IMI Jawa Barat</p>
-                        <img class="position-absolute" src="{{ asset('storage/app/public/assets') }}/img/line_blue.svg"
+                        <img class="position-absolute" src="{{ asset('public/images') }}/line_blue.svg"
                             alt="line_blue">
                         <a class="selengkapnya_tentangImi" href="/about">Selengkapnya →</a>
 
@@ -137,7 +163,8 @@
         <!-- START KEPENGURUSAN -->
         @include('layouts.components.committee', [
             'title' => $home_settings->committee_title, 
-            'detail' => $home_settings->committee_detail
+            'detail' => $home_settings->committee_detail,
+            'committee' => $committee
         ])
         <!-- END KEPENGURUSAN -->
 

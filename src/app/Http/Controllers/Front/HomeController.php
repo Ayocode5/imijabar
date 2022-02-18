@@ -14,6 +14,10 @@ class HomeController extends Controller
 
 		$home_settings = DB::table('page_home_items')->first();
 
+		$committee = DB::table('team_members')->get();
+
+		// dd($committee);
+
 		// Get Active Events With Categories
 		$events = DB::table('events as e')
 			->join('event_sport as es', 'es.event_id', '=', 'e.id')
@@ -24,19 +28,21 @@ class HomeController extends Controller
 			e.event_name as name,
 			e.event_start_date,
 			e.event_end_date,
-			e.event_location,
+			e.event_link as link,
+			e.event_location_city,
+			e.event_location_province,
 			e.event_featured_photo as featured_photo,
 			GROUP_CONCAT(DISTINCT sp.name SEPARATOR ', ') as sports,
 			GROUP_CONCAT(DISTINCT ec.name SEPARATOR ', ') as categories,
+			GROUP_CONCAT(DISTINCT ec.slug SEPARATOR ',') as categories_slug,
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('event_end_date', '>=', $date_today)
 			->where('deleted_at', null)
-			->limit($home_settings->events_total)
-			->groupBy('id')
 			->orderBy('e.event_start_date')
+			->groupBy('id')
+			->limit($home_settings->events_total)
 			->get();
-
 
 		$events->map(function ($event) use ($date_today) {
 
@@ -55,7 +61,7 @@ class HomeController extends Controller
 			}
 		});
 
-		$event_categories = DB::table('event_categories')->select(['name', 'id'])->get();
+		$event_categories = DB::table('event_categories')->select(['name', 'slug', 'id'])->get();
 
 		$news = Blog::limit($home_settings->news_total)->orderBy('created_at', 'DESC')->get();
 
@@ -72,12 +78,12 @@ class HomeController extends Controller
 			'footer_column3_heading',
 		)->first();
 
-		$event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content as content')->where('dynamic_page_slug', 'section-pendaftaran-event')->first();  
+		$home_event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content1 as content1')->where('dynamic_page_slug', 'home-event-registration')->first();  
 
 		// dd($events);
 		// dd($news);
 		// dd($home_settings);
-		// dd($event_registration_section);
-		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'event_registration_section'));
+		// dd($home_event_registration_section);
+		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'home_event_registration_section', 'committee'));
 	}
 }

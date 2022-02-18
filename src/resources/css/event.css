@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+
+/* 
+    font-family: 'Barlow', sans-serif;  
+    font-family: 'Tinos', serif;
+    font-family: 'Zeyada', cursive;
+*/
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Head List Berita */
+#header_page_list_events {
+    margin: 0 auto;
+    background-color: #F8F8F8;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+}
+
+.head_list_events {
+    padding: 0px 0 10px 0;
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.head_list_events h1 {
+    font-family: 'Tinos', serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+    text-decoration-color: hsl(215, 79%, 64%);
+}
+
+.head_list_events p {
+    text-align: center;
+    margin: 0 0;
+    font-size: 1em;
+}
+
+.carousel_head_list_events {
+    margin: 0 14px;
+}
+
+.carousel_head_list_events .carousel-inner .carousel-item img {
+    border-radius: 8px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel_head_list_events .carousel-item .carousel-caption {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.carousel_head_list_events .carousel-item .carousel-caption h2 {
+    text-decoration: underline;
+    font-family: 'Tinos', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+
+.carousel_head_list_events .carousel-item .carousel-caption p {
+    font-family: 'Tinos', serif;
+    font-weight: 400;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.carousel_head_list_events .carousel-item .carousel-caption .date_author {
+    font-weight: 500;
+}
+
+.carousel_head_list_events .carousel-item .carousel-caption .btn_show_jumbotron {
+    font-weight: 500;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: .6s;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-prev {
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+}
+
+
+.carousel-fade .carousel-item .carousel-caption button {
+    opacity: 0;
+    transform: translate(-100px, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
+.carousel-fade .carousel-item.active .carousel-caption button {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
+.overlay_jumbotron {
+    border-radius: 8px;
+    position: absolute;
+    background: rgba(38, 56, 64, 0.5);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-indicators .active {
+    width: 137px;
+    transition: all 0.3s ease-in-out;
+    background-color: #0078C1 !important;
+}
+
+/* Head List Berita */
+
+.wrap_select_category_events {
+    width: 100%;
+    height: 116px;
+    vertical-align: middle;
+    gap: 16px;
+}
+
+.wrap_select_category_events select {
+    background-color: #f1f4f5;
+    font-weight: 500;
+    outline: none;
+    border: none;
+}
+
+.wrap_select_category_events select:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* Content List Event */
+.event_not_found {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#main_content_list_events {
+    background-color: #F8F8F8;
+    margin: 0 auto;
+}
+
+.wrap_content_list_events {
+    margin: 0 0;
+    gap: 8px;
+}
+
+.filter_parent_category_events select {
+    background-color: #F8F8F8;
+    height: 44px;
+    border: 2px solid #a8a8a8;
+    border-radius: 3px;
+    font-weight: 700;
+
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background-image: url('../../public/images/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position-x: 96%;
+    background-position-y: 50%;
+}
+
+.filter_sports_events select {
+    background-color: #f8f8f8;
+    height: 44px;
+    border: 2px solid #a8a8a8;
+    border-radius: 3px;
+    font-weight: 700;
+
+
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background-image: url('../../public/images/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position-x: 96%;
+    background-position-y: 50%;
+}
+
+
+.filter_parent_category_events select:focus,
+.filter_sports_events select:focus {
+    border: #d8d8d8;
+    outline-color: #a8a8a8;
+}
+
+.calender_pin {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.presented_events {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-family: 'Tinos', serif;
+}
+
+.location_events_list {
+    font-size: 1em;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+    padding-left: 0;
+}
+
+.wrap_list_events {
+    margin: 0 15px;
+    color: #263840;
+}
+
+.wrap_list_events .card {
+    border: none;
+    background-color: transparent;
+}
+
+.wrap_list_events .card:hover {
+    border: 2px solid #FFCE51;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wrap_list_events .card:hover .header_card_image .feature_image_event_list .image_feature_event {
+    filter: none;
+    transform: scale(1.1);
+}
+
+.wrap_list_events .card .card-body {
+    padding: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.wrap_list_events .card .card-body .card-title {
+    margin: auto;
+    line-height: 16px;
+    font-family: 'Tinos', serif;
+    padding: 1rem 1.25rem;
+}
+
+.wrap_list_events .card .card-body .card-title h3 {
+    font-weight: 700;
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card_events_list_detail {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border-top: 1px solid rgba(38, 56, 64, 0.5);
+    padding: 0 10px 10px 10px;
+}
+
+.date_events_list {
+    font-size: 16px;
+}
+
+.wrap_list_events .card .card-body .author_date_list_events {
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.wrap_list_events .card .card-body .card-text {
+    font-family: 'Tinos', serif;
+    font-size: 16px;
+}
+
+.btn_load_more_list_events {
+    background-color: transparent;
+    border: 1px solid #263840;
+    padding: 8px 24px;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btn_load_more_list_events:active,
+.btn_load_more_list_events:hover,
+.btn_load_more_list_events:focus {
+    background-color: #FFCE51;
+    border: none;
+    outline: none;
+    transform: translate(0, -10px);
+}
+
+/* Content List Berita */
+
+/* End Content List Berita */
+.feature_image_event_list {
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 90;
+}
+
+.image_feature_event {
+    transition: all 0.5s ease-in-out;
+    object-fit: cover;
+    filter: saturate(0);
+    width: 100%;
+    height: 160px;
+}
+
+.ribbon_wrapper {
+    width: 150px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: -1.5px;
+}
+
+.ribbon_wrapper .ribbon_category_event {
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+    -webkit-transform: rotate(320deg);
+    -moz-transform: rotate(320deg);
+    -ms-transform: rotate(320deg);
+    -o-transform: rotate(320deg);
+    position: relative;
+    padding: 0px 0;
+    top: 5px;
+    left: -43px;
+    width: 190px;
+    background-color: #263840;
+    color: rgba(248, 248, 248, 0.5);
+}
+
+.ribbon_wrapper .ribbon_category_event:nth-child(1) {
+    color: #333;
+    text-align: center;
+    -webkit-transform: rotate(320deg);
+    -moz-transform: rotate(320deg);
+    -ms-transform: rotate(320deg);
+    -o-transform: rotate(320deg);
+    position: relative;
+    padding: 0px 0;
+    top: 17px;
+    left: -60px;
+    width: 190px;
+    background-color: #FFCE51;
+    color: rgba(38, 56, 64, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Head List Berita */
+    .head_list_events {
+        padding: 40px 0 20px 0;
+    }
+
+    .head_list_events p {
+        max-width: 400px;
+        margin: 0 auto;
+        word-wrap: break-word;
+        font-size: 1.2em;
+    }
+
+    .head_list_events h1 {
+        font-size: 32px;
+    }
+
+    .carousel_head_list_events {
+        margin: 0 50px;
+    }
+
+    .carousel_head_list_events .carousel-inner .carousel-item img {
+        height: 350px;
+    }
+
+
+    .carousel_head_list_events .carousel-item .carousel-caption {
+        text-align: left;
+        margin-bottom: 0px;
+        margin-left: -20px;
+        margin-right: 0;
+    }
+
+
+
+    .carousel_head_list_events .carousel-item .carousel-caption p {
+        font-size: 1em;
+        white-space: unset;
+        overflow: visible;
+        text-overflow: unset;
+    }
+
+    /* Head List Berita */
+
+    /* Content List Berita */
+    .event_not_found {
+        font-size: 24px;
+    }
+
+    .wrap_content_list_events {
+        margin: 0 2rem;
+        gap: 0;
+    }
+
+    .filter_parent_category_events select {
+        border: none;
+    }
+
+    .filter_sports_events select {
+        border: none;
+    }
+
+    .wrap_list_events {
+        margin: 0 50px;
+    }
+
+    .card_events_list_detail {
+        text-align: left;
+        padding: 0 20px 20px 20px;
+    }
+
+    .date_events_list {
+        font-size: 1.25em;
+    }
+
+    .wrap_list_events .card .card-body .card-title h3 {
+        font-size: 24px;
+    }
+
+
+    .location_events_list {
+        border-bottom: none;
+        -webkit-line-clamp: 5;
+        border-right: 1px solid rgba(38, 56, 64, 0.5);
+    }
+
+
+    /* Content List Berita */
+
+
+}
+
+@media screen and (min-width: 992px) {
+
+    /* Head List Berita */
+    .head_list_events {
+        padding: 99px 0 40px 0;
+    }
+
+    .head_list_events p {
+        max-width: 500px;
+        font-size: 24px;
+    }
+
+    .head_list_events h1 {
+        font-size: 64px;
+    }
+
+    .carousel_head_list_events {
+        margin: 0 100px;
+    }
+
+    .carousel_head_list_events .carousel-item .carousel-caption {
+        text-align: left;
+        margin-bottom: 90px;
+        margin-left: -20px;
+        margin-right: 0px;
+    }
+
+    .carousel_head_list_events .carousel-inner .carousel-item img {
+        height: 476px;
+    }
+
+    .carousel_head_list_events .carousel-item .carousel-caption h2 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .carousel_head_list_events .carousel-item .carousel-caption p {
+        font-size: 1em;
+    }
+
+    /* Head List Berita */
+
+
+    /* Content List Berita */
+    .wrap_content_list_events {
+        margin: 0 5.5rem;
+    }
+
+    .wrap_list_events {
+        margin: 0 100px;
+    }
+
+    .wrap_list_events .card .card-body .card-title h3 {
+        font-size: 32px;
+    }
+
+
+    .date_events_list {
+        font-size: 24px;
+    }
+
+    /* Content List Berita */
+}
+
+@media screen and (min-width: 2300px) {
+    #header_page_list_events {
+        max-width: 2300px;
+    }
+
+    #main_content_list_events {
+        max-width: 2300px;
+    }
+}

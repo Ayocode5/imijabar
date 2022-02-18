@@ -25,6 +25,7 @@
                 </div> --}}
                 <div class="form-group">
                     <label for="">Content *</label>
+                    {{-- {{ dd($blog->blog_content) }} --}}
                     <textarea name="blog_content" class="form-control editor" cols="30" rows="10">{{ $blog->blog_content }}</textarea>
                 </div>
                 <div class="form-group">

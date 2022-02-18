@@ -12,4 +12,8 @@ class Category extends Model
         'seo_title',
         'seo_meta_description'
     ];
+
+    public function news() {
+        return $this->hasMany(Blog::class);
+    }
 }

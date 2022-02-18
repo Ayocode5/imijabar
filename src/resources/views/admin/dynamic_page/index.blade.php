@@ -15,7 +15,7 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Banner</th>
+                        {{-- <th>Banner</th> --}}
                         <th>Dynamic Page Name</th>
                         <th>Action</th>
                     </tr>
@@ -24,8 +24,8 @@
                         @foreach($dynamic_page as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->dynamic_page_banner) }}" alt="" class="w_300"></td>
-                            <td>{{ $row->dynamic_page_name }}</td>
+                            {{-- <td><img src="{{ asset('public/uploads/'.$row->dynamic_page_banner) }}" alt="" class="w_300"></td> --}}
+                            <td>Page - {{ $row->dynamic_page_name }}</td>
                             <td>
                                 <a href="{{ URL::to('admin/dynamic-page/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                 <a href="{{ URL::to('admin/dynamic-page/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>

@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libpng-dev \
     libonig-dev \
+    libzip-dev \
     libxml2-dev \
     zip \
     unzip \
@@ -13,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions
 #RUN docker-php-ext-install bcmath ctype fileinfo json mbstring openssl pdo_mysql tokenizer xml exif pcntl gd  
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install zip
 #add non-root user
 #RUN useradd -u 8877 iyan
 

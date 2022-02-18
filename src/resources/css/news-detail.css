@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+/* 
+    font-family: 'Barlow', sans-serif;  
+    font-family: 'Tinos', serif;
+    font-family: 'Zeyada', cursive;
+*/
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#main_content_detail_berita {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* 
+    Start style Detail Berita 
+*/
+.image_feature_detail_berita {
+    padding: 8px 8px 0 8px;
+}
+
+.featured_image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#header_detail_berita {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrap_header_detail_berita {
+    margin: 0 3%;
+}
+
+#header_detail_berita .content_header_detail_berita {
+    border-bottom: 1px solid black;
+    line-height: unset;
+}
+
+.content_header_detail_berita .kategori_detail_berita p {
+    font-weight: 500;
+    font-size: 1em;
+    color: rgba(38, 56, 64, 0.5);
+}
+
+.content_header_detail_berita .title_detail_berita h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #263840;
+    font-family: 'Tinos', serif;
+}
+
+.content_header_detail_berita .author_date_detail_berita {
+    font-weight: 500;
+    font-size: 1em;
+    color: #263840;
+}
+
+#content_description_detail {
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+}
+
+.wrap_share_sosmed {
+    padding: 0 3%;
+}
+
+.wrap_share_sosmed p {
+    margin-left: 3%;
+}
+
+.share_sosmed a {
+    margin: 0 14px;
+}
+
+.share_sosmed img {
+    max-width: 44px;
+    max-height: 44px;
+}
+
+.description_detail {
+    margin: 24px 0;
+    padding: 0 8%;
+    text-align: justify;
+}
+
+/* End style Detail Berita */
+
+/* 
+    Start style berita serupa 
+*/
+#berita_serupa {
+    background-color: #F4F4F9;
+}
+
+#berita_serupa .container h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.border_berita_serupa {
+    border-top: 3px solid #5996EC;
+    margin-bottom: 16px;
+    width: 147px;
+}
+
+.wrap_berita_serupa .col:first-child {
+    border-right: none;
+    margin-bottom: 16px;
+}
+
+.wrap_berita_serupa .col .card {
+    background-color: #F8F8F8;
+    border: 0;
+    filter: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.wrap_berita_serupa .col .card:hover {
+    border: 1px solid #263840;
+    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.2));
+}
+
+
+.author_date_berita_serupa {
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.title_berita_serupa h3 {
+    font-size: 20px;
+    font-family: 'Tinos', serif;
+    font-weight: 700;
+    text-decoration: underline;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.short_desc_berita_serupa {
+    font-family: 'Tinos', serif;
+    font-size: 1em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.wrap_berita_serupa .col .card .short_desc_berita_serupa p span {
+    display: inline-block;
+    transform: translate(0, 0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.wrap_berita_serupa .col .card:hover .short_desc_berita_serupa p span {
+    transform: translate(16px, 0);
+}
+
+
+/* End style berita serupa  */
+
+
+@media screen and (min-width: 768px) {
+
+    /* 
+        Start style Detail Berita 
+    */
+
+    .image_feature_detail_berita {
+        padding: 0 40px;
+    }
+
+    .featured_image {
+        height: 350px;
+    }
+
+    .wrap_header_detail_berita {
+        margin: 0 50px;
+    }
+
+    #header_detail_berita .content_header_detail_berita {
+        line-height: 64px;
+    }
+
+    .content_header_detail_berita .kategori_detail_berita p {
+        font-size: 24px;
+    }
+
+    .content_header_detail_berita .title_detail_berita h1 {
+        font-size: 48px;
+    }
+
+    .content_header_detail_berita .author_date_detail_berita {
+        font-size: 24px;
+    }
+
+    .description_detail {
+        padding: 0 32px;
+    }
+
+    .wrap_share_sosmed p {
+        margin-left: 0;
+    }
+
+    .share_sosmed img {
+        margin-right: 0px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .share_sosmed a {
+        margin: 0 0;
+    }
+
+    /* End style Detail Berita */
+
+    /* 
+        Start style berita serupa 
+    */
+    #berita_serupa .container h2 {
+        font-size: 28px;
+    }
+
+    .border_berita_serupa {
+        width: 170px;
+    }
+
+    .wrap_berita_serupa .col:first-child {
+        border-right: 1px solid rgba(38, 56, 64, 0.5);
+        margin-bottom: 0;
+
+    }
+
+    .title_berita_serupa h3 {
+        font-size: 28px;
+    }
+
+    /* End style berita serupa  */
+
+}
+
+@media screen and (min-width: 992px) {
+
+    /* 
+        Start style Detail Berita 
+    */
+
+    .image_feature_detail_berita {
+        padding: 0 100px;
+    }
+
+    .featured_image {
+        height: 500px;
+    }
+
+    .wrap_header_detail_berita {
+        margin: 0 100px;
+    }
+
+    #header_detail_berita .content_header_detail_berita {
+        padding: 0 16%;
+    }
+
+    .description_detail {
+        padding: 0 55px;
+    }
+
+    /* End style Detail Berita */
+
+    /* 
+        Start style berita serupa 
+    */
+    #berita_serupa .container h2 {
+        font-size: 32px;
+    }
+
+    .border_berita_serupa {
+        width: 195px;
+    }
+
+    .author_date_berita_serupa {
+        font-size: 1em;
+    }
+
+    .title_berita_serupa h3 {
+        font-size: 32px;
+    }
+
+    .short_desc_berita_serupa {
+        font-size: 24px;
+    }
+
+    /* End style berita serupa  */
+}
+
+@media screen and (min-width: 2300px) {
+
+    #header_detail_berita {
+        max-width: 2300px;
+    }
+
+    #main_content_detail_berita {
+        max-width: 2300px;
+    }
+}

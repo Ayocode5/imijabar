@@ -1,8 +1,11 @@
 <?php
 
 
+/**
+ * Admin Panel Controllers
+ */
 
-//Admin Panel ADMIN AUTHENTICATIONS
+//Admin Auth Controller
 use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
@@ -12,9 +15,7 @@ use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeCont
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
 
-/**
- * Admin Panel - Feature
- */
+// Admin Menu Controller
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\RegistrationMember\ClubController;
 use App\Http\Controllers\Admin\RegistrationMember\KisController;
@@ -28,26 +29,23 @@ use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
+// use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 
-//Admin Panel Gallery
 use App\Http\Controllers\Admin\Gallery\PhotoController;
 use App\Http\Controllers\Admin\Gallery\VideoController;
 use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCategoryControllerForAdmin;
 
-//Admin Panel BLOG
+//Admin Panel Blog Menu
 use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
 
-//Admin Panel EVENT
+//Admin Panel Event Menu
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
-
-/**
- * Admin Panel - Page Settings
- */
+use App\Http\Controllers\Admin\FileManagerController;
+//Admin Panel Page Front Setting
 use App\Http\Controllers\Admin\Page\PageHomeController;
 use App\Http\Controllers\Admin\Page\PageBlogController;
 use App\Http\Controllers\Admin\Page\PageAboutController;
@@ -55,7 +53,6 @@ use App\Http\Controllers\Admin\Page\PageEventController;
 use App\Http\Controllers\Admin\Page\PageGalleryController;
 use App\Http\Controllers\Admin\Page\PageFaqController;
 use App\Http\Controllers\Admin\Page\PageTeamController;
-
 
 //Admin Panel SHOP
 use App\Http\Controllers\Admin\Shop\CouponController;
@@ -68,6 +65,7 @@ use App\Http\Controllers\Admin\Shop\ShippingController;
 /**
  * Front Panel - Customer
  */
+
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
 use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
@@ -79,93 +77,72 @@ use App\Http\Controllers\Customer\ProfileChangeController as ProfileChangeContro
 use App\Http\Controllers\Customer\RegistrationController;
 use App\Http\Controllers\Customer\ResetPasswordController as ResetPasswordControllerForCustomer;
 
-use App\Http\Controllers\Front\AboutController;
-use App\Http\Controllers\Front\BlogController as BlogControllerForFront;
-use App\Http\Controllers\Front\CategoryController as CategoryControllerForFront;
-use App\Http\Controllers\Front\ContactController;
-use App\Http\Controllers\Front\FaqController as FaqControllerForFront;
+/**
+ * Front Panel Controllers
+ */
+
 use App\Http\Controllers\Front\HomeController;
-
-//News Controller [Front]
-use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
-
-use App\Http\Controllers\Front\PageController;
-use App\Http\Controllers\Front\PhotoGalleryController;
-use App\Http\Controllers\Front\ProductController as ProductControllerForFront;
-use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Front\SubscriptionController;
-use App\Http\Controllers\Front\TeamMemberController as TeamMemberControllerForFront;
-use App\Http\Controllers\Front\TermController;
-use App\Http\Controllers\Front\VideoGalleryController;
+use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\News\IndexController as NewsIndexController;
+use App\Http\Controllers\Front\News\DetailController as NewsDetailControler;
+use App\Http\Controllers\Front\News\SearchController as NewsSearchController;
+use App\Http\Controllers\Front\Event\IndexController as EventIndexController;
+use App\Http\Controllers\Front\Event\SearchController as EventSearchController;
+use App\Http\Controllers\Front\Event\DetailController as EventDetailController;
+use App\Http\Controllers\Front\Registrations\KISController as FrontKISController;
+use App\Http\Controllers\Front\Registrations\KTAController as FrontKTAController;
+use App\Http\Controllers\Front\Registrations\ClubController as FrontClubController;
+use App\Http\Controllers\Front\GalleryController as FrontGalleryController;
 
 use Illuminate\Support\Facades\Route;
 
 /* --------------------------------------- */
-/* Front End */
+/* Front Panel */
 /* --------------------------------------- */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('about', AboutController::class)->name('front.about');
-
-// News Controller [Front]
-Route::get('/news', NewsIndexController::class);
-
-Route::get('blog', [BlogControllerForFront::class, 'index'])->name('front.blogs');
-Route::get('blog/{slug}', [BlogControllerForFront::class, 'detail']);
-Route::post('blog/comment', [BlogControllerForFront::class, 'comment'])->name('front.comment');
-Route::get('category/{slug}', [CategoryControllerForFront::class, 'detail']);
-Route::post('search', [SearchController::class, 'index']);
-Route::get('search', function () {
-    abort(404);
+Route::post('/subscription', [SubscriptionController::class, 'subscribe'])->name('front.subscription');
+Route::get('/subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
+Route::get('/about', AboutController::class)->name('front.about');
+Route::get('/news', NewsIndexController::class)->name('front.news');
+Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
+Route::get('/news/{slug}', NewsDetailControler::class);
+Route::get('/event', EventIndexController::class)->name('front.event');
+Route::get('/event/search/', EventSearchController::class)->name('front.event.search');
+Route::get('/event/{slug}', EventDetailController::class);
+Route::group(['prefix' => 'registration'], function () {
+    Route::get('/kis', FrontKISController::class);
+    Route::get('/kta', FrontKTAController::class);
+    Route::get('/club', FrontClubController::class);
 });
+Route::get('/gallery', FrontGalleryController::class);
 
-Route::get('faq', [FaqControllerForFront::class, 'index'])->name('front.faq');
-Route::get('team-members', [TeamMemberControllerForFront::class, 'index'])->name('front.team_members');
-Route::get('team-member/{slug}', [TeamMemberControllerForFront::class, 'detail']);
-Route::get('photo-gallery', [PhotoGalleryController::class, 'index'])->name('front.photo_gallery');
-Route::get('video-gallery', [VideoGalleryController::class, 'index'])->name('front.video_gallery');
-Route::get('page/{slug}', [PageController::class, 'detail']);
-Route::get('contact', [ContactController::class, 'index'])->name('front.contact');
-Route::post('contact/store', [ContactController::class, 'send_email'])->name('front.contact_form');
-Route::get('career', [JobControllerForFront::class, 'index'])->name('front.career');
-
-Route::get('shop', [ProductControllerForFront::class, 'index'])->name('front.shop');
-Route::get('product/{slug}', [ProductControllerForFront::class, 'detail']);
-Route::post('product/cart/add', [ProductControllerForFront::class, 'add_to_cart'])->name('front.add_to_cart');
-Route::get('cart', [ProductControllerForFront::class, 'cart'])->name('front.cart');
-Route::get('cart/delete/{id}', [ProductControllerForFront::class, 'cart_item_delete']);
-Route::post('cart/update', [ProductControllerForFront::class, 'update_cart']);
-Route::get('checkout', [ProductControllerForFront::class, 'checkout'])->name('front.checkout');
-Route::post('checkout/shipping/update', [ProductControllerForFront::class, 'shipping_update'])->name('front.shipping_update');
-Route::post('checkout/coupon/update', [ProductControllerForFront::class, 'coupon_update'])->name('front.coupon_update');
-Route::post('subscription', [SubscriptionController::class, 'index'])->name('front.subscription');
-Route::get('subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
-Route::get('terms-and-conditions', [TermController::class, 'index'])->name('front.term');
 
 /* --------------------------------------- */
 /* Customer Login and profile management */
 /* --------------------------------------- */
-Route::get('customer/login', [LoginControllerForCustomer::class, 'index'])->name('customer.login');
-Route::post('customer/login/store', [LoginControllerForCustomer::class, 'store'])->name('customer.login.store');
-Route::post('customer/checkout/login/store', [CheckoutController::class, 'login'])->name('customer.login_from_checkout_page.store');
-Route::get('customer/logout', [LogoutControllerForCustomer::class, 'index'])->name('customer.logout');
-Route::get('customer/register', [RegistrationController::class, 'index'])->name('customer.registration');
-Route::post('customer/registration/store', [RegistrationController::class, 'store'])->name('customer.registration.store');
-Route::get('customer/dashboard', [DashboardControllerForCustomer::class, 'index'])->name('customer.dashboard');
-Route::get('customer/registration/verify/{token}/{email}', [RegistrationController::class, 'verify']);
-Route::get('customer/forget-password', [ForgetPasswordControllerForCustomer::class, 'index'])->name('customer.forget_password');
-Route::post('customer/forget-password/store', [ForgetPasswordControllerForCustomer::class, 'store'])->name('customer.forget_password.store');
-Route::get('customer/reset-password/{token}/{email}', [ResetPasswordControllerForCustomer::class, 'index']);
-Route::post('customer/reset-password/update', [ResetPasswordControllerForCustomer::class, 'update']);
-Route::get('customer/password-change', [PasswordChangeControllerForCustomer::class, 'index'])->name('customer.password_change');
-Route::post('customer/password-change/update', [PasswordChangeControllerForCustomer::class, 'update']);
-Route::get('customer/profile-change', [ProfileChangeControllerForCustomer::class, 'index'])->name('customer.profile_change');
-Route::post('customer/profile-change/update', [ProfileChangeControllerForCustomer::class, 'update']);
-Route::get('customer/order', [OrderControllerForCustomer::class, 'index'])->name('customer.order');
-Route::post('customer/checkout/billing/shipping', [CheckoutController::class, 'billing_shipping'])->name('customer.billing_shipping_submit');
-Route::get('customer/payment', [CheckoutController::class, 'payment'])->name('customer.payment');
-Route::post('customer/payment/stripe', [CheckoutController::class, 'stripe'])->name('customer.stripe');
-Route::get('customer/execute-payment', [CheckoutController::class, 'paypal']);
+// Route::get('customer/login', [LoginControllerForCustomer::class, 'index'])->name('customer.login');
+// Route::post('customer/login/store', [LoginControllerForCustomer::class, 'store'])->name('customer.login.store');
+// Route::post('customer/checkout/login/store', [CheckoutController::class, 'login'])->name('customer.login_from_checkout_page.store');
+// Route::get('customer/logout', [LogoutControllerForCustomer::class, 'index'])->name('customer.logout');
+// Route::get('customer/register', [RegistrationController::class, 'index'])->name('customer.registration');
+// Route::post('customer/registration/store', [RegistrationController::class, 'store'])->name('customer.registration.store');
+// Route::get('customer/dashboard', [DashboardControllerForCustomer::class, 'index'])->name('customer.dashboard');
+// Route::get('customer/registration/verify/{token}/{email}', [RegistrationController::class, 'verify']);
+// Route::get('customer/forget-password', [ForgetPasswordControllerForCustomer::class, 'index'])->name('customer.forget_password');
+// Route::post('customer/forget-password/store', [ForgetPasswordControllerForCustomer::class, 'store'])->name('customer.forget_password.store');
+// Route::get('customer/reset-password/{token}/{email}', [ResetPasswordControllerForCustomer::class, 'index']);
+// Route::post('customer/reset-password/update', [ResetPasswordControllerForCustomer::class, 'update']);
+// Route::get('customer/password-change', [PasswordChangeControllerForCustomer::class, 'index'])->name('customer.password_change');
+// Route::post('customer/password-change/update', [PasswordChangeControllerForCustomer::class, 'update']);
+// Route::get('customer/profile-change', [ProfileChangeControllerForCustomer::class, 'index'])->name('customer.profile_change');
+// Route::post('customer/profile-change/update', [ProfileChangeControllerForCustomer::class, 'update']);
+// Route::get('customer/order', [OrderControllerForCustomer::class, 'index'])->name('customer.order');
+// Route::post('customer/checkout/billing/shipping', [CheckoutController::class, 'billing_shipping'])->name('customer.billing_shipping_submit');
+// Route::get('customer/payment', [CheckoutController::class, 'payment'])->name('customer.payment');
+// Route::post('customer/payment/stripe', [CheckoutController::class, 'stripe'])->name('customer.stripe');
+// Route::get('customer/execute-payment', [CheckoutController::class, 'paypal']);
 
 
 /* --------------------------------------- */
@@ -329,8 +306,8 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
 
-        Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
-        Route::post('/faq/update', [PageFaqController::class, 'update']);
+        // Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
+        // Route::post('/faq/update', [PageFaqController::class, 'update']);
 
         Route::get('/team/edit', [PageTeamController::class, 'edit'])->name('admin.page_team.edit');
         Route::post('/team/update', [PageTeamController::class, 'update']);
@@ -533,17 +510,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     });
 
 
-    /* --------------------------------------- */
-    /* FAQ - Admin */
-    /* --------------------------------------- */
-    Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
-        Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
-        Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
-        Route::get('/delete/{id}', [FaqControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [FaqControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [FaqControllerForAdmin::class, 'update']);
-    });
+    // /* --------------------------------------- */
+    // /* FAQ - Admin */
+    // /* --------------------------------------- */
+    // Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
+    //     Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
+    //     Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
+    //     Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
+    //     Route::get('/delete/{id}', [FaqControllerForAdmin::class, 'destroy']);
+    //     Route::get('/edit/{id}', [FaqControllerForAdmin::class, 'edit']);
+    //     Route::post('/update/{id}', [FaqControllerForAdmin::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
@@ -693,8 +670,10 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /**
      * IMI Member Registration - Admin
      */
-    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function() {
+    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
     });
+
+    Route::get('/file-manager', FileManagerController::class)->middleware('can:isAdmin')->name('admin.file_manager');
 });

@@ -73,9 +73,11 @@ class DynamicPageController extends Controller
                 'dynamic_page_slug'   =>  [
                     Rule::unique('dynamic_pages')->ignore($id),
                 ],
-                'dynamic_page_banner' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'dynamic_page_banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-            unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
+            if(file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
+                unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
+            }
             $ext = $request->file('dynamic_page_banner')->extension();
             $final_name = 'dynamic-page-banner-'.$id.'.'.$ext;
             $request->file('dynamic_page_banner')->move(public_path('uploads/'), $final_name);
@@ -100,7 +102,9 @@ class DynamicPageController extends Controller
     public function destroy($id)
     {
         $dynamic_page = DynamicPage::findOrFail($id);
-        unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
+        if(file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
+            unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
+        }
         $dynamic_page->delete();
         return Redirect()->back()->with('success', 'Dynamic Page is deleted successfully!');
     }

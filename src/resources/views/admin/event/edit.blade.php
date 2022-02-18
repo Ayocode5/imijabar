@@ -13,8 +13,12 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Name *</label>
+                    <label for="">Name</label>
                     <input type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Event Organizer</label>
+                    <input type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
@@ -37,12 +41,32 @@
                     <input type="text" name="event_location" class="form-control" value="{{ $event->event_location }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Maps - Optional</label>
+                    <label for="">City</label>
+                    <input type="text" name="event_location_city" class="form-control" value="{{ $event->event_location_city }}"
+                        autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Province</label>
+                    <input type="text" name="event_location_province" class="form-control" value="{{ $event->event_location_province }}"
+                        autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Maps (Optional)</label>
                     <input type="text" name="event_location_map" class="form-control" value="{{ $event->event_map }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Video (YouTube ID) - Optional</label>
+                    <label for="">Video (YouTube ID) - (Optional)</label>
                     <input type="text" name="event_video" class="form-control" value="{{ $event->event_video }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Registration Link (Optional) </label>
+                    <input type="text" name="event_link" class="form-control"
+                        value="{{ $event->event_link }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Document Link (Optional)</label>
+                    <input type="text" name="event_document_link" class="form-control"
+                        value="{{ $event->event_document_link }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label>
@@ -51,7 +75,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Change Image ( max: 2mb )</label>
+                    <label for="">Change Image (Max: 2MB)</label>
                     <div>
                         <input type="file" id="event_featured_photo" name="event_featured_photo">
                     </div>
@@ -75,8 +99,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{-- {{ dd($event->sports->pluck('id')) }} --}}
-                    <label for="">Current Sponsors - Optional</label>
+                    <label for="">Current Sponsors (Optional)</label>
                     @if (count($sponsors) <= 0)
                         <select class="form-control" disabled>
                             <option value="">There is no Sponsors available, Create first</option>

@@ -1,4 +1,17 @@
 window._ = require('lodash');
+global.$ = global.jQuery = require('jquery');
+// window.Popper = require('popper.js/dist/umd/popper.js').default;
+import Popper from 'popper.js/dist/umd/popper.js';
+window.Popper = Popper;
+require('bootstrap')
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+require('./components/newsletter');
+require('./components/carousel');
+require('./components/eventfilter');
+require('./components/lazyload/lazyload_news');
+require('./components/lazyload/lazyload_events');
+require('./components/welcome');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -26,3 +39,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+
+
+/**
+* Setup Ajax Header
+*/
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});

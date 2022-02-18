@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.components.breadcrumb', ['url_path' => 'Tentang IMI'])
 
     <!-- START VISI MISI -->
     <section id="visi_misi">
         <div class="container-fluid wrap_visi_misi">
             <div class="row visi_section">
-                <div class="col-12 col-lg-7 order-2 order-lg-1 align-items-center d-flex">
+                <div class="col-12 col-md-7 order-2 order-md-1 align-items-center d-flex">
                     <div>
                         <div class="d-inline">
 
                         </div>
-                        <h2 class="visimisi-outline">VISI <span class="visimisi-jabar">{{ $about_settings?->heading1 }}</span></h2>
+                        <h2 class="visimisi-outline">VISI <span
+                                class="visimisi-jabar">{{ $about_settings?->heading1 }}</span></h2>
                         <!-- <div class="border_visi"></div> -->
                         <p class="visimisi-detail">{!! $about_settings?->body1 !!}</p>
-                       
+
                     </div>
                 </div>
-                <div class="align-items-center d-flex col-12 col-lg-5 order-1">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/visi-img.png" alt="visimisi img" class="img-fluid">
+                <div class="align-items-center d-flex col-12 col-md-5 order-1 order-md-2">
+                    <img src="{{ asset('public/images') }}/visi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
             </div>
             <div class="row misi_section">
-                <div class="align-items-center d-flex col-12 col-lg-5 order-2 order-lg-1">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/misi-img.png" alt="visimisi img" class="img-fluid">
+                <div class="align-items-center d-flex col-12 col-md-5 order-1">
+                    <img src="{{ asset('public/images') }}/misi-img.png" alt="visimisi img" class="img-fluid">
                 </div>
-                <div class="col-12 col-lg-7 order-2 align-items-center justify-content-end d-flex">
+                <div class="col-12 col-md-7 order-2 align-items-center justify-content-end d-flex">
                     <div>
                         <div class="d-inline">
 
@@ -52,8 +52,8 @@
     <!-- START SEJARAH -->
     <section id="sejarah">
         <div class="container-fluid wrap_sejarah_imi">
-            <div class="row pt-5">
-                <div class="col-12 col-lg-6 order-2 order-lg-1">
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1">
                     <h2 class="sejarah-title">
                         {!! $about_settings?->subtitle !!}
                     </h2>
@@ -62,11 +62,11 @@
                         {!! $about_settings?->body3 !!}
                     </p>
                 </div>
-                <div class="col-12 col-lg-6 order-1 order-lg-2">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
+                <div class="col-12 col-md-6 order-1 order-md-2">
+                    <img src="{{ asset('public/images') }}/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
                 </div>
             </div>
-            <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+            <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
             <div class="row">
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -75,7 +75,8 @@
                     </p>
                 </div>
                 <div class="col-12 col-lg-2 d-flex justify-content-center">
-                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
+                    <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
+                        class="sejarah-arrow2">
                 </div>
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -91,7 +92,8 @@
                             data-parent="#accordionShowMore">
                             <div class="card-body p-0" style="background-color: #fbfbfbfb;">
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                        class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -101,7 +103,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
@@ -111,7 +113,8 @@
                                         </p>
                                     </div>
                                 </div>
-                                <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                    class="sejarah-arrow">
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
                                         <p class="sejarah-text">
@@ -120,7 +123,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow2">
                                     </div>
                                     <div class="col-12 col-lg-5">
@@ -131,7 +134,8 @@
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                        class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -141,7 +145,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/sejarah-arrow-right.png" alt="arrow right"
+                                        <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
@@ -156,12 +160,12 @@
                         <div class="card-header" id="showMoreHistory" style="background-color: #F8F8F8;">
                             <h2 class="mb-0 d-flex justify-content-center">
                                 <div class="showmore_history">
-                                    <input type="checkbox" class="show_more_tentang_imi" id="shwmr"
-                                        data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true"
+                                    <input type="checkbox" class="show_more_tentang_imi" id="shwmr" data-toggle="collapse"
+                                        data-target="#collapseHistory" aria-expanded="true"
                                         aria-controls="collapseHistory" />
                                     <label class="label_show_more_history d-flex align-items-center" for="shwmr">
                                         <div class="text_show_more_tentang_imi"></div>
-                                        <img src="{{ asset('storage/app/public/assets/') }}/img/icon-arrow-down.svg" alt="arrow down"
+                                        <img src="{{ asset('public/images') }}/icon-arrow-down.svg" alt="arrow down"
                                             class="showmore-icon">
                                     </label>
                                 </div>
@@ -180,8 +184,9 @@
 
     <!-- START KEPENGURUSAN -->
     @include('layouts.components.committee', [
-        'title' => $home_settings->committee_title, 
-        'detail' => $home_settings->committee_detail
+    'title' => $home_settings->committee_title,
+    'detail' => $home_settings->committee_detail,
+    'committee' => $committee
     ])
     <!-- END KEPENGURUSAN -->
 
@@ -194,42 +199,60 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link card-title" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne" style="padding: 0px;">
-                                Anggaran Rumah Tangga IMI Jawa Barat
+                                {{ $art_section_page->name }}
                             </button>
                         </h5>
                     </div>
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body  art_imi">
-                            Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
+                            {{-- Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
-                            <button type="button"
+                            {{-- jika ada link foreach  --}}
+                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
+                                <a href="#">
+                                    <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
+                                        Download File
+                                </a>
+                            </div>
+                            {{-- <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                    class="mr-3" src="{{ asset('storage/app/public/assets/') }}/img/pdf-icon.png" alt=""> Download
-                                File</button>
-
+                                    class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
+                                File</button> --}}
+                            {{-- {{ dd($ad_section_page) }} --}}
+                            {!! $art_section_page->content1 !!}
                         </div>
                     </div>
                 </div>
+
                 <div class="card my_card">
-                    <div class="card-header ad_imi" id="headingTwo">
+                    <div style="cursor: pointer" class="card-header ad_imi" id="headingTwo" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed card-title" data-toggle="collapse"
-                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                            <button class="btn btn-link collapsed card-title" 
                                 style="padding: 0px;">
-                                Anggaran Dasar IMI Jawa Barat
+                                {{ $ad_section_page->name }}
                             </button>
                         </h5>
+                        <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
+                    </div>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body ad_imi">
-                            Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
+                            {{-- Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
-                            <button type="button"
+                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
+                                <a href="#">
+                                    <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
+                                        Download File
+                                </a>
+                            </div>
+                            {{-- <button type="button"
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                    class="mr-3" src="{{ asset('storage/app/public/assets/') }}/img/pdf-icon.png" alt=""> Download
-                                File</button>
-
+                                    class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
+                                File</button> --}}
+                            {!! $ad_section_page->content1 !!}
                         </div>
                     </div>
                 </div>
@@ -238,5 +261,4 @@
         </div>
     </section>
     <!-- END ANGGARAN -->
-
 @endsection

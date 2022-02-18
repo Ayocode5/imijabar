@@ -9,7 +9,10 @@ class DynamicPage extends Model
     protected $fillable = [
         'dynamic_page_name',
         'dynamic_page_slug',
-        'dynamic_page_content',
+        'dynamic_page_content1',
+        'dynamic_page_content2',
+        'dynamic_page_link1',
+        'dynamic_page_link2',
         'dynamic_page_banner',
         'seo_title',
         'seo_meta_description'

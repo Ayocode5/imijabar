@@ -32,11 +32,14 @@
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
-                            <select type="text" name="category_id" class="form-control" value="{{ old('category_id') }}">
-                                @if (!empty($categories))
+                            <select type="text" name="category_id" class="form-control"
+                                value="{{ old('category_id') }}">
+                                @if (count($categories) != 0) 
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    <option>Category Not Found!</option>
                                 @endif
                             </select>
                         </div>

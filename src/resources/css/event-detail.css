@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+
+/* 
+    font-family: 'Barlow', sans-serif;  
+    font-family: 'Tinos', serif;
+    font-family: 'Zeyada', cursive;
+*/
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.button_download_file a {
+    text-decoration: none;
+    color: #263840;
+}
+
+.button_download_file:hover a {
+    color: #f8f8f8;
+}
+
+/* 
+    Start style header detail Event 
+*/
+.overlay_image_detail_event {
+    background: rgba(38, 56, 64, 0.7);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 8px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.featured_image {
+    height: 200px;
+    width: 100%;
+    padding: 0 8px;
+    object-fit: cover;
+    border-radius: 0px 0px 10px 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+.conten_overlay_header_image_detail_event {
+    color: #F8F8F8;
+    position: absolute;
+    text-align: center;
+    margin: 0 16px;
+    left: 0;
+    right: 0;
+    top: 10px;
+    bottom: 0;
+    font-family: 'Tinos', serif;
+    z-index: 4;
+}
+
+.conten_overlay_header_image_detail_event h1 {
+    font-size: 24px;
+}
+
+.conten_overlay_header_image_detail_event p {
+    font-size: 14px;
+}
+
+#header_detail_event {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.btn_daftar_event_detail {
+    color: #f8f8f8;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #F4F4F9;
+    transform: translate(0, 0);
+    transition: all 0.8s ease-in-out;
+    padding: 4px 16px;
+    border-radius: 5px;
+}
+
+.btn_daftar_event_detail:hover,
+.btn_daftar_event_detail:active,
+.btn_daftar_event_detail:focus {
+    outline: none;
+    border: none;
+    transform: translate(0, -5px);
+    background-color: #FFCE51;
+    color: #111111;
+}
+
+
+/* 
+    End style header detail Event 
+*/
+
+/* Start style main content detail event */
+#main_content_detail_event {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrap_content_detail_event {
+    margin: 32px 8%;
+}
+
+.content_detail_event {
+    border-bottom: 1px solid rgba(38, 56, 64, 0.5);
+}
+
+.wrap_content_detail_event p {
+    text-align: justify;
+}
+
+.wrap_cabor_lomba {
+    padding: 0 8px;
+}
+
+.cabor_lomba_event_detail {
+    background-color: #f8f8f8;
+}
+
+.select_category_cabor button {
+    background-color: #F8F8F8;
+    color: #111111;
+}
+
+.select_category_cabor .btn_switch_category_event {
+    width: 100%;
+}
+
+.title_event_detail {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Start style Carousel Cabang Olahraga */
+.multiple_item_carousel_cabor {
+    padding: 0 6%;
+
+}
+
+.multiple_item_carousel_cabor .owl-prev {
+    height: 100px;
+    position: absolute;
+    top: 35%;
+    left: -5%;
+}
+
+.multiple_item_carousel_cabor .owl-next {
+    height: 100px;
+    position: absolute;
+    top: 35%;
+    right: -5%;
+}
+
+/* End style Carousel Cabang Olahraga */
+
+.btn_daftar_event {
+    padding: 8px 24px;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+    transition: all 0.6s ease-in-out;
+}
+
+.btn_daftar_event:hover,
+.btn_daftar_event:active,
+.btn_daftar_event:focus {
+    background-color: #FFCE51;
+    transform: translate(0, -10px);
+    border: none;
+}
+
+
+/* sponsor */
+.wrap_sponsor_event h2 {
+    font-size: 20px;
+}
+
+.sponsor_event {
+    background-color: #E5E5E5;
+}
+
+.logo_sponsor_event {
+    padding: 0 8px;
+    gap: 16px;
+}
+
+.logo_sponsor_event img {
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    filter: saturate(0);
+    max-height: 160px;
+}
+
+.logo_sponsor_event img:hover {
+    filter: saturate(1);
+}
+
+/* sponsor */
+/* End style main content detail event */
+
+.text_surat_rekomendasi button {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.text_surat_rekomendasi button:hover,
+.text_surat_rekomendasi button:focus {
+    color: #000000;
+    text-decoration: none;
+
+}
+
+.wrap_surat_rekomendasi .card .card-header {
+    padding: 24px 6%;
+}
+
+.wrap_surat_rekomendasi .card .card-header img {
+    width: 22px;
+}
+
+.wrap_surat_rekomendasi .card .card-header[aria-expanded="false"] img {
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.wrap_surat_rekomendasi .card .card-header[aria-expanded="true"] img {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.wrap_surat_rekomendasi .card .card-body {
+    padding: 24px 8%;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    /* 
+        Start style header Detail Event 
+    */
+    .overlay_image_detail_event {
+        margin: 0 50px;
+    }
+
+    .conten_overlay_header_image_detail_event {
+        top: 60px;
+    }
+
+    .featured_image {
+        height: 300px;
+        padding: 0 50px;
+    }
+
+    .conten_overlay_header_image_detail_event h1 {
+        font-size: 32px;
+    }
+
+    .conten_overlay_header_image_detail_event p {
+        font-size: 16px;
+    }
+
+    /* End style header Detail Event */
+
+    /* Start style main detail events */
+    .wrap_content_detail_event {
+        margin: 16px 50px;
+    }
+
+    .wrap_cabor_lomba {
+        padding: 0 50px;
+    }
+
+    .title_event_detail {
+        font-size: 48px;
+    }
+
+    /* sponsor */
+    .wrap_sponsor_event h2 {
+        font-size: 28px;
+    }
+
+    .logo_sponsor_event {
+        padding: 0 20px;
+    }
+
+    /* sponsor */
+    /* End style main detail events */
+
+    .wrap_surat_rekomendasi .card .card-header img {
+        width: 28px;
+    }
+
+    .text_surat_rekomendasi button {
+        font-size: 28px;
+    }
+
+    .wrap_surat_rekomendasi .card .card-body {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+
+    /* 
+        Start style header Detail Event 
+    */
+    .overlay_image_detail_event {
+        margin: 0 100px;
+    }
+
+    .conten_overlay_header_image_detail_event {
+        top: 110px;
+    }
+
+    .featured_image {
+        height: 377px;
+        padding: 0 100px;
+    }
+
+
+    .conten_overlay_header_image_detail_event h1 {
+        font-size: 48px;
+    }
+
+    .conten_overlay_header_image_detail_event p {
+        font-size: 16px;
+    }
+
+    /* 
+        End style header Detail Event 
+    */
+
+    /* Start style main detail event */
+    .wrap_content_detail_event {
+        margin: 0 100px;
+    }
+
+    .wrap_cabor_lomba {
+        padding: 0 100px;
+    }
+
+    /* sponsor */
+    .logo_sponsor_event {
+        padding: 0 50px;
+    }
+
+    .wrap_sponsor_event h2 {
+        font-size: 36px;
+    }
+
+    /* sponsor */
+    /* Start style main detail event */
+
+
+    .wrap_surat_rekomendasi .card .card-header img {
+        width: 32px;
+    }
+
+    .text_surat_rekomendasi button {
+        font-size: 36px;
+    }
+
+    .wrap_surat_rekomendasi .card .card-body {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 2300px) {
+
+    #header_detail_event {
+        max-width: 2300px;
+    }
+
+    #main_content_detail_event {
+        max-width: 2300px;
+    }
+}

@@ -36,10 +36,12 @@
                             <label for="">Category</label>
                             <select type="text" name="category_id" class="form-control"
                                 value="{{ old('category_id') }}">
-                                @if (!empty($categories))
+                                @if (count($categories) != 0)
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
+                                @else
+                                    <option>Category Not Found!</option>
                                 @endif
                             </select>
                         </div>
@@ -51,7 +53,6 @@
     </form>
 
     <script>
-
         photo_name.onchange = (event) => {
             const [file] = photo_name.files
             if (file) {

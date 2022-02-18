@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-    public function index(Request $request)
+    public function subscribe(Request $request)
     {
         $token = hash('sha256', time());
 
@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
         // Send Email Verification to subscriber  
         SendEmailVerificationSubscriber::dispatch([
             'recipent' => $request->subs_email,
-            'subject' => $subject, 
+            'subject' => $subject,
             'message' => $message
         ]);
 

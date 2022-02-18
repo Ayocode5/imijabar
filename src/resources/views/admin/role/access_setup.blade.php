@@ -15,12 +15,12 @@
                         </div>
                     </div>
                     <div class="card-body">
-
                         <table class="table table-bordered">
-
+                            <input class="permission-select-all" type="checkbox" name="select-all-permission" id="selectAll">
+                            <label for="selectAll">Select All</label>
                             @foreach ($permissions as $permission)
                                 <tr>
-                                    <td>{{ str_replace('-', ' ', $permission->name) }} <input name="input[]" type="checkbox" value="{{$permission->id}}" @if (in_array($permission->id, $attachedPermissionsRole->permissions->pluck('id')->toArray())) checked @endif></td>
+                                    <td>{{ str_replace('-', ' ', $permission->name) }} <input name="input[]" type="checkbox" class="permission-item" value="{{$permission->id}}" @if (in_array($permission->id, $attachedPermissionsRole->permissions->pluck('id')->toArray())) checked @endif></td>
                                 </tr>
                             @endforeach
 

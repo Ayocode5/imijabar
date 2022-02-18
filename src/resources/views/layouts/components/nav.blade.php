@@ -1,6 +1,6 @@
 <!-- START NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <div style="margin: -9px 0;" class="container-fluid mx-lg-5">
+<nav class="my_nav navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div style="margin: -9px 0;" class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('public/uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
         </a>
@@ -11,28 +11,27 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto navbar_list">
                 <li class="nav-item mr-lg-3">
-                    <a class="nav-link @if ($url == 'about') active @endif" href="{{ url('/about') }}">Tentang IMI<span
+                    <a class="nav-link @if (in_array('about', $url)) active @endif" href="{{ url('/about') }}">Tentang IMI<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'news') active @endif" href="/news">Berita</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('news', $url)) active @endif" href="/news">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'galleries') active @endif" href="#">Galeri</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif" href="/event">Acara</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if ($url == 'events') active @endif" href="#">Acara</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('gallery', $url)) active @endif" href="/gallery">Galeri</a>
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle  @if (in_array('pendaftaran', $url)) active @endif" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pendaftaran
                     </a>
                     <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">KIS</a>
-                        <a class="dropdown-item" href="#">KTA</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/registration/kis">KIS</a>
+                        <a class="dropdown-item" href="/registration/kta">KTA</a>
+                        <a class="dropdown-item" href="/registration/club">Klub</a>
                     </div>
                 </li>
             </ul>
@@ -44,9 +43,9 @@
                             <div class="ball"></div>
                             <div class="flags">
                                 <img class="ball_us flag"
-                                    src="{{ asset('storage/app/public/assets/img') }}/flag-us.svg" alt="us flag">
+                                    src="{{ asset('public/images') }}/flag-us.svg" alt="us flag">
                                 <img class="ball_id flag"
-                                    src="{{ asset('storage/app/public/assets/img') }}/flag-indonesia.svg" alt="is flag">
+                                    src="{{ asset('public/images') }}/flag-indonesia.svg" alt="is flag">
                             </div>
                             <!-- <div class="ball"></div> -->
                         </label>
@@ -55,7 +54,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
                         <img class="mb-1 mr-2"
-                            src="{{ asset('storage/app/public/assets/img') }}/Telephone-Icon.svg"
+                            src="{{ asset('public/images') }}/Telephone-Icon.svg"
                             alt="icon contact telephone">
                         {{-- 0857-XXXX-XXXX --}}
                         {{ $settings?->top_bar_phone }}
@@ -63,7 +62,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{ asset('storage/app/public/assets/img') }}/Email-Icon.svg"
+                        <img class="mb-1 mr-2" src="{{ asset('public/images') }}/Email-Icon.svg"
                             alt="icon contact email">
                         {{ $settings?->top_bar_email }}
                     </a>
