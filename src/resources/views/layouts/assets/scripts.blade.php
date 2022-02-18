@@ -13,7 +13,7 @@
 -->
 
 {{-- <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> --}}
 <!-- <script src="typewriter.js"></script> -->
 
 <script src="{{ asset('public/js/app.js') }}"></script>

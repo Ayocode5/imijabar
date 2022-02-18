@@ -11,6 +11,8 @@ footer {
 }
 
 .logo_footer {
+    max-width: 70px;
+    max-height: 70px;
     margin: 0 auto;
 }
 

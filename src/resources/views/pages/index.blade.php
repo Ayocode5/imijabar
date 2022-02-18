@@ -57,50 +57,49 @@
                         </div>
                     </div>
                     <!-- Events -->
-                    <div class="accordion events_wrapper" id="accordionExample">
+                    <div class="accordion events_wrapper_home" id="accordionExample">
                         @foreach ($events as $event)
-                            <div categories="{{ $event->categories_slug }}" style="cursor: pointer;" class="card item_event" data-toggle="collapse"
-                                data-target="#collapse{{$loop->iteration}}" aria-expanded="true" aria-controls="collapse{{$loop->iteration}}">
+                            <div categories="{{ $event->categories_slug }}" style="cursor: pointer;" class="my-2 card item_event" data-toggle="collapse"
+                                data-target="#collapse{{$loop->iteration}}" aria-expanded="false" aria-controls="collapse{{$loop->iteration}}">
                                 <div class="card-header content-event" id="headingOne">
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
-                                        <div class="col-12 col-md-2">
-                                            <h3 class="tgl-event" style="margin-right: -10px">{{ date_format(date_create($event->event_start_date), "d") }}</h3>
+                                        <div class="col-11">
+                                            <h3 class="date_start_event">{{ date_format(date_create($event->event_start_date), "d F Y") }}</h3>
+                                            <p class="event_location_province">{{ $event->event_location_city }}, {{ $event->event_location_province }}</p>
+                                            <div class="border_split"></div>
+                                            <p class="name_event_header">{{ $event->name }}</p>
                                         </div>
-                                        <div class="col-12 col-md-5 p-0">
-                                            <p class="month-event m-0">{{ date_format(date_create($event->event_start_date), "F Y") }}</p>
-                                            <h3 class="loc-event">{{ $event->event_location_city }}, {{ $event->event_location_province }}</h3>
-                                        </div>
-                                        <div class="col-12 col-md-3 p-2">
-                                            <h3 class="name-event">{{ $event->name }} </h3>
-                                        </div>
-                                        <div class="col-12 col-md-1">
+                                        <div class="col-1">
                                             <img src="{{ asset('public/images') }}/icon-arrow-down.svg"
                                                 alt="icon arrow">
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div id="collapse{{$loop->iteration}}" class="collapse " aria-labelledby="headingOne"
                                     data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="col">
+                                        <div class="detail-event">
                                             <h3 class="title-event">
                                                 Cabang Olahraga
                                             </h3>
-                                            <p class="detail-event" style="font-size: 16px">
-                                                {{ $event->sports }}
-                                            </p>
+                                            {{ $event->sports }}
+                                            {!! $home_event_registration_section->content1 !!}
+                                            <a class="link_detail_event" href="{{ $event->link }}">Selengkapnya <span>→</span></a>
                                         </div>
-                                        <div class="col" style="line-height: 16px">
+                                        {{-- <div class="col" style="line-height: 16px">
                                             <h3 class="title-event">
-                                                {{ $event_registration_section->name }}
+                                                {{ $home_event_registration_section->name }}
                                             </h3>
                                             <p class="detail-event">
-                                                {!! $event_registration_section->content !!}
+                                                {!! $home_event_registration_section->content1 !!}
+                                                {{ $event->link }}
                                             </p>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
+                            <div class="border-bottom"></div>
                         @endforeach
                     </div>
                 </div>
@@ -162,7 +161,8 @@
         <!-- START KEPENGURUSAN -->
         @include('layouts.components.committee', [
             'title' => $home_settings->committee_title, 
-            'detail' => $home_settings->committee_detail
+            'detail' => $home_settings->committee_detail,
+            'committee' => $committee
         ])
         <!-- END KEPENGURUSAN -->
 

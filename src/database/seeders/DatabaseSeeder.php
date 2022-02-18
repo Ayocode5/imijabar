@@ -28,6 +28,11 @@ class DatabaseSeeder extends Seeder
             SubscriberSeeder::class,
             WebsiteMenuStatusSeeder::class,
             DynamicPageRegistrationEventSeeder::class,
+            DynamicPageADPage::class,
+            DynamicPageARTPage::class,
+            DynamicPageClubRegistration::class,
+            DynamicPageKIS::class,
+            DynamicPageKTA::class,
             NewsSeeder::class,
             EventSeeder::class,
         ]);

@@ -63,7 +63,7 @@
                     <div class="multiple_item_carousel_cabor">
                         <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                             @foreach ($event->sports as $sport)
-                                <div categories="{{ $sport->category->slug }}"" class="item">
+                                <div categories="{{ $sport->category->slug }}" class="item">
                                     <img src="{{ asset('public/uploads') . "/$sport->image" }}"
                                         alt="{{ $sport->name }}">
                                 </div>
@@ -116,19 +116,19 @@
                         <div id="suratRekomendasi_collapseOne" class="collapse"
                             aria-labelledby="suratRekomendasi_headingOne" data-parent="#suratRekomendasi">
                             <div class="card-body">
-                                <p>Surat Rekomendasi Indo MotoSport Grandprix 2022</p>
-                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
-                                <a href="#">
-                                    <img class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
-                                    Download File
-                                </a>
-                            </div>
-                                {{-- <a href="#" target="_blank" rel="noreferrer nofollow"><button type="button"
-                                        class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                            class="mr-3"
-                                            src="{{ asset('public/images/') }}/pdf-icon.png" alt="">
-                                        Download
-                                        File</button></a> --}}
+                                <p>Surat Rekomendasi {{ $event->name }}</p>
+                                @if ($event->document_link)
+                                    <a href="{{ $event->document_link }}" target="_blank"
+                                        rel="noreferrer nofollow"><button type="button"
+                                            class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
+                                                class="mr-3" src="{{ asset('public/images/') }}/file-icon.svg"
+                                                alt="pdf icon ">
+                                            Download
+                                            File</button></a>
+                                    
+                                @else
+                                    <p>Dokumen Tidak Ada</p>
+                                @endif
                             </div>
                         </div>
                     </div>

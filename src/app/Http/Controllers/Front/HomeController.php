@@ -14,6 +14,10 @@ class HomeController extends Controller
 
 		$home_settings = DB::table('page_home_items')->first();
 
+		$committee = DB::table('team_members')->get();
+
+		// dd($committee);
+
 		// Get Active Events With Categories
 		$events = DB::table('events as e')
 			->join('event_sport as es', 'es.event_id', '=', 'e.id')
@@ -24,6 +28,7 @@ class HomeController extends Controller
 			e.event_name as name,
 			e.event_start_date,
 			e.event_end_date,
+			e.event_link as link,
 			e.event_location_city,
 			e.event_location_province,
 			e.event_featured_photo as featured_photo,
@@ -73,12 +78,12 @@ class HomeController extends Controller
 			'footer_column3_heading',
 		)->first();
 
-		$event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content as content')->where('dynamic_page_slug', 'section-pendaftaran-event')->first();  
+		$home_event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content1 as content1')->where('dynamic_page_slug', 'home-event-registration')->first();  
 
 		// dd($events);
 		// dd($news);
 		// dd($home_settings);
-		// dd($event_registration_section);
-		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'event_registration_section'));
+		// dd($home_event_registration_section);
+		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'home_event_registration_section', 'committee'));
 	}
 }

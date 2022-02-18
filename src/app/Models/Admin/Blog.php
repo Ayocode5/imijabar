@@ -22,18 +22,20 @@ class Blog extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeLatest($query) {
+    public function scopeLatest($query)
+    {
         return $query->orderBy('created_at', 'DESC');
     }
 
-    public function scopeActive($query) {
+    public function scopeActive($query)
+    {
         return $query->where('deleted_at', null);
     }
 
-    public function getCreatedAtAttribute()
-    {
-        return date_format(date_create($this->create_at), 'd M Y');
-    }
-    
+    // public function getCreatedAtAttribute()
+    // {
+    //     return date_format(date_create($this->create_at), 'd M Y');
+    // }
+
 
 }

@@ -21,17 +21,17 @@
                     <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif" href="/event">Acara</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if (in_array('galleries', $url)) active @endif" href="#">Galeri</a>
+                    <a class="nav-link mr-lg-3 @if (in_array('gallery', $url)) active @endif" href="/gallery">Galeri</a>
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle  @if (in_array('pendaftaran', $url)) active @endif" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pendaftaran
                     </a>
                     <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">KIS</a>
-                        <a class="dropdown-item" href="#">KTA</a>
-                        <a class="dropdown-item" href="#">Club</a>
+                        <a class="dropdown-item" href="/registration/kis">KIS</a>
+                        <a class="dropdown-item" href="/registration/kta">KTA</a>
+                        <a class="dropdown-item" href="/registration/club">Klub</a>
                     </div>
                 </li>
             </ul>

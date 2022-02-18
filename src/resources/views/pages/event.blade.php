@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{{-- {{ dd($sports)}} --}}
+
 @section('content')
     @include('layouts.components.breadcrumb')
 
@@ -111,8 +113,7 @@
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
-                                    <img class="calender_pin"
-                                        src="{{ asset('public/images') }}/calender_pin.svg"
+                                    <img class="calender_pin" src="{{ asset('public/images') }}/calender_pin.svg"
                                         alt="calender pin image">
                                     <div class="card">
                                         <div class="header_card_image shadow">
@@ -157,7 +158,7 @@
                                                             {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
                                                             <br />
                                                             <span>
-                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F') }}
                                                                 -
                                                                 {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
                                                             </span>

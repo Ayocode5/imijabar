@@ -11,6 +11,7 @@
 
     @php
         $fav = Illuminate\Support\Facades\DB::table('general_settings')->select('favicon')->first();
+        $social_media = Illuminate\Support\Facades\DB::table('social_media_items')->select('social_url', 'social_icon', 'social_order')->orderBy('social_order')->get();
     @endphp
     
     <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads')."/$fav->favicon" }}">
@@ -29,7 +30,7 @@
     @yield('content')
 
     <!-- Footer -->
-    @include('layouts.components.footer')
+    @include('layouts.components.footer', ['social_media' => $social_media])
 
     <p id="typed" hidden></p>
     {{-- Scripts --}}

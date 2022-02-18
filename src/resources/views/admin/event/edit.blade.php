@@ -60,8 +60,13 @@
                 </div>
                 <div class="form-group">
                     <label for="">Registration Link (Optional) </label>
-                    <input type="text" name="event_url" class="form-control"
-                        value="{{ $event->event_url }}" autofocus>
+                    <input type="text" name="event_link" class="form-control"
+                        value="{{ $event->event_link }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Document Link (Optional)</label>
+                    <input type="text" name="event_document_link" class="form-control"
+                        value="{{ $event->event_document_link }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label>

@@ -27,6 +27,7 @@ class CreateEventsTable extends Migration
             $table->text('event_location_city');
             $table->text('event_location_province');
             $table->text('event_link')->nullable();
+            $table->text('event_document_link')->nullable();
             $table->text('event_map')->nullable();
             $table->text('event_video')->nullable();
             $table->text('event_featured_photo');

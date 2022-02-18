@@ -1,9 +1,10 @@
 /node_modules
 /public/hot
+/public/storage
+/storage
+/bootstrap/cache/*
 /public/js
 /public/css
-/bootstrap
-# /public/storage
 /storage/*.key
 /vendor
 .env

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -13,6 +15,11 @@ class DashboardController extends Controller
 
     public function index()
     {
+
+        // $preview = Image::make(Storage::disk('public')->get('hasil-tes-pramusim-motogp-2022-hari-pertama-sesi-1-marc-marquez-melempem-aleix-espargaro-menggila-iMt04weg3u.jpg'));
+
+        // return $preview->response();
+
         $total_news = DB::table('blogs')->count();
         $total_events = DB::table('events')->where('deleted_at', null)->count();
         $total_sports = DB::table('sports')->count();

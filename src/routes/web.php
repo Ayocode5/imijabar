@@ -44,7 +44,7 @@ use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
-
+use App\Http\Controllers\Admin\FileManagerController;
 //Admin Panel Page Front Setting
 use App\Http\Controllers\Admin\Page\PageHomeController;
 use App\Http\Controllers\Admin\Page\PageBlogController;
@@ -90,6 +90,10 @@ use App\Http\Controllers\Front\News\SearchController as NewsSearchController;
 use App\Http\Controllers\Front\Event\IndexController as EventIndexController;
 use App\Http\Controllers\Front\Event\SearchController as EventSearchController;
 use App\Http\Controllers\Front\Event\DetailController as EventDetailController;
+use App\Http\Controllers\Front\Registrations\KISController as FrontKISController;
+use App\Http\Controllers\Front\Registrations\KTAController as FrontKTAController;
+use App\Http\Controllers\Front\Registrations\ClubController as FrontClubController;
+use App\Http\Controllers\Front\GalleryController as FrontGalleryController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -107,6 +111,12 @@ Route::get('/news/{slug}', NewsDetailControler::class);
 Route::get('/event', EventIndexController::class)->name('front.event');
 Route::get('/event/search/', EventSearchController::class)->name('front.event.search');
 Route::get('/event/{slug}', EventDetailController::class);
+Route::group(['prefix' => 'registration'], function () {
+    Route::get('/kis', FrontKISController::class);
+    Route::get('/kta', FrontKTAController::class);
+    Route::get('/club', FrontClubController::class);
+});
+Route::get('/gallery', FrontGalleryController::class);
 
 
 /* --------------------------------------- */
@@ -664,4 +674,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
     });
+
+    Route::get('/file-manager', FileManagerController::class)->middleware('can:isAdmin')->name('admin.file_manager');
 });

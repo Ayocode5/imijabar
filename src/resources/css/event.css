@@ -389,6 +389,10 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+    #header_page_list_events {
+        padding: 0;
+    }
+
 
     /* Head List Berita */
     .head_list_events {
@@ -485,7 +489,7 @@ body {
 
     /* Head List Berita */
     .head_list_events {
-        padding: 99px 0 40px 0;
+        padding: 100px 0 40px 0;
     }
 
     .head_list_events p {

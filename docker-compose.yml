@@ -20,7 +20,7 @@ services:
       - laravel
 
   mysql:
-    image: mariadb:latest
+    image: mysql:8.0
     container_name: mysql_imijabar
     restart: unless-stopped
     tty: true

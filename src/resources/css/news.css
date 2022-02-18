@@ -267,6 +267,9 @@ body {
 /* End Content List Berita */
 
 @media screen and (min-width: 768px) {
+    #header_page_list_berita {
+        padding: 0 0;
+    }
 
     /* Head List Berita */
     .head_list_berita {
@@ -337,7 +340,7 @@ body {
 
     /* Head List Berita */
     .head_list_berita {
-        padding: 99px 0 40px 0;
+        padding: 100px 0 40px 0;
     }
 
     .head_list_berita p {

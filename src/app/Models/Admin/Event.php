@@ -22,6 +22,7 @@ class Event extends Model
         'event_location_city',
         'event_location_province',
         'event_link',
+        'event_document_link',
         'event_map',
         'event_video',
         'event_featured_photo',
