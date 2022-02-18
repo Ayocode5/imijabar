@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.components.breadcrumb', ['url_path' => 'Tentang IMI'])
 
     <!-- START VISI MISI -->
@@ -13,10 +12,11 @@
                         <div class="d-inline">
 
                         </div>
-                        <h2 class="visimisi-outline">VISI <span class="visimisi-jabar">{{ $about_settings?->heading1 }}</span></h2>
+                        <h2 class="visimisi-outline">VISI <span
+                                class="visimisi-jabar">{{ $about_settings?->heading1 }}</span></h2>
                         <!-- <div class="border_visi"></div> -->
                         <p class="visimisi-detail">{!! $about_settings?->body1 !!}</p>
-                       
+
                     </div>
                 </div>
                 <div class="align-items-center d-flex col-12 col-md-5 order-1 order-md-2">
@@ -75,7 +75,8 @@
                     </p>
                 </div>
                 <div class="col-12 col-lg-2 d-flex justify-content-center">
-                    <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
+                    <img src="{{ asset('public/images') }}/sejarah-arrow-right.png" alt="arrow right"
+                        class="sejarah-arrow2">
                 </div>
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -91,7 +92,8 @@
                             data-parent="#accordionShowMore">
                             <div class="card-body p-0" style="background-color: #fbfbfbfb;">
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                        class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -111,7 +113,8 @@
                                         </p>
                                     </div>
                                 </div>
-                                <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                    class="sejarah-arrow">
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
                                         <p class="sejarah-text">
@@ -131,7 +134,8 @@
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-end mr-md-2">
-                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
+                                    <img src="{{ asset('public/images') }}/sejarah-arrow-down.png" alt="arrow down"
+                                        class="sejarah-arrow">
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
@@ -156,8 +160,8 @@
                         <div class="card-header" id="showMoreHistory" style="background-color: #F8F8F8;">
                             <h2 class="mb-0 d-flex justify-content-center">
                                 <div class="showmore_history">
-                                    <input type="checkbox" class="show_more_tentang_imi" id="shwmr"
-                                        data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true"
+                                    <input type="checkbox" class="show_more_tentang_imi" id="shwmr" data-toggle="collapse"
+                                        data-target="#collapseHistory" aria-expanded="true"
                                         aria-controls="collapseHistory" />
                                     <label class="label_show_more_history d-flex align-items-center" for="shwmr">
                                         <div class="text_show_more_tentang_imi"></div>
@@ -180,8 +184,9 @@
 
     <!-- START KEPENGURUSAN -->
     @include('layouts.components.committee', [
-        'title' => $home_settings->committee_title, 
-        'detail' => $home_settings->committee_detail
+    'title' => $home_settings->committee_title,
+    'detail' => $home_settings->committee_detail,
+    'committee' => $committee
     ])
     <!-- END KEPENGURUSAN -->
 
@@ -190,21 +195,18 @@
         <div class="wrap_anggaran">
             <div id="accordion">
                 <div class="card my_card">
-                    <div style="cursor: pointer" class="card-header art_imi" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="false" aria-controls="collapseOne">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">
-                               <button class="btn btn-link card-title" style="padding: 0px;">
-                                   Anggaran Rumah Tangga IMI Jawa Barat
-                               </button>
-                           </h5>
-                           <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
-                        </div>
+                    <div class="card-header art_imi" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link card-title" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne" style="padding: 0px;">
+                                {{ $art_section_page->name }}
+                            </button>
+                        </h5>
                     </div>
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body  art_imi">
-                            Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
+                            {{-- Anggaran Rumah Tangga IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
                             {{-- jika ada link foreach  --}}
                             <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
@@ -217,7 +219,8 @@
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button> --}}
-
+                            {{-- {{ dd($ad_section_page) }} --}}
+                            {!! $art_section_page->content1 !!}
                         </div>
                     </div>
                 </div>
@@ -229,7 +232,7 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed card-title" 
                                 style="padding: 0px;">
-                                Anggaran Dasar IMI Jawa Barat
+                                {{ $ad_section_page->name }}
                             </button>
                         </h5>
                         <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
@@ -237,7 +240,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body ad_imi">
-                            Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
+                            {{-- Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
                             <br />
                             <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
                                 <a href="#">
@@ -249,7 +252,7 @@
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button> --}}
-
+                            {!! $ad_section_page->content1 !!}
                         </div>
                     </div>
                 </div>
@@ -258,5 +261,4 @@
         </div>
     </section>
     <!-- END ANGGARAN -->
-
 @endsection

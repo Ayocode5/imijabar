@@ -48,6 +48,7 @@ class DetailController extends Controller
             'event_status as status',
             'event_organizer as organizer',
             'event_link as link',
+            'event_document_link as document_link',
             'event_location as location',
             'event_featured_photo as photo',
             'created_at',

@@ -4,6 +4,9 @@
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
     rel="stylesheet">
 
+<link rel="stylesheet" href="{{ asset('public/backend/vendor/fontawesome-free/css/all.min.css') }}">
+
+
 <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
 
 <style>

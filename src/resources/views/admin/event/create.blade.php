@@ -68,10 +68,14 @@
                 </div>
                 <div class="form-group">
                     <label for="">Registration Link (Optional)</label>
-                    <input type="text" name="event_url" class="form-control"
-                        value="{{ old('event_url') }}" autofocus>
+                    <input type="text" name="event_link" class="form-control"
+                        value="{{ old('event_link') }}" autofocus>
                 </div>
-
+                <div class="form-group">
+                    <label for="">Document Link (Optional)</label>
+                    <input type="text" name="event_document_link" class="form-control"
+                        value="{{ old('event_document_link') }}" autofocus>
+                </div>
                 <div class="form-group">
                     <label for="">Sports</label>
                     @if (count($sports) <= 0)

@@ -21,8 +21,20 @@
                     <input type="text" name="dynamic_page_slug" class="form-control" value="{{ old('dynamic_page_slug') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Content</label>
-                    <textarea name="dynamic_page_content" class="form-control editor" cols="30" rows="10">{{ old('dynamic_page_content') }}</textarea>
+                    <label for="">Content 1</label>
+                    <textarea name="dynamic_page_content1" class="form-control editor" cols="30" rows="10">{{ old('dynamic_page_content1') }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Content 2</label>
+                    <textarea name="dynamic_page_content2" class="form-control editor" cols="30" rows="10">{{ old('dynamic_page_content2') }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">link 1</label>
+                    <input name="dynamic_page_link1" class="form-control" value="{{ old('dynamic_page_link1') }}">
+                </div>
+                <div class="form-group">
+                    <label for="">link 2</label>
+                    <input name="dynamic_page_link2" class="form-control" value="{{ old('dynamic_page_link2') }}">
                 </div>
                 <div class="form-group">
                     <label for="">Banner *</label>

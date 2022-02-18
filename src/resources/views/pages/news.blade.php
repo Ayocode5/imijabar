@@ -106,6 +106,7 @@
                                                     {{ $news_data->category->name }}
                                                 </p>
                                                 <p style="height: 8px;" class="realease_date">
+                            
                                                     {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
                                                 </p>
                                             </div>

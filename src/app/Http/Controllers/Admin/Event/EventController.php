@@ -94,9 +94,8 @@ class EventController extends Controller
             'event_start_date' => 'required',
             'event_end_date' => 'required',
             'event_name' => 'required|unique:events',
-            'event_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'event_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
 
         $ext = $request->file('event_featured_photo')->getClientOriginalExtension();
         $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $ext;

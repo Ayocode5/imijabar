@@ -92,10 +92,11 @@
                                         </div>
                                         <div class="col" style="line-height: 16px">
                                             <h3 class="title-event">
-                                                {{ $event_registration_section->name }}
+                                                {{ $home_event_registration_section->name }}
                                             </h3>
                                             <p class="detail-event">
-                                                {!! $event_registration_section->content !!}
+                                                {!! $home_event_registration_section->content1 !!}
+                                                {{ $event->link }}
                                             </p>
                                         </div>
                                     </div>
@@ -162,7 +163,8 @@
         <!-- START KEPENGURUSAN -->
         @include('layouts.components.committee', [
             'title' => $home_settings->committee_title, 
-            'detail' => $home_settings->committee_detail
+            'detail' => $home_settings->committee_detail,
+            'committee' => $committee
         ])
         <!-- END KEPENGURUSAN -->
 

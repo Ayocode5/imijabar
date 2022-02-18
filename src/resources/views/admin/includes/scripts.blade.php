@@ -10,6 +10,8 @@
 <script src="{{ asset('public/backend/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('public/backend/js/summernote-bs4.min.js') }}"></script>
 
+<script src="{{ asset('public/vendor/file-manager/js/file-manager.js') }}"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
@@ -17,20 +19,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 <script>
     $(document).ready(function() {
-        const selectAllCheckbox = document.querySelector(".permission-select-all");
+        const permissionsCheckboxAll = document.querySelector(".permission-select-all");
+
+        // PERMISSIONS SELECTOR 
+        const permissions = Array.from($(".permission-item"));
 
         $(".permission-item").each((index, item) => {
-            if(!item.checked) {
-                selectAllCheckbox.checked = false;
+            if (!item.checked) {
+                permissionsCheckboxAll.checked = false;
                 return false;
             } else {
-                selectAllCheckbox.setAttribute('checked', true)
+                permissionsCheckboxAll.setAttribute('checked', true)
             }
         })
 
 
-        // PERMISSIONS SELECTOR 
-        const permissions = Array.from($(".permission-item"));
         $(".permission-select-all").click(() => {
             const total_permissions = permissions.length;
             let total_checked_permissions = 0;
@@ -59,13 +62,25 @@
                     }
                 });
                 if (total_checked_permissions == total_permissions) {
-                     selectAllCheckbox.checked = true;
+                    permissionsCheckboxAll.checked = true;
                 } else {
-                    selectAllCheckbox.checked = null;
+                    permissionsCheckboxAll.checked = null;
                 }
             } else {
-                selectAllCheckbox.checked = null;
+                permissionsCheckboxAll.checked = null;
             }
         })
+
+
+        $('.editor').summernote({
+            height: 200,
+            callback: {
+
+                onImageUpload: function(files, editor, welEditable) {
+                    // sendFile(files[0], editor, welEditable);
+                    console.log(files);
+                }
+            }
+        });
     })
 </script>

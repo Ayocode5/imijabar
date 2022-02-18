@@ -17,7 +17,10 @@ class CreateDynamicPagesTable extends Migration
             $table->id();
             $table->text('dynamic_page_name');
             $table->text('dynamic_page_slug');
-            $table->text('dynamic_page_content')->nullable();;
+            $table->text('dynamic_page_content1')->nullable();
+            $table->text('dynamic_page_content2')->nullable();
+            $table->text('dynamic_page_link1')->nullable();
+            $table->text('dynamic_page_link2')->nullable();
             $table->text('dynamic_page_banner')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_meta_description')->nullable();
