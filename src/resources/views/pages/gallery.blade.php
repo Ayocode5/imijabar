@@ -50,12 +50,12 @@
                                 <div class="position-relative">
                                     
                                     @if ($gallery->type == 'photo')
-                                        <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
-                                        <img src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
+                                        <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
+                                        <img loading="lazy" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
                                         alt="image gallery" class="gallery-image mx-auto d-block">
                                     @else
-                                        <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
-                                        <img src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
+                                        <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
+                                        <img loading="lazy" src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
                                             alt="image gallery" class="gallery-image mx-auto d-block">
                                     @endif
                                     
