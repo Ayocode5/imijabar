@@ -70,9 +70,9 @@
 
                                     <div class="modal-body">
                                         @if ($gallery->type == 'photo')
-                                            <img loading="lazy" class="d-block w-100 lazy_load" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                            <img loading="lazy" class="d-block w-100 skeleton" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                         @else
-                                            <iframe loading="lazy" class="embed-responsive-item lazy_load" allowscriptaccess="always"frameborder="0"
+                                            <iframe loading="lazy" class="embed-responsive-item skeleton" allowscriptaccess="always"frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                             </iframe>

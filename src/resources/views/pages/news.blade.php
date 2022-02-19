@@ -99,7 +99,7 @@
                                     <div class="card">
                                         <div class="header_card_image">
                                             <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
-                                                class="card-img-top" alt="{{ $news_data->title }}">
+                                                class="card-img-top skeleton" alt="{{ $news_data->title }}">
                                             <div
                                                 class="label_header_card_image d-flex justify-content-between align-items-center px-3">
                                                 <p style="height: 8px;" class="category_berita">
