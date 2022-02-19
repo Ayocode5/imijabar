@@ -26,19 +26,25 @@ class GalleryController extends Controller
             'footer_column3_heading',
         )->first();
 
+        $gallery_settings = DB::table('page_gallery_items')
+        ->select('name','detail','seo_title','seo_meta_description','status')
+        ->first();
+
+        // dd($gallery_settings);
+
         $catgoryFilter = $request->category ? $request->category : null;
 
         $photos = Photo::with(['category' => function ($query) {
             $query->select('id', 'name', 'slug');
         },])->whereHas('category', function ($query) use ($catgoryFilter) {
             $query->where('slug', $catgoryFilter);
-        })->get();
+        })->orderBy('photo_order')->get();
 
         $videos = Video::with(['category' => function ($query) {
             $query->select('id', 'name', 'slug');
         },])->whereHas('category', function ($query) use ($catgoryFilter) {
             $query->where('slug', $catgoryFilter);
-        })->get();
+        })->orderBy('video_order')->get();
 
         $galleries = collect();
 
@@ -54,9 +60,7 @@ class GalleryController extends Controller
 
         $categories = DB::table('gallery_categories')->select('slug', 'name')->get();
 
-        // dd($galleries);
-
-        return view('pages.gallery', compact('settings', 'galleries', 'categories'));
+        return view('pages.gallery', compact('settings', 'galleries', 'categories', 'gallery_settings'));
     }
 
     private function get_class_name($classname)

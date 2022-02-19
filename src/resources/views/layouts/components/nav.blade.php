@@ -11,27 +11,48 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto navbar_list">
                 <li class="nav-item mr-lg-3">
-                    <a class="nav-link @if (in_array('about', $url)) active @endif" href="{{ url('/about') }}">Tentang IMI<span
-                            class="sr-only">(current)</span></a>
+                    @if ($menus[0]->status)
+                        <a class="nav-link @if (in_array('about', $url)) active @endif"
+                            href="{{ url('/about') }}">{{ $menus[0]->name }}<span
+                                class="sr-only">(current)</span></a>
+                    @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if (in_array('news', $url)) active @endif" href="/news">Berita</a>
+                    @if ($menus[1]->status)
+                        <a class="nav-link mr-lg-3 @if (in_array('news', $url)) active @endif"
+                            href="/news">{{ $menus[1]->name }}</a>
+                    @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif" href="/event">Acara</a>
+                    @if ($menus[2]->status)
+                        <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif"
+                            href="/event">{{ $menus[2]->name }}</a>
+                    @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-lg-3 @if (in_array('gallery', $url)) active @endif" href="/gallery">Galeri</a>
+                    @if ($menus[3]->status)
+                        <a class="nav-link mr-lg-3 @if (in_array('gallery', $url)) active @endif"
+                            href="/gallery?category={{ $first_gallery_category->slug ?? '' }}">{{ $menus[3]->name }}</a>
+                    @endif
                 </li>
                 <li class="nav-item dropdown mr-lg-3">
-                    <a class="nav-link dropdown-toggle  @if (in_array('pendaftaran', $url)) active @endif" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pendaftaran
-                    </a>
+                    @if ($menus[4]->status)
+                        <a class="nav-link dropdown-toggle  @if (in_array('pendaftaran', $url)) active @endif" href="#"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{ $menus[4]->name }}
+                        </a>
+                    @endif
                     <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/registration/kis">KIS</a>
-                        <a class="dropdown-item" href="/registration/kta">KTA</a>
-                        <a class="dropdown-item" href="/registration/club">Klub</a>
+                        @if ($menus[5]->status)
+                            <a class="dropdown-item" href="/registration/kis">{{ $menus[5]->name }}</a>
+                        @endif
+                        @if ($menus[6]->status)
+                            <a class="dropdown-item" href="/registration/kta">{{ $menus[6]->name }}</a>
+                        @endif
+                        @if ($menus[7]->status)
+                            <a class="dropdown-item" href="/registration/club">{{ $menus[7]->name }}</a>
+                        @endif
                     </div>
                 </li>
             </ul>
@@ -42,10 +63,10 @@
                         <label class="label_switch_language" for="chk">
                             <div class="ball"></div>
                             <div class="flags">
-                                <img class="ball_us flag"
-                                    src="{{ asset('public/images') }}/flag-us.svg" alt="us flag">
-                                <img class="ball_id flag"
-                                    src="{{ asset('public/images') }}/flag-indonesia.svg" alt="is flag">
+                                <img class="ball_us flag" src="{{ asset('public/images') }}/flag-us.svg"
+                                    alt="us flag">
+                                <img class="ball_id flag" src="{{ asset('public/images') }}/flag-indonesia.svg"
+                                    alt="is flag">
                             </div>
                             <!-- <div class="ball"></div> -->
                         </label>
@@ -53,8 +74,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2"
-                            src="{{ asset('public/images') }}/Telephone-Icon.svg"
+                        <img class="mb-1 mr-2" src="{{ asset('public/images') }}/Telephone-Icon.svg"
                             alt="icon contact telephone">
                         {{-- 0857-XXXX-XXXX --}}
                         {{ $settings?->top_bar_phone }}

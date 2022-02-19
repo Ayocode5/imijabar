@@ -198,6 +198,8 @@
                                 href="{{ route('admin.register.kis') }}">KIS</a>
                             <a class="collapse-item @if ($conName[2] == 'club') active @endif"
                                 href="{{ route('admin.register.club') }}">CLUB</a>
+                            <a class="collapse-item @if ($conName[2] == 'event') active @endif"
+                                href="{{ route('admin.register.event') }}">Events</a>
                         </div>
                     </div>
                 </li>
