@@ -12,7 +12,7 @@
 
     <main id="main_content_galeri">
         <section id="date-dropown">
-            <div class="container">
+            <div class="wrap_category_gallery">
                 <div class="galeri-date-dropdown">
                     <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
                         <h2 class="col-12 col-md-4 galery-date">
@@ -33,29 +33,32 @@
         </section>
 
         <section>
-            <div class="container">
+            <div class="wrap_list_gallery">
                 <!-- WRAP LIST FOTO -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 list_gallery">
+                <div class="d-flex flex-wrap list_gallery justify-content-center justify-content-lg-around">
                     
-                    {{ dd($galleries)}}
+                    {{-- {{ dd($galleries)}} --}}
                     @foreach ($galleries as $gallery)
-                    <div class="col mb-4">
+                    <div>
                         <div data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
-                            <div class="h-100 box-image position-relative">
-                                
-                                @if ($gallery->type == 'photo')
-                                    <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
-                                    <img src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
-                                    alt="image gallery" class="gallery-image mx-auto d-block">
-                                @else
-                                    <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
-                                    <img src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
-                                        alt="image gallery" class="gallery-image mx-auto d-block">
-                                @endif
+                            <div class="h-100 w-100 wrap_thumbnail_image">
                                 <div class="gallery-overlay">
                                     <a href="#" class="icon">
                                         <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail" class="gallery-icon-hover">
                                     </a>
+                                </div>
+                                <div class="position-relative">
+                                    
+                                    @if ($gallery->type == 'photo')
+                                        <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
+                                        <img src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
+                                        alt="image gallery" class="gallery-image mx-auto d-block">
+                                    @else
+                                        <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
+                                        <img src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
+                                            alt="image gallery" class="gallery-image mx-auto d-block">
+                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>
@@ -68,9 +71,9 @@
 
                                     <div class="modal-body">
                                         @if ($gallery->type == 'photo')
-                                            <img class="d-block w-100" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                            <img loading="lazy" class="d-block w-100" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                         @else
-                                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                            <iframe loading="lazy" class="embed-responsive-item" allowscriptaccess="always" allow="autoplay" id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                             </iframe>
                                         @endif
                                     </div>
