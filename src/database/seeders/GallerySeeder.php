@@ -28,7 +28,7 @@ class GallerySeeder extends Seeder
                 'name' => 'Category 3',
                 'slug' => 'category-3'
             ],
-            
+
         ];
 
         DB::table('gallery_categories')->insert($categories);
@@ -38,7 +38,7 @@ class GallerySeeder extends Seeder
         $photos = [];
         $videos = [];
 
-        foreach (range(1, 30) as $num) {
+        foreach (range(1, 100) as $num) {
             array_push($photos, [
                 'category_id' => $categories_id[rand(array_key_first($categories_id), array_key_last($categories_id))],
                 'photo_name' => "photo-gallery.jpg",
@@ -46,7 +46,7 @@ class GallerySeeder extends Seeder
             ]);
 
             array_push($videos, [
-                'category_id' => $categories_id[rand(array_key_first($categories_id), array_key_last($categories_id))], 
+                'category_id' => $categories_id[rand(array_key_first($categories_id), array_key_last($categories_id))],
                 'video_youtube' => 'wCVCtoY2M6k',
                 'video_caption' => 'Ini Video ke ' . $num,
             ]);
@@ -54,7 +54,5 @@ class GallerySeeder extends Seeder
 
         DB::table('videos')->insert($videos);
         DB::table('photos')->insert($photos);
-
-
     }
 }

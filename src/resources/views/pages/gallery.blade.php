@@ -24,7 +24,7 @@
                             <option style="display:none" value disabled selected>Category</option>
                             <option categories="all" value="all">Semua</option>
                             @foreach ($categories as $category)
-                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{         $category->name }}</option>
+                                <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                         
@@ -48,15 +48,14 @@
                                     </a>
                                 </div>
                                 <div class="position-relative">
-                                    
                                     @if ($gallery->type == 'photo')
                                         <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
                                         <img loading="lazy" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
-                                        alt="image gallery" class="gallery-image mx-auto d-block">
+                                        alt="image gallery" class="gallery-image mx-auto d-block skeleton">
                                     @else
                                         <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
                                         <img loading="lazy" src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
-                                            alt="image gallery" class="gallery-image mx-auto d-block">
+                                            alt="image gallery" class="gallery-image mx-auto d-block skeleton">
                                     @endif
                                     
                                 </div>
@@ -71,9 +70,11 @@
 
                                     <div class="modal-body">
                                         @if ($gallery->type == 'photo')
-                                            <img loading="lazy" class="d-block w-100" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                            <img loading="lazy" class="d-block w-100 lazy_load" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                         @else
-                                            <iframe loading="lazy" class="embed-responsive-item" allowscriptaccess="always" allow="autoplay" id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                            <iframe loading="lazy" class="embed-responsive-item lazy_load" allowscriptaccess="always"frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                             </iframe>
                                         @endif
                                     </div>
