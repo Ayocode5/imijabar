@@ -36,14 +36,22 @@
             <div class="container">
                 <!-- WRAP LIST FOTO -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 list_gallery">
-                    <!-- ITEM FOTO -->
+                    
+                    {{ dd($galleries)}}
+                    @foreach ($galleries as $gallery)
                     <div class="col mb-4">
-                        <div data-toggle="modal" data-target="#exampleModalCenter">
+                        <div data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
                             <div class="h-100 box-image position-relative">
-                                <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
-                                <img src="{{ asset('public/images/') }}/jumbotron-img2.png" alt="image gallery"
-                                    class="gallery-image mx-auto d-block">
                                 
+                                @if ($gallery->type == 'photo')
+                                    <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
+                                    <img src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
+                                    alt="image gallery" class="gallery-image mx-auto d-block">
+                                @else
+                                    <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
+                                    <img src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
+                                        alt="image gallery" class="gallery-image mx-auto d-block">
+                                @endif
                                 <div class="gallery-overlay">
                                     <a href="#" class="icon">
                                         <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail" class="gallery-icon-hover">
@@ -53,100 +61,28 @@
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="exampleModalCenter-{{ $loop->iteration }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
 
                                     <div class="modal-body">
-                                        <img class="d-block w-100" src="{{ asset('public/images/') }}/jumbotron-img2.png">
+                                        @if ($gallery->type == 'photo')
+                                            <img class="d-block w-100" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                        @else
+                                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                            </iframe>
+                                        @endif
                                     </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col mb-4">
-                        <div data-toggle="modal" data-target="#exampleModalCenter2">
-                            <div class="h-100 box-image position-relative">
-                                <img class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
-                                <img src="http://img.youtube.com/vi/Vaz_kpmTi0M/default.jpg" alt="image gallery"
-                                    class="gallery-image mx-auto d-block">
-                                
-                                <div class="gallery-overlay">
-                                    <a href="#" class="icon">
-                                        <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail" class="gallery-icon-hover">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-
-                                    <div class="modal-body">
-                                        <iframe width="100%" height="300"
-                                            src="https://www.youtube.com/embed/Vaz_kpmTi0M">
-                                        </iframe>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- {{ dd($galleries)}} --}}
-                    @foreach ($galleries as $gallery)
-                        <div class="col mb-4">
-                            <div data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
-                                <div class="h-100 box-image">
-                                    @if ($gallery->type == 'photo')
-                                        <img src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
-                                            alt="image gallery" class="gallery-image mx-auto d-block">
-                                    @else
-                                        <img src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
-                                            alt="image gallery" class="gallery-image mx-auto d-block">
-                                    @endif
-                                    <div class="gallery-overlay">
-                                        <a href="#" class="icon">
-                                            <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail"
-                                                class="gallery-icon-hover">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter-{{ $loop->iteration }}" tabindex="-1"
-                                role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <!-- <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div> -->
-                                        <div class="modal-body">
-                                            @if ($gallery->type == 'photo')
-                                                <img class="d-block w-100"
-                                                    src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
-                                            @else
-                                                <iframe width="100%" height="100%"
-                                                    src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
-                                                </iframe>
-                                            @endif
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     @endforeach
+
+            
+
 
                 </div>
             </div>
