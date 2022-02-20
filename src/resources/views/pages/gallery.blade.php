@@ -96,9 +96,8 @@
                                                     src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                             @else
                                                 <iframe loading="lazy" class="embed-responsive-item skeleton"
-                                                    allowscriptaccess="always" frameborder="0"
-                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen id="video" width="100%" height="300"
+                                                allowfullscreen allow="fullscreen 'none'" frameborder="0"
+                                                     id="video" width="100%" height="300"
                                                     src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                                 </iframe>
                                             @endif
@@ -108,6 +107,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
