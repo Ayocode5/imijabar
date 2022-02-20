@@ -34,11 +34,11 @@
                                 <p style="font-weight: 700;" class="ml-md-auto d-block text-md-right my-auto">Shares</p>
 
                                 <div class="share_sosmed d-flex flex-row flex-md-column align-content-center">
-                                    <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
+                                    <a target="_blank"  class="mt-2 mb-2 ml-md-auto" href="#"> <img
                                             src="{{ asset('public/images') }}/share_facebook.svg"
                                             alt="share to facebook"></a>
 
-                                    <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
+                                    <a target="_blank" href="http://www.twitter.com/share?url={{ url()->current() }}" class="mt-2 mb-2 ml-md-auto" href="#"> <img
                                             src="{{ asset('public/images') }}/share_instagram.svg"
                                             alt="share to instagram"></a>
 

@@ -40,7 +40,7 @@
                     {{-- {{ dd($galleries)}} --}}
                     @foreach ($galleries as $gallery)
                     <div>
-                        <div data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
+                        <div srcModal="{{ $gallery->type == 'video' ? $gallery->video_youtube : $gallery->photo_name }}" type-file="{{$gallery->type}}" class="thumbnail_gallery" data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
                             <div class="h-100 w-100 wrap_thumbnail_image">
                                 <div class="gallery-overlay">
                                     <a href="#" class="icon">
@@ -68,13 +68,13 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
 
-                                    <div class="modal-body">
+                                    <div class="modal-body frame_modal_gallery">
                                         @if ($gallery->type == 'photo')
-                                            <img loading="lazy" class="d-block w-100 skeleton" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                            <img loading="lazy" class="d-block w-100 skeleton" src="">
                                         @else
                                             <iframe loading="lazy" class="embed-responsive-item skeleton" allowscriptaccess="always"frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                            allowfullscreen id="video" width="100%" height="300" src="">
                                             </iframe>
                                         @endif
                                     </div>
