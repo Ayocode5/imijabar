@@ -411,7 +411,7 @@ body {
     }
 
     .carousel_head_list_events {
-        margin: 0 50px;
+        margin: 50px 50px;
     }
 
     .carousel_head_list_events .carousel-inner .carousel-item img {
@@ -502,7 +502,7 @@ body {
     }
 
     .carousel_head_list_events {
-        margin: 0 100px;
+        margin: 50px 100px;
     }
 
     .carousel_head_list_events .carousel-item .carousel-caption {

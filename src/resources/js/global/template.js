@@ -1,3 +1,5 @@
+import timeSince from '../getTimeSince';
+
 const loader = () => {
     return `
     <div id="loader" class="spinner-border text-danger" role="status">
@@ -20,27 +22,28 @@ const newsCardTemplate = (slug, title, summary, photo, category, created_at) => 
                                 ${category.name}
                             </p>
                             <p style="height: 8px;" class="realease_date">
-                                ${created_at} ini belum
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            ${title}
-                        </h3>
-                        <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-                            <span>${created_at}</span>
-                        </p>
-                        <p class="card-text">
-                            ${summary}
-                            <span>→</span>
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </div>
+                                ${timeSince(new Date(created_at))}
+                            </p >
+                        </div >
+                    </div >
+    <div class="card-body">
+        <h3 class="card-title">
+            ${title}
+        </h3>
+        <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
+            <span>${created_at}</span>
+        </p>
+        <p class="card-text">
+            ${summary}
+            <span>→</span>
+        </p>
+    </div>
+                </div >
+            </a >
+        </div >
     `
 }
+
 
 const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, location, sports, start_date, end_date) => {
     return `
@@ -52,16 +55,13 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
             <div class="card">
                 <div class="header_card_image shadow">
                     <div class="feature_image_event_list">
-
                         <img src="/public/uploads/${photo}"
                             class="card-img-top image_feature_event" alt="featured image">
-
                         <div class="ribbon_wrapper">
                             ${categories.map((category) => {
         return "<div class='ribbon_category_event text-white'>" +
             category.name + "</div>"
     }).join("")}
-
                         </div>
                     </div>
                 </div>

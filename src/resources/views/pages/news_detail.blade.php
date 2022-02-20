@@ -34,18 +34,18 @@
                                 <p style="font-weight: 700;" class="ml-md-auto d-block text-md-right my-auto">Shares</p>
 
                                 <div class="share_sosmed d-flex flex-row flex-md-column align-content-center">
-                                    <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
+                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="mt-2 mb-2 ml-md-auto" href="#"> <img
                                             src="{{ asset('public/images') }}/share_facebook.svg"
                                             alt="share to facebook"></a>
 
-                                    <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('public/images') }}/share_instagram.svg"
+                                    <a target="_blank" href="http://www.twitter.com/share?url={{ url()->current() }}" class="mt-2 mb-2 ml-md-auto" href="#"> <img
+                                            src="{{ asset('public/images') }}/icon_twitter.svg"
                                             alt="share to instagram"></a>
 
-                                    <a class="mt-2 mb-2 ml-md-auto" href="#"> <img
+                                    <a class="mt-2 mb-2 ml-md-auto" href="whatsapp://send?text={{ url()->current() }}" data-action="share/whatsapp/share"  
+                                    target="_blank"> <img
                                             src="{{ asset('public/images') }}/share_whatsapp.svg"
                                             alt="share to share_whatsapp"></a>
-
                                 </div>
                             </div>
                         </div>
@@ -104,4 +104,7 @@
     @else
         <center><h2>Opps, Berita tidak ditemukan</h2></center>
     @endif
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v13.0" nonce="szLewV7D"></script>
 @endsection
