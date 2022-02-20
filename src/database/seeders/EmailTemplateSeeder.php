@@ -24,7 +24,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'id' => 2,
                 'et_subject' => 'New Comment Posted', 
-                'et_content' => '<p>You have received a new comment from a person. His detail is here:</p><p><strong>Person Name:</strong>&nbsp;[[person_name]]</p><p><strong>Person Email:&nbsp;</strong>[[person_email]]</p><p><strong>Person Message:</strong></p><p>[[person_message]]</p><p>Go to this link to see this comment<span style=\"font-weight: bolder;\">:&nbsp;</span><a href=\"[[comment_see_url]]\" target=\"_blank\">See Comment</a></p>', 
+                'et_content' => '<p>You have received a new comment from a person. His detail is here:</p><p><strong>Person Name:</strong>&nbsp;[[person_name]]</p><p><strong>Person Email:&nbsp;</strong>[[person_email]]</p><p><strong>Person Message:</strong></p><p>[[person_message]]</p><p>Go to this link to see this comment<span style=\"font-weight: bolder;\">:&nbsp;</span><a href="[[comment_see_url]]" target=\"_blank\">See Comment</a></p>', 
                 'et_name' => 'Comment Message to Admin',
             ],
             [
@@ -36,25 +36,25 @@ class EmailTemplateSeeder extends Seeder
             [
                 'id' => 4,
                 'et_subject' => 'A News has been added', 
-                'et_content' => '<p>Dear Subscriber,</p><p>A news has been published. To see the news, please go to the following link:</p><p><a href=\"[[post_link]]\" target=\"_blank\">Click here to see the post</a></p><p>Thank you!</p>', 
+                'et_content' => '<p>Dear Subscriber,</p><p>A news has been published. To see the news, please go to the following link:</p><p><a href="[[post_link]]" target=\"_blank\">Click here to see the post</a></p><p>Thank you!</p>', 
                 'et_name' => 'News Post Message to Active Subscribers',
             ],
             [
                 'id' => 5,
                 'et_subject' => 'Reset Password', 
-                'et_content' => '<p>To reset your password, please click on the following link:</p><p><a href=\"[[reset_link]]\" target=\"_blank\">Reset Password</a><br></p>', 
+                'et_content' => '<p>To reset your password, please click on the following link:</p><p><a href=[[reset_link]] target=\"_blank\">Reset Password</a><br></p>', 
                 'et_name' => 'Reset Password Message to Admin',
             ],
             [
                 'id' => 6,
                 'et_subject' => 'Confirm Registration', 
-                'et_content' => '<p>To activate your account and confirm the registration, please click on the verify link below:</p><p><a href=\"[[verification_link]]\" target=\"_blank\">Verification Link</a></p>', 
+                'et_content' => '<p>To activate your account and confirm the registration, please click on the verify link below:</p><p><a href=[[verification_link]] target=\"_blank\">Verification Link</a></p>', 
                 'et_name' => 'Registration Email to Customer',
             ],
             [
                 'id' => 7,
                 'et_subject' => 'Reset Password', 
-                'et_content' => '<p>To reset your password, please click on the following link:</p><p><a href=\"[[reset_link]]\" target=\"_blank\">Reset Password Link</a></p>', 
+                'et_content' => '<p>To reset your password, please click on the following link:</p><p><a href=[[reset_link]] target=\"_blank\">Reset Password Link</a></p>', 
                 'et_name' => 'Reset Password Message to Customer',
             ],
             [

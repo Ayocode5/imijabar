@@ -142,6 +142,5 @@
             </section>
         @endif
 
-
     </main>
 @endsection

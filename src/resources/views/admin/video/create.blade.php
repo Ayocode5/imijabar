@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
-                            <select type="text" name="category_id" class="form-control"
+                            <select required type="text" name="category_id" class="form-control"
                                 value="{{ old('category_id') }}">
                                 @if (count($categories) != 0) 
                                     @foreach ($categories as $category)

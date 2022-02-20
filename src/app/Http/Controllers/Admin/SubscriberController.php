@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\sendEmailToAllActiveSubscriberJob;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailToAllSubscribers;
 
 class SubscriberController extends Controller
 {
@@ -46,7 +45,11 @@ class SubscriberController extends Controller
         $subscribers = Subscriber::where('subs_active', 1)->get();
         foreach($subscribers as $subscriber)
         {
-            Mail::to($subscriber->subs_email)->send(new MailToAllSubscribers($subject,$message));
+            sendEmailToAllActiveSubscriberJob::dispatch([
+                'recipent' => $subscriber->subs_email,
+                'subject' => $subject,
+                'message' => $message
+            ]);
         }
 
         return redirect()->back()->with('success', 'Email is sent successfully to all subscribers!');

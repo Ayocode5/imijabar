@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\sendEmailNewPostCreated;
 use App\Models\Admin\Blog;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailToAllSubscribers;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
@@ -72,13 +71,18 @@ class BlogController extends Controller
             $subject = $email_template_data->et_subject;
             $message = $email_template_data->et_content;
 
-            $post_link = url('blog/' . $data['blog_slug']);
+            $post_link = url('news/' . $data['blog_slug']);
             $message = str_replace('[[post_link]]', $post_link, $message);
 
-            $all_subscribers = Subscriber::where('subs_active', 1)->get();
-            foreach ($all_subscribers as $row) {
-                $subs_email = $row->subs_email;
-                Mail::to($subs_email)->send(new MailToAllSubscribers($subject, $message));
+            $subscribers = Subscriber::where('subs_active', 1)->get();
+
+            foreach ($subscribers as $subscriber) {
+
+                sendEmailNewPostCreated::dispatch([
+                    'recipent' => $subscriber->subs_email,
+                    'subject' => $subject,
+                    'message' => $message
+                ]);
             }
         }
 
