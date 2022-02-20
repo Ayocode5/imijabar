@@ -17,7 +17,7 @@
                     <label for="">Photo *</label><br>
                     <img id="photo_preview_image" src="" alt="" class="w_300"><br><br>
                     <div>
-                        <input type="file" id="photo_name" name="photo_name">
+                        <input required type="file" id="photo_name" name="photo_name">
                     </div>
                 </div>
                 <div class="row">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
-                            <select type="text" name="category_id" class="form-control"
+                            <select required type="text" name="category_id" class="form-control"
                                 value="{{ old('category_id') }}">
                                 @if (count($categories) != 0)
                                     @foreach ($categories as $category)

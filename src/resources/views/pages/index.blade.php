@@ -16,7 +16,7 @@
                             <div class="content-berita mb-3 mb-md-2">
                                 <div class="row">
                                     <div class="col-12 col-md-8 order-2 order-md-1 my-auto">
-                                        <p class="tanggal-berita">{{ $news_data->created_at }}</p>
+                                        <p class="tanggal-berita">{{ Illuminate\Support\Carbon::parse($news_data->created_at)->format('d F Y') }}</p>
                                         <h1 class="title-berita">{{ $news_data->blog_title }} </h1>
                                         <p class="subtitle-berita">
                                             {!! $news_data->blog_content_short !!}

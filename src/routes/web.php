@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\RegistrationMember\ClubController;
 use App\Http\Controllers\Admin\RegistrationMember\KisController;
+use App\Http\Controllers\Admin\RegistrationMember\RegistrationEventController;
 use App\Http\Controllers\Admin\DynamicPageController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\FooterColumnController;
@@ -673,6 +674,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
+        Route::get('event', [RegistrationEventController::class, 'index'])->name('admin.register.event');
     });
 
     Route::get('/file-manager', FileManagerController::class)->middleware('can:isAdmin')->name('admin.file_manager');

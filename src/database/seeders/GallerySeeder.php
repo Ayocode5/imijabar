@@ -28,7 +28,7 @@ class GallerySeeder extends Seeder
                 'name' => 'Category 3',
                 'slug' => 'category-3'
             ],
-
+            
         ];
 
         DB::table('gallery_categories')->insert($categories);

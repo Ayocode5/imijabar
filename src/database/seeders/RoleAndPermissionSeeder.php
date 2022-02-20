@@ -19,7 +19,7 @@ class RoleAndPermissionSeeder extends Seeder
         $roles = array(
             ['name' => 'admin', 'guard_name' => 'web'],
             ['name' => 'editor', 'guard_name' => 'web'],
-            ['name' => 'seller', 'guard_name' => 'web'],
+            // ['name' => 'seller', 'guard_name' => 'web'],
         );
 
         Role::insert($roles);
@@ -44,6 +44,7 @@ class RoleAndPermissionSeeder extends Seeder
             'gallery-video',
             'committee',
             'social-media',
+            'registration'
         ];
 
         $permissionPayload = [

@@ -18,7 +18,7 @@ class VideoController extends Controller
     {
         $this->authorize('viewAny', Video::class);
 
-        $videos = Video::with(['category' => fn($q) => $q->select(['id','name']) ])->orderBy('video_order')->get();
+        $videos = Video::with(['category' => fn ($q) => $q->select(['id', 'name'])])->orderBy('video_order')->get();
         return view('admin.video.index', compact('videos'));
     }
 
@@ -64,7 +64,7 @@ class VideoController extends Controller
         $this->authorize('update', Video::class);
 
         $video = Video::findOrFail($id);
-        
+
         $request->validate([
             'video_youtube' => 'required',
             'video_order' => 'numeric|min:0|max:32767',

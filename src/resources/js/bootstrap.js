@@ -8,7 +8,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 require('./components/newsletter');
 require('./components/carousel');
-require('./components/eventfilter');
+require('./components/event_category_filter');
 require('./components/lazyload/lazyload_news');
 require('./components/lazyload/lazyload_events');
 require('./components/welcome');

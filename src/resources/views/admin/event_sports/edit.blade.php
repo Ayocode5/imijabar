@@ -12,18 +12,17 @@
                             class="fa fa-plus"></i> View All</a>
                 </div>
             </div>
-            
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="hidden" name="name" class="col-12 col-md-7 form-control true_name_sports" value="{{ $sport->name }}" autofocus>
-
-                        <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show" value="{{ $sport->name }}" autofocus>
+                        <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show"
+                            value="{{ $sport->name }}" autofocus>
                         @foreach ($categories as $category)
                             @if ($category->id == $sport->category->id)
-                                <input readonly
-                                " type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value=" {{ $category->name }} ">
+                                <input readonly type="text" name="category-sports"
+                                    class="col-12 col-md-4 form-control name_category_sports"
+                                    value=" {{ $category->name }} ">
                             @endif
                         @endforeach
                     </div>
@@ -31,7 +30,8 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="sport_preview_image" src="{{ asset('public/uploads/'. $sport->image) }}" alt="" class="w_300">
+                        <img id="sport_preview_image" src="{{ asset('public/uploads/' . $sport->image) }}" alt=""
+                            class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,9 +45,8 @@
                             <option value="">No Event Category available</option>
                         @else
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" @if ($category->id == $sport->category->id)
-                                    selected
-                                @endif>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" @if ($category->id == $sport->category->id) selected @endif>
+                                    {{ $category->name }}</option>
                             @endforeach
                         @endif
                     </select>

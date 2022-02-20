@@ -73,5 +73,6 @@ return [
 
         'kis_spreadsheet_id' => env('KIS_SPREADSHEET_ID', ''),
         'club_spreadsheet_id' => env('CLUB_SPREADSHEET_ID', ''),
+        'event_spreadsheet_id' => env('EVENT_SPREADSHEET_ID', '')
     ],
 ];

@@ -15,12 +15,12 @@
         <section id="content_list_events">
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
-                    <select  class="col categories category-sport" name="filterCategoryEvents"
-                        id="filterCategoryEvents">
+                    <select class="col categories category-sport" name="filterCategoryEvents" id="filterCategoryEvents">
                         <option style="display:none" value disabled selected>Category</option>
                         <option value="all">Semua</option>
                         @foreach ($categories as $category)
-                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{ $category->name }}</option>
+                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">
+                                {{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -35,10 +35,11 @@
                         <option value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
                         @foreach ($sports as $sport)
-                            <option id="sport-option" class="sports sport-menu" categories="{{ $sport->category->slug }}" value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
+                            <option id="sport-option" class="sports sport-menu" categories="{{ $sport->category->slug }}"
+                                value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
                                 @if (request()->sport == $sport->slug) selected @endif>{{ $sport->name }}</option>
                         @endforeach
-                        
+
                     </select>
                 </div>
                 <div class="col-12 col-lg-4 my-auto mb-4 order-1 order-lg-3">
@@ -50,8 +51,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('public/images') }}/search-icon.svg"
-                                        alt="search icon"></button>
+                                        src="{{ asset('public/images') }}/search-icon.svg" alt="search icon"></button>
                             </form>
                         </div>
                     </div>
@@ -69,8 +69,7 @@
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
-                                    <img class="calender_pin"
-                                        src="{{ asset('public/images') }}/calender_pin.svg"
+                                    <img class="calender_pin" src="{{ asset('public/images') }}/calender_pin.svg"
                                         alt="calender pin image">
                                     <div class="card">
                                         <div class="header_card_image shadow">
@@ -139,7 +138,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
             <div id="load_content_events">
-                
+
             </div>
         </section>
 

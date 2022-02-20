@@ -188,7 +188,7 @@ $(document).ready(() => {
 
                             ));
                         })
-                        console.log(`${API_ENDPOINT.URL_EVENTS(pageCountEvents)}`)
+                        //console.log(`${API_ENDPOINT.URL_EVENTS(pageCountEvents)}`)
                         eventWrapper.append(res);
                         pageCountEvents += 1;
                     }

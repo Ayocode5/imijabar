@@ -15,40 +15,40 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Title *</label>
-                    <input type="text" name="blog_title" class="form-control" value="{{ old('blog_title') }}" autofocus>
+                    <input required type="text" name="blog_title" class="form-control" value="{{ old('blog_title') }}" autofocus>
                 </div>
-                <div hidden class="form-group">
+                {{-- <div hidden class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="blog_slug" class="form-control" value="{{ old('blog_slug') }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Content *</label>
-                    <textarea name="blog_content" class="form-control editor" cols="30"
+                    <textarea required name="blog_content" class="form-control editor" cols="30"
                         rows="10">{{ old('blog_content') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Summary *</label>
-                    <textarea name="blog_content_short" class="form-control h_100" cols="30"
+                    <textarea required name="blog_content_short" class="form-control h_100" cols="30"
                         rows="10">{{ old('blog_content_short') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label>
                     <div>
-                        <input accept="image/*" type="file" id="blog_photo" name="blog_photo">
+                        <input required accept="image/*" type="file" id="blog_photo" name="blog_photo">
                         {{-- <img id="preview_news_image" src="" alt="" class="w_100"> --}}
                     </div>
                 </div>
                 <div class="form-group">
                     {{-- <label for="">Image *</label> --}}
                     <div>
-                        <img id="preview_news_image" src="" alt="" class="w_100">
+                        <img id="preview_news_image" src="" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Select Category *</label>
-                            <select name="category_id" class="form-control">
+                            <select required name="category_id" class="form-control">
                                 @foreach ($category as $row)
                                     <option value="{{ $row->id }}">{{ $row->category_name }}</option>
                                 @endforeach

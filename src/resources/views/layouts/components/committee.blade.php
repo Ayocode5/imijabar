@@ -20,29 +20,29 @@
                                 <p class="role_text_overlay">{{ $committee->designation }}</p>
                                 <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                     @if ($committee->facebook)
-                                        <a href="#"><img style="height: 22px; width: 22px;"
-                                                src="{{ asset('/public/images/') }}/facebook.svg"
-                                                alt="facebook commite"></a>
+                                        <a href="#" class="text-decoration-none text-white">
+                                            <i style="height: 22px; width: 22px;" class="fab  fa-facebook"></i>
+                                        </a>
                                     @endif
                                     @if ($committee->twitter)
-                                        <a href="#"><img style="height: 22px; width: 22px;"
-                                                src="{{ asset('/public/images/') }}/facebook.svg"
-                                                alt="facebook commite"></a>
+                                    <a href="#" class="text-decoration-none text-white">
+                                        <i style="height: 22px; width: 22px;" class="fab  fa-twitter"></i>
+                                    </a>
                                     @endif
                                     @if ($committee->linkedin)
-                                        <a href="#"><img style="height: 22px; width: 22px;"
-                                                src="{{ asset('/public/images/') }}/facebook.svg"
-                                                alt="facebook commite"></a>
+                                    <a href="#" class="text-decoration-none text-white">
+                                        <i style="height: 22px; width: 22px;" class="fab  fa-linkedin"></i>
+                                    </a>
                                     @endif
                                     @if ($committee->youtube)
-                                        <a href="#"><img style="height: 22px; width: 22px;"
-                                                src="{{ asset('/public/images/') }}/facebook.svg"
-                                                alt="facebook commite"></a>
+                                    <a href="#" class="text-decoration-none text-white">
+                                        <i style="height: 22px; width: 22px;" class="fab  fa-youtube"></i>
+                                    </a>
                                     @endif
                                     @if ($committee->instagram)
-                                        <a href="#"><img style="height: 22px; width: 22px;"
-                                                src="{{ asset('/public/images/') }}/instagram.svg"
-                                                alt="facebook commite"></a>
+                                    <a href="#" class="text-decoration-none text-white">
+                                        <i style="height: 22px; width: 22px;" class="fab  fa-instagram"></i>
+                                    </a>
                                     @endif
                                 </div>
                             </div>

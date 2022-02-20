@@ -10,11 +10,22 @@
     @include('layouts.assets.styles')
 
     @php
-        $fav = Illuminate\Support\Facades\DB::table('general_settings')->select('favicon')->first();
-        $social_media = Illuminate\Support\Facades\DB::table('social_media_items')->select('social_url', 'social_icon', 'social_order')->orderBy('social_order')->get();
+        $fav = Illuminate\Support\Facades\DB::table('general_settings')
+            ->select('favicon')
+            ->first();
+        $social_media = Illuminate\Support\Facades\DB::table('social_media_items')
+            ->select('social_url', 'social_icon', 'social_order')
+            ->orderBy('social_order')
+            ->get();
+        $first_gallery_category = Illuminate\Support\Facades\DB::table('gallery_categories')
+            ->select('slug')
+            ->first();
+        $menus_setting = DB::table('menus')
+            ->select('name', 'status')
+            ->get();
     @endphp
-    
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads')."/$fav->favicon" }}">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads') . "/$fav->favicon" }}">
     <title>IMI Jawa Barat</title>
 </head>
 
@@ -24,7 +35,8 @@
     @endphp
 
     <!-- Navbar -->
-    @include('layouts.components.nav')
+    @include('layouts.components.nav', ['menus' => $menus_setting, 'first_gallery_category' =>
+    $first_gallery_category])
 
     <!-- Main Content -->
     @yield('content')

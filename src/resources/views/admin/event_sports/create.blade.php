@@ -16,24 +16,18 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="hidden" name="name" class="form-control true_name_sports" value="{{ old('name') }}" autofocus>
-
                         <input required type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports" value="{{ old('name') }}" autofocus>
-
-                        <input readonly
-                                " type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="">
-
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label><br>
                     <img id="sport_preview_image" src="" alt="" class="w_300"><br><br>
-                    <input type="file" name="image" id="image" value="{{ old('image') }}" autofocus>
+                    <input required type="file" name="image" id="image" value="{{ old('image') }}" autofocus>
                 </div>
                 <div class="form-group">
                     
                     <label for="category_id">Category *</label><br>
-                    <select name="category_id" id="category_id" class="selectpicker">
+                    <select required name="category_id" id="category_id" class="selectpicker">
                         <option style="display: none" value disabled selected>select categrory</option>
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>

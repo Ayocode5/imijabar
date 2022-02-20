@@ -5,8 +5,8 @@
 
     <section id="header_page_galeri">
         <div class="head_galeri">
-            <h1>Galeri</h1>
-            <p>Berita Terbaru Seputar Otomotif, dan Berita Terbaru dari dunia Olahraga Roda Dua & Roda Empat.</p>
+            <h1>{{ $gallery_settings->name }}</h1>
+            <p>{{ $gallery_settings->detail }}</p>
         </div>
     </section>
 
@@ -16,18 +16,20 @@
                 <div class="galeri-date-dropdown">
                     <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
                         <h2 class="col-12 col-md-4 galery-date">
-                            Bandung, 17 Januari 2020
+                           {{ Illuminate\Support\Carbon::parse($categories[0]->created_at)->format('d F Y') }}
                         </h2>
                         <div class="col-12 col-md-3 border_content_gallery"></div>
-                        <select class="col-12 col-md-4 category_gallery" name="filterCategoryGallery"
-                        id="filterCategoryGallery">
+                        <select onchange="location = this.value;" class="col-12 col-md-4 category_gallery" name="filterCategoryGallery"
+                            id="filterCategoryGallery">
                             <option style="display:none" value disabled selected>Category</option>
-                            <option categories="all" value="all">Semua</option>
                             @foreach ($categories as $category)
-                                <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{ $category->name }}</option>
+                                <option @if(request()->category == $category->slug) selected @endif 
+                                    value="{{ request()->url . "?category=$category->slug" }}"
+                                    categories="{{ $category->slug }}" value="{{ $category->slug }}">
+                                    {{ $category->name }}</option>
                             @endforeach
                         </select>
-                        
+
                     </div>
                 </div>
         </section>
@@ -36,7 +38,7 @@
             <div class="wrap_list_gallery">
                 <!-- WRAP LIST FOTO -->
                 <div class="d-flex flex-wrap list_gallery justify-content-center justify-content-lg-around">
-                    
+
                     {{-- {{ dd($galleries)}} --}}
                     @foreach ($galleries as $gallery)
                     <div>
@@ -77,17 +79,36 @@
                                             allowfullscreen id="video" width="100%" height="300" src="">
                                             </iframe>
                                         @endif
-                                    </div>
 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter-{{ $loop->iteration }}" tabindex="-1"
+                                role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-body">
+                                            @if ($gallery->type == 'photo')
+                                                <img loading="lazy" class="d-block w-100 skeleton"
+                                                    src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
+                                            @else
+                                                <iframe loading="lazy" class="embed-responsive-item skeleton"
+                                                    allowscriptaccess="always" frameborder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen id="video" width="100%" height="300"
+                                                    src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                                </iframe>
+                                            @endif
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
-
-            
-
-
                 </div>
             </div>
         </section>
