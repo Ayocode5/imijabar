@@ -14,11 +14,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="dynamic_page_name" class="form-control" value="{{ old('dynamic_page_name') }}" autofocus>
+                    <input required type="text" name="dynamic_page_name" class="form-control" value="{{ old('dynamic_page_name') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Slug</label>
-                    <input type="text" name="dynamic_page_slug" class="form-control" value="{{ old('dynamic_page_slug') }}" autofocus>
+                    <input required type="text" name="dynamic_page_slug" class="form-control" value="{{ old('dynamic_page_slug') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Content 1</label>
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="">Banner *</label>
                     <div>
-                        <input type="file" name="dynamic_page_banner">
+                        <input required type="file" name="dynamic_page_banner">
                     </div>
                 </div>
             </div>

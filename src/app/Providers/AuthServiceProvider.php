@@ -13,7 +13,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         'App\Models\Admin\Blog' => 'App\Policies\BlogPolicy',
         'App\Models\Admin\Category' => 'App\Policies\BlogCategoryPolicy',
         'App\Models\Admin\Event' => 'App\Policies\EventPolicy',
@@ -25,7 +24,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Admin\Video' => 'App\Policies\VideoPolicy',
         'App\Models\Admin\TeamMember' => 'App\Policies\CommitteePolicy',
         'App\Models\Admin\SocialMediaItem' => 'App\Policies\SocialMediaPolicy',
-        
+        'App\Models\Admin\Subscriber' => 'App\Policies\SubscribersPolicy',
+
     ];
 
     /**
@@ -38,7 +38,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         /* define a admin user role */
-
         Gate::before(function ($user, $ability) {
             if ($user->hasRole('admin')) {
                 return true;
@@ -55,6 +54,11 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('isEditor', function ($user) {
             return $user->hasRole('editor');
+        });
+
+        //Registration Controller Gates 
+        Gate::define('view-registration', function (User $user) {
+            return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });
     }
 }

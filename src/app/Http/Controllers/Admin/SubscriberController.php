@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\sendEmailToAllActiveSubscriberJob;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailToAllSubscribers;
 
 class SubscriberController extends Controller
 {
@@ -23,6 +22,7 @@ class SubscriberController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', Subscriber::class);
         $subscriber = Subscriber::findOrFail($id);
         $subscriber->delete();
         return Redirect()->back()->with('success', 'Subscriber is deleted successfully!');
@@ -30,11 +30,13 @@ class SubscriberController extends Controller
 
     public function send_email()
     {
+        $this->authorize('sendEmail', Subscriber::class);
         return view('admin.subscriber.send_email');
     }
 
     public function send_email_action(Request $request)
     {
+        $this->authorize('sendEmail', Subscriber::class);
         $request->validate([
             'subject' => 'required',
             'message' => 'required'
@@ -44,9 +46,12 @@ class SubscriberController extends Controller
         $message = $request->message;
 
         $subscribers = Subscriber::where('subs_active', 1)->get();
-        foreach($subscribers as $subscriber)
-        {
-            Mail::to($subscriber->subs_email)->send(new MailToAllSubscribers($subject,$message));
+        foreach ($subscribers as $subscriber) {
+            sendEmailToAllActiveSubscriberJob::dispatch([
+                'recipent' => $subscriber->subs_email,
+                'subject' => $subject,
+                'message' => $message
+            ]);
         }
 
         return redirect()->back()->with('success', 'Email is sent successfully to all subscribers!');

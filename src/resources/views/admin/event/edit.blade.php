@@ -14,7 +14,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
+                    <input required type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Event Organizer</label>
+                    <input required type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Event Organizer</label>
@@ -22,32 +26,32 @@
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
-                    <textarea name="event_content" class="form-control editor" cols="30" rows="10">{{ $event->event_content }}</textarea>
+                    <textarea  required name="event_content" class="form-control editor" cols="30" rows="10">{{ $event->event_content }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Summary</label>
-                    <textarea name="event_content_short" class="form-control h_100" cols="30" rows="10">{{ $event->event_content_short }}</textarea>
+                    <textarea required name="event_content_short" class="form-control h_100" cols="30" rows="10">{{ $event->event_content_short }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Start Date</label>
-                    <input type="date" name="event_start_date" class="form-control" value="{{ $event->event_start_date }}">
+                    <input required type="date" name="event_start_date" class="form-control" value="{{ $event->event_start_date }}">
                 </div>
                 <div class="form-group">
                     <label for="">End Date</label>
-                    <input type="date" name="event_end_date" class="form-control" value="{{ $event->event_end_date }}">
+                    <input required type="date" name="event_end_date" class="form-control" value="{{ $event->event_end_date }}">
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <input type="text" name="event_location" class="form-control" value="{{ $event->event_location }}" autofocus>
+                    <input required type="text" name="event_location" class="form-control" value="{{ $event->event_location }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">City</label>
-                    <input type="text" name="event_location_city" class="form-control" value="{{ $event->event_location_city }}"
+                    <input required type="text" name="event_location_city" class="form-control" value="{{ $event->event_location_city }}"
                         autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Province</label>
-                    <input type="text" name="event_location_province" class="form-control" value="{{ $event->event_location_province }}"
+                    <input required type="text" name="event_location_province" class="form-control" value="{{ $event->event_location_province }}"
                         autofocus>
                 </div>
                 <div class="form-group">
@@ -77,7 +81,7 @@
                 <div class="form-group">
                     <label for="">Change Image (Max: 2MB)</label>
                     <div>
-                        <input type="file" id="event_featured_photo" name="event_featured_photo">
+                        <input required type="file" id="event_featured_photo" name="event_featured_photo">
                     </div>
                 </div>
                 <div class="form-group">
@@ -88,7 +92,7 @@
                             <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                    <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
+                    <select required name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
                         @foreach ($sports as $sport)
                             <option value={{ $sport->id }} @if (in_array($sport->id, $event->sports->pluck('id')->toArray()))
                                 selected
@@ -105,7 +109,7 @@
                             <option value="">There is no Sponsors available, Create first</option>
                         </select>
                     @else
-                    <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple" autofocus>
+                    <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple" autofocus>
                         @foreach ($sponsors as $sponsor)
                             <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray()))
                                 selected

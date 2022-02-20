@@ -116,18 +116,18 @@
                         <div id="suratRekomendasi_collapseOne" class="collapse"
                             aria-labelledby="suratRekomendasi_headingOne" data-parent="#suratRekomendasi">
                             <div class="card-body">
+
                                 <p>Surat Rekomendasi {{ $event->name }}</p>
                                 @if ($event->document_link)
                                     <a href="{{ $event->document_link }}" target="_blank"
                                         rel="noreferrer nofollow"><button type="button"
                                             class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                                class="mr-3" src="{{ asset('public/images/') }}/file-icon.svg"
-                                                alt="pdf icon ">
+                                                class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png"
+                                                alt="">
                                             Download
                                             File</button></a>
-                                    
                                 @else
-                                    <p>Dokumen Tidak Ada</p>
+                                    <p>Dokument Tidak Ada</p>
                                 @endif
                             </div>
                         </div>

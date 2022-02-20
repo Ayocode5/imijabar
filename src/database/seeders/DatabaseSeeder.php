@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             DynamicPageKTA::class,
             NewsSeeder::class,
             EventSeeder::class,
+            GallerySeeder::class,
         ]);
     }
 }

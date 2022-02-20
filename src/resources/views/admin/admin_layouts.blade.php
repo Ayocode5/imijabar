@@ -88,20 +88,20 @@
                                 href="{{ route('admin.general_setting.banner') }}">Banner</a>
                             <a class="collapse-item @if ($conName[3] == 'footer') active @endif"
                                 href="{{ route('admin.general_setting.footer') }}">Footer</a>
-                            <a class="collapse-item @if ($conName[3] == 'sidebar') active @endif"
-                                href="{{ route('admin.general_setting.sidebar') }}">Sidebar</a>
-                            <a class="collapse-item @if ($conName[3] == 'color') active @endif"
-                                href="{{ route('admin.general_setting.color') }}">Color</a>
-                            <a class="collapse-item @if ($conName[3] == 'preloader') active @endif"
-                                href="{{ route('admin.general_setting.preloader') }}">Preloader</a>
-                            <a class="collapse-item @if ($conName[3] == 'stickyheader') active @endif"
-                                href="{{ route('admin.general_setting.stickyheader') }}">Sticky Header</a>
+                            {{-- <a class="collapse-item @if ($conName[3] == 'sidebar') active @endif"
+                                href="{{ route('admin.general_setting.sidebar') }}">Sidebar</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[3] == 'color') active @endif"
+                                href="{{ route('admin.general_setting.color') }}">Color</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[3] == 'preloader') active @endif"
+                                href="{{ route('admin.general_setting.preloader') }}">Preloader</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[3] == 'stickyheader') active @endif"
+                                href="{{ route('admin.general_setting.stickyheader') }}">Sticky Header</a> --}}
                             <a class="collapse-item @if ($conName[3] == 'googleanalytic') active @endif"
                                 href="{{ route('admin.general_setting.googleanalytic') }}">Google Analytic</a>
                             <a class="collapse-item @if ($conName[3] == 'googlerecaptcha') active @endif"
                                 href="{{ route('admin.general_setting.googlerecaptcha') }}">Google Recaptcha</a>
-                            <a class="collapse-item @if ($conName[3] == 'tawklivechat') active @endif"
-                                href="{{ route('admin.general_setting.tawklivechat') }}">Tawk Live Chat</a>
+                            {{-- <a class="collapse-item @if ($conName[3] == 'tawklivechat') active @endif"
+                                href="{{ route('admin.general_setting.tawklivechat') }}">Tawk Live Chat</a> --}}
                             <a class="collapse-item @if ($conName[3] == 'cookieconsent') active @endif"
                                 href="{{ route('admin.general_setting.cookieconsent') }}">Cookie Consent</a>
                         </div>
@@ -198,6 +198,8 @@
                                 href="{{ route('admin.register.kis') }}">KIS</a>
                             <a class="collapse-item @if ($conName[2] == 'club') active @endif"
                                 href="{{ route('admin.register.club') }}">CLUB</a>
+                            <a class="collapse-item @if ($conName[2] == 'event') active @endif"
+                                href="{{ route('admin.register.event') }}">Events</a>
                         </div>
                     </div>
                 </li>

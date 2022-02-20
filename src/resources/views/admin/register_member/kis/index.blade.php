@@ -7,7 +7,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 mt-2 font-weight-bold text-primary">Members</h6>
             <div class="float-right d-inline">
-                <a href="https://docs.google.com/spreadsheets/d/{{ $spreadsheet_id }}/view" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View on G-Sheet</a>
+                <a target="_blank" href="https://docs.google.com/spreadsheets/d/{{ $spreadsheet_id }}/view" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View on G-Sheet</a>
             </div>
         </div>
         <div class="card-body">
@@ -19,7 +19,7 @@
                         <th>Name</th>
                         <th>Age</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        {{-- <th>Action</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -29,10 +29,10 @@
                             <td>{{ $value['Nama'] }}</td>
                             <td>{{ $value['Umur'] }}</td>
                             <td></td>
-                            <td>
+                            {{-- <td>
                                 <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>

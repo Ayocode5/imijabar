@@ -210,18 +210,7 @@
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body ad_imi">
-                            {{-- Anggaran Dasar IMI Jawa Barat periode 2021 - 2025, silahkan unduh disini :
-                            <br />
-                            <div class="btn btn-light btn-outline-dark text-center button_download_file mt-2">
-                                <a href="#">
-                                    <img class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt="pdf icon"> 
-                                        Download File
-                                </a>
-                            </div>
-                            {{-- <button type="button"
-                                class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                    class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
-                                File</button> --}}
+
                             {!! $ad_section_page->content1 !!}
                             
                         </div>
@@ -235,7 +224,7 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed card-title" 
                                 style="padding: 0px;">
-                                {{ $ad_section_page->name }}
+                                {{ $art_section_page->name }}
                             </button>
                         </h5>
                         <img src="{{ asset('public/images') }}/arrow_down.svg" alt="collaps anggaran dasar">
@@ -255,7 +244,7 @@
                                 class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                     class="mr-3" src="{{ asset('public/images') }}/pdf-icon.png" alt=""> Download
                                 File</button> --}}
-                            {!! $ad_section_page->content1 !!}
+                            {!! $art_section_page->content1 !!}
                         </div>
                     </div>
                 </div>
