@@ -15,12 +15,12 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
+                    <input required type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label><br>
                     <img id="sponsor_preview_image" class="w_300" src="" alt=""><br><br>
-                    <input type="file" id="image" name="image" value="{{ old('image') }}" autofocus>
+                    <input required type="file" id="image" name="image" value="{{ old('image') }}" autofocus>
                 </div>
             </div>
             <div class="card-header py-3">

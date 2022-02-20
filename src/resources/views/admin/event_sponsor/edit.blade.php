@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ $sponsor->name }}" autofocus>
+                    <input required type="text" name="name" class="form-control" value="{{ $sponsor->name }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label>

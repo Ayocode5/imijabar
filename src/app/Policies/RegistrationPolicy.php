@@ -14,8 +14,12 @@ class RegistrationPolicy
      *
      * @return void
      */
-    public function __construct()
+    // public function __construct()
+    // {
+
+    // }
+    public function viewAny()
     {
-        //
+        return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
     }
 }

@@ -17,7 +17,7 @@
                     <label for="">Photo *</label><br>
                     <img id="photo_preview_image" src="" alt="" class="w_300"><br><br>
                     <div>
-                        <input type="file" id="photo_name" name="photo_name">
+                        <input required type="file" id="photo_name" name="photo_name">
                     </div>
                 </div>
                 <div class="row">

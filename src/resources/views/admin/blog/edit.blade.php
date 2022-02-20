@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="blog_title" class="form-control" value="{{ $blog->blog_title }}" autofocus>
+                    <input required type="text" name="blog_title" class="form-control" value="{{ $blog->blog_title }}" autofocus>
                 </div>
                 {{-- <div class="form-group">
                     <label for="">News Slug</label>
@@ -26,11 +26,11 @@
                 <div class="form-group">
                     <label for="">Content *</label>
                     {{-- {{ dd($blog->blog_content) }} --}}
-                    <textarea name="blog_content" class="form-control editor" cols="30" rows="10">{{ $blog->blog_content }}</textarea>
+                    <textarea required name="blog_content" class="form-control editor" cols="30" rows="10">{{ $blog->blog_content }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Summary *</label>
-                    <textarea name="blog_content_short" class="form-control h_100" cols="30" rows="10">{{ $blog->blog_content_short }}</textarea>
+                    <textarea required name="blog_content_short" class="form-control h_100" cols="30" rows="10">{{ $blog->blog_content_short }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Existing Image</label>
@@ -41,14 +41,14 @@
                 <div class="form-group">
                     <label for="">Change Image</label>
                     <div>
-                        <input type="file" id="blog_photo" name="blog_photo">
+                        <input required type="file" id="blog_photo" name="blog_photo">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Select Category *</label>
-                            <select name="category_id" class="form-control">
+                            <select required name="category_id" class="form-control">
                                 @foreach($category as $row)
                                     <option value="{{ $row->id }}" @if($row->id == $blog->category_id) selected @endif>{{ $row->category_name }}</option>
                                 @endforeach

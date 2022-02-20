@@ -14,11 +14,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input type="text" name="dynamic_page_name" class="form-control" value="{{ $dynamic_page->dynamic_page_name }}" autofocus>
+                    <input required type="text" name="dynamic_page_name" class="form-control" value="{{ $dynamic_page->dynamic_page_name }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Slug</label>
-                    <input type="text" name="dynamic_page_slug" class="form-control" value="{{ $dynamic_page->dynamic_page_slug }}">
+                    <input required type="text" name="dynamic_page_slug" class="form-control" value="{{ $dynamic_page->dynamic_page_slug }}">
                 </div>
                 <div class="form-group">
                     <label for="">Content 1</label>

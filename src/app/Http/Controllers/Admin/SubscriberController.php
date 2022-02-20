@@ -22,6 +22,7 @@ class SubscriberController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', Subscriber::class);
         $subscriber = Subscriber::findOrFail($id);
         $subscriber->delete();
         return Redirect()->back()->with('success', 'Subscriber is deleted successfully!');
@@ -29,11 +30,13 @@ class SubscriberController extends Controller
 
     public function send_email()
     {
+        $this->authorize('sendEmail', Subscriber::class);
         return view('admin.subscriber.send_email');
     }
 
     public function send_email_action(Request $request)
     {
+        $this->authorize('sendEmail', Subscriber::class);
         $request->validate([
             'subject' => 'required',
             'message' => 'required'
@@ -43,8 +46,7 @@ class SubscriberController extends Controller
         $message = $request->message;
 
         $subscribers = Subscriber::where('subs_active', 1)->get();
-        foreach($subscribers as $subscriber)
-        {
+        foreach ($subscribers as $subscriber) {
             sendEmailToAllActiveSubscriberJob::dispatch([
                 'recipent' => $subscriber->subs_email,
                 'subject' => $subject,

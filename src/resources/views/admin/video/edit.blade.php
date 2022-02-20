@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Video (YouTube Id) *</label>
-                            <input type="text" name="video_youtube" class="form-control"
+                            <input required type="text" name="video_youtube" class="form-control"
                                 value="{{ $video->video_youtube }}" autofocus>
                         </div>
                         <div class="form-group">

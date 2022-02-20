@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="">Change Photo</label>
                     <div>
-                        <input type="file" name="photo_name" id="photo_name">
+                        <input required type="file" name="photo_name" id="photo_name">
                     </div>
                 </div>
                 <div class="row">
