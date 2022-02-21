@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input required type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports" value="{{ old('name') }}" autofocus>
+                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports" value="{{ old('name') }}" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
