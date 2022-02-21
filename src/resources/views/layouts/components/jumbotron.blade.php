@@ -14,7 +14,7 @@
                     <div class="welcome_text">
                         <h1>{{ $home_settings->jumbotron_title }}</h1>
                         <p id="typed"></p>
-                        <span id="welcome_text_jumbotron" hidden>Selamat datang di web resmi IMI Jabar</span>
+                        <span id="welcome_text_jumbotron" hidden>{{ $home_settings->jumbotron_detail }}</span>
                     </div>
                 </div>
             </div>

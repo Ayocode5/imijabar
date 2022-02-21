@@ -11,6 +11,7 @@ require('./components/carousel');
 require('./components/event_category_filter');
 require('./components/lazyload/lazyload_news');
 require('./components/lazyload/lazyload_events');
+require('./components/index_event_filter');
 require('./components/welcome');
 require('./components/gallery');
 /**
