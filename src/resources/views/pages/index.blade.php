@@ -65,7 +65,7 @@
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
                                         <div class="col-11">
                                             <h3 class="date_start_event">{{ date_format(date_create($event->event_start_date), "d F Y") }}</h3>
-                                            <p class="event_location_province">{{ $event->event_location_city }}, {{ $event->event_location_province }}</p>
+                                            <p class="event_location_province">{{ $event->location }}, {{ $event->event_location_city }}, {{ $event->event_location_province }}</p>
                                             <div class="border_split"></div>
                                             <p class="name_event_header">{{ $event->name }}</p>
                                         </div>
@@ -85,17 +85,8 @@
                                             </h3>
                                             {{ $event->sports }}
                                             {!! $home_event_registration_section->content1 !!}
-                                            <a class="link_detail_event" href="{{ $event->link }}">Selengkapnya <span>→</span></a>
+                                            <a class="link_detail_event" href="/event/{{ $event->slug }}">Selengkapnya <span>→</span></a>
                                         </div>
-                                        {{-- <div class="col" style="line-height: 16px">
-                                            <h3 class="title-event">
-                                                {{ $home_event_registration_section->name }}
-                                            </h3>
-                                            <p class="detail-event">
-                                                {!! $home_event_registration_section->content1 !!}
-                                                {{ $event->link }}
-                                            </p>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -107,31 +98,6 @@
             </div>
         </section>
         <!-- END BERITA & EVENT -->
-
-        {{-- <section class="py-5 border-bottom">
-            <div class="d-flex flex-wrap berita-acara">
-                <div  class="col-2">
-                    Berita
-                </div>
-                <div class="col-3">
-                    <div class="switch_berita_acara">
-                        <input id="switch" type="checkbox">
-                        <label for="switch">
-                            <span class="line_ball"></span>
-                            <span class="yellow_ball"></span>
-                        </label>
-
-                    </div>
-                    
-                </div>
-                <div class="col-2">
-                    Acara
-                </div>
-                <div class="col-5 text-right">
-                    Selengkapnya
-                </div>
-            </div>
-        </section> --}}
 
         <!-- START TENTANG IMI -->
         <section id="tentangIMI" class="pb-5 border-bottom">

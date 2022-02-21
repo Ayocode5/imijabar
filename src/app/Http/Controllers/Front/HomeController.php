@@ -26,9 +26,11 @@ class HomeController extends Controller
 			->selectRaw("
 			e.id as id,
 			e.event_name as name,
+			e.event_slug as slug,
 			e.event_start_date,
 			e.event_end_date,
 			e.event_link as link,
+			e.event_location as location,
 			e.event_location_city,
 			e.event_location_province,
 			e.event_featured_photo as featured_photo,

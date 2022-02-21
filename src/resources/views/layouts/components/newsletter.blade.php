@@ -7,22 +7,25 @@
                 </span></h3>
 
             <input placeholder="example@gmail.com" class="input_newsletter" type="text">
-            <img class="button_newsletter" src="{{ asset('public/images') }}/send_button.svg"
-                alt="sendButton">
+            <img class="button_newsletter" src="{{ asset('public/images') }}/send_button.svg" alt="sendButton">
             <div class="invalid-feedback">
                 <h6 class="input-newsletter-invalid"></h6>
             </div>
             <div class="valid-feedback">
                 <h6 class="input-newsletter-valid"></h6>
             </div>
+
+
+            <div class="mt-4 g-recaptcha" data-sitekey="6LdQspAeAAAAAI3YX-QytTYBeXxzTt46xOmwL9Nh"></div>
+
+
             <p class="my-3 attention_newsletter">*Dengan berlangganan berarti anda setuju untuk kami mengirimkan anda
                 berita-berita terbaru
                 yang terkait
                 dengan bidang otomotif kapan saja ke email yang anda masukan.</p>
         </div>
         <div class="col-lg-4 col-12 order-1 order-lg-2">
-            <img class="mx-auto d-block postMailIcon" src="{{ asset('public/images') }}/mailPos.svg"
-                alt="mail pos">
+            <img class="mx-auto d-block postMailIcon" src="{{ asset('public/images') }}/mailPos.svg" alt="mail pos">
         </div>
     </div>
 </section>

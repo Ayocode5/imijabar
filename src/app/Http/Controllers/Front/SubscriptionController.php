@@ -7,6 +7,7 @@ use App\Jobs\SendEmailVerificationSubscriber;
 use App\Models\Admin\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SubscriptionController extends Controller
 {
@@ -14,7 +15,19 @@ class SubscriptionController extends Controller
     {
         $token = hash('sha256', time());
 
-        $request->validate(['subs_email' => 'required|email|unique:subscribers'],);
+        $request->validate([
+            'subs_email' => 'required|email|unique:subscribers',
+            'captcha' => 'required'
+        ]);
+
+        $secret = app()['config']['google']['config']['g_recaptcha_secret_key'];
+        $captcha_validation = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $request->input('captcha')), true);
+
+        if (!$captcha_validation['success']) {
+            return response()->json([
+                'message' => 'Captcha Validation Error'
+            ], 200);
+        }
 
         // Save data into database
         $data['subs_email'] = $request->subs_email;
