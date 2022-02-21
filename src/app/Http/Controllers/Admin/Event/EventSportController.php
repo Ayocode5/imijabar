@@ -44,12 +44,14 @@ class EventSportController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', Sport::class);
-        
+
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|numeric',
         ]);
+
+        $category = DB::table('event_categories')->select('name')->find($request->category_id);
 
         $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
 
@@ -57,7 +59,7 @@ class EventSportController extends Controller
 
         Sport::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name),
+            'slug' => Str::slug($request->name . ' ' . $category->name),
             'image' => $fileName,
             'category_id' => $request->category_id,
             'seo_title' => $request->seo_title ?? '',
@@ -103,6 +105,8 @@ class EventSportController extends Controller
 
         $sport = Sport::findOrFail($id);
 
+        $category = DB::table('event_categories')->select('name')->find($request->category_id);
+
         $fileName = '';
 
         if ($request->hasFile('image')) {
@@ -128,7 +132,7 @@ class EventSportController extends Controller
 
         if($sport->update([
                 'name' => $request->name,
-                'slug' => Str::slug($request->name),
+                'slug' => Str::slug($request->name . ' ' . $category->name),
                 'image' => !empty($fileName) ? $fileName : $sport->image,
                 'category_id' => $request->category_id,
                 'seo_title' => $request->seo_title ?? '',

@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><img src="{{ asset('public/uploads/'.$sport->image) }}" alt="" class="w_200"></td>
-                            <td>{{ $sport->name }}</td>
+                            <td>{{ $sport->name . ' - ' . $sport->category->name }}</td>
                             <td>{{ $sport->slug }}</td>
                             <td>{{ $sport->category->name }}</td>
                             <td>

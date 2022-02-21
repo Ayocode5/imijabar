@@ -16,8 +16,10 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports" value="{{ old('name') }}" autofocus>
+                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports"
+                            value="{{ old('name') }}" autofocus>
                     </div>
+                    
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label><br>
@@ -25,7 +27,7 @@
                     <input required type="file" name="image" id="image" value="{{ old('image') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    
+
                     <label for="category_id">Category *</label><br>
                     <select required name="category_id" id="category_id" class="selectpicker">
                         <option style="display: none" value disabled selected>select categrory</option>
@@ -36,9 +38,10 @@
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    
                 </div>
             </div>
-            
+
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
             </div>
@@ -58,26 +61,6 @@
     </form>
 
     <script>
-
-        let valNameSports;
-        $('.name_sports').val('');
-
-        $('.name_sports').change(() => {
-            valNameSports = $('.name_sports').val();
-            $('.true_name_sports').val(valNameSports);
-        });
-
-
-        $('.selectpicker').change(() => {
-            $('.name_category_sports').val($('.selectpicker option:selected').text());
-            $('.true_name_sports').val(valNameSports + ' - ' + $('.selectpicker option:selected').text());
-
-        })
-        
-        $('.btn_create_sport').click(() => {
-            $('.true_name_sports').val(valNameSports + ' - ' + $('.selectpicker option:selected').text());
-        });
-
 
         image.onchange = (event) => {
             const [file] = image.files
