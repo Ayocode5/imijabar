@@ -95,10 +95,7 @@
                                                 <img loading="lazy" class="d-block w-100 skeleton"
                                                     src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                             @else
-                                                <iframe loading="lazy" class="embed-responsive-item skeleton"
-                                                allowfullscreen allow="fullscreen 'none'" frameborder="0"
-                                                     id="video" width="100%" height="300"
-                                                    src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                                <iframe loading="lazy" class="embed-responsive-item skeleton" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                                 </iframe>
                                             @endif
                                         </div>

@@ -16,7 +16,7 @@
             </div>
 
 
-            <div class="mt-4 g-recaptcha" data-sitekey="6LdQspAeAAAAAI3YX-QytTYBeXxzTt46xOmwL9Nh"></div>
+            <div class="mt-4 g-recaptcha w-100" data-sitekey="6LdQspAeAAAAAI3YX-QytTYBeXxzTt46xOmwL9Nh"></div>
 
 
             <p class="my-3 attention_newsletter">*Dengan berlangganan berarti anda setuju untuk kami mengirimkan anda

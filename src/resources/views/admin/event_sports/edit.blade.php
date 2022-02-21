@@ -16,15 +16,19 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
-                            value="{{ $sport->name }}" autofocus>
+                        {{-- <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
+                            value="{{ $sport->name }}" autofocus> --}}
+
+                        <input type="text" hidden name="name" class="col-12 col-md-7 form-control true_name_sports" value="{{ $sport->name }}" autofocus>
+
+                        <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show" value="{{ $sport->name }}" autofocus>
+
                         @foreach ($categories as $category)
-                            @if ($category->id == $sport->category->id)
-                                <input readonly type="text" name="category-sports"
-                                    class="col-12 col-md-4 form-control name_category_sports"
-                                    value=" {{ $category->name }} ">
-                            @endif
-                        @endforeach
+                        @if ($category->id == $sport->category->id)
+                            <input readonly
+                            type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="{{ $category->name }}">
+                        @endif
+                    @endforeach
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,8 +49,7 @@
                             <option value="">No Event Category available</option>
                         @else
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" @if ($category->id == $sport->category->id) selected @endif>
-                                    {{ $category->name }}</option>
+                                <option value="{{ $category->id }}" @if ($category->id == $sport->category->id) selected @endif>{{ $category->name }}</option>
                             @endforeach
                         @endif
                     </select>
@@ -73,25 +76,36 @@
     <script>
         let valNameSports;
 
-        $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
-        console.log($('.name_sports_show').val().split(' - ')[0]);
+        document.querySelector('.name_sports_show').value = document.querySelector('.name_sports_show').value.split(' - ')[0];
+        // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
+        // console.log($('.name_sports_show').val().split(' - ')[0]);
 
-        $('.name_sports_show').change(() => {
-            valNameSports = $('.name_sports_show').val();
-            $('.true_name_sports').val(valNameSports + ' - ' + $('.name_category_sports').val());
+        document.querySelector('.name_sports_show').addEventListener('change', () => {
+            valNameSports = document.querySelector('.name_sports_show').value;
+            document.querySelector('.true_name_sports').value = valNameSports + ' - ' + document.querySelector('.name_category_sports').value;
         });
+        // $('.name_sports_show').change(() => {
+        //     valNameSports = $('.name_sports_show').val();
+        //     $('.true_name_sports').val(valNameSports + ' - ' + $('.name_category_sports').val());
+        // });
 
-        $('.selectpicker').change(() => {
-
-            $('.name_category_sports').val($('.selectpicker option:selected').text());
-
-            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
+        document.querySelector('.selectpicker').addEventListener('change', () => {
+            document.querySelector('.name_category_sports').value = document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
+            console.log(document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].textContent)
+            document.querySelector('.true_name_sports').value = document.querySelector('.name_sports_show').value + ' - ' + document.querySelector('.name_category_sports').value;
         })
-
-        $('.btn_update_sport').click(() => {
-            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected')
-                .text());
+        // $('.selectpicker').change(() => {
+        //     $('.name_category_sports').val($('.selectpicker option:selected').text());
+        //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
+        // })
+            
+        document.querySelector('.btn_update_sport').addEventListener('click', () => {
+            document.querySelector('.true_name_sports').value = document.querySelector('.name_sports_show').value + ' - ' + document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
         })
+        // $('.btn_update_sport').click(() => {
+        //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected').text());
+        // })
+
 
         image.onchange = (event) => {
             const [file] = image.files
