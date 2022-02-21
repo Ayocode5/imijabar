@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show"
+                        <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
                             value="{{ $sport->name }}" autofocus>
                         @foreach ($categories as $category)
                             @if ($category->id == $sport->category->id)
@@ -87,9 +87,10 @@
 
             $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
         })
- 
+
         $('.btn_update_sport').click(() => {
-            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected').text());
+            $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected')
+                .text());
         })
 
         image.onchange = (event) => {
