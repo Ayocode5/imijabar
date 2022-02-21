@@ -15,9 +15,13 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name *</label>
+                    
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports"
-                            value="{{ old('name') }}" autofocus>
+                        <input type="text" hidden name="name" class="form-control true_name_sports" value="{{ old('name') }}" autofocus>
+    
+                        <input required type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports" value="{{ old('name') }}" autofocus>
+    
+                        <input readonly type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="">
                     </div>
                     
                 </div>
@@ -29,6 +33,7 @@
                 <div class="form-group">
 
                     <label for="category_id">Category *</label><br>
+                    
                     <select required name="category_id" id="category_id" class="selectpicker">
                         <option style="display: none" value disabled selected>select categrory</option>
                         @if (count($categories) < 0)
@@ -62,6 +67,37 @@
 
     <script>
 
+        let valNameSports;
+        document.querySelector('.name_sports').value = '';
+        // $('.name_sports').val('');
+
+
+        document.querySelector('.name_sports').addEventListener('change', () => {
+            valNameSports = document.querySelector('.name_sports').value;
+            document.querySelector('.true_name_sports').value = valNameSports;
+        });
+        // $('.name_sports').change(() => {
+        //     valNameSports = $('.name_sports').val();
+        //     $('.true_name_sports').val(valNameSports);
+        // });
+
+        document.querySelector('.selectpicker').addEventListener('change' ,() => {
+            document.querySelector('.name_category_sports').value = document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
+            document.querySelector('.true_name_sports').value = document.valNameSports + ' - ' + document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
+        });
+
+        // $('.selectpicker').change(() => {
+        //     $('.name_category_sports').val($('.selectpicker option:selected').text());
+        //     $('.true_name_sports').val(valNameSports + ' - ' + $('.selectpicker option:selected').text());
+        // })
+
+        document.querySelector('.btn_create_sport').addEventListener('click', () => {
+            document.querySelector('.true_name_sports').value = valNameSports + " - " + document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
+        })
+        // $('.btn_create_sport').click(() => {
+        //     $('.true_name_sports').val(valNameSports + ' - ' + $('.selectpicker option:selected').text());
+        // });
+        
         image.onchange = (event) => {
             const [file] = image.files
             if (file) {
