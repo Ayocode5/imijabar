@@ -25,6 +25,8 @@
             ->get();
     @endphp
 
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads') . "/$fav->favicon" }}">
     <title>IMI Jawa Barat</title>
 </head>

@@ -73,6 +73,8 @@ return [
 
         'kis_spreadsheet_id' => env('KIS_SPREADSHEET_ID', ''),
         'club_spreadsheet_id' => env('CLUB_SPREADSHEET_ID', ''),
-        'event_spreadsheet_id' => env('EVENT_SPREADSHEET_ID', '')
+        'event_spreadsheet_id' => env('EVENT_SPREADSHEET_ID', ''),
+        'g_recaptcha_site_key' => env('RECAPTCHA_SITE_KEY', ''),
+        'g_recaptcha_secret_key' => env('RECAPTCHA_SECRET_KEY', '')
     ],
 ];
