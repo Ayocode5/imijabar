@@ -22,7 +22,7 @@ class RoleController extends Controller
     {
         $admin_users = User::with(['roles' => function ($q) {
             return $q->select('name');
-        }])->role(['admin', 'editor', 'seller'])->get();
+        }])->role(['admin', 'editor'])->get();
 
         $roles = DB::table('roles')->select('name')->get()->pluck('name');
 
