@@ -65,7 +65,7 @@
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
                                         <div class="col-11">
                                             <h3 class="date_start_event">{{ date_format(date_create($event->event_start_date), "d F Y") }}</h3>
-                                            <p class="event_location_province">{{ $event->event_location_city }}, {{ $event->event_location_province }}</p>
+                                            <p class="event_location_province">{{ $event->location }}, {{ $event->event_location_city }}, {{ $event->event_location_province }}</p>
                                             <div class="border_split"></div>
                                             <p class="name_event_header">{{ $event->name }}</p>
                                         </div>
@@ -85,7 +85,7 @@
                                             </h3>
                                             {{ $event->sports }}
                                             {!! $home_event_registration_section->content1 !!}
-                                            <a class="link_detail_event" href="{{ $event->link }}">Selengkapnya <span>→</span></a>
+                                            <a class="link_detail_event" href="/event/{{ $event->slug }}">Selengkapnya <span>→</span></a>
                                         </div>
                                     </div>
                                 </div>
