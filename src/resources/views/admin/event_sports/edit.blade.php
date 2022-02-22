@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
+                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
                             value="{{ $sport->name }}" autofocus>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Category *</label><br>
-                    <select name="category_id" id="category_id" class="selectpicker">
+                    <select required name="category_id" id="category_id" class="selectpicker">
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>
                         @else
