@@ -75,8 +75,7 @@
     </form>
 
     <script>
-        const arr = [];
-        // let valNameSports;
+        let valNameSports;
 
         document.querySelector('.name_sports_show').value = document.querySelector('.name_sports_show').value.split(' - ')[0];
         // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
