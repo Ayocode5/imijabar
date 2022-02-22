@@ -6,7 +6,7 @@
     <section id="header_page_galeri">
         <div class="head_galeri">
             <h1>{{ $gallery_settings->name }}</h1>
-            <p>{{ $gallery_settings->detail }}</p>
+            <p>{!! $gallery_settings->detail !!}</p>
         </div>
     </section>
 
