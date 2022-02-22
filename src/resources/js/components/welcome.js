@@ -13,3 +13,5 @@ var typed = new Typed("#typed", {
     loop: true
 });
 
+
+let botak = 'bezos';
