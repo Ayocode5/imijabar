@@ -17,6 +17,7 @@
                     <label for="name">Name *</label>
                     
                     <div style="gap: 24px" class="d-flex flex-wrap">
+<<<<<<< HEAD
                         {{-- <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
                             value="{{ $sport->name }}" autofocus> --}}
                             
@@ -29,6 +30,10 @@
                                 <input readonly type="text" name="category-sports" class="col-12 col-md-4 form-controlname_category_sports" value="{{ $category->name }}">
                             @endif
                         @endforeach
+=======
+                        <input required type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
+                            value="{{ $sport->name }}" autofocus>
+>>>>>>> 76f12728b84af9ca7f83e0b35cd26493ea3be4a6
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Category *</label><br>
-                    <select name="category_id" id="category_id" class="selectpicker">
+                    <select required name="category_id" id="category_id" class="selectpicker">
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>
                         @else

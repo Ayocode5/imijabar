@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Event Organizer</label>
-                    <input type="text" name="event_organizer" class="form-control"
+                    <input required type="text" name="event_organizer" class="form-control"
                         value="{{ old('event_organizer') }}" autofocus>
                 </div>
                 <div class="form-group">
@@ -88,7 +88,7 @@
                             <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                        <select name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple"
+                        <select required name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple"
                             autofocus>
                             @foreach ($sports as $sport)
                                 <option value={{ $sport->id }}>{{ $sport->name }}</option>

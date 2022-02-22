@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Event Organizer</label>
-                    <input type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
+                    <input required type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
@@ -58,10 +58,10 @@
                     <label for="">Maps (Optional)</label>
                     <input type="text" name="event_location_map" class="form-control" value="{{ $event->event_map }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Video (YouTube ID) - (Optional)</label>
                     <input type="text" name="event_video" class="form-control" value="{{ $event->event_video }}" autofocus>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Registration Link (Optional) </label>
                     <input type="text" name="event_link" class="form-control"
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <label for="">Change Image (Max: 2MB)</label>
                     <div>
-                        <input required type="file" id="event_featured_photo" name="event_featured_photo">
+                        <input type="file" id="event_featured_photo" name="event_featured_photo">
                     </div>
                 </div>
                 <div class="form-group">
