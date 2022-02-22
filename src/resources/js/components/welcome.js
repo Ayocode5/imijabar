@@ -13,4 +13,3 @@ var typed = new Typed("#typed", {
     loop: true
 });
 
-let testig = 0;
