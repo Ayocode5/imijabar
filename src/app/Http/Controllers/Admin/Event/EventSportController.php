@@ -51,8 +51,6 @@ class EventSportController extends Controller
             'category_id' => 'required|numeric',
         ]);
 
-        // $category = DB::table('event_categories')->select('name')->find($request->category_id);
-
         $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
 
         $request->file('image')->move(public_path('uploads/'), $fileName);
@@ -104,8 +102,6 @@ class EventSportController extends Controller
         ]);
 
         $sport = Sport::findOrFail($id);
-
-        // $category = DB::table('event_categories')->select('name')->find($request->category_id);
 
         $fileName = '';
 
