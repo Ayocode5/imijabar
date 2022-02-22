@@ -64,6 +64,7 @@
     </form>
 
     <script>
+        const arr = [];
         // let valNameSports;
 
         // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
