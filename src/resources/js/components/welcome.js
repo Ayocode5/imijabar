@@ -12,3 +12,4 @@ var typed = new Typed("#typed", {
     startDelay: 120,
     loop: true
 });
+

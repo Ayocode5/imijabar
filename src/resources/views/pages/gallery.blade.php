@@ -41,28 +41,43 @@
 
                     {{-- {{ dd($galleries)}} --}}
                     @foreach ($galleries as $gallery)
-                        <div>
-                            <div data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
-                                <div class="h-100 w-100 wrap_thumbnail_image">
-                                    <div class="gallery-overlay">
-                                        <a href="#" class="icon">
-                                            <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail"
-                                                class="gallery-icon-hover">
-                                        </a>
-                                    </div>
-                                    <div class="position-relative">
+                    <div>
+                        <div srcModal="{{ $gallery->type == 'video' ? $gallery->video_youtube : $gallery->photo_name }}" type-file="{{$gallery->type}}" class="thumbnail_gallery" data-toggle="modal" data-target="#exampleModalCenter-{{ $loop->iteration }}">
+                            <div class="h-100 w-100 wrap_thumbnail_image">
+                                <div class="gallery-overlay">
+                                    <a href="#" class="icon">
+                                        <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail" class="gallery-icon-hover">
+                                    </a>
+                                </div>
+                                <div class="position-relative">
+                                    @if ($gallery->type == 'photo')
+                                        <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
+                                        <img loading="lazy" src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
+                                        alt="image gallery" class="gallery-image mx-auto d-block skeleton">
+                                    @else
+                                        <img loading="lazy" class="position-absolute icon_type_file" src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
+                                        <img loading="lazy" src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
+                                            alt="image gallery" class="gallery-image mx-auto d-block skeleton">
+                                    @endif
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter-{{ $loop->iteration }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-body frame_modal_gallery">
                                         @if ($gallery->type == 'photo')
-                                            <img loading="lazy" class="position-absolute icon_type_file"
-                                                src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
-                                            <img loading="lazy"
-                                                src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
-                                                alt="image gallery" class="gallery-image mx-auto d-block skeleton">
+                                            <img loading="lazy" class="d-block w-100 skeleton" src="">
                                         @else
-                                            <img loading="lazy" class="position-absolute icon_type_file"
-                                                src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
-                                            <img loading="lazy"
-                                                src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
-                                                alt="image gallery" class="gallery-image mx-auto d-block skeleton">
+                                            <iframe loading="lazy" class="embed-responsive-item skeleton" allowscriptaccess="always"frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen id="video" width="100%" height="300" src="">
+                                            </iframe>
                                         @endif
 
                                     </div>
@@ -80,11 +95,7 @@
                                                 <img loading="lazy" class="d-block w-100 skeleton"
                                                     src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}">
                                             @else
-                                                <iframe loading="lazy" class="embed-responsive-item skeleton"
-                                                    allowscriptaccess="always" frameborder="0"
-                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen id="video" width="100%" height="300"
-                                                    src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
+                                                <iframe loading="lazy" class="embed-responsive-item skeleton" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video" width="100%" height="300" src="https://www.youtube.com/embed/{{ $gallery->video_youtube }}">
                                                 </iframe>
                                             @endif
                                         </div>
@@ -93,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

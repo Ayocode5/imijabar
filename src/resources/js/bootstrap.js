@@ -13,6 +13,7 @@ require('./components/lazyload/lazyload_news');
 require('./components/lazyload/lazyload_events');
 require('./components/index_event_filter');
 require('./components/welcome');
+require('./components/recaptcha_size');
 require('./components/gallery');
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
