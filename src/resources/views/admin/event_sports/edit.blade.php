@@ -76,11 +76,6 @@
     <script>
         // let valNameSports;
 
-<<<<<<< HEAD
-        // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
-        // console.log($('.name_sports_show').val().split(' - ')[0]);
-
-=======
         document.querySelector('.name_sports_show').value = document.querySelector('.name_sports_show').value.split(' - ')[0];
         // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
         // console.log($('.name_sports_show').val().split(' - ')[0]);
@@ -89,25 +84,11 @@
             valNameSports = document.querySelector('.name_sports_show').value;
             document.querySelector('.true_name_sports').value = valNameSports + ' - ' + document.querySelector('.name_category_sports').value;
         });
->>>>>>> 3847d79e819afc751ba2a375693abaebd1b34860
         // $('.name_sports_show').change(() => {
         //     valNameSports = $('.name_sports_show').val();
         //     $('.true_name_sports').val(valNameSports + ' - ' + $('.name_category_sports').val());
         // });
 
-<<<<<<< HEAD
-        // $('.selectpicker').change(() => {
-
-        //     $('.name_category_sports').val($('.selectpicker option:selected').text());
-
-        //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
-        // })
-
-        // $('.btn_update_sport').click(() => {
-        //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected')
-        //         .text());
-        // })
-=======
         document.querySelector('.selectpicker').addEventListener('change', () => {
             document.querySelector('.name_category_sports').value = document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
             console.log(document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].textContent)
@@ -125,7 +106,6 @@
         //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.selectpicker option:selected').text());
         // })
 
->>>>>>> 3847d79e819afc751ba2a375693abaebd1b34860
 
         image.onchange = (event) => {
             const [file] = image.files
