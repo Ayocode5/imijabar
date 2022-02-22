@@ -15,6 +15,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name *</label>
+                    
                     <div style="gap: 24px" class="d-flex flex-wrap">
                         {{-- <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
                             value="{{ $sport->name }}" autofocus> --}}
@@ -24,11 +25,11 @@
                         <input type="text" name="name_sports" class="col-12 col-md-7 form-control name_sports_show" value="{{ $sport->name }}" autofocus>
 
                         @foreach ($categories as $category)
-                        @if ($category->id == $sport->category->id)
-                            <input readonly
-                            type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="{{ $category->name }}">
-                        @endif
-                    @endforeach
+                            @if ($category->id == $sport->category->id)
+                                <input readonly type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="{{ $category->name }}">
+                            @endif
+                        @endforeach
+          
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Category *</label><br>
-                    <select name="category_id" id="category_id" class="selectpicker">
+                    <select required name="category_id" id="category_id" class="selectpicker">
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>
                         @else
@@ -74,7 +75,7 @@
     </form>
 
     <script>
-        // let valNameSports;
+        let valNameSports;
 
         document.querySelector('.name_sports_show').value = document.querySelector('.name_sports_show').value.split(' - ')[0];
         // $('.name_sports_show').val($('.name_sports_show').val().split(' - ')[0]);
@@ -98,7 +99,6 @@
         //     $('.name_category_sports').val($('.selectpicker option:selected').text());
         //     $('.true_name_sports').val($('.name_sports_show').val() + ' - ' + $('.name_category_sports').val());
         // })
-            
         document.querySelector('.btn_update_sport').addEventListener('click', () => {
             document.querySelector('.true_name_sports').value = document.querySelector('.name_sports_show').value + ' - ' + document.querySelector('.selectpicker')[document.querySelector('.selectpicker').selectedIndex].innerHTML;
         })
