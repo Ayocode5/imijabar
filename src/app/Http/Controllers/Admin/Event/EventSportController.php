@@ -19,7 +19,7 @@ class EventSportController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Sport::class);
-        $sports = Sport::with(['category' => fn($q) => $q->select('id','name'), ])->get();
+        $sports = Sport::with(['category' => fn ($q) => $q->select('id', 'name'),])->get();
         return view('admin.event_sports.index', compact('sports'));
     }
 
@@ -51,7 +51,7 @@ class EventSportController extends Controller
             'category_id' => 'required|numeric',
         ]);
 
-        $category = DB::table('event_categories')->select('name')->find($request->category_id);
+        // $category = DB::table('event_categories')->select('name')->find($request->category_id);
 
         $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
 
@@ -59,7 +59,7 @@ class EventSportController extends Controller
 
         Sport::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name . ' ' . $category->name),
+            'slug' => Str::slug($request->name),
             'image' => $fileName,
             'category_id' => $request->category_id,
             'seo_title' => $request->seo_title ?? '',
@@ -81,7 +81,7 @@ class EventSportController extends Controller
         $this->authorize('update', Sport::class);
 
         $categories = DB::table('event_categories')->get()->toArray();
-        $sport = Sport::with(['category' => fn($q) => $q->select('id','name'), ])->find($id);
+        $sport = Sport::with(['category' => fn ($q) => $q->select('id', 'name'),])->find($id);
         // dd($sport);
         return view('admin.event_sports.edit', compact(['sport', 'categories']));
     }
@@ -105,7 +105,7 @@ class EventSportController extends Controller
 
         $sport = Sport::findOrFail($id);
 
-        $category = DB::table('event_categories')->select('name')->find($request->category_id);
+        // $category = DB::table('event_categories')->select('name')->find($request->category_id);
 
         $fileName = '';
 
@@ -114,7 +114,7 @@ class EventSportController extends Controller
                 //remove old photo
                 unlink(public_path('uploads/') . $sport->image);
 
-                
+
                 preg_match('/(sport-)(.*).(jpg|png|jpeg|gif|svg)/', $sport->image, $sport_photo_split);
 
                 // Rebuild the name of photo 
@@ -122,7 +122,6 @@ class EventSportController extends Controller
                 //Separates photo name and extension
 
                 $request->file('image')->move(public_path('uploads/'), $fileName);
-
             } else {
 
                 $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -130,19 +129,18 @@ class EventSportController extends Controller
             }
         }
 
-        if($sport->update([
-                'name' => $request->name,
-                'slug' => Str::slug($request->name . ' ' . $category->name),
-                'image' => !empty($fileName) ? $fileName : $sport->image,
-                'category_id' => $request->category_id,
-                'seo_title' => $request->seo_title ?? '',
-                'seo_meta_description' => $request->seo_meta_description ?? ''
+        if ($sport->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'image' => !empty($fileName) ? $fileName : $sport->image,
+            'category_id' => $request->category_id,
+            'seo_title' => $request->seo_title ?? '',
+            'seo_meta_description' => $request->seo_meta_description ?? ''
         ])) {
             return redirect()->route('admin.event_sport.index')->with('success', 'Sport updated successfully');
         }
 
         return redirect()->route('admin.event_sport.index')->withErrors('Sport failed to update');
-        
     }
 
     /**
@@ -157,7 +155,7 @@ class EventSportController extends Controller
 
         $sport = Sport::withCount('events')->findOrFail($id);
         // dd($sport);
-        if($sport->events_count > 0) {
+        if ($sport->events_count > 0) {
             return redirect()->route('admin.event_sport.index')->withErrors("Selected sport can't be deleted, there are some events under this sport");
         } else {
             if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
@@ -166,9 +164,8 @@ class EventSportController extends Controller
             }
 
             $sport->delete();
-            
-            return redirect()->route('admin.event_sport.index')->with('success', 'Sport deleted successfully');
 
+            return redirect()->route('admin.event_sport.index')->with('success', 'Sport deleted successfully');
         }
     }
 }

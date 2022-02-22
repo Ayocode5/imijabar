@@ -22,7 +22,7 @@ const mix = require("laravel-mix");
 mix.autoload({
     jquery: ['$', 'window.jQuery', "jQuery", "window.$", "jquery", "window.jquery"],
     'popper.js/dist/umd/popper.js': ['Popper']
-}).js('resources/js/app.js', 'public/js').js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
+}).js('resources/js/app.js', 'public/js').js('node_modules/popper.js/dist/popper.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css')
     .options({
         processCssUrls: false

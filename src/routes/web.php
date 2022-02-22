@@ -224,57 +224,57 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Sidebar - Admin */
         /* --------------------------------------- */
-        Route::get('/sidebar/edit', [GeneralSettingController::class, 'sidebar_edit'])->name('admin.general_setting.sidebar');
-        Route::post('/sidebar/update', [GeneralSettingController::class, 'sidebar_update']);
+        // Route::get('/sidebar/edit', [GeneralSettingController::class, 'sidebar_edit'])->name('admin.general_setting.sidebar');
+        // Route::post('/sidebar/update', [GeneralSettingController::class, 'sidebar_update']);
 
 
         /* --------------------------------------- */
         /* Color - Admin */
         /* --------------------------------------- */
-        Route::get('/color/edit', [GeneralSettingController::class, 'color_edit'])->name('admin.general_setting.color');
-        Route::post('/color/update', [GeneralSettingController::class, 'color_update']);
+        // Route::get('/color/edit', [GeneralSettingController::class, 'color_edit'])->name('admin.general_setting.color');
+        // Route::post('/color/update', [GeneralSettingController::class, 'color_update']);
 
 
         /* --------------------------------------- */
         /* Preloader - Admin */
         /* --------------------------------------- */
-        Route::get('/preloader/edit', [GeneralSettingController::class, 'preloader_edit'])->name('admin.general_setting.preloader');
-        Route::post('/preloader/update', [GeneralSettingController::class, 'preloader_update']);
+        // Route::get('/preloader/edit', [GeneralSettingController::class, 'preloader_edit'])->name('admin.general_setting.preloader');
+        // Route::post('/preloader/update', [GeneralSettingController::class, 'preloader_update']);
 
 
         /* --------------------------------------- */
         /* Sticky Header - Admin */
         /* --------------------------------------- */
-        Route::get('/stickyheader/edit', [GeneralSettingController::class, 'stickyheader_edit'])->name('admin.general_setting.stickyheader');
-        Route::post('/stickyheader/update', [GeneralSettingController::class, 'stickyheader_update']);
+        // Route::get('/stickyheader/edit', [GeneralSettingController::class, 'stickyheader_edit'])->name('admin.general_setting.stickyheader');
+        // Route::post('/stickyheader/update', [GeneralSettingController::class, 'stickyheader_update']);
 
 
         /* --------------------------------------- */
         /* Google Analytic - Admin */
         /* --------------------------------------- */
-        Route::get('/googleanalytic/edit', [GeneralSettingController::class, 'googleanalytic_edit'])->name('admin.general_setting.googleanalytic');
-        Route::post('/googleanalytic/update', [GeneralSettingController::class, 'googleanalytic_update']);
+        // Route::get('/googleanalytic/edit', [GeneralSettingController::class, 'googleanalytic_edit'])->name('admin.general_setting.googleanalytic');
+        // Route::post('/googleanalytic/update', [GeneralSettingController::class, 'googleanalytic_update']);
 
 
         /* --------------------------------------- */
         /* Google Recaptcha - Admin */
         /* --------------------------------------- */
-        Route::get('/googlerecaptcha/edit', [GeneralSettingController::class, 'googlerecaptcha_edit'])->name('admin.general_setting.googlerecaptcha');
-        Route::post('/googlerecaptcha/update', [GeneralSettingController::class, 'googlerecaptcha_update']);
+        // Route::get('/googlerecaptcha/edit', [GeneralSettingController::class, 'googlerecaptcha_edit'])->name('admin.general_setting.googlerecaptcha');
+        // Route::post('/googlerecaptcha/update', [GeneralSettingController::class, 'googlerecaptcha_update']);
 
 
         /* --------------------------------------- */
         /* Tawk Live Chat - Admin */
         /* --------------------------------------- */
-        Route::get('/tawklivechat/edit', [GeneralSettingController::class, 'tawklivechat_edit'])->name('admin.general_setting.tawklivechat');
-        Route::post('/tawklivechat/update', [GeneralSettingController::class, 'tawklivechat_update']);
+        // Route::get('/tawklivechat/edit', [GeneralSettingController::class, 'tawklivechat_edit'])->name('admin.general_setting.tawklivechat');
+        // Route::post('/tawklivechat/update', [GeneralSettingController::class, 'tawklivechat_update']);
 
 
         /* --------------------------------------- */
         /* Cookie Consent - Admin */
         /* --------------------------------------- */
-        Route::get('/cookieconsent/edit', [GeneralSettingController::class, 'cookieconsent_edit'])->name('admin.general_setting.cookieconsent');
-        Route::post('/cookieconsent/update', [GeneralSettingController::class, 'cookieconsent_update']);
+        // Route::get('/cookieconsent/edit', [GeneralSettingController::class, 'cookieconsent_edit'])->name('admin.general_setting.cookieconsent');
+        // Route::post('/cookieconsent/update', [GeneralSettingController::class, 'cookieconsent_update']);
     });
 
 

@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="">Change Image</label>
                     <div>
-                        <input required type="file" id="blog_photo" name="blog_photo">
+                        <input type="file" id="blog_photo" name="blog_photo">
                     </div>
                 </div>
                 <div class="row">

@@ -96,14 +96,14 @@
                                 href="{{ route('admin.general_setting.preloader') }}">Preloader</a> --}}
                             {{-- <a class="collapse-item @if ($conName[3] == 'stickyheader') active @endif"
                                 href="{{ route('admin.general_setting.stickyheader') }}">Sticky Header</a> --}}
-                            <a class="collapse-item @if ($conName[3] == 'googleanalytic') active @endif"
-                                href="{{ route('admin.general_setting.googleanalytic') }}">Google Analytic</a>
-                            <a class="collapse-item @if ($conName[3] == 'googlerecaptcha') active @endif"
-                                href="{{ route('admin.general_setting.googlerecaptcha') }}">Google Recaptcha</a>
+                            {{-- <a class="collapse-item @if ($conName[3] == 'googleanalytic') active @endif"
+                                href="{{ route('admin.general_setting.googleanalytic') }}">Google Analytic</a> --}}
+                            {{-- <a class="collapse-item @if ($conName[3] == 'googlerecaptcha') active @endif"
+                                href="{{ route('admin.general_setting.googlerecaptcha') }}">Google Recaptcha</a> --}}
                             {{-- <a class="collapse-item @if ($conName[3] == 'tawklivechat') active @endif"
                                 href="{{ route('admin.general_setting.tawklivechat') }}">Tawk Live Chat</a> --}}
-                            <a class="collapse-item @if ($conName[3] == 'cookieconsent') active @endif"
-                                href="{{ route('admin.general_setting.cookieconsent') }}">Cookie Consent</a>
+                            {{-- <a class="collapse-item @if ($conName[3] == 'cookieconsent') active @endif"
+                                href="{{ route('admin.general_setting.cookieconsent') }}">Cookie Consent</a> --}}
                         </div>
                     </div>
                 </li>
