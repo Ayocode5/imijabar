@@ -109,6 +109,7 @@ body {
 }
 
 .icon_type_file {
+    z-index: 9;
     bottom: 8px;
     right: 8px;
 }
