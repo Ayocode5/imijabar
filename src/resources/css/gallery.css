@@ -115,6 +115,7 @@ body {
 }
 
 .gallery-image {
+    object-fit: cover;
     width: 272px;
     height: 323px;
 }
