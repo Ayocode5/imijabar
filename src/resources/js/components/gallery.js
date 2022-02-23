@@ -7,14 +7,19 @@ $(document).ready(() => {
 
     $('.thumbnail_gallery').on('click', function (e) {
         if (this.getAttribute("type-file") === "photo") {
-            let srcPhoto = this.getAttribute("srcModal");
+            // e.preventDefault();
+            console.log("test")
 
-            $(this).parent().find('.frame_modal_gallery img').attr('src', '');
-            $(this).parent().find('.frame_modal_gallery img').attr('src', `public/uploads/${$(this).attr("srcModal")}`);
+            if ($(this).parent().find(`.frame_modal_body_photo`).children().length > 0) {
+
+            } else {
+                $(this).parent().find(`.frame_modal_body_photo`).append(`<img loading="lazy" class="d-block w-100 skeleton" src="public/uploads/${$(this).attr("srcModal")}">`);
+            }
+            // $(this).parent().find('.frame_modal_gallery img').attr('src', '');
+            // $(this).parent().find('.frame_modal_gallery img').attr('src', `public/uploads/${$(this).attr("srcModal")}`);
 
         } else if (this.getAttribute("type-file") === "video") {
-            // e.preventDefault();
-            // let srcVideo = $(this).attr("srcModal");
+            e.preventDefault();
 
             if ($(this).parent().find(`.frame_modal_body_video`).children().length > 0) {
                 // return false;

@@ -78,7 +78,11 @@
 
                                         <div class="modal-body frame_modal_gallery">
                                             @if ($gallery->type == 'photo')
-                                                <img loading="lazy" class="d-block w-100 skeleton" src="">
+                                                <div class="frame_modal_body_photo">
+
+                                                </div>
+
+                                                {{-- <img loading="lazy" class="d-block w-100 skeleton" src=""> --}}
                                             @else
                                                 <div class="frame_modal_body_video">
 
