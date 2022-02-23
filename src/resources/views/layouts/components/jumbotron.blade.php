@@ -1,9 +1,7 @@
 <section id="jumbotron_landing">
-    <div @if (!$home_settings->jumbotron_status)
-        hidden
-        @endif class="row no-gutters">
+    <div @if (!$home_settings->jumbotron_status) hidden @endif class="row no-gutters">
         <div class="col-12 col-lg-5 order-2 order-lg-1">
-            <div class="row no-gutters">
+            <div class="row jumbotron_section_1 no-gutters">
                 <div class="col-6 col-lg-12 no-gutters border-bottom">
                     <img class="jumbotron_logo position-absolute"
                         src="{{ asset('public/images/') }}/logoImiJumbotron.svg" alt="Logo IMI">
@@ -24,14 +22,15 @@
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
                     @foreach ($news as $key => $c_news)
-                        <li data-target="#demo" data-slide-to="{{ $key }}" class="@if($key == 0) active @endif"></li>
+                        <li data-target="#demo" data-slide-to="{{ $key }}"
+                            class="@if ($key == 0) active @endif"></li>
                     @endforeach
                 </ul>
 
                 <div class="carousel-inner">
                     <!-- ITEMS CAROUSEL -->
                     @foreach ($news as $key => $news)
-                        <div class="carousel-item @if($key == 0) active @endif">
+                        <div class="carousel-item @if ($key == 0) active @endif">
                             <div class="carousel-caption">
                                 <div>
                                     <p class="date_author">
