@@ -162,7 +162,7 @@ body {
 }
 
 /* Content List Event */
-.event_not_found {
+.empty_event {
     text-align: center;
     font-size: 20px;
     font-weight: 500;
@@ -438,7 +438,7 @@ body {
     /* Head List Berita */
 
     /* Content List Berita */
-    .event_not_found {
+    .empty_event {
         font-size: 24px;
     }
 
@@ -527,8 +527,11 @@ body {
 
     /* Head List Berita */
 
-
     /* Content List Berita */
+    .empty_event {
+        font-size: 32px;
+    }
+
     .wrap_content_list_events {
         margin: 0 5.5rem;
     }

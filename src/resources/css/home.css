@@ -26,7 +26,7 @@ body {
 }
 
 .jumbotron_batik {
-    height: 200px;
+    height: 100%;
     width: 100%;
 }
 
@@ -293,10 +293,34 @@ main {
     overflow: hidden;
 }
 
-.border_split {
+/* .border_split {
     border-bottom: 1px solid #5996EC;
+} */
 
+.filter_events {
+    width: 100%;
+    background-color: #F8F8F8;
+    height: 44px;
+    border: 1px solid #a8a8a8;
+    border-radius: 3px;
+    font-weight: 700;
+    padding-left: 8px;
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background-image: url('../../public/images/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position-x: 96%;
+    background-position-y: 50%;
 }
+
+.filter_events:focus {
+    border: #d8d8d8;
+    outline-color: #a8a8a8;
+}
+
 
 .name_event_header {
     font-size: 1em;
@@ -519,9 +543,9 @@ main {
         height: 400px;
     }
 
-    .jumbotron_batik {
+    /* .jumbotron_batik {
         height: 250px;
-    }
+    } */
 
     .jumbotron_logo {
         width: 120px;
@@ -576,6 +600,10 @@ main {
 
     .content-event {
         text-align: left;
+    }
+
+    .filter_events {
+        border: none;
     }
 
     /* 
@@ -654,9 +682,9 @@ main {
         margin-left: 97px;
     }
 
-    .jumbotron_batik {
+    /* .jumbotron_batik {
         height: 340px;
-    }
+    } */
 
     .welcome_text {
         padding: 80px 0 0px 100px;

@@ -1,12 +1,5 @@
 import timeSince from '../getTimeSince';
 
-const loader = () => {
-    return `
-    <div id="loader" class="spinner-border text-danger" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-    `;
-}
 
 const newsCardTemplate = (slug, title, summary, photo, category, created_at) => {
     return `
@@ -102,8 +95,9 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
     
     `
 }
+
+
 export {
-    loader,
     newsCardTemplate,
     eventsCardTemplate,
 };
