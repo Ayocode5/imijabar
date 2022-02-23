@@ -30,6 +30,10 @@ body {
     font-family: 'Tinos', serif;
     font-size: 28px;
     font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 16px;
+    text-decoration-color: hsl(215, 79%, 64%);
 }
 
 .border_head_title {
