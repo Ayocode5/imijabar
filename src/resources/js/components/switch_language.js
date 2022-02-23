@@ -9,6 +9,7 @@ $(document).ready(() => {
                     {
                         pageLanguage: 'id',
                         includedLanguages: 'en',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                     },
                     'google_translate_element'
                 );
@@ -31,6 +32,7 @@ $(document).ready(() => {
             new google.translate.TranslateElement({
                 pageLanguage: 'id',
                 includedLanguages: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
             window.location.href = "#googtrans(en|en)";
         } else {

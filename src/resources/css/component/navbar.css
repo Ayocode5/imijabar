@@ -1,6 +1,18 @@
 /* 
     Start Navbar
 */
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
 .my_nav {
     border-bottom: 1px solid rgba(38, 56, 64, 0.5)
 }
