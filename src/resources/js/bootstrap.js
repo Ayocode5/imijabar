@@ -13,6 +13,7 @@ require('./components/lazyload/lazyload_news');
 require('./components/lazyload/lazyload_events');
 require('./components/index_event_filter');
 require('./components/welcome');
+require('./components/switch_language');
 require('./components/recaptcha_size');
 require('./components/gallery');
 /**

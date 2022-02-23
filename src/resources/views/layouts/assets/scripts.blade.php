@@ -1,5 +1,5 @@
 <!-- Optional JavaScript -->
-<!-- 
+<!--
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -16,6 +16,8 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> --}}
 <!-- <script src="typewriter.js"></script> -->
 
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 <script src="{{ asset('public/js/app.js') }}"></script>
 
 {{-- Newsletter Subscribtion Scripts --}}
