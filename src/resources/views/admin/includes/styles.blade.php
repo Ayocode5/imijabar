@@ -1,20 +1,20 @@
-<link rel="stylesheet" href="{{ asset('public/backend/vendor/fontawesome-free/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/sb-admin-2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/vendor/datatables/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/toastr.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/jquery-ui.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/jquery.timepicker.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/summernote-bs4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/spacing.css') }}">
-<link rel="stylesheet" href="{{ asset('public/backend/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/sb-admin-2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/jquery-ui.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/jquery.timepicker.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/summernote-bs4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/spacing.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
 
 
 {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> --}}
 {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> --}}
-<link rel="stylesheet" href="{{ asset('public/vendor/file-manager/css/file-manager.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> --}}
 
 <style>
     .bg-gradient-primary {

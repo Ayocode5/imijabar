@@ -6,8 +6,8 @@
             <div class="row no-gutters">
                 <div class="col-6 col-lg-12 no-gutters border-bottom">
                     <img class="jumbotron_logo position-absolute"
-                        src="{{ asset('public/images/') }}/logoImiJumbotron.svg" alt="Logo IMI">
-                    <img class="jumbotron_batik" src="{{ asset('public/uploads/') . "/$home_settings->jumbotron_bg" }}"
+                        src="{{ asset('images/') }}/logoImiJumbotron.svg" alt="Logo IMI">
+                    <img class="jumbotron_batik" src="{{ asset('uploads/') . "/$home_settings->jumbotron_bg" }}"
                         alt="jumbotron-batik">
                 </div>
                 <div class="col-6 col-lg-12 no-gutters row-cols-1 border-bottom wrap_welcome-text">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="overlay_jumbotron"></div>
-                            <img src="{{ asset('public/uploads/') . "/$news->blog_photo" }}" alt="Los Angeles"
+                            <img src="{{ asset('uploads/') . "/$news->blog_photo" }}" alt="Los Angeles"
                                 width="100%" height="600">
                         </div>
                     @endforeach

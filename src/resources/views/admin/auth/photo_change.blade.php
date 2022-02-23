@@ -15,12 +15,12 @@
                         <div class="form-group">
                             <label for="">Existing Photo *</label>
                             <div>
-                                <img src="{{ asset('public/uploads/'.$admin_data->photo) }}" alt="" class="w_150">
+                                <img id="photo_preview" src="{{ asset('uploads/'.$admin_data->photo) }}" alt="" class="w_150">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="">Change Photo *</label>
-                            <div><input type="file" name="photo"></div>
+                            <div><input id="photo" type="file" name="photo"></div>
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
@@ -28,5 +28,17 @@
             </form>        
         </div>
     </div>
+
+    <script>
+        photo.onchange = (event) => {
+            const [file] = photo.files
+            if (file) {
+                photo_preview.src = URL.createObjectURL(file)
+            }
+            photo_preview.onload = () => {
+                URL.revokeObjectURL(photo_preview.src)
+            }
+        }
+    </script>
 
 @endsection

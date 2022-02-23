@@ -1,5 +1,5 @@
-<script src="{{ asset('public/backend/js/sb-admin-2.min.js') }}"></script>
-<script src="{{ asset('public/backend/js/custom.js') }}"></script>
+<script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('backend/js/custom.js') }}"></script>
 
 <script>
     toastr.options = {

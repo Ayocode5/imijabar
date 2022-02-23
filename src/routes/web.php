@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeCo
 use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
-
 // Admin Menu Controller
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\RegistrationMember\ClubController;
@@ -22,14 +21,14 @@ use App\Http\Controllers\Admin\RegistrationMember\KisController;
 use App\Http\Controllers\Admin\RegistrationMember\RegistrationEventController;
 use App\Http\Controllers\Admin\DynamicPageController;
 use App\Http\Controllers\Admin\EmailTemplateController;
-use App\Http\Controllers\Admin\FooterColumnController;
+// use App\Http\Controllers\Admin\FooterColumnController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\Role\RoleController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
-use App\Http\Controllers\Admin\SliderController;
+// use App\Http\Controllers\Admin\SliderController;
 // use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 
 use App\Http\Controllers\Admin\Gallery\PhotoController;
@@ -52,36 +51,35 @@ use App\Http\Controllers\Admin\Page\PageBlogController;
 use App\Http\Controllers\Admin\Page\PageAboutController;
 use App\Http\Controllers\Admin\Page\PageEventController;
 use App\Http\Controllers\Admin\Page\PageGalleryController;
-use App\Http\Controllers\Admin\Page\PageFaqController;
+// use App\Http\Controllers\Admin\Page\PageFaqController;
 use App\Http\Controllers\Admin\Page\PageTeamController;
 
 //Admin Panel SHOP
-use App\Http\Controllers\Admin\Shop\CouponController;
-use App\Http\Controllers\Admin\Shop\CustomerController;
-use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
-use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
-use App\Http\Controllers\Admin\Shop\ShippingController;
+// use App\Http\Controllers\Admin\Shop\CouponController;
+// use App\Http\Controllers\Admin\Shop\CustomerController;
+// use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
+// use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
+// use App\Http\Controllers\Admin\Shop\ShippingController;
 
 
 /**
  * Front Panel - Customer
  */
+// use App\Http\Controllers\Customer\CheckoutController;
+// use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
+// use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
+// use App\Http\Controllers\Customer\LoginController as LoginControllerForCustomer;
+// use App\Http\Controllers\Customer\LogoutController as LogoutControllerForCustomer;
+// use App\Http\Controllers\Customer\OrderController as OrderControllerForCustomer;
+// use App\Http\Controllers\Customer\PasswordChangeController as PasswordChangeControllerForCustomer;
+// use App\Http\Controllers\Customer\ProfileChangeController as ProfileChangeControllerForCustomer;
+// use App\Http\Controllers\Customer\RegistrationController;
+// use App\Http\Controllers\Customer\ResetPasswordController as ResetPasswordControllerForCustomer;
 
-use App\Http\Controllers\Customer\CheckoutController;
-use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
-use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
-use App\Http\Controllers\Customer\LoginController as LoginControllerForCustomer;
-use App\Http\Controllers\Customer\LogoutController as LogoutControllerForCustomer;
-use App\Http\Controllers\Customer\OrderController as OrderControllerForCustomer;
-use App\Http\Controllers\Customer\PasswordChangeController as PasswordChangeControllerForCustomer;
-use App\Http\Controllers\Customer\ProfileChangeController as ProfileChangeControllerForCustomer;
-use App\Http\Controllers\Customer\RegistrationController;
-use App\Http\Controllers\Customer\ResetPasswordController as ResetPasswordControllerForCustomer;
 
 /**
  * Front Panel Controllers
  */
-
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SubscriptionController;
 use App\Http\Controllers\Front\AboutController;
@@ -281,7 +279,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Page Content Settings - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'page', 'middleware' => 'can:isAdmin'], function () {
+    Route::group(['prefix' => 'page', 'middleware' => 'can:isEditor'], function () {
 
         Route::group(['prefix' => 'home'], function () {
             Route::get('/edit', [PageHomeController::class, 'edit'])->name('admin.page_home.edit');
@@ -378,14 +376,14 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Slider - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
-        Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
-        Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
-        Route::get('/delete/{id}', [SliderController::class, 'destroy']);
-        Route::get('/edit/{id}', [SliderController::class, 'edit']);
-        Route::post('/update/{id}', [SliderController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
+    //     Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
+    //     Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
+    //     Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
+    //     Route::get('/delete/{id}', [SliderController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [SliderController::class, 'edit']);
+    //     Route::post('/update/{id}', [SliderController::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
@@ -563,78 +561,78 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Coupon - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'coupon', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/', [CouponController::class, 'index'])->name('admin.coupon.index');
-        Route::get('/create', [CouponController::class, 'create'])->name('admin.coupon.create');
-        Route::post('/store', [CouponController::class, 'store'])->name('admin.coupon.store');
-        Route::get('/delete/{id}', [CouponController::class, 'destroy']);
-        Route::get('/edit/{id}', [CouponController::class, 'edit']);
-        Route::post('/update/{id}', [CouponController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'coupon', 'middleware' => 'can:isSeller'], function () {
+    //     Route::get('/', [CouponController::class, 'index'])->name('admin.coupon.index');
+    //     Route::get('/create', [CouponController::class, 'create'])->name('admin.coupon.create');
+    //     Route::post('/store', [CouponController::class, 'store'])->name('admin.coupon.store');
+    //     Route::get('/delete/{id}', [CouponController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [CouponController::class, 'edit']);
+    //     Route::post('/update/{id}', [CouponController::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
     /* Shipping - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'shipping', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/', [ShippingController::class, 'index'])->name('admin.shipping.index');
-        Route::get('/create', [ShippingController::class, 'create'])->name('admin.shipping.create');
-        Route::post('/store', [ShippingController::class, 'store'])->name('admin.shipping.store');
-        Route::get('/delete/{id}', [ShippingController::class, 'destroy']);
-        Route::get('/edit/{id}', [ShippingController::class, 'edit']);
-        Route::post('/update/{id}', [ShippingController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'shipping', 'middleware' => 'can:isSeller'], function () {
+    //     Route::get('/', [ShippingController::class, 'index'])->name('admin.shipping.index');
+    //     Route::get('/create', [ShippingController::class, 'create'])->name('admin.shipping.create');
+    //     Route::post('/store', [ShippingController::class, 'store'])->name('admin.shipping.store');
+    //     Route::get('/delete/{id}', [ShippingController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [ShippingController::class, 'edit']);
+    //     Route::post('/update/{id}', [ShippingController::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
     /* Product - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'product', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/', [ProductControllerForAdmin::class, 'index'])->name('admin.product.index');
-        Route::get('/create', [ProductControllerForAdmin::class, 'create'])->name('admin.product.create');
-        Route::post('/store', [ProductControllerForAdmin::class, 'store'])->name('admin.product.store');
-        Route::get('/delete/{id}', [ProductControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [ProductControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [ProductControllerForAdmin::class, 'update']);
-    });
+    // Route::group(['prefix' => 'product', 'middleware' => 'can:isSeller'], function () {
+    //     Route::get('/', [ProductControllerForAdmin::class, 'index'])->name('admin.product.index');
+    //     Route::get('/create', [ProductControllerForAdmin::class, 'create'])->name('admin.product.create');
+    //     Route::post('/store', [ProductControllerForAdmin::class, 'store'])->name('admin.product.store');
+    //     Route::get('/delete/{id}', [ProductControllerForAdmin::class, 'destroy']);
+    //     Route::get('/edit/{id}', [ProductControllerForAdmin::class, 'edit']);
+    //     Route::post('/update/{id}', [ProductControllerForAdmin::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
     /* Order - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'order', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/', [OrderControllerForAdmin::class, 'index'])->name('admin.order.index');
-        Route::get('/create', [OrderControllerForAdmin::class, 'create'])->name('admin.order.create');
-        Route::post('/store', [OrderControllerForAdmin::class, 'store'])->name('admin.order.store');
-        Route::get('/detail/{id}', [OrderControllerForAdmin::class, 'detail']);
-        Route::get('/invoice/{id}', [OrderControllerForAdmin::class, 'invoice']);
-        Route::get('/delete/{id}', [OrderControllerForAdmin::class, 'destroy']);
-    });
+    // Route::group(['prefix' => 'order', 'middleware' => 'can:isSeller'], function () {
+    //     Route::get('/', [OrderControllerForAdmin::class, 'index'])->name('admin.order.index');
+    //     Route::get('/create', [OrderControllerForAdmin::class, 'create'])->name('admin.order.create');
+    //     Route::post('/store', [OrderControllerForAdmin::class, 'store'])->name('admin.order.store');
+    //     Route::get('/detail/{id}', [OrderControllerForAdmin::class, 'detail']);
+    //     Route::get('/invoice/{id}', [OrderControllerForAdmin::class, 'invoice']);
+    //     Route::get('/delete/{id}', [OrderControllerForAdmin::class, 'destroy']);
+    // });
 
 
     /* --------------------------------------- */
     /* Customer - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'customer', 'middleware' => 'can:isSeller'], function () {
-        Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
-        Route::get('/detail/{id}', [CustomerController::class, 'detail']);
-        Route::get('/make-active/{id}', [CustomerController::class, 'make_active']);
-        Route::get('/make-pending/{id}', [CustomerController::class, 'make_pending']);
-        Route::get('/delete/{id}', [CustomerController::class, 'destroy']);
-    });
+    // Route::group(['prefix' => 'customer', 'middleware' => 'can:isSeller'], function () {
+    //     Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
+    //     Route::get('/detail/{id}', [CustomerController::class, 'detail']);
+    //     Route::get('/make-active/{id}', [CustomerController::class, 'make_active']);
+    //     Route::get('/make-pending/{id}', [CustomerController::class, 'make_pending']);
+    //     Route::get('/delete/{id}', [CustomerController::class, 'destroy']);
+    // });
 
 
     /* --------------------------------------- */
     /* Footer Columns - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'footer', 'middleware' => 'can:isAdmin'], function () {
-        Route::get('/', [FooterColumnController::class, 'index'])->name('admin.footer.index');
-        Route::get('/create', [FooterColumnController::class, 'create'])->name('admin.footer.create');
-        Route::post('/store', [FooterColumnController::class, 'store'])->name('admin.footer.store');
-        Route::get('/delete/{id}', [FooterColumnController::class, 'destroy']);
-        Route::get('/edit/{id}', [FooterColumnController::class, 'edit']);
-        Route::post('/update/{id}', [FooterColumnController::class, 'update']);
-    });
+    // Route::group(['prefix' => 'footer', 'middleware' => 'can:isAdmin'], function () {
+    //     Route::get('/', [FooterColumnController::class, 'index'])->name('admin.footer.index');
+    //     Route::get('/create', [FooterColumnController::class, 'create'])->name('admin.footer.create');
+    //     Route::post('/store', [FooterColumnController::class, 'store'])->name('admin.footer.store');
+    //     Route::get('/delete/{id}', [FooterColumnController::class, 'destroy']);
+    //     Route::get('/edit/{id}', [FooterColumnController::class, 'edit']);
+    //     Route::post('/update/{id}', [FooterColumnController::class, 'update']);
+    // });
 
 
     /* --------------------------------------- */
@@ -671,7 +669,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /**
      * IMI Member Registration - Admin
      */
-    Route::group(['prefix' => 'registration', 'middleware' => 'can:isAdmin'], function () {
+    Route::group(['prefix' => 'registration'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
         Route::get('event', [RegistrationEventController::class, 'index'])->name('admin.register.event');

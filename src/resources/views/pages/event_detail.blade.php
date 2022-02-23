@@ -20,7 +20,7 @@
             </div>
             <div class="overlay_image_detail_event">
             </div>
-            <img class="featured_image" src="{{ asset('/public/uploads/') . "/$event->photo" }}" alt="featured image">
+            <img class="featured_image" src="{{ asset('uploads/') . "/$event->photo" }}" alt="featured image">
         </div>
     </header>
 
@@ -37,7 +37,7 @@
             <div class="wrap_cabor_lomba">
                 <div class="d-flex flex-wrap justify-content-md-between">
                     <div class="col-12 col-md-7">
-                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan <span><img class="w-50" src="{{ asset('public/images/') }}/line_blue.svg" alt=""></span> </h2>
+                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan <span><img class="w-50" src="{{ asset('images/') }}/line_blue.svg" alt=""></span> </h2>
                         
                     </div>
                     {{-- <div class="col-12 col-md-5 align-self-end">
@@ -64,7 +64,7 @@
                         <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                             @foreach ($event->sports as $sport)
                                 <div categories="{{ $sport->category->slug }}" class="item">
-                                    <img src="{{ asset('public/uploads') . "/$sport->image" }}"
+                                    <img src="{{ asset('uploads') . "/$sport->image" }}"
                                         alt="{{ $sport->name }}">
                                 </div>
                             @endforeach
@@ -87,7 +87,7 @@
                     {{-- {{ dd($event) }} --}}
                     @foreach ($event->sponsors as $sponsor)
                         <div>
-                            <img  src="{{ asset('public/uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
+                            <img  src="{{ asset('uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
                         </div>
                     @endforeach
                 </div>
@@ -109,7 +109,7 @@
                                 </button>
                             </h3>
                             <div class="col-2">
-                                <img src="{{ asset('public/images/') }}/arrow_top.svg" alt="arrow top">
+                                <img src="{{ asset('images/') }}/arrow_top.svg" alt="arrow top">
                             </div>
                         </div>
 
@@ -122,7 +122,7 @@
                                     <a href="{{ $event->document_link }}" target="_blank"
                                         rel="noreferrer nofollow"><button type="button"
                                             class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                                class="mr-3" src="{{ asset('public/images/') }}/pdf-icon.png"
+                                                class="mr-3" src="{{ asset('images/') }}/pdf-icon.png"
                                                 alt="">
                                             Download
                                             File</button></a>

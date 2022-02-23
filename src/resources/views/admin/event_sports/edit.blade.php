@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="sport_preview_image" src="{{ asset('public/uploads/' . $sport->image) }}" alt=""
+                        <img id="sport_preview_image" src="{{ asset('uploads/' . $sport->image) }}" alt=""
                             class="w_300">
                     </div>
                 </div>

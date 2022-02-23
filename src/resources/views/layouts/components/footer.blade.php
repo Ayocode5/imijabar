@@ -6,12 +6,12 @@
                 <div class="row">
                     <div class="col-12 col-sm-3">
                         <img class="d-block mb-4 logo_footer"
-                            src="{{ asset('public/uploads/') . "/$settings?->logo" }}" alt="logo imi jawa barat">
+                            src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="logo imi jawa barat">
                     </div>
                     <div class="footer_ttd col-12 col-sm-9 text-sm-right text-center position-relative">
                         <p>Optimization to Execellence.</p>
                         <p class="text_ttd_footer">IMI Jawa Barat</p>
-                        <img class="position-absolute line_border" src="{{ asset('public/images') }}/line_blue.svg"
+                        <img class="position-absolute line_border" src="{{ asset('images') }}/line_blue.svg"
                             alt="line blue">
                     </div>
                 </div>
@@ -23,9 +23,9 @@
                                 <a  style="color: #263840" class="text-decoration-none" href="{{ $item->social_url }}"><i class="{{ $item->social_icon }}"></i></a> &nbsp;&nbsp;
                             @endforeach
                         
-                        {{-- <img class="mr-3" src="{{ asset('public/images') }}/icon_globe_web.svg" alt="web imi jabar">
-                        <img class="mr-3" src="{{ asset('public/images') }}/icon_facebook.svg" alt="facebook imi jabar">
-                        <img class="mr-3" src="{{ asset('public/images') }}/icon_instagram.svg" alt="instagram imi jabar"> --}}
+                        {{-- <img class="mr-3" src="{{ asset('images') }}/icon_globe_web.svg" alt="web imi jabar">
+                        <img class="mr-3" src="{{ asset('images') }}/icon_facebook.svg" alt="facebook imi jabar">
+                        <img class="mr-3" src="{{ asset('images') }}/icon_instagram.svg" alt="instagram imi jabar"> --}}
 
                     </div>
                 </div>
@@ -48,11 +48,13 @@
             <div class="col-12 col-lg-2">
                 <h4 style="font-weight: 700;">{{ $settings?->footer_column3_heading }}</h4>
                 <ul style="font-weight: 500;" class="sitemap_footer">
-                    <li><a href="#">Tentang IMI Jabar</a></li>
-                    <li><a href="#">Berita</a></li>
-                    <li><a href="#">Galeri</a></li>
-                    <li><a href="#">Acara</a></li>
-                    <li><a href="#">Pendaftaran</a></li>
+                    <li><a href="/about">Tentang IMI Jabar</a></li>
+                    <li><a href="/news">Berita</a></li>
+                    <li><a href="/gallery">Galeri</a></li>
+                    <li><a href="/event">Acara</a></li>
+                    <li><a href="/registration/kis">Pendaftaran KIS</a></li>
+                    <li><a href="/registration/kta">Pendaftaran KTA</a></li>
+                    <li><a href="/registration/club">Pendaftaran Klub</a></li>
                 </ul>
 
             </div>
@@ -61,7 +63,7 @@
     </div>
 
     </div>
-    <img class="position-absolute background_footer" src="{{ asset('public/images') }}/background_footer.png"
+    <img class="position-absolute background_footer" src="{{ asset('images') }}/background_footer.png"
         alt="background footer">
 </footer>
 

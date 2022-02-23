@@ -174,7 +174,7 @@ body {
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
-    background-image: url('../../public/images/icon-arrow-down.svg');
+    background-image: url('../../images/icon-arrow-down.svg');
     background-repeat: no-repeat;
     background-position-x: 96%;
     background-position-y: 50%;

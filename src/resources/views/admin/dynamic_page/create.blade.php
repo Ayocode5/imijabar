@@ -39,7 +39,8 @@
                 <div class="form-group">
                     <label for="">Banner *</label>
                     <div>
-                        <input required type="file" name="dynamic_page_banner">
+                        <img id="banner_preview" class="w_300" src="" alt=""><br><br>
+                        <input id="banner" required type="file" name="dynamic_page_banner">
                     </div>
                 </div>
             </div>
@@ -59,5 +60,17 @@
             </div>
         </div>
     </form>
+
+    <script>
+        banner.onchange = (event) => {
+            const [file] = banner.files
+            if (file) {
+                banner_preview.src = URL.createObjectURL(file)
+            }
+            banner_preview.onload = () => {
+                URL.revokeObjectURL(banner_preview.src)
+            }
+        }
+    </script>
 
 @endsection

@@ -11,18 +11,30 @@
                 <div class="form-group">
                     <label for="">Existing Logo</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.($general_setting->logo ?? '')) }}" alt="" class="w_200">
+                        <img id="logo_preview" src="{{ asset('uploads/'.($general_setting->logo ?? '')) }}" alt="" class="w_200">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Change Logo</label>
                     <div>
-                        <input type="file" name="logo">
+                        <input id="logo" type="file" name="logo">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>
     </form>
+
+    <script>
+        logo.onchange = (event) => {
+            const [file] = logo.files
+            if (file) {
+                logo_preview.src = URL.createObjectURL(file)
+            }
+            logo_preview.onload = () => {
+                URL.revokeObjectURL(logo_preview.src)
+            }
+        }
+    </script>
 
 @endsection

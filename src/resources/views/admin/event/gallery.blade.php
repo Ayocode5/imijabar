@@ -58,7 +58,7 @@
                         @foreach($event_photo as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->event_photo) }}" alt="" class="w_200"></td>
+                            <td><img src="{{ asset('uploads/'.$row->event_photo) }}" alt="" class="w_200"></td>
                             <td>{{ $row->event_photo_caption }}</td>
                             <td>
                                 <a href="{{ URL::to('admin/event/gallery-delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>

@@ -20,14 +20,14 @@
                                         <h1 class="title-berita">{{ $news_data->blog_title }} </h1>
                                         <p class="subtitle-berita">
                                             {!! $news_data->blog_content_short !!}
-                                            <img src="{{ asset('public/images') }}/icon-arrow-right.png"
+                                            <img src="{{ asset('images') }}/icon-arrow-right.png"
                                                 alt="icon arrow" style="width: 16px; height: 16px;">
                                         </p>
                                     </div>
                                     <div class="col-12 col-md-4 order-1 order-md-2 my-auto">
                                         <div class="img-wrap">
                                             <img class="cover-berita"
-                                                src="{{ asset("public/uploads/$news_data->blog_photo") }}"
+                                                src="{{ asset("uploads/$news_data->blog_photo") }}"
                                                 alt="cover berita">
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                             <p class="name_event_header">{{ $event->name }}</p>
                                         </div>
                                         <div class="col-1">
-                                            <img src="{{ asset('public/images') }}/icon-arrow-down.svg"
+                                            <img src="{{ asset('images') }}/icon-arrow-down.svg"
                                                 alt="icon arrow">
                                         </div>
                                         
@@ -108,10 +108,10 @@
                 </div>
                 <div class="col-12 col-lg-6 ml-auto my-auto signature_imijabar position-relative">
                     <p class="position-relative"><span class="position-absolute">“</span></p>
-                    <div class="position-relative slide_tentangImi2">
+                    <div class="mt-4 position-relative slide_tentangImi2">
                         <p>Optimization to Execellence.</p>
                         <p class="signature_text">IMI Jawa Barat</p>
-                        <img class="position-absolute" src="{{ asset('public/images') }}/line_blue.svg"
+                        <img class="position-absolute" src="{{ asset('images') }}/line_blue.svg"
                             alt="line_blue">
                         <a class="selengkapnya_tentangImi" href="/about">Selengkapnya →</a>
 

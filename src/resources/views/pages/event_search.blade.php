@@ -51,7 +51,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('public/images') }}/search-icon.svg" alt="search icon"></button>
+                                        src="{{ asset('images') }}/search-icon.svg" alt="search icon"></button>
                             </form>
                         </div>
                     </div>
@@ -69,13 +69,13 @@
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
-                                    <img class="calender_pin" src="{{ asset('public/images') }}/calender_pin.svg"
+                                    <img class="calender_pin" src="{{ asset('images') }}/calender_pin.svg"
                                         alt="calender pin image">
                                     <div class="card">
                                         <div class="header_card_image shadow">
                                             <div class="feature_image_event_list">
 
-                                                <img src="{{ asset('public/uploads/') . "/$event->photo" }}"
+                                                <img src="{{ asset('uploads/') . "/$event->photo" }}"
                                                     class="card-img-top image_feature_event" alt="featured image">
 
                                                 <div class="ribbon_wrapper">

@@ -25,7 +25,7 @@
                         @foreach($sponsors as $sponsor)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$sponsor->image) }}" alt="" class="w_200"></td>
+                            <td><img src="{{ asset('uploads/'.$sponsor->image) }}" alt="" class="w_200"></td>
                             <td>{{ $sponsor->name }}</td>
                             <td>{{ $sponsor->slug }}</td>
                             <td>

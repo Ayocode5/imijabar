@@ -11,18 +11,30 @@
                 <div class="form-group">
                     <label for="">Existing Favicon</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$general_setting->login_bg) }}" alt="" class="w_300">
+                        <img id="login_bg_preview" src="{{ asset('uploads/' . $general_setting->login_bg) }}" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Change Favicon</label>
                     <div>
-                        <input type="file" name="login_bg">
+                        <input id="login_bg" type="file" name="login_bg">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>
     </form>
+
+    <script>
+        login_bg.onchange = (event) => {
+            const [file] = login_bg.files
+            if (file) {
+                login_bg_preview.src = URL.createObjectURL(file)
+            }
+            login_bg_preview.onload = () => {
+                URL.revokeObjectURL(login_bg_preview.src)
+            }
+        }
+    </script>
 
 @endsection

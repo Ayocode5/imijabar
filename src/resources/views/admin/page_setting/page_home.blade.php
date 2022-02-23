@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Banner</label>
-                                    <div><img src="{{ asset('public/uploads/'.$page_home?->jumbotron_bg) }}" alt="" class="w_200"></div>
+                                    <div><img src="{{ asset('uploads/'.$page_home?->jumbotron_bg) }}" alt="" class="w_200"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Change Banner</label>
@@ -251,14 +251,14 @@
                                     <label for="">Details</label>
                                     <textarea name="newsletter_detail" class="form-control h_100" cols="30" rows="10">{{ $page_home?->newsletter_detail }}</textarea>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Icon</label>
-                                    <div><img src="{{ asset('public/uploads/'.$page_home?->newsletter_bg) }}" alt="" class="w_200"></div>
-                                </div>
-                                <div class="form-group">
+                                    <div><img src="{{ asset('uploads/'.$page_home?->newsletter_bg) }}" alt="" class="w_200"></div>
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <label for="">Change Banner</label>
                                     <div><input type="file" name="newsletter_bg"></div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <select name="newsletter_status" class="form-control">
@@ -279,4 +279,17 @@
             </div>
         </div>
     </div>
+
+    {{-- <script>
+        favicon.onchange = (event) => {
+            const [file] = favicon.files
+            if (file) {
+                favicon_preview.src = URL.createObjectURL(file)
+            }
+            favicon_preview.onload = () => {
+                URL.revokeObjectURL(favicon_preview.src)
+            }
+        }
+    </script> --}}
+
 @endsection

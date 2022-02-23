@@ -1,6 +1,5 @@
 window._ = require('lodash');
 global.$ = global.jQuery = require('jquery');
-// window.Popper = require('popper.js/dist/umd/popper.js').default;
 import Popper from 'popper.js/dist/umd/popper.js';
 window.Popper = Popper;
 require('bootstrap')

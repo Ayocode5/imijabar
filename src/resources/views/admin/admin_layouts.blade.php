@@ -14,7 +14,7 @@
             ->first();
     @endphp
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/uploads') . "/$fav->favicon" }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('uploads') . "/$fav->favicon" }}">
 
     <title>IMI Jawa Barat | Admin Panel</title>
 
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
 
-    
+
 
 </head>
 
@@ -158,7 +158,6 @@
                 </li>
 
                 <!-- File Manager -->
-
                 <li class="nav-item @if ($conName[1] == 'file-manager') active @endif">
                     <a class="nav-link" href="{{ route('admin.file_manager') }}">
                         <i class="fas fa-folder"></i>
@@ -184,26 +183,6 @@
                     </div>
                 </li>
 
-                <!-- Member Registration -->
-                <li class="nav-item @if ($conName[1] == 'registration') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRegistration"
-                        aria-expanded="true" aria-controls="collapseRegistration">
-                        <i class="fas fa-user-secret"></i>
-                        <span>Member Registration</span>
-                    </a>
-                    <div id="collapseRegistration" class="collapse @if ($conName[1] == 'registration') show @endif"
-                        aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item @if ($conName[2] == 'kis') active @endif"
-                                href="{{ route('admin.register.kis') }}">KIS</a>
-                            <a class="collapse-item @if ($conName[2] == 'club') active @endif"
-                                href="{{ route('admin.register.club') }}">CLUB</a>
-                            <a class="collapse-item @if ($conName[2] == 'event') active @endif"
-                                href="{{ route('admin.register.event') }}">Events</a>
-                        </div>
-                    </div>
-                </li>
-
                 <!-- Email Template -->
                 <li class="nav-item @if ($conName[1] == 'email-template') active @endif">
                     <a class="nav-link" href="{{ route('admin.email_template.index') }}">
@@ -214,12 +193,12 @@
 
 
                 <!-- Sliders -->
-                <li class="nav-item @if ($conName[1] == 'slider') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'slider') active @endif">
                     <a class="nav-link" href="{{ route('admin.slider.index') }}">
                         <i class="fas fa-sliders-h"></i>
                         <span>Sliders</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <!-- Dynamic Pages -->
                 <li class="nav-item @if ($conName[1] == 'dynamic-page') active @endif">
@@ -230,15 +209,42 @@
                 </li>
 
                 <!-- Footer Columns -->
-                <li class="nav-item @if ($conName[1] == 'footer') active @endif">
+                {{-- <li class="nav-item @if ($conName[1] == 'footer') active @endif">
                     <a class="nav-link" href="{{ route('admin.footer.index') }}">
                         <i class="fas fa-fw fa-list-alt"></i>
                         <span>Footer Columns</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <hr class="sidebar-divider mb-0">
             @endcan
+
+            <!-- Member Registration -->
+            <li class="nav-item @if ($conName[1] == 'registration') active @endif">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRegistration"
+                    aria-expanded="true" aria-controls="collapseRegistration">
+                    <i class="fas fa-user-secret"></i>
+                    <span>Member Registration</span>
+                </a>
+                <div id="collapseRegistration" class="collapse @if ($conName[1] == 'registration') show @endif"
+                    aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if ($conName[2] == 'kis') active @endif"
+                            href="{{ route('admin.register.kis') }}">KIS</a>
+                        <a class="collapse-item @if ($conName[2] == 'club') active @endif"
+                            href="{{ route('admin.register.club') }}">CLUB</a>
+                        <a class="collapse-item @if ($conName[2] == 'event') active @endif"
+                            href="{{ route('admin.register.event') }}">Events</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Team Members / Committee -->
+            <li class="nav-item @if ($conName[1] == 'committee') active @endif">
+                <a class="nav-link" href="{{ route('admin.team_member.index') }}">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Committee</span>
+                </a>
+            </li>
 
             @can('isSeller')
                 <!-- Product Section -->
@@ -358,14 +364,6 @@
                     </div>
                 </li>
 
-                <!-- Team Members / Committee -->
-                <li class="nav-item @if ($conName[1] == 'team-member') active @endif">
-                    <a class="nav-link" href="{{ route('admin.team_member.index') }}">
-                        <i class="fas fa-user-plus"></i>
-                        <span>Committee</span>
-                    </a>
-                </li>
-
                 <!-- Social Media -->
                 <li class="nav-item @if ($conName[1] == 'social-media') active @endif">
                     <a class="nav-link" href="{{ route('admin.social_media.index') }}">
@@ -418,7 +416,7 @@
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('name') }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{ asset('public/uploads/' . auth()->user()->photo) }}">
+                                    src="{{ asset('uploads/' . auth()->user()->photo) }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -467,7 +465,7 @@
     </a>
 
     @include('admin.includes.scripts')
-    
+
     @include('admin.includes.scripts-footer')
 
 

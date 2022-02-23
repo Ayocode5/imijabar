@@ -15,13 +15,13 @@
                         <div class="form-group">
                             <label for="">Existing Banner</label>
                             <div>
-                                <img src="{{ asset('public/uploads/'.$general_setting->banner_home) }}" alt="" class="w_200">
+                                <img id="banner_home_preview" src="{{ asset('uploads/'.$general_setting->banner_home) }}" alt="" class="w_200">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="">Change Banner</label>
                             <div>
-                                <input type="file" name="banner_home">
+                                <input id="banner_home" type="file" name="banner_home">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="">Existing Banner</label>
                             <div>
-                                <img src="{{ asset('public/uploads/'.$general_setting->banner_about) }}" alt="" class="w_200">
+                                <img src="{{ asset('uploads/'.$general_setting->banner_about) }}" alt="" class="w_200">
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,13 +69,13 @@
                         <div class="form-group">
                             <label for="">Existing Banner</label>
                             <div>
-                                <img src="{{ asset('public/uploads/'.$general_setting->banner_news) }}" alt="" class="w_200">
+                                <img id="banner_news_preview" src="{{ asset('uploads/'.$general_setting->banner_news) }}" alt="" class="w_200">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="">Change Banner</label>
                             <div>
-                                <input type="file" name="banner_news">
+                                <input id="banner_news" type="file" name="banner_news">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>
@@ -96,13 +96,13 @@
                         <div class="form-group">
                             <label for="">Existing Banner</label>
                             <div>
-                                <img src="{{ asset('public/uploads/'.$general_setting->banner_event) }}" alt="" class="w_200">
+                                <img id="banner_event_preview" src="{{ asset('uploads/'.$general_setting->banner_event) }}" alt="" class="w_200">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="">Change Banner</label>
                             <div>
-                                <input type="file" name="banner_event">
+                                <input id="banner_event" type="file" name="banner_event">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>
@@ -111,5 +111,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        banner_home.onchange = (event) => {
+            const [file] = banner_home.files
+            if (file) {
+                banner_home_preview.src = URL.createObjectURL(file)
+            }
+            banner_home_preview.onload = () => {
+                URL.revokeObjectURL(banner_home_preview.src)
+            }
+        }
+
+        banner_news.onchange = (event) => {
+            const [file] = banner_news.files
+            if (file) {
+                banner_news_preview.src = URL.createObjectURL(file)
+            }
+            banner_news_preview.onload = () => {
+                URL.revokeObjectURL(banner_news_preview.src)
+            }
+        }
+
+        banner_event.onchange = (event) => {
+            const [file] = banner_event.files
+            if (file) {
+                banner_event_preview.src = URL.createObjectURL(file)
+            }
+            banner_event_preview.onload = () => {
+                URL.revokeObjectURL(banner_event_preview.src)
+            }
+        }
+    </script>
     
 @endsection

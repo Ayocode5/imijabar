@@ -39,13 +39,13 @@
                 <div class="form-group">
                     <label for="">Existing Banner</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$dynamic_page->dynamic_page_banner) }}" alt="" class="w_300">
+                        <img id="banner_preview" src="{{ asset('uploads/'.$dynamic_page->dynamic_page_banner) }}" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Change Banner</label>
                     <div>
-                        <input type="file" name="dynamic_page_banner">
+                        <input id="banner" type="file" name="dynamic_page_banner">
                     </div>
                 </div>
             </div>
@@ -65,5 +65,17 @@
             </div>
         </div>
     </form>
+
+    <script>
+        banner.onchange = (event) => {
+            const [file] = banner.files
+            if (file) {
+                banner_preview.src = URL.createObjectURL(file)
+            }
+            banner_preview.onload = () => {
+                URL.revokeObjectURL(banner_preview.src)
+            }
+        }
+    </script>
 
 @endsection

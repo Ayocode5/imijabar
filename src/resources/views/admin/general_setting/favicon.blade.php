@@ -11,18 +11,30 @@
                 <div class="form-group">
                     <label for="">Existing Favicon</label>
                     <div>
-                        <img src="{{ asset('public/uploads/'.$general_setting->favicon) }}" alt="" class="w_100">
+                        <img id="favicon_preview" src="{{ asset('uploads/'.$general_setting->favicon) }}" alt="" class="w_100">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Change Favicon</label>
                     <div>
-                        <input type="file" name="favicon">
+                        <input id="favicon" type="file" name="favicon">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>
     </form>
+
+    <script>
+        favicon.onchange = (event) => {
+            const [file] = favicon.files
+            if (file) {
+                favicon_preview.src = URL.createObjectURL(file)
+            }
+            favicon_preview.onload = () => {
+                URL.revokeObjectURL(favicon_preview.src)
+            }
+        }
+    </script>
 
 @endsection

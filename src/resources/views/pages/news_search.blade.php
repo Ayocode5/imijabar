@@ -41,7 +41,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('public/images/') }}/search-icon.svg"
+                                        src="{{ asset('images/') }}/search-icon.svg"
                                         alt="search icon">
                                 </button>
                             </form>
@@ -68,7 +68,7 @@
                                     <div class="card">
 
                                         <div class="header_card_image">
-                                            <img src="{{ asset('public/uploads') . "/$news_data->photo" }}"
+                                            <img src="{{ asset('uploads') . "/$news_data->photo" }}"
                                                 class="card-img-top" alt="{{ $news_data->title }}">
                                             <div
                                                 class="label_header_card_image d-flex justify-content-between align-items-center px-3">

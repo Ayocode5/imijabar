@@ -7,7 +7,7 @@
                 </span></h3>
 
             <input placeholder="example@gmail.com" class="input_newsletter" type="text">
-            <img class="button_newsletter" src="{{ asset('public/images') }}/send_button.svg" alt="sendButton">
+            <img class="button_newsletter" src="{{ asset('images') }}/send_button.svg" alt="sendButton">
             <div class="invalid-feedback">
                 <h6 class="input-newsletter-invalid"></h6>
             </div>
@@ -25,7 +25,7 @@
                 dengan bidang otomotif kapan saja ke email yang anda masukan.</p>
         </div>
         <div class="col-lg-4 col-12 order-1 order-lg-2">
-            <img class="mx-auto d-block postMailIcon" src="{{ asset('public/images') }}/mailPos.svg" alt="mail pos">
+            <img class="mx-auto d-block postMailIcon" src="{{ asset('images') }}/mailPos.svg" alt="mail pos">
         </div>
     </div>
 </section>
