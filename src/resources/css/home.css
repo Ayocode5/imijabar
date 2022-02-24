@@ -95,6 +95,21 @@ body {
     overflow: hidden;
 }
 
+
+.carousel_jumbotron .carousel-item .btn_show_jumbotron {
+    opacity: 0;
+    transform: translate(-100px, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
+.carousel-fade .carousel-item.active .btn_show_jumbotron {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-duration: .6s;
+    transition-property: all;
+}
+
 /* 
     End Jumbotron 
 */
