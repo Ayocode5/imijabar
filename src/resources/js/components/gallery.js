@@ -8,7 +8,7 @@ $(document).ready(() => {
     $('.thumbnail_gallery').on('click', function (e) {
         if (this.getAttribute("type-file") === "photo") {
             // e.preventDefault();
-            console.log("test")
+            // console.log("test")
 
             if ($(this).parent().find(`.frame_modal_body_photo`).children().length > 0) {
 
