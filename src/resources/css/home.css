@@ -666,7 +666,11 @@ main {
         font-size: 24px;
     }
 
-    /* 
+    .carousel_jumbotron .carousel-item .overlay_carousel_jumbotron .content_overlay_carousel_jumbotron h2 {
+        font-size: 36px;
+    }
+
+    /*  
         End Jumbotron Style
     */
 
