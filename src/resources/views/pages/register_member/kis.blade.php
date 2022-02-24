@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('layouts.components.breadcrumb')
 
     <section id="header_page_pendaftaran_kis">
@@ -12,13 +11,12 @@
             <p>{!! $section1->content1 !!}</p>
         </div>
         <div class="feature_image_pendaftaran_kis">
-            <img class="d-block mx-auto" src="{{ asset('public/uploads/') . "/$section1->banner" }}"
-                alt="image pendaftaran kis">
+            <img class="d-block mx-auto" src="{{ asset('uploads/') . "/$section1->banner" }}" alt="image pendaftaran kis">
         </div>
         <div class="fitur_pengembangan_regis_kis">
             {!! $section1->content2 !!}
         </div>
-        
+
         <a class="daftar_kis_individu text-decoration-none text-dark" href="{{ $section1->link }}"><button>Daftar
                 Sekarang</button></a>
     </section>
@@ -31,7 +29,7 @@
                         <h2>{{ $section2->name }}</h2>
                     </div>
                     <div class="wrap_image_line_persyaratan_regis_kis col-12 col-md-5">
-                        <img class="w-100" src="{{ asset('public/images') }}/line_blue.svg" alt="line image">
+                        <img class="w-100" src="{{ asset('images') }}/line_blue.svg" alt="line image">
                     </div>
                 </div>
                 <ul class="mt-3 list_persyaratan_regis_kis">
@@ -62,7 +60,7 @@
                         <h2>{{ $section3->name }}</h2>
                     </div>
                     <div class="wrap_image_line_persyaratan_regis_kis col-12 col-md-7">
-                        <img class="w-100" src="{{ asset('public/images') }}/line_blue.svg" alt="line image">
+                        <img class="w-100" src="{{ asset('images') }}/line_blue.svg" alt="line image">
                     </div>
                 </div>
                 <ul class="list_tatacara_pendaftaran_kis">

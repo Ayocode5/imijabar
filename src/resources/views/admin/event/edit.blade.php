@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="event_preview_image" src="{{ asset('public/uploads/'.$event->event_featured_photo) }}" alt="" class="w_300">
+                        <img id="event_preview_image" src="{{ asset('uploads/'.$event->event_featured_photo) }}" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
@@ -137,7 +137,6 @@
     </form>
 
     <script>
-
         event_featured_photo.onchange = (event) => {
             const [file] = event_featured_photo.files
             if (file) {
@@ -148,4 +147,5 @@
             }
         }
     </script>
+
 @endsection

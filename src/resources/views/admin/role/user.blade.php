@@ -26,7 +26,7 @@
                     @foreach($admin_users as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$user->photo) }}" alt="" class="w_100"></td>
+                            <td><img src="{{ asset('uploads/'.$user->photo) }}" alt="" class="w_100"></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->roles[0]->name }}</td>

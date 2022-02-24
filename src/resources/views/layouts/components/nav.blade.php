@@ -2,7 +2,7 @@
 <nav class="my_nav navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div style="margin: -9px 0;" class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset('public/uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
+            <img src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
         </a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,9 +63,9 @@
                         <label class="label_switch_language" for="chk">
                             <div class="ball"></div>
                             <div class="flags">
-                                <img class="ball_us flag" src="{{ asset('public/images') }}/flag-us.svg"
+                                <img class="ball_us flag" src="{{ asset('images') }}/flag-us.svg"
                                     alt="us flag">
-                                <img class="ball_id flag" src="{{ asset('public/images') }}/flag-indonesia.svg"
+                                <img class="ball_id flag" src="{{ asset('images') }}/flag-indonesia.svg"
                                     alt="is flag">
                             </div>
                             <!-- <div class="ball"></div> -->
@@ -74,7 +74,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{ asset('public/images') }}/Telephone-Icon.svg"
+                        <img class="mb-1 mr-2" src="{{ asset('images') }}/Telephone-Icon.svg"
                             alt="icon contact telephone">
                         {{-- 0857-XXXX-XXXX --}}
                         {{ $settings?->top_bar_phone }}
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{ asset('public/images') }}/Email-Icon.svg"
+                        <img class="mb-1 mr-2" src="{{ asset('images') }}/Email-Icon.svg"
                             alt="icon contact email">
                         {{ $settings?->top_bar_email }}
                     </a>

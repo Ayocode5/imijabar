@@ -14,7 +14,7 @@ const newsCardTemplate = (slug, title, summary, photo, category, created_at) => 
             <a href="/news/${slug}" class="text-decoration-none">
                 <div class="card">
                     <div class="header_card_image">
-                        <img src="/public/uploads/${photo}"
+                        <img src="/uploads/${photo}"
                             class="card-img-top" alt="${title}">
                         <div
                             class="label_header_card_image d-flex justify-content-between align-items-center px-3">
@@ -50,12 +50,12 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
     <div class="col mb-4">
         <a class="text-decoration-none text-dark" href="/event/${slug}">
             <img class="calender_pin"
-                src="/public/images/calender_pin.svg"
+                src="/images/calender_pin.svg"
                 alt="calender pin image">
             <div class="card">
                 <div class="header_card_image shadow">
                     <div class="feature_image_event_list">
-                        <img src="/public/uploads/${photo}"
+                        <img src="/uploads/${photo}"
                             class="card-img-top image_feature_event" alt="featured image">
                         <div class="ribbon_wrapper">
                             ${categories.map((category) => {

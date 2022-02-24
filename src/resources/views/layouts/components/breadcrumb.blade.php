@@ -7,7 +7,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('public/images/') }}/icon-arrow-back.png" alt="back icon" style="width: 24px; height: 24px; margin-right: 20px;">
+                        <img src="{{ asset('images/') }}/icon-arrow-back.png" alt="back icon" style="width: 24px; height: 24px; margin-right: 20px;">
                     </a>
                 </li>
                 @php

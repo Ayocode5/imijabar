@@ -9,7 +9,7 @@ $(document).ready(() => {
                 <a href="/news/${slug}" class="text-decoration-none">
                     <div class="card">
                         <div class="header_card_image">
-                            <img src="/public/uploads/${photo}"
+                            <img src="uploads/${photo}"
                                 class="card-img-top" alt="${title}">
                             <div
                                 class="label_header_card_image d-flex justify-content-between align-items-center px-3">
@@ -43,6 +43,7 @@ $(document).ready(() => {
     
     $('.btn_load_more_list_berita').click(() => {
         $.ajax({
+            type: 'GET',
             url: `${PAGE_API_URL}${pageCount}`, 
 
             success: function(result){

@@ -7,7 +7,7 @@
 
         <header id="header_detail_berita">
             <div class="image_feature_detail_berita">
-                <img class="featured_image" src="{{ asset('public/uploads') . "/$news->photo" }}" alt="featured image">
+                <img class="featured_image" src="{{ asset('uploads') . "/$news->photo" }}" alt="featured image">
             </div>
             <div class="wrap_header_detail_berita my-md-5">
                 <div class="content_header_detail_berita py-2 py-md-3">
@@ -30,22 +30,26 @@
                 <div class="pb-4 container-fluid wrap_content_description_detail">
                     <div class="row">
                         <div class="col-12 col-md-2 order-2 order-md-1">
-                            <div class="wrap_share_sosmed d-flex flex-row justify-content-between justify-content-md-end flex-md-column">
+                            <div
+                                class="wrap_share_sosmed d-flex flex-row justify-content-between justify-content-md-end flex-md-column">
                                 <p style="font-weight: 700;" class="ml-md-auto d-block text-md-right my-auto">Shares</p>
 
                                 <div class="share_sosmed d-flex flex-row flex-md-column align-content-center">
-                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('public/images') }}/share_facebook.svg"
-                                            alt="share to facebook"></a>
+                                    <a target="_blank"
+                                        href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                        class="mt-2 mb-2 ml-md-auto" href="#">
+                                        <i class="fab fa-2x fa-facebook"></i>
+                                    </a>
 
-                                    <a target="_blank" href="http://www.twitter.com/share?url={{ url()->current() }}" class="mt-2 mb-2 ml-md-auto" href="#"> <img
-                                            src="{{ asset('public/images') }}/icon_twitter.svg"
-                                            alt="share to instagram"></a>
+                                    <a target="_blank" href="http://www.twitter.com/share?url={{ url()->current() }}"
+                                        class="mt-2 mb-2 ml-md-auto" href="#">
+                                        <i class="fab fa-2x fa-twitter"></i>
+                                    </a>
 
-                                    <a class="mt-2 mb-2 ml-md-auto" href="whatsapp://send?text={{ url()->current() }}" data-action="share/whatsapp/share"  
-                                    target="_blank"> <img
-                                            src="{{ asset('public/images') }}/share_whatsapp.svg"
-                                            alt="share to share_whatsapp"></a>
+                                    <a class="mt-2 mb-2 ml-md-auto" href="whatsapp://send?text={{ url()->current() }}"
+                                        data-action="share/whatsapp/share" target="_blank">
+                                        <i class="fab fa-2x fa-whatsapp"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -102,9 +106,12 @@
             </section>
         </main>
     @else
-        <center><h2>Opps, Berita tidak ditemukan</h2></center>
+        <center>
+            <h2>Opps, Berita tidak ditemukan</h2>
+        </center>
     @endif
 
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v13.0" nonce="szLewV7D"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v13.0"
+        nonce="szLewV7D"></script>
 @endsection

@@ -1,4 +1,4 @@
-<script src="{{ asset('public/frontend/js/custom.js') }}"></script>
+<script src="{{ asset('frontend/js/custom.js') }}"></script>
 
 @if($g_setting?->sticky_header_status == 'Show')
 <script>

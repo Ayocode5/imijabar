@@ -24,7 +24,7 @@
                         @foreach($team_member as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('public/uploads/'.$row->photo) }}" alt="" class="w_150"></td>
+                            <td><img src="{{ asset('uploads/'.$row->photo) }}" alt="" class="w_150"></td>
                             <td>{{ $row->name }}</td>
                             <td>
                                 <a href="{{ URL::to('admin/committee/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

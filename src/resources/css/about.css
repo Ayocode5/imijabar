@@ -311,7 +311,7 @@ body {
 }
 
 .ad_imi a::before {
-    content: url('../../public/images/file-icon.svg');
+    content: url('../../images/file-icon.svg');
     vertical-align: middle;
     margin-right: 8px;
 }
