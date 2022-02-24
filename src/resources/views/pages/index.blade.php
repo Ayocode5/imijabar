@@ -5,7 +5,7 @@
 
     <main>
         <!-- START BERITA & EVENT -->
-        <section class="py-5 border-bottom" style="background-color: #FBFBFB">
+        <section class="py-5 border-bottom border-top-news-events" style="background-color: #FBFBFB">
             <div class="d-flex flex-wrap berita-acara">
                 <div class="col-lg-8 col-12">
                     <h1 class="title-berita-acara">{{ $home_settings->news_title }}</h1>
