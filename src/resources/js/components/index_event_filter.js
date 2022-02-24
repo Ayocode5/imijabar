@@ -22,13 +22,20 @@ $(document).ready(function () {
     const eventListsWrapper = document.querySelector('.events_wrapper_home')
     const events = document.querySelectorAll(".item_event");
 
-    $(".event-category .list-dropdown .dropdown-item").click(function () {
-        $(".select_category:first-child").text($(this).text());
-        $(".select_category:first-child").val($(this).text());
+    $('.filter_events').change(() => {
+        document.querySelector('.filter_events')[document.querySelector('.filter_events').selectedIndex].value;
         eventListsWrapper.innerHTML = '';
-        filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
+        filterEvents(events, document.querySelector('.filter_events')[document.querySelector('.filter_events').selectedIndex].value.split(',')).forEach((event) => {
             eventListsWrapper.append(event);
         })
-    });
+    })
+    // $(".event-category .list-dropdown .dropdown-item").click(function () {
+    //     $(".select_category:first-child").text($(this).text());
+    //     $(".select_category:first-child").val($(this).text());
+    //     eventListsWrapper.innerHTML = '';
+    //     filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
+    //         eventListsWrapper.append(event);
+    //     })
+    // });
 
 })

@@ -6,7 +6,6 @@
     <section id="header_page_pendaftaran_kis">
         <div class="head_pendaftaran_kis">
             <h1>{{ $section1->name }}</h1>
-            <div class="border_head_title"></div>
 
             <p>{!! $section1->content1 !!}</p>
         </div>

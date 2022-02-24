@@ -30,6 +30,10 @@ body {
     font-family: 'Tinos', serif;
     font-size: 28px;
     font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 16px;
+    text-decoration-color: hsl(215, 79%, 64%);
 }
 
 .border_head_title {
@@ -92,7 +96,7 @@ body {
 }
 
 .wrap_persyaratan_resgis_kis .list_persyaratan_regis_kis {
-    padding: 0 30px;
+    padding: 0 4px;
     font-size: 16px;
     font-weight: 500;
     list-style-type: decimal;
@@ -109,7 +113,7 @@ body {
 
 .list_tatacara_pendaftaran_kis {
     list-style-type: decimal;
-    padding: 0 30px;
+    padding: 0 4px;
     font-size: 16px;
     font-weight: 500;
 }

@@ -6,8 +6,6 @@
     <section id="header_page_pendaftaran_kis">
         <div class="head_pendaftaran_kis">
             <h1>{{ $section1->name }}</h1>
-            <div class="border_head_title"></div>
-
             <p>{!! $section1->content1 !!}</p>
         </div>
         <div class="feature_image_pendaftaran_kis">
@@ -33,7 +31,7 @@
                         <img class="w-100" src="{{ asset('images') }}/line_blue.svg" alt="line image">
                     </div>
                 </div>
-                <ul class="mt-3 list_persyaratan_regis_kis">
+                <div class="mt-3 list_persyaratan_regis_kis">
                     {{-- <li>
                         Scan File KTP/SIM,
                     </li>
@@ -50,7 +48,7 @@
                         Bukti Transfer Biaya Pembuatan KIS.
                     </li> --}}
                     {!! $section2->content1 !!}
-                </ul>
+                </div>
             </div>
         </section>
 

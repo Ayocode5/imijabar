@@ -1,12 +1,12 @@
 <footer class="position-relative border-top border-bottom">
     <div class="container-fluid content_footer">
 
-        <div class="row my-auto justify-content-md-between h-100">
+        <div class="row my-auto mx-0 justify-content-md-between h-100">
             <div class="col-12 col-lg-5  mb-3 mb-lg-0 align-self-center">
-                <div class="row">
+                <div class="row mx-0">
                     <div class="col-12 col-sm-3">
-                        <img class="d-block mb-4 logo_footer"
-                            src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="logo imi jawa barat">
+                        <img class="d-block mb-4 logo_footer" src="{{ asset('uploads/') . "/$settings?->logo" }}"
+                            alt="logo imi jawa barat">
                     </div>
                     <div class="footer_ttd col-12 col-sm-9 text-sm-right text-center position-relative">
                         <p>Optimization to Execellence.</p>
@@ -18,14 +18,15 @@
                 <div class="row">
                     <div class="col sosial_media_footer">
                         {{-- {{ dd($social_media)}} --}}
-                       
-                            @foreach ($social_media as $item)
-                                <a  style="color: #263840" class="text-decoration-none" href="{{ $item->social_url }}"><i class="{{ $item->social_icon }}"></i></a> &nbsp;&nbsp;
-                            @endforeach
-                        
-                        {{-- <img class="mr-3" src="{{ asset('images') }}/icon_globe_web.svg" alt="web imi jabar">
-                        <img class="mr-3" src="{{ asset('images') }}/icon_facebook.svg" alt="facebook imi jabar">
-                        <img class="mr-3" src="{{ asset('images') }}/icon_instagram.svg" alt="instagram imi jabar"> --}}
+
+                        @foreach ($social_media as $item)
+                            <a style="color: #263840" class="text-decoration-none" href="{{ $item->social_url }}"><i
+                                    class="{{ $item->social_icon }}"></i></a> &nbsp;&nbsp;
+                        @endforeach
+
+                        {{-- <img class="mr-3" src="{{ asset('public/images') }}/icon_globe_web.svg" alt="web imi jabar">
+                        <img class="mr-3" src="{{ asset('public/images') }}/icon_facebook.svg" alt="facebook imi jabar">
+                        <img class="mr-3" src="{{ asset('public/images') }}/icon_instagram.svg" alt="instagram imi jabar"> --}}
 
                     </div>
                 </div>

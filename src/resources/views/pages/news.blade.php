@@ -77,8 +77,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('/images/') }}/search-icon.svg"
-                                        alt="search icon">
+                                        src="{{ asset('/images/') }}/search-icon.svg" alt="search icon">
                                 </button>
                             </form>
                         </div>
@@ -88,11 +87,10 @@
         </section>
         <section class="pb-5" id="list_card_berita">
             <div class="wrap_list_berita">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-
-                    @if (count($news) == 0)
-                        <h2>Oops, Berita tidak ada! </h2>Berita
-                    @else
+                @if (count($news) == 0)
+                    <p class="empty_news">Oops, Berita tidak ada!</p>
+                @else
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                         @foreach ($news as $news_data)
                             <div class="col mb-4" categories="{{ $news_data->category->slug }}">
                                 <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
@@ -106,7 +104,7 @@
                                                     {{ $news_data->category->name }}
                                                 </p>
                                                 <p style="height: 8px;" class="realease_date">
-                            
+
                                                     {{ Illuminate\Support\Carbon::parse($news_data->created_at)->diffForHumans() }}
                                                 </p>
                                             </div>
@@ -127,8 +125,8 @@
                                 </a>
                             </div>
                         @endforeach
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
             <div id="loader" class="spinner-border text-secondary" role="status">
                 <span class="sr-only">Loading...</span>

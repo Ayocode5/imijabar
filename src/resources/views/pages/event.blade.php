@@ -58,12 +58,12 @@
         <section id="content_list_events">
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
-                    <select class="col categories category-sport" name="filterCategoryEvents"
-                        id="filterCategoryEvents">
+                    <select class="col categories category-sport" name="filterCategoryEvents" id="filterCategoryEvents">
                         <option style="display:none" value disabled selected>Category</option>
                         <option categories="all" value="all">Semua</option>
                         @foreach ($categories as $category)
-                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">{{ $category->name }}</option>
+                            <option categories="{{ $category->slug }}" value="{{ $category->slug }}">
+                                {{ $category->name }}</option>
                         @endforeach
 
                     </select>
@@ -78,8 +78,7 @@
                         <option categories="all" value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
                         @foreach ($sports as $sport)
-                            <option class="sports sport-menu" categories="{{ $sport->category->slug }}"
-                                id="sport-option"
+                            <option class="sports sport-menu" categories="{{ $sport->category->slug }}" id="sport-option"
                                 value="{{ "$url_filter_prefix&sport=$sport->slug#content_list_events" }}"
                                 @if (request()->sport == $sport->slug) selected @endif>{{ $sport->name }}</option>
                         @endforeach
@@ -105,11 +104,10 @@
         {{-- LIST EVENTS --}}
         <section class="pb-5 mt-4" id="list_card_events">
             <div class="wrap_list_events">
-                <div class="row row-cols-1 row-cols-md-2">
-                    
-                    @if (count($events) == 0)
-                        <p class="event_not_found">Oops, Event tidak ditemukan</p>
-                    @else
+                @if (count($events) == 0)
+                    <p class="empty_event">Oops, Event tidak ditemukan</p>
+                @else
+                    <div class="row row-cols-1 row-cols-md-2">
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
@@ -151,7 +149,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-7 pt-3 date_events_list pl-0 align-self-center">
                                                     <div class="d-flex justify-content-center">
-                                                        
+
                                                         <p class="ml-2">
                                                             {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
                                                             -
@@ -171,9 +169,8 @@
                                 </a>
                             </div>
                         @endforeach
-                    @endif
-
-                </div>
+                    </div>
+                @endif
             </div>
             {{-- @if (count($events) != 0)
                 <button class="btn_load_more_list_events mx-auto d-block">
@@ -184,7 +181,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
             <div id="load_content_events">
-                
+
             </div>
         </section>
     </main>
