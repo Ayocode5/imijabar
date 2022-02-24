@@ -47,20 +47,19 @@
                                 <div class="h-100 w-100 wrap_thumbnail_image">
                                     <div class="gallery-overlay">
                                         <a href="#" class="icon">
-                                            <img src="{{ asset('public/images/') }}/icon-zoom.png" alt="detail"
+                                            <img src="{{ asset('images') }}/icon-zoom.png" alt="detail"
                                                 class="gallery-icon-hover">
                                         </a>
                                     </div>
                                     <div class="position-relative">
                                         @if ($gallery->type == 'photo')
                                             <img loading="lazy" class="position-absolute icon_type_file"
-                                                src="{{ asset('public/images/') }}/icon_picture.svg" alt="icon picture">
-                                            <img loading="lazy"
-                                                src="{{ asset('public/uploads/') . "/$gallery->photo_name" }}"
+                                                src="{{ asset('images') }}/icon_picture.svg" alt="icon picture">
+                                            <img loading="lazy" src="{{ asset('uploads') . "/$gallery->photo_name" }}"
                                                 alt="image gallery" class="gallery-image mx-auto d-block skeleton">
                                         @else
                                             <img loading="lazy" class="position-absolute icon_type_file"
-                                                src="{{ asset('public/images/') }}/icon_movie.svg" alt="icon video">
+                                                src="{{ asset('images') }}/icon_movie.svg" alt="icon video">
                                             <img loading="lazy"
                                                 src="http://img.youtube.com/vi/{{ $gallery->video_youtube }}/default.jpg"
                                                 alt="image gallery" class="gallery-image mx-auto d-block skeleton">
