@@ -3,10 +3,8 @@
 /src/public/hot
 /src/public/js
 /src/public/css
-/src/public/uploads/*
 # /src/bootstrap
 # /src/storage/app/public/*
-/src/bootstrap/cache/*
 /src/public/js
 /src/public/css
 /src/storage/framework/*
