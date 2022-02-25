@@ -3,7 +3,7 @@
 /src/public/hot
 /src/public/js
 /src/public/css
-/src/public/uploads
+/src/public/uploads/*
 # /src/bootstrap
 # /src/storage/app/public/*
 /src/bootstrap/cache/*
