@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 
 <!-- Latest compiled and minified CSS -->
-{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 <style>
     .bg-gradient-primary {
