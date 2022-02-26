@@ -40,7 +40,7 @@ class EventController extends Controller
                 GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
             ")
             ->where('e.deleted_at', null)
-            ->orderBy('e.created_at')
+            ->orderBy('e.created_at', 'DESC')
             ->groupBy('id')
             ->get();
 
