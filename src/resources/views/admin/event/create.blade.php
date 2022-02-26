@@ -18,6 +18,7 @@
                     <input required type="text" name="event_name" class="form-control" value="{{ old('event_name') }}"
                         autofocus>
                 </div>
+
                 <div class="form-group">
                     <label for="organizer-create-event">Event Organizer</label>
                     <input id="organizer-create-event" required type="text" name="event_organizer" class="form-control"

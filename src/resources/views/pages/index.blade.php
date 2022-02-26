@@ -75,7 +75,7 @@
                                 aria-controls="collapse{{ $loop->iteration }}">
                                 <div class="card-header content-event" id="headingOne">
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
-                                        <div class="col-11">
+                                        <div class="col-11" style="padding-left: 0px;">
                                             <h3 class="date_start_event">
                                                 {{ date_format(date_create($event->event_start_date), 'd F Y') }}</h3>
                                             <p class="event_location_province">{{ $event->location }},

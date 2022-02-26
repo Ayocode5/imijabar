@@ -20,8 +20,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="organizer-events">Event Organizer</label>
-                    <input id="organizer-events" required type="text" name="event_organizer" class="form-control"
+                    <label for="organizer-event">Event Organizer</label>
+                    <input id="organizer-event" required type="text" name="event_organizer" class="form-control"
                         value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">

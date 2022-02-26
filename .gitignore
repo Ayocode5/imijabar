@@ -5,7 +5,6 @@
 /src/public/css
 # /src/bootstrap
 # /src/storage/app/public/*
-/src/bootstrap/cache/*
 /src/public/js
 /src/public/css
 /src/storage/framework/*
