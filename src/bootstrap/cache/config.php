@@ -538,11 +538,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'smtp.gmail.com',
-        'port' => '587',
+        'host' => 'smtp.mailtrap.io',
+        'port' => '2525',
         'encryption' => 'tls',
-        'username' => 'iyanputra906@gmail.com',
-        'password' => 'bxsukjatzjzzaako',
+        'username' => 'ae28d81f825244',
+        'password' => 'd2d34a69892ba4',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -575,7 +575,7 @@
     ),
     'from' => 
     array (
-      'address' => 'iyanputra906@gmail.com',
+      'address' => 'hello@example.com',
       'name' => 'IMI-JABAR',
     ),
     'markdown' => 
