@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Change Image (Max: 2MB)</label>
+                    <label for="">Change Banner (Max: 2MB)</label>
                     <div>
                         <input type="file" id="event_featured_photo" name="event_featured_photo">
                     </div>

@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="">Image (Max: 2MB)</label>
+                    <label for="">Create Banner (Max: 2MB)</label>
                     <div>
                         <input required type="file" name="event_featured_photo" id="event_featured_photo">
                     </div>
