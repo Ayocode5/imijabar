@@ -4,7 +4,7 @@
     'name' => 'IMI-JABAR',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost',
+    'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com',
     'asset_url' => NULL,
     'timezone' => 'Asia/Jakarta',
     'locale' => 'en',
@@ -347,7 +347,7 @@
     'routePrefix' => 'file-manager',
     'diskList' => 
     array (
-      0 => 'local',
+      0 => 'public',
     ),
     'leftDisk' => NULL,
     'rightDisk' => NULL,
@@ -391,8 +391,8 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/var/www/html/storage/app/public',
-        'url' => 'http://localhost/storage',
+        'root' => '/var/www/html/public/uploads',
+        'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com/uploads',
         'visibility' => 'public',
       ),
       's3' => 
@@ -538,11 +538,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'smtp.mailtrap.io',
-        'port' => '2525',
+        'host' => 'smtp.gmail.com',
+        'port' => '587',
         'encryption' => 'tls',
-        'username' => 'ae28d81f825244',
-        'password' => 'd2d34a69892ba4',
+        'username' => 'iyanputra906@gmail.com',
+        'password' => 'bxsukjatzjzzaako',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -575,7 +575,7 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@example.com',
+      'address' => 'iyanputra906@gmail.com',
       'name' => 'IMI-JABAR',
     ),
     'markdown' => 
