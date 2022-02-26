@@ -15,16 +15,13 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name *</label>
-                    <input required type="text" name="event_name" class="form-control" value="{{ old('event_name') }}" autofocus>
+                    <input required type="text" name="event_name" class="form-control" value="{{ old('event_name') }}"
+                        autofocus>
                 </div>
+
                 <div class="form-group">
-                    <label for="">Event Organizer</label>
-                    <input required type="text" name="event_organizer" class="form-control"
-                        value="{{ old('event_organizer') }}" autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="">Event Organizer</label>
-                    <input required type="text" name="event_organizer" class="form-control"
+                    <label for="organizer-create-event">Event Organizer</label>
+                    <input id="organizer-create-event" required type="text" name="event_organizer" class="form-control"
                         value="{{ old('event_organizer') }}" autofocus>
                 </div>
                 <div class="form-group">
@@ -44,13 +41,13 @@
                 </div>
                 <div class="form-group">
                     <label for="">End Date</label>
-                    <input required type="date" name="event_end_date" class="form-control" value="{{ old('event_end_date') }}"
-                        autofocus>
+                    <input required type="date" name="event_end_date" class="form-control"
+                        value="{{ old('event_end_date') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <input required type="text" name="event_location" class="form-control" value="{{ old('event_location') }}"
-                        autofocus>
+                    <input required type="text" name="event_location" class="form-control"
+                        value="{{ old('event_location') }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">City</label>
@@ -73,8 +70,8 @@
                 </div> --}}
                 <div class="form-group">
                     <label for="">Registration Link (Optional)</label>
-                    <input type="text" name="event_link" class="form-control"
-                        value="{{ old('event_link') }}" autofocus>
+                    <input type="text" name="event_link" class="form-control" value="{{ old('event_link') }}"
+                        autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Document Link (Optional)</label>
@@ -88,8 +85,8 @@
                             <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                        <select required name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple"
-                            autofocus>
+                        <select required name="sports_id[]" id="sports_id" class="form-control selectpicker"
+                            multiple="multiple" autofocus>
                             @foreach ($sports as $sport)
                                 <option value={{ $sport->id }}>{{ $sport->name }}</option>
                             @endforeach
@@ -104,8 +101,8 @@
                             <option value="">There is no Sponsor available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple"
-                            autofocus>
+                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                            multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }}>{{ $sponsor->name }}</option>
                             @endforeach
@@ -145,7 +142,6 @@
     </form>
 
     <script>
-
         event_featured_photo.onchange = (event) => {
             const [file] = event_featured_photo.files
             if (file) {

@@ -2,61 +2,66 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Event</h1>
 
-    <form action="{{ url('admin/event/update/'.$event->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/event/update/' . $event->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 mt-2 font-weight-bold text-primary">Event</h6>
                 <div class="float-right d-inline">
-                    <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.event.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
+                        View All</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input required type="text" name="event_name" class="form-control" value="{{ $event->event_name }}" autofocus>
+                    <input required type="text" name="event_name" class="form-control" value="{{ $event->event_name }}"
+                        autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Event Organizer</label>
-                    <input required type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="">Event Organizer</label>
-                    <input required type="text" name="event_organizer" class="form-control" value="{{ $event->event_organizer }}" autofocus>
+                    <label for="organizer-event">Event Organizer</label>
+                    <input id="organizer-event" required type="text" name="event_organizer" class="form-control"
+                        value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
-                    <textarea  required name="event_content" class="form-control editor" cols="30" rows="10">{{ $event->event_content }}</textarea>
+                    <textarea required name="event_content" class="form-control editor" cols="30"
+                        rows="10">{{ $event->event_content }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Summary</label>
-                    <textarea required name="event_content_short" class="form-control h_100" cols="30" rows="10">{{ $event->event_content_short }}</textarea>
+                    <textarea required name="event_content_short" class="form-control h_100" cols="30"
+                        rows="10">{{ $event->event_content_short }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Start Date</label>
-                    <input required type="date" name="event_start_date" class="form-control" value="{{ $event->event_start_date }}">
+                    <input required type="date" name="event_start_date" class="form-control"
+                        value="{{ $event->event_start_date }}">
                 </div>
                 <div class="form-group">
                     <label for="">End Date</label>
-                    <input required type="date" name="event_end_date" class="form-control" value="{{ $event->event_end_date }}">
+                    <input required type="date" name="event_end_date" class="form-control"
+                        value="{{ $event->event_end_date }}">
                 </div>
                 <div class="form-group">
                     <label for="">Address</label>
-                    <input required type="text" name="event_location" class="form-control" value="{{ $event->event_location }}" autofocus>
+                    <input required type="text" name="event_location" class="form-control"
+                        value="{{ $event->event_location }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">City</label>
-                    <input required type="text" name="event_location_city" class="form-control" value="{{ $event->event_location_city }}"
-                        autofocus>
+                    <input required type="text" name="event_location_city" class="form-control"
+                        value="{{ $event->event_location_city }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Province</label>
-                    <input required type="text" name="event_location_province" class="form-control" value="{{ $event->event_location_province }}"
-                        autofocus>
+                    <input required type="text" name="event_location_province" class="form-control"
+                        value="{{ $event->event_location_province }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Maps (Optional)</label>
-                    <input type="text" name="event_location_map" class="form-control" value="{{ $event->event_map }}" autofocus>
+                    <input type="text" name="event_location_map" class="form-control" value="{{ $event->event_map }}"
+                        autofocus>
                 </div>
                 {{-- <div class="form-group">
                     <label for="">Video (YouTube ID) - (Optional)</label>
@@ -64,8 +69,8 @@
                 </div> --}}
                 <div class="form-group">
                     <label for="">Registration Link (Optional) </label>
-                    <input type="text" name="event_link" class="form-control"
-                        value="{{ $event->event_link }}" autofocus>
+                    <input type="text" name="event_link" class="form-control" value="{{ $event->event_link }}"
+                        autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Document Link (Optional)</label>
@@ -75,7 +80,8 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="event_preview_image" src="{{ asset('uploads/'.$event->event_featured_photo) }}" alt="" class="w_300">
+                        <img id="event_preview_image" src="{{ asset('uploads/' . $event->event_featured_photo) }}" alt=""
+                            class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
@@ -92,13 +98,13 @@
                             <option value="">There is no Sports available, Create first</option>
                         </select>
                     @else
-                    <select required name="sports_id[]" id="sports_id" class="form-control selectpicker" multiple="multiple" autofocus>
-                        @foreach ($sports as $sport)
-                            <option value={{ $sport->id }} @if (in_array($sport->id, $event->sports->pluck('id')->toArray()))
-                                selected
-                            @endif>{{ $sport->name }}</option>
-                        @endforeach
-                    </select>
+                        <select required name="sports_id[]" id="sports_id" class="form-control selectpicker"
+                            multiple="multiple" autofocus>
+                            @foreach ($sports as $sport)
+                                <option value={{ $sport->id }} @if (in_array($sport->id, $event->sports->pluck('id')->toArray())) selected @endif>
+                                    {{ $sport->name }}</option>
+                            @endforeach
+                        </select>
                     @endif
                 </div>
 
@@ -109,13 +115,13 @@
                             <option value="">There is no Sponsors available, Create first</option>
                         </select>
                     @else
-                    <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker" multiple="multiple" autofocus>
-                        @foreach ($sponsors as $sponsor)
-                            <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray()))
-                                selected
-                            @endif>{{ $sponsor->name }}</option>
-                        @endforeach
-                    </select>
+                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                            multiple="multiple" autofocus>
+                            @foreach ($sponsors as $sponsor)
+                                <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray())) selected @endif>
+                                    {{ $sponsor->name }}</option>
+                            @endforeach
+                        </select>
                     @endif
                 </div>
             </div>
@@ -129,7 +135,8 @@
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
-                    <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ $event->seo_meta_description }}</textarea>
+                    <textarea name="seo_meta_description" class="form-control h_100" cols="30"
+                        rows="10">{{ $event->seo_meta_description }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
