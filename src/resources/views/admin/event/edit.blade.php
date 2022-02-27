@@ -116,7 +116,7 @@
                             <option value="">There is no Sponsors available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
                             multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray())) selected @endif>

@@ -37,8 +37,9 @@
             <div class="wrap_cabor_lomba">
                 <div class="d-flex flex-wrap justify-content-md-between">
                     <div class="col-12 col-md-7">
-                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan <span><img class="w-50" src="{{ asset('images/') }}/line_blue.svg" alt=""></span> </h2>
-                        
+                        <h2 class="title_event_detail">Cabang Olahraga Yang Dilombakan <span><img class="w-50"
+                                    src="{{ asset('images/') }}/line_blue.svg" alt=""></span> </h2>
+
                     </div>
                     {{-- <div class="col-12 col-md-5 align-self-end">
                         <div class="dropdown select_category_cabor">
@@ -64,8 +65,7 @@
                         <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                             @foreach ($event->sports as $sport)
                                 <div categories="{{ $sport->category->slug }}" class="item">
-                                    <img src="{{ asset('uploads') . "/$sport->image" }}"
-                                        alt="{{ $sport->name }}">
+                                    <img src="{{ asset('uploads') . "/$sport->image" }}" alt="{{ $sport->name }}">
                                 </div>
                             @endforeach
                         </div>
@@ -80,19 +80,21 @@
 
 
         <!-- START SPONSOR -->
-        <section class="sponsor_event mx-auto d-block">
-            <div class="wrap_sponsor_event text-center py-5">
-                <h2>Event Ini Di Sponsori Oleh:</h2>
-                <div class="d-flex flex-wrap justify-content-center logo_sponsor_event mt-3 mt-lg-5">
-                    {{-- {{ dd($event) }} --}}
-                    @foreach ($event->sponsors as $sponsor)
-                        <div>
-                            <img  src="{{ asset('uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
-                        </div>
-                    @endforeach
+        @if (count($event->sponsors) > 0)
+            <section class="sponsor_event mx-auto d-block">
+                <div class="wrap_sponsor_event text-center py-5">
+                    <h2>Event Ini Di Sponsori Oleh:</h2>
+                    <div class="d-flex flex-wrap justify-content-center logo_sponsor_event mt-3 mt-lg-5">
+                        {{-- {{ dd($event) }} --}}
+                        @foreach ($event->sponsors as $sponsor)
+                            <div>
+                                <img src="{{ asset('uploads') . "/$sponsor->image" }}" alt="{{ $sponsor->name }}"><br>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
         <!-- END SPONSOR -->
 
         <section id="surat_rekomendasi">
@@ -122,8 +124,7 @@
                                     <a href="{{ $event->document_link }}" target="_blank"
                                         rel="noreferrer nofollow"><button type="button"
                                             class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
-                                                class="mr-3" src="{{ asset('images/') }}/pdf-icon.png"
-                                                alt="">
+                                                class="mr-3" src="{{ asset('images/') }}/pdf-icon.png" alt="">
                                             Download
                                             File</button></a>
                                 @else
