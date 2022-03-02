@@ -48,13 +48,18 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
-        Gate::define('isEditor', function ($user) {
-            return $user->hasRole('editor');
-        });
+        // Gate::define('isEditor', function ($user) {
+        //     return $user->hasRole('editor');
+        // });
 
         //Registration Controller Gates 
-        Gate::define('view-registration', function (User $user) {
+        Gate::define('view-registration', function ($user) {
             return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        });
+
+        //File Manager Controller Gates 
+        Gate::define('view-file-manager', function ($user) {
+            return in_array('view-file-manager', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });
     }
 }

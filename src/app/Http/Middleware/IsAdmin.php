@@ -17,7 +17,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         if($request->user()) {
-            if($request->user()?->hasRole(['admin', 'editor', 'seller'])) {
+            if(!$request->user()?->hasRole(['customer'])) {
                 return $next($request);
             };
 
