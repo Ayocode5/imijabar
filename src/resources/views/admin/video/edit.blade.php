@@ -31,11 +31,11 @@
                             <input type="text" name="video_youtube" class="form-control"
                                 value="{{ $video->video_youtube }}" autofocus>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Caption</label>
                             <input type="text" name="video_caption" class="form-control"
                                 value="{{ $video->video_caption }}">
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="">Order</label>
                             <input type="text" name="video_order" class="form-control"

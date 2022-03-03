@@ -77,7 +77,15 @@
                                     <div class="d-flex flex-wrap align-items-center justify-content-center">
                                         <div class="col-11" style="padding-left: 0px;">
                                             <h3 class="date_start_event">
-                                                {{ date_format(date_create($event->event_start_date), 'd F Y') }}</h3>
+                                                {{ date_format(date_create($event->event_start_date), 'd F Y') }}
+                                                @if ($event->status == 'Current')
+                                                    <span class="badge badge-success">Sedang berlangsung</span>
+                                                @elseif ($event->status == 'Upcoming')
+                                                    <span class="badge badge-info">Akan datang</span>
+                                                @elseif ($event->status == 'Past')
+                                                    <span class="badge badge-danger">Berakhir</span>
+                                                @endif
+                                            </h3>
                                             <p class="event_location_province">{{ $event->location }},
                                                 {{ $event->event_location_city }},
                                                 {{ $event->event_location_province }}</p>

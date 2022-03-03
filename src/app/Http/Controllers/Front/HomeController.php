@@ -39,9 +39,8 @@ class HomeController extends Controller
 			GROUP_CONCAT(DISTINCT ec.slug SEPARATOR ',') as categories_slug,
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
-		")->where('event_end_date', '>=', $date_today)
-			->where('deleted_at', null)
-			->orderBy('e.event_start_date')
+		")->where('deleted_at', null)
+			->orderBy('e.event_end_date', 'DESC')
 			->groupBy('id')
 			->limit($home_settings->events_total)
 			->get();
@@ -63,6 +62,8 @@ class HomeController extends Controller
 			}
 		});
 
+		// dd($events);
+
 		$event_categories = DB::table('event_categories')->select(['name', 'slug', 'id'])->get();
 
 		$news = Blog::limit($home_settings->news_total)->orderBy('created_at', 'DESC')->get();
@@ -80,7 +81,7 @@ class HomeController extends Controller
 			'footer_column3_heading',
 		)->first();
 
-		$home_event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name','dynamic_page_content1 as content1')->where('dynamic_page_slug', 'home-event-registration')->first();  
+		$home_event_registration_section = DB::table('dynamic_pages')->select('dynamic_page_name as name', 'dynamic_page_content1 as content1')->where('dynamic_page_slug', 'home-event-registration')->first();
 
 		// dd($events);
 		// dd($news);

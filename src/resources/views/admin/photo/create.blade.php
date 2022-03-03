@@ -22,11 +22,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Caption *</label>
                             <input type="text" name="photo_caption" class="form-control"
                                 value="{{ old('photo_caption') }}" autofocus>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="">Order</label>
                             <input type="text" name="photo_order" class="form-control"
