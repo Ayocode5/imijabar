@@ -157,14 +157,6 @@
                     </a>
                 </li>
 
-                <!-- File Manager -->
-                <li class="nav-item @if ($conName[1] == 'file-manager') active @endif">
-                    <a class="nav-link" href="{{ route('admin.file_manager') }}">
-                        <i class="fas fa-folder"></i>
-                        <span>File Manager</span>
-                    </a>
-                </li>
-
                 <!-- User Role Manager -->
                 <li class="nav-item @if ($conName[1] == 'role' || $conName[1] == 'admin-user') active @endif">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminUser"
@@ -215,8 +207,15 @@
                         <span>Footer Columns</span>
                     </a>
                 </li> --}}
-
             @endcan
+
+            <!-- File Manager -->
+            <li class="nav-item @if ($conName[1] == 'file-manager') active @endif">
+                <a class="nav-link" href="{{ route('admin.file_manager') }}">
+                    <i class="fas fa-folder"></i>
+                    <span>File Manager</span>
+                </a>
+            </li>
 
             <!-- Member Registration -->
             <li class="nav-item @if ($conName[1] == 'registration') active @endif">
@@ -282,100 +281,100 @@
             @endcan
 
 
-            @can('isEditor')
-                <!-- Blog / News Section -->
-                <li class="nav-item @if ($conName[1] == 'news') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog"
-                        aria-expanded="true" aria-controls="collapseBlog">
-                        <i class="fas fa-newspaper"></i>
-                        <span>News</span>
-                    </a>
-                    <div id="collapseBlog" class="collapse @if ($conName[1] == 'news') show @endif"
-                        aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item @if ($conName[1] == 'news' && $conName[2] === 'category') active @endif"
-                                href="{{ route('admin.category.index') }}">Categories</a>
-                            <a class="collapse-item @if ($conName[1] === 'news' && $conName[2] == '') active @endif"
-                                href="{{ route('admin.news.index') }}">News</a>
-                            {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
+
+            <!-- Blog / News Section -->
+            <li class="nav-item @if ($conName[1] == 'news') active @endif">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog"
+                    aria-expanded="true" aria-controls="collapseBlog">
+                    <i class="fas fa-newspaper"></i>
+                    <span>News</span>
+                </a>
+                <div id="collapseBlog" class="collapse @if ($conName[1] == 'news') show @endif"
+                    aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if ($conName[1] == 'news' && $conName[2] === 'category') active @endif"
+                            href="{{ route('admin.category.index') }}">Categories</a>
+                        <a class="collapse-item @if ($conName[1] === 'news' && $conName[2] == '') active @endif"
+                            href="{{ route('admin.news.index') }}">News</a>
+                        {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                             <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
-                        </div>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <!-- Event Section -->
-                <li class="nav-item @if ($conName[1] == 'event') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
-                        aria-expanded="true" aria-controls="collapseEvent">
-                        <i class="fas fa-flag"></i>
-                        <span>Events</span>
-                    </a>
-                    <div id="collapseEvent" class="collapse @if ($conName[1] == 'event') show @endif"
-                        aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == '') active @endif"
-                                href="{{ route('admin.event.index') }}">Events</a>
-                            <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'category') active @endif"
-                                href="{{ route('admin.event_category.index') }}">Categories</a>
-                            <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'sport') active @endif"
-                                href="{{ route('admin.event_sport.index') }}">Sports</a>
-                            <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'sponsor') active @endif"
-                                href="{{ route('admin.event_sponsor.index') }}">Sponsors</a>
-                        </div>
+            <!-- Event Section -->
+            <li class="nav-item @if ($conName[1] == 'event') active @endif">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
+                    aria-expanded="true" aria-controls="collapseEvent">
+                    <i class="fas fa-flag"></i>
+                    <span>Events</span>
+                </a>
+                <div id="collapseEvent" class="collapse @if ($conName[1] == 'event') show @endif"
+                    aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == '') active @endif"
+                            href="{{ route('admin.event.index') }}">Events</a>
+                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'category') active @endif"
+                            href="{{ route('admin.event_category.index') }}">Categories</a>
+                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'sport') active @endif"
+                            href="{{ route('admin.event_sport.index') }}">Sports</a>
+                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'sponsor') active @endif"
+                            href="{{ route('admin.event_sponsor.index') }}">Sponsors</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <!-- Gallery Section -->
-                <li class="nav-item @if ($conName[1] == 'gallery') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery"
-                        aria-expanded="true" aria-controls="collapseGallery">
-                        <i class="fas fa-image"></i>
-                        <span>Galleries</span>
-                    </a>
-                    <div id="collapseGallery" class="collapse @if ($conName[1] == 'gallery' || $conName[2] == 'photo' || $conName[2] == 'video') show @endif"
-                        aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'category') active @endif"
-                                href="{{ route('admin.gallery_category.index') }}">Categories</a>
-                            <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'photo') active @endif"
-                                href="{{ route('admin.photo.index') }}">Photos</a>
-                            <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'video') active @endif"
-                                href="{{ route('admin.video.index') }}">Videos</a>
-                        </div>
+            <!-- Gallery Section -->
+            <li class="nav-item @if ($conName[1] == 'gallery') active @endif">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery"
+                    aria-expanded="true" aria-controls="collapseGallery">
+                    <i class="fas fa-image"></i>
+                    <span>Galleries</span>
+                </a>
+                <div id="collapseGallery" class="collapse @if ($conName[1] == 'gallery' || $conName[2] == 'photo' || $conName[2] == 'video') show @endif"
+                    aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'category') active @endif"
+                            href="{{ route('admin.gallery_category.index') }}">Categories</a>
+                        <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'photo') active @endif"
+                            href="{{ route('admin.photo.index') }}">Photos</a>
+                        <a class="collapse-item @if ($conName[1] == 'gallery' && $conName[2] === 'video') active @endif"
+                            href="{{ route('admin.video.index') }}">Videos</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <!-- Subscriber -->
-                <li class="nav-item @if ($conName[1] == 'subscriber') active @endif">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
-                        aria-expanded="true" aria-controls="collapseSubscriber">
-                        <i class="fas fa-share-alt-square"></i>
-                        <span>Subscribers</span>
-                    </a>
-                    <div id="collapseSubscriber" class="collapse @if ($conName[1] == 'subscriber') show @endif"
-                        aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == '') active @endif"
-                                href="{{ route('admin.subscriber.index') }}">All Subscribers</a>
-                            <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == 'send-email') active @endif"
-                                href="{{ route('admin.subscriber.send_email') }}">Send Email to
-                                Subscribers</a>
-                        </div>
+            <!-- Subscriber -->
+            <li class="nav-item @if ($conName[1] == 'subscriber') active @endif">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
+                    aria-expanded="true" aria-controls="collapseSubscriber">
+                    <i class="fas fa-share-alt-square"></i>
+                    <span>Subscribers</span>
+                </a>
+                <div id="collapseSubscriber" class="collapse @if ($conName[1] == 'subscriber') show @endif"
+                    aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == '') active @endif"
+                            href="{{ route('admin.subscriber.index') }}">All Subscribers</a>
+                        <a class="collapse-item @if ($conName[1] == 'subscriber' && $conName[2] == 'send-email') active @endif"
+                            href="{{ route('admin.subscriber.send_email') }}">Send Email to
+                            Subscribers</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <!-- Social Media -->
-                <li class="nav-item @if ($conName[1] == 'social-media') active @endif">
-                    <a class="nav-link" href="{{ route('admin.social_media.index') }}">
-                        <i class="fas fa-basketball-ball"></i>
-                        <span>Social Media</span>
-                    </a>
-                </li>
+            <!-- Social Media -->
+            <li class="nav-item @if ($conName[1] == 'social-media') active @endif">
+                <a class="nav-link" href="{{ route('admin.social_media.index') }}">
+                    <i class="fas fa-basketball-ball"></i>
+                    <span>Social Media</span>
+                </a>
+            </li>
 
 
-                <!-- Divider -->
-                <hr class="sidebar-divider mb-0">
-            @endcan
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+
 
 
             <!-- Sidebar Toggler (Sidebar) -->

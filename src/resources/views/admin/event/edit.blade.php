@@ -79,7 +79,7 @@
                         value="{{ $event->event_document_link }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Current Image</label>
+                    <label for="">Current Banner</label>
                     <div>
                         <img id="event_preview_image" src="{{ asset('uploads/' . $event->event_featured_photo) }}" alt=""
                             class="w_300">
@@ -116,7 +116,7 @@
                             <option value="">There is no Sponsors available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
                             multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray())) selected @endif>

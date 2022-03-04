@@ -5,7 +5,7 @@
             <div class="row no-gutters wrap_section_1">
                 <div class="col-6 col-md-12">
                     <div class="wrap_jumbotron_logo position-relative">
-                        <img class="jumbotron_logo position-absolute" src="{{ asset('images') }}/logoImiJumbotron.svg"
+                        <img class="jumbotron_logo position-absolute" src="{{ asset('uploads/') . "/$settings?->logo" }}"
                             alt="Logo IMI">
                         <img style="object-fit: cover;" class="w-100 h-100"
                             src="{{ asset('uploads') . "/$home_settings->jumbotron_bg" }}" alt="jumbotron-batik">

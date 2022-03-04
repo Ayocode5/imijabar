@@ -101,7 +101,7 @@
                             <option value="">There is no Sponsor available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
                             multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }}>{{ $sponsor->name }}</option>

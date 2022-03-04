@@ -40,7 +40,7 @@ class EventController extends Controller
                 GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
             ")
             ->where('e.deleted_at', null)
-            ->orderBy('e.created_at')
+            ->orderBy('e.event_end_date', 'DESC')
             ->groupBy('id')
             ->get();
 
@@ -58,7 +58,7 @@ class EventController extends Controller
             } elseif ($event->event_end_date < $date_today) {
                 return $event->status = 'Past';
             } else {
-                return $event->status = "Invalid Logic";
+                return $event->status = "Invalid Date";
             }
         });
 

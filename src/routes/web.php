@@ -279,7 +279,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Page Content Settings - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'page', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'page'], function () {
 
         Route::group(['prefix' => 'home'], function () {
             Route::get('/edit', [PageHomeController::class, 'edit'])->name('admin.page_home.edit');
@@ -339,7 +339,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Blog / News - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'news', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'news'], function () {
         Route::get('/', [BlogControllerForAdmin::class, 'index'])->name('admin.news.index');
         Route::get('/create', [BlogControllerForAdmin::class, 'create'])->name('admin.news.create');
         Route::post('/store', [BlogControllerForAdmin::class, 'store'])->name('admin.news.store');
@@ -350,7 +350,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Blog / News Category - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
+        Route::group(['prefix' => 'category'], function () {
             Route::get('/', [CategoryControllerForAdmin::class, 'index'])->name('admin.category.index');
             Route::get('/create', [CategoryControllerForAdmin::class, 'create'])->name('admin.category.create');
             Route::post('/store', [CategoryControllerForAdmin::class, 'store'])->name('admin.category.store');
@@ -364,7 +364,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Blog / News Comment - Admin */
     /* --------------------------------------- */
-    // Route::group(['prefix' => 'comment', 'middleware' => 'can:isEditor'], function () {
+    // Route::group(['prefix' => 'comment'], function () {
     //     Route::get('/approved', [CommentController::class, 'approved'])->name('admin.comment.approved');
     //     Route::get('/make-pending/{id}', [CommentController::class, 'make_pending']);
     //     Route::get('/pending', [CommentController::class, 'pending'])->name('admin.comment.pending');
@@ -402,7 +402,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Event - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'event', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'event'], function () {
         Route::get('/', [EventControllerForAdmin::class, 'index'])->name('admin.event.index');
         Route::get('/create', [EventControllerForAdmin::class, 'create'])->name('admin.event.create');
         Route::post('/store', [EventControllerForAdmin::class, 'store'])->name('admin.event.store');
@@ -416,7 +416,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Category - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
+        Route::group(['prefix' => 'category'], function () {
             Route::get('/', [EventCategoryControllerForAdmin::class, 'index'])->name('admin.event_category.index');
             Route::get('/create', [EventCategoryControllerForAdmin::class, 'create'])->name('admin.event_category.create');
             Route::post('/store', [EventCategoryControllerForAdmin::class, 'store'])->name('admin.event_category.store');
@@ -429,7 +429,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Sports - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'sport', 'middleware' => 'can:isEditor'], function () {
+        Route::group(['prefix' => 'sport'], function () {
             Route::get('/', [EventSportControllerForAdmin::class, 'index'])->name('admin.event_sport.index');
             Route::get('/create', [EventSportControllerForAdmin::class, 'create'])->name('admin.event_sport.create');
             Route::post('/store', [EventSportControllerForAdmin::class, 'store'])->name('admin.event_sport.store');
@@ -442,7 +442,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Sponsor - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'sponsor', 'middleware' => 'can:isEditor'], function () {
+        Route::group(['prefix' => 'sponsor'], function () {
             Route::get('/', [EventSponsorControllerForAdmin::class, 'index'])->name('admin.event_sponsor.index');
             Route::get('/create', [EventSponsorControllerForAdmin::class, 'create'])->name('admin.event_sponsor.create');
             Route::post('/store', [EventSponsorControllerForAdmin::class, 'store'])->name('admin.event_sponsor.store');
@@ -456,7 +456,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Gallery - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'gallery', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'gallery'], function () {
 
         /* --------------------------------------- */
         /* Photo Gallery - Admin */
@@ -499,7 +499,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Team Member - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'committee', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'committee'], function () {
         Route::get('/', [TeamMemberControllerForAdmin::class, 'index'])->name('admin.team_member.index');
         Route::get('/create', [TeamMemberControllerForAdmin::class, 'create'])->name('admin.team_member.create');
         Route::post('/store', [TeamMemberControllerForAdmin::class, 'store'])->name('admin.team_member.store');
@@ -512,7 +512,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     // /* --------------------------------------- */
     // /* FAQ - Admin */
     // /* --------------------------------------- */
-    // Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
+    // Route::group(['prefix' => 'faq'], function () {
     //     Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
     //     Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
     //     Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
@@ -535,7 +535,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Social Media - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'social-media', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'social-media'], function () {
         Route::get('/', [SocialMediaItemController::class, 'index'])->name('admin.social_media.index');
         Route::get('/create', [SocialMediaItemController::class, 'create'])->name('admin.social_media.create');
         Route::post('/store', [SocialMediaItemController::class, 'store'])->name('admin.social_media.store');
@@ -548,7 +548,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Subscriber - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'subscriber', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'subscriber'], function () {
         Route::get('/', [SubscriberController::class, 'index'])->name('admin.subscriber.index');
         Route::get('/create', [SubscriberController::class, 'create'])->name('admin.subscriber.create');
         Route::post('/store', [SubscriberController::class, 'store'])->name('admin.subscriber.store');
@@ -675,5 +675,5 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('event', [RegistrationEventController::class, 'index'])->name('admin.register.event');
     });
 
-    Route::get('/file-manager', FileManagerController::class)->middleware('can:isAdmin')->name('admin.file_manager');
+    Route::get('/file-manager', FileManagerController::class)->name('admin.file_manager');
 });

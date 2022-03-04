@@ -29,8 +29,10 @@ class PhotoChangeController extends Controller
         ]);
 
         // Unlink old photo
-        if($request->current_photo) {
-            unlink(public_path('uploads/'.$request->current_photo));
+        if ($request->current_photo) {
+            if (file_exists(public_path('uploads/' . $request->current_photo))) {
+                unlink(public_path('uploads/' . $request->current_photo));
+            }
             preg_match('/(user-)(.*).(jpg|png|jpeg|gif)/', $request->current_photo, $user_photo_split);
             $fileName = $user_photo_split[1] . $user_photo_split[2] . '.' . $request->file('photo')->getClientOriginalExtension();
         } else {
@@ -38,17 +40,13 @@ class PhotoChangeController extends Controller
         }
 
         // Uploading new photo
-        
+
         $request->file('photo')->move(public_path('uploads/'), $fileName);
 
         $data['photo'] = $fileName;
 
-        User::where('id',auth()->user()->id)->update($data);
+        User::where('id', auth()->user()->id)->update($data);
 
         return redirect()->back()->with('success', 'Photo is updated successfully!');
-
-
-
     }
-
 }

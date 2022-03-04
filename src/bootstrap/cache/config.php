@@ -343,7 +343,7 @@
   'file-manager' => 
   array (
     'configRepository' => 'Alexusmai\\LaravelFileManager\\Services\\ConfigService\\DefaultConfigRepository',
-    'aclRepository' => 'Alexusmai\\LaravelFileManager\\Services\\ACLService\\ConfigACLRepository',
+    'aclRepository' => 'App\\FileManager\\ACL\\UsersACLRepository',
     'routePrefix' => 'file-manager',
     'diskList' => 
     array (
@@ -359,14 +359,14 @@
     'allowFileTypes' => 
     array (
     ),
-    'hiddenFiles' => true,
+    'hiddenFiles' => false,
     'middleware' => 
     array (
       0 => 'web',
     ),
-    'acl' => false,
+    'acl' => true,
     'aclHideFromFM' => true,
-    'aclStrategy' => 'blacklist',
+    'aclStrategy' => 'whitelist',
     'aclRulesCache' => NULL,
     'aclRules' => 
     array (
