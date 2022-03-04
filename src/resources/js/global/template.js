@@ -24,7 +24,11 @@ const newsCardTemplate = (slug, title, summary, photo, category, created_at) => 
             ${title}
         </h3>
         <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-            <span>${created_at}</span>
+            <span>${new Date(created_at).toLocaleDateString('en-GB', {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    })}</span>
         </p>
         <p class="card-text">
             ${summary}
