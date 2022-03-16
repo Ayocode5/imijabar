@@ -12,10 +12,10 @@
 
         <!-- Carousel List Berita Terbaru -->
         <div class="carousel_head_list_berita">
-            <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
+            <div id="newsCarousel" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
                     @foreach ($news as $key => $v)
-                        <li data-target="#demo" data-slide-to="{{ $loop->iteration - 1 }}"
+                        <li data-target="#newsCarousel" data-slide-to="{{ $loop->iteration - 1 }}"
                             class="@if ($loop->iteration == 1) active @endif"></li>
                     @endforeach
                 </ul>
@@ -44,10 +44,10 @@
                         </div>
                     @endforeach
                 </div>
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <a class="carousel-control-prev" href="#newsCarousel" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
+                <a class="carousel-control-next" href="#newsCarousel" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>

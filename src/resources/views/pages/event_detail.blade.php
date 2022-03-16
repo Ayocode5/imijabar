@@ -4,23 +4,26 @@
     @include('layouts.components.breadcrumb')
 
     <header id="header_detail_event">
-        <div class="wrap_image_header_detail_event position-relative">
-            <div class="conten_overlay_header_image_detail_event">
-                <h1>{{ $event->name }}</h1>
-                <p>
-                    {{ $event->location }}
-                    {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
-                    -
-                    {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F Y') }}
-                </p>
-                <p>--- Presented by: {{ $event->organizer }} ---</p>
-                <a href="{{ $event->link ?? '#' }}">
-                    <button class="btn_daftar_event_detail">Daftar Disini</button>
-                </a>
+        <div class="wrap_header_detail_event">
+            <div class="card border-0">
+                <img class="img-fluid card-img featured_image_event_detail"
+                    src="{{ asset('uploads/') . "/$event->photo" }}" alt="featured image">
+
+                <div class="card-img-overlay overlay_image_event_detail d-flex">
+                    <div class="my-auto mx-auto text-center content_overlay_image_event_detail">
+                        <h4 class="card-title">{{ $event->name }}</h4>
+                        <h6 class="text location_detail_event">{{ $event->location }}
+                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
+                            -
+                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F Y') }}</h6>
+
+                        <p class="card-text">--- Presented by: {{ $event->organizer }} ---</p>
+                        <a href="{{ $event->link ?? '#' }}">
+                            <button class="btn_daftar_event_detail">Daftar Disini</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="overlay_image_detail_event">
-            </div>
-            <img class="featured_image" src="{{ asset('uploads/') . "/$event->photo" }}" alt="featured image">
         </div>
     </header>
 

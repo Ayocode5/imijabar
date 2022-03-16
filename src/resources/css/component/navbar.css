@@ -22,20 +22,20 @@
     max-height: 90px;
 }
 
-.toggle.ios,
-.toggle-on.ios,
-.toggle-off.ios {
-    border-radius: 20rem;
-}
-
-.toggle.ios .toggle-handle {
-    border-radius: 20rem;
-}
-
 .nav-item {
     font-family: 'Barlow', sans-serif;
     font-weight: 600;
     font-size: 1em;
+}
+
+.nav-item a:hover {
+    transition: all 0.5s ease-in-out;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    border-radius: 5px;
+    text-decoration-thickness: 3px;
+    text-decoration-color: hsl(215, 79%, 64%);
+
 }
 
 .switch_language {
