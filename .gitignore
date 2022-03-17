@@ -6,6 +6,7 @@
 /src/public/js/
 /src/public/css/
 /src/public/uploads/*
+!/src/public/uploads/.gitkeep
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key
