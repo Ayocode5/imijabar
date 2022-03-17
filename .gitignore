@@ -1,12 +1,11 @@
 /containers/mysql/*
 /src/node_modules
 /src/public/hot
-/src/public/js
-/src/public/css
 # /src/bootstrap
 # /src/storage/app/public/*
-/src/public/js
-/src/public/css
+/src/public/js/
+/src/public/css/
+/src/public/uploads/*
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key
