@@ -19,7 +19,7 @@
                             {{ Illuminate\Support\Carbon::parse($categories[0]->created_at)->format('d F Y') }}
                         </h2>
                         <div class="col-12 col-md-3 border_content_gallery"></div>
-                        <select onchange="location = this.value;" class="col-12 col-md-4 category_gallery"
+                        {{-- <select onchange="location = this.value;" class="col-12 col-md-4 category_gallery"
                             name="filterCategoryGallery" id="filterCategoryGallery">
                             <option style="display:none" value disabled selected>Category</option>
                             @foreach ($categories as $category)
@@ -28,8 +28,55 @@
                                     categories="{{ $category->slug }}" value="{{ $category->slug }}">
                                     {{ $category->name }}</option>
                             @endforeach
-                        </select>
+                        </select> --}}
+                        <!-- Button trigger modal -->
+                        <button type="button" class="col-12 col-md-4 button_Select_category_gallery btn btn-secondary"
+                            data-toggle="modal" data-target="#exampleModalCenter">
+                            Select Category
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal gallery_category fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-body">
+                                        <ul class="list_category_gallery" style="list-style-type:none">
+                                            <li>
+                                                <div class="form-check">
+                                                    <a href="www.google.com">
+
+                                                        <input onClick="window.location = 'http://google.com/';"
+                                                            class="form-check-input" type="radio" name="flexRadioDefault"
+                                                            id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            test Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                            Illum, ex ipsam. Reiciendis voluptate aliquam sapiente tenetur
+                                                            delectus illo magni dolorum soluta, officiis quibusdam facilis
+                                                            odit culpa incidunt quis est sint?
+                                                        </label>
+
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Default checked radio
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </section>
