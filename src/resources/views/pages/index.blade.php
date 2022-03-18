@@ -9,7 +9,7 @@
             <div class="d-flex flex-wrap berita-acara">
                 <div class="col-lg-8 col-12">
                     <h1 class="title-berita-acara">{{ $home_settings->news_title }}</h1>
-                    <!-- BERITA 1 -->
+                    <!-- BERITA -->
                     @foreach ($news as $news_data)
                         <a class="text-decoration-none text-dark" href="/news/{{ $news_data->blog_slug }}">
                             <div class="content-berita mb-3 mb-md-2">

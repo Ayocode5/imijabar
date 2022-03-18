@@ -29,7 +29,7 @@ class AboutController extends Controller
 			'footer_column3_heading',
 		)->first();
 		
-		$committee = DB::table('team_members')->get();
+		$committee = DB::table('team_members')->limit(7)->get();
 
 		$art_section_page = DB::table('dynamic_pages')
 			->select(

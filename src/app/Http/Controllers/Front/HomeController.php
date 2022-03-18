@@ -14,7 +14,7 @@ class HomeController extends Controller
 
 		$home_settings = DB::table('page_home_items')->first();
 
-		$committee = DB::table('team_members')->get();
+		$committee = DB::table('team_members')->limit(7)->get();
 
 		// dd($committee);
 
@@ -87,6 +87,8 @@ class HomeController extends Controller
 		// dd($news);
 		// dd($home_settings);
 		// dd($home_event_registration_section);
-		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_settings', 'home_event_registration_section', 'committee'));
+		$home_banner_default = DB::table('general_settings')->select('banner_home')->get();
+
+		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_banner_default', 'home_settings', 'home_event_registration_section', 'committee'));
 	}
 }

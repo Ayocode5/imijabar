@@ -40,43 +40,26 @@
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
-
-                                    <div class="modal-body">
-                                        
+                                    <div class="modal-body mb-4">
                                         <div class="list_category_gallery">
-                                            <div class="container">
-                                                <div class="card">
-                                                  <div class="card-body d-flex justify-content-center">
-                                                    <div class="form-check d-flex align-items-center pt-0">
-                                                        <input onClick="window.location = 'http://google.com/';" class="form-check-input" type="radio" name="flexRadioDefault"
-                                                            id="flexRadioDefault">
-                                                        <label class="form-check-label" for="flexRadioDefault">
-                                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati doloribus maxime cum reiciendis voluptatum quod voluptatem ex! Maxime impedit repellat aut similique omnis veritatis at provident harum nesciunt, accusantium possimus.
-                                                        </label>
+                                            @foreach ($categories as $key => $category)
+                                                <div class="container">
+                                                    <div class="card mb-1 mt-1">
+                                                        <div class="card-body d-flex justify-content-left">
+                                                            <div class="form-check d-flex align-items-center pt-0">
+                                                                <input onClick="window.location = '{{ request()->url . "?category=$category->slug" }}';"
+                                                                    class="form-check-input" type="radio"
+                                                                    @if (request()->category == $category->slug) checked @endif
+                                                                    name="flexRadioDefault" id="flexRadioDefault{{$key}}">
+                                                                <label class="form-check-label" for="flexRadioDefault{{$key}}">
+                                                                    {{ $category->name }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                  </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="container">
-                                                <div class="card">
-                                                  <div class="card-body d-flex justify-content-center">
-                                                    <div class="form-check">
-                                                        <input  onClick="window.location = 'http://facebook.com';"  class="form-check-input" type="radio" name="flexRadioDefault"
-                                                            id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            Default checked radio
-                                                        </label>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
-                                        
-                                 
-                                    </div>
-                                    <div class="modal-footer">
-
                                     </div>
                                 </div>
                             </div>
