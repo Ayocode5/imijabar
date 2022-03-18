@@ -42,34 +42,38 @@
                                 <div class="modal-content">
 
                                     <div class="modal-body">
-                                        <ul class="list_category_gallery" style="list-style-type:none">
-                                            <li>
-                                                <div class="form-check">
-                                                    <a href="www.google.com">
-
-                                                        <input onClick="window.location = 'http://google.com/';"
-                                                            class="form-check-input" type="radio" name="flexRadioDefault"
-                                                            id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            test Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Illum, ex ipsam. Reiciendis voluptate aliquam sapiente tenetur
-                                                            delectus illo magni dolorum soluta, officiis quibusdam facilis
-                                                            odit culpa incidunt quis est sint?
+                                        
+                                        <div class="list_category_gallery">
+                                            <div class="container">
+                                                <div class="card">
+                                                  <div class="card-body d-flex justify-content-center">
+                                                    <div class="form-check d-flex align-items-center pt-0">
+                                                        <input onClick="window.location = 'http://google.com/';" class="form-check-input" type="radio" name="flexRadioDefault"
+                                                            id="flexRadioDefault">
+                                                        <label class="form-check-label" for="flexRadioDefault">
+                                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati doloribus maxime cum reiciendis voluptatum quod voluptatem ex! Maxime impedit repellat aut similique omnis veritatis at provident harum nesciunt, accusantium possimus.
                                                         </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
 
-                                                    </a>
+                                            <div class="container">
+                                                <div class="card">
+                                                  <div class="card-body d-flex justify-content-center">
+                                                    <div class="form-check">
+                                                        <input  onClick="window.location = 'http://facebook.com';"  class="form-check-input" type="radio" name="flexRadioDefault"
+                                                            id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Default checked radio
+                                                        </label>
+                                                    </div>
+                                                  </div>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                        id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        Default checked radio
-                                                    </label>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                        </div>
+                                        
+                                 
                                     </div>
                                     <div class="modal-footer">
 

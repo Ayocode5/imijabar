@@ -60,15 +60,18 @@ body {
     width: 100%;
 }
 
-.list_category_gallery .form-check-input {
-    margin-top: 8px;
-}
 
 .list_category_gallery .form-check-label {
     font-weight: 500;
-    vertical-align: middle
 }
-
+.list_category_gallery input {
+    transform: scale(1.5);
+}
+.list_category_gallery label {
+    font-weight: 500;
+    font-size: 18px;
+    text-align: justify;
+}
 /* Head Galeri */
 
 #main_content_galeri {
