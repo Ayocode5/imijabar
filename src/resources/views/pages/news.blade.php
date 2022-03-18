@@ -14,35 +14,42 @@
         <div class="carousel_head_list_berita">
             <div id="newsCarousel" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    @foreach ($news as $key => $v)
-                        <li data-target="#newsCarousel" data-slide-to="{{ $loop->iteration - 1 }}"
-                            class="@if ($loop->iteration == 1) active @endif"></li>
-                    @endforeach
+                    @if (count($news) > 0)
+                        @foreach ($news as $key => $v)
+                            <li data-target="#newsCarousel" data-slide-to="{{ $loop->iteration - 1 }}"
+                                class="@if ($loop->iteration == 1) active @endif"></li>
+                        @endforeach
+                    @endif
                 </ul>
                 <div class="carousel-inner">
-                    @foreach ($news as $news_carousel)
-                        <div class="carousel-item @if ($loop->iteration == 1) active @endif">
-                            <div class="overlay_jumbotron">
+                    @if (count($news) > 0)
+                        @foreach ($news as $news_carousel)
+                            <div class="carousel-item @if ($loop->iteration == 1) active @endif">
+                                <div class="overlay_jumbotron">
 
+                                </div>
+                                <img src="{{ asset('uploads/') . "/$news_carousel->photo" }}"
+                                    alt="{{ $news_carousel->title }}" width="100%" height="600">
+                                <div class="carousel-caption">
+                                    <p class="date_author">
+                                        {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
+                                        Editor</p>
+                                    <h2>{{ $news_carousel->title }}</h2>
+                                    <p>
+                                        {{ $news_carousel->summary }}
+                                    </p>
+                                    <a href="{{ url("news/$news_carousel->slug") }}">
+                                        <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                            More
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                            <img src="{{ asset('uploads/') . "/$news_carousel->photo" }}"
-                                alt="{{ $news_carousel->title }}" width="100%" height="600">
-                            <div class="carousel-caption">
-                                <p class="date_author">
-                                    {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
-                                    Editor</p>
-                                <h2>{{ $news_carousel->title }}</h2>
-                                <p>
-                                    {{ $news_carousel->summary }}
-                                </p>
-                                <a href="{{ url("news/$news_carousel->slug") }}">
-                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                        More
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <img src="{{ asset('uploads/') . "/$news_banner_default->banner" }}"
+                            alt="News page default banner" width="100%" height="600">
+                    @endif
                 </div>
                 <a class="carousel-control-prev" href="#newsCarousel" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>

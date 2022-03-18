@@ -312,7 +312,7 @@
                 <div id="collapseEvent" class="collapse @if ($conName[1] == 'event') show @endif"
                     aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == '') active @endif"
+                        <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] === '' || $conName[2] == 'create' || $conName[2] == 'edit' ) active @endif"
                             href="{{ route('admin.event.index') }}">Events</a>
                         <a class="collapse-item @if ($conName[1] === 'event' && $conName[2] == 'category') active @endif"
                             href="{{ route('admin.event_category.index') }}">Categories</a>

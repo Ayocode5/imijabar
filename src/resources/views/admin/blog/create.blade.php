@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Summary *</label>
-                    <textarea required name="blog_content_short" class="form-control h_100" cols="30"
+                    <textarea required name="blog_content_short" class="form-control" cols="30"
                         rows="10">{{ old('blog_content_short') }}</textarea>
                 </div>
                 <div class="form-group">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
-                    <textarea name="seo_meta_description" class="form-control h_100" cols="30"
+                    <textarea name="seo_meta_description" class="form-control" cols="30"
                         rows="10">{{ old('seo_meta_description') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>

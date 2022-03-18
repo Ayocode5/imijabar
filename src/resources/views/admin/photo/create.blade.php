@@ -33,7 +33,7 @@
                                 value="{{ old('photo_order', '0') }}">
                         </div>
                         <div class="form-group">
-                            <label for="">Category</label>
+                            <label for="">Category *</label>
                             <select required type="text" name="category_id" class="form-control"
                                 value="{{ old('category_id') }}">
                                 @if (count($categories) != 0)

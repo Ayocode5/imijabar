@@ -54,6 +54,8 @@ class IndexController extends Controller
 			}
 		}
 
-		return view('pages.news', compact('settings', 'news', 'news_categories', 'page_news_settings'));
+		$news_banner_default = DB::table('general_settings')->select('banner_news as banner')->first();
+
+		return view('pages.news', compact('settings', 'news', 'news_categories', 'news_banner_default', 'page_news_settings'));
 	}
 }

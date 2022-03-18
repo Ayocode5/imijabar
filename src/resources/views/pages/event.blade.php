@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-{{-- {{ dd($sports)}} --}}
-
 @section('content')
     @include('layouts.components.breadcrumb')
 
@@ -13,36 +11,44 @@
         <div class="carousel_head_list_events">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    @foreach ($events as $key => $item)
-                        <li data-target="#demo" data-slide-to="{{ $key }}"
-                            class="@if ($key == 0) active @endif"></li>
-                    @endforeach
+                    @if (count($events) > 0)
+                        @foreach ($events as $key => $item)
+                            <li data-target="#demo" data-slide-to="{{ $key }}"
+                                class="@if ($key == 0) active @endif"></li>
+                        @endforeach
+                    @endif
                 </ul>
                 {{-- Carousel Banner --}}
                 <div class="carousel-inner">
-                    @foreach ($events as $key => $crl_event)
-                        <div class="carousel-item @if ($key == 0) active @endif">
-                            <div class="overlay_jumbotron">
+                    @if (count($events) > 0)
+                        @foreach ($events as $key => $crl_event)
+                            <div class="carousel-item @if ($key == 0) active @endif">
+                                <div class="overlay_jumbotron">
 
+                                </div>
+                                <img src="{{ asset('uploads') . "/$crl_event->photo" }}" alt="{{ $crl_event->name }}"
+                                    width="100%" height="600">
+                                <div class="carousel-caption">
+                                    <p class="date_author">
+                                        {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->format('d F Y') }}
+                                        | Editor</p>
+                                    <h2>{{ $crl_event->name }}</h2>
+                                    <p>
+                                        {{ $crl_event->summary }}
+                                    </p>
+                                    <a href="/event/{{ $crl_event->slug }}">
+                                        <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                            More
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                            <img src="{{ asset('uploads') . "/$crl_event->photo" }}" alt="Los Angeles" width="100%"
-                                height="600">
-                            <div class="carousel-caption">
-                                <p class="date_author">
-                                    {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->format('d F Y') }}
-                                    | Editor</p>
-                                <h2>{{ $crl_event->name }}</h2>
-                                <p>
-                                    {{ $crl_event->summary }}
-                                </p>
-                                <a href="/event/{{ $crl_event->slug }}">
-                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                        More
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <img src="{{ asset('uploads') . "/$event_banner_default->banner" }}"
+                            alt="Default Event Page Banner" width="100%" height="600">
+                    @endif
+
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>

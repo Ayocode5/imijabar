@@ -59,13 +59,15 @@
             </div>
         </section>
 
-        {{-- LIST EVENTS --}}
-        <section class="pb-5 mt-4" id="list_card_events">
-            <div class="wrap_list_events">
-                <div class="row row-cols-1 row-cols-md-2">
-                    @if (count($events) == 0)
-                        <p class="event_not_found">Oops, Event tidak ditemukan</p>
-                    @else
+        @if (count($events) == 0)
+            {{-- <p class="event_not_found">Oops, Event tidak ditemukan</p> --}}
+            @include('layouts.components.404')
+        @else
+            {{-- LIST EVENTS --}}
+            <section class="pb-5 mt-4" id="list_card_events">
+                <div class="wrap_list_events">
+                    <div class="row row-cols-1 row-cols-md-2">
+
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
@@ -126,21 +128,23 @@
                                 </a>
                             </div>
                         @endforeach
-                    @endif
+
+                    </div>
                 </div>
-            </div>
-            {{-- @if (count($events) != 0)
+                {{-- @if (count($events) != 0)
                 <button class="btn_load_more_list_events mx-auto d-block">
                     Load More
                 </button>
             @endif --}}
-            <div id="loader" class="spinner-border text-secondary" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div id="load_content_events">
+                <div id="loader" class="spinner-border text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div id="load_content_events">
 
-            </div>
-        </section>
+                </div>
+            </section>
+        @endif
+
 
     </main>
 @endsection

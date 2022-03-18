@@ -87,7 +87,7 @@ class HomeController extends Controller
 		// dd($news);
 		// dd($home_settings);
 		// dd($home_event_registration_section);
-		$home_banner_default = DB::table('general_settings')->select('banner_home')->get();
+		$home_banner_default = DB::table('general_settings')->select('banner_home as banner')->first();
 
 		return view('pages.index', compact('news', 'events', 'event_categories', 'settings', 'home_banner_default', 'home_settings', 'home_event_registration_section', 'committee'));
 	}

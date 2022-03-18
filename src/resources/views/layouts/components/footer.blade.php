@@ -20,7 +20,7 @@
                         {{-- {{ dd($social_media)}} --}}
 
                         @foreach ($social_media as $item)
-                            <a style="color: #263840" class="text-decoration-none" href="{{ $item->social_url }}"><i
+                            <a class="text-decoration-none" href="{{ $item->social_url }}"><i
                                     class="{{ $item->social_icon }}"></i></a> &nbsp;&nbsp;
                         @endforeach
 

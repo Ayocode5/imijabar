@@ -82,6 +82,8 @@ class IndexController extends Controller
             }
         }
 
-        return view('pages.event', compact('events', 'categories', 'sports', 'settings', 'page_event_settings'));
+        $event_banner_default = DB::table('general_settings')->select('banner_event as banner')->first();
+
+        return view('pages.event', compact('events', 'categories', 'sports', 'event_banner_default', 'settings', 'page_event_settings'));
     }
 }

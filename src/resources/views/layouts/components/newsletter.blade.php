@@ -6,7 +6,7 @@
                     {{ $home_settings->newsletter_detail }}
                 </span></h3>
 
-            <input placeholder="example@gmail.com" class="input_newsletter" type="text">
+            <input placeholder="contoh@gmail.com" class="input_newsletter" type="text">
             <img class="button_newsletter" src="{{ asset('images') }}/send_button.svg" alt="sendButton">
             <div class="invalid-feedback">
                 <h6 class="input-newsletter-invalid"></h6>

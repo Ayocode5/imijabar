@@ -17,7 +17,9 @@
                             -
                             {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F Y') }}</h6>
 
-                        <p class="card-text">--- Presented by: {{ $event->organizer }} ---</p>
+                        @if ($event->organizer)
+                            <p class="card-text">Presented by: {{ $event->organizer }}</p>
+                        @endif
                         <a href="{{ $event->link ?? '#' }}">
                             <button class="btn_daftar_event_detail">Daftar Disini</button>
                         </a>

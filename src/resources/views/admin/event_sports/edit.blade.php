@@ -40,11 +40,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Change Image *</label><br>
+                    <label for="">Change Image</label><br>
                     <input type="file" id="image" name="image" value="{{ old('image') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Category *</label><br>
+                    <label for="">Category</label><br>
                     <select required name="category_id" id="category_id" class="selectpicker">
                         @if (count($categories) < 0)
                             <option value="">No Event Category available</option>

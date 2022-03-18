@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.components.jumbotron', ['news' => $news])
+    @include('layouts.components.jumbotron', ['news' => $news, 'default_banner' => $home_banner_default])
 
     <main>
         <!-- START BERITA & EVENT -->
