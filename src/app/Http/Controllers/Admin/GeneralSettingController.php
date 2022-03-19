@@ -27,8 +27,9 @@ class GeneralSettingController extends Controller
         ]);
 
         // Unlink old photo
-        is_null($request->current_photo) ? 
-           null : unlink(public_path('uploads/'.$request->current_photo));
+        if(!is_null($request->current_photo) && file_exists(public_path('uploads/'.$request->current_photo))) {
+            unlink(public_path('uploads/'.$request->current_photo));
+        }
 
         // Uploading new photo
         $ext = $request->file('logo')->extension();
@@ -56,7 +57,10 @@ class GeneralSettingController extends Controller
         ]);
 
         // Unlink old photo
-        unlink(public_path('uploads/'.$request->current_photo));
+        if(!is_null($request->current_photo) && file_exists(public_path('uploads/'.$request->current_photo))) {
+            unlink(public_path('uploads/'.$request->current_photo));
+        }
+        // unlink(public_path('uploads/'.$request->current_photo));
 
         // Uploading new photo
         $ext = $request->file('favicon')->extension();
@@ -85,7 +89,10 @@ class GeneralSettingController extends Controller
         ]);
 
         // Unlink old photo
-        unlink(public_path('uploads/'.$request->current_photo));
+        if(!is_null($request->current_photo) && file_exists(public_path('uploads/'.$request->current_photo))) {
+            unlink(public_path('uploads/'.$request->current_photo));
+        }
+        // unlink(public_path('uploads/'.$request->current_photo));
 
         // Uploading new photo
         $ext = $request->file('login_bg')->extension();
