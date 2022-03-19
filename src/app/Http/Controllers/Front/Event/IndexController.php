@@ -65,7 +65,7 @@ class IndexController extends Controller
                     $s_query->where('slug', $events_sport_filter);
                 }
             })
-            ->orderBy('event_start_date', 'DESC')
+            ->orderBy('event_start_date', 'ASC')
             ->paginate(6);
 
 

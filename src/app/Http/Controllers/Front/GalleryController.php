@@ -49,6 +49,8 @@ class GalleryController extends Controller
         $galleries = collect();
 
         $galleries = $galleries->merge($videos)->merge($photos);
+        $galleries->sortBy('created_at');
+        $galleries = $galleries->values();
 
         $galleries->map(function ($gallery) {
             if ($this->get_class_name(get_class($gallery)) == 'Video') {
