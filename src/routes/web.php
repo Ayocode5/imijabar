@@ -671,8 +671,13 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
      */
     Route::group(['prefix' => 'registration'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
+        Route::get('kis/registrant/{index}/export', [KisController::class, 'generatePDF']);
+
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
+        Route::get('club/registrant/{index}/export', [ClubController::class, 'generatePDF']);
+
         Route::get('event', [RegistrationEventController::class, 'index'])->name('admin.register.event');
+        Route::get('event/registrant/{index}/export', [RegistrationEventController::class, 'generatePDF']);
     });
 
     Route::get('/file-manager', FileManagerController::class)->name('admin.file_manager');

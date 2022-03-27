@@ -19,8 +19,8 @@
                             <th>SL</th>
                             <th>Name</th>
                             <th>Club</th>
-                            {{-- <th>Status</th>
-                            <th>Action</th> --}}
+                            {{-- <th>Status</th> --}} 
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,12 +29,12 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $value['Nama'] }}</td>
                                 <td>{{ $value['Nama Klub'] }}</td>
-                                {{-- <td></td>
+                                {{-- <td></td> --}}
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i
-                                            class="fas fa-trash-alt"></i></a>
-                                </td> --}}
+                                    <a href="{{ url('admin/registration/event/registrant/' . $loop->iteration . '/export') }}" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                    {{-- <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i
+                                            class="fas fa-trash-alt"></i></a> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
