@@ -1,8 +1,11 @@
 <!-- START NAVBAR -->
-<nav class="my_nav navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<nav class="my_nav navbar sticky-top navbar-expand-lg navbar-light bg-light border-bottom">
     <div style="margin: -9px 0;" class="container-fluid">
-        <a class="navbar-brand" href="/">
+
+        <a style="font-size: 16px;" class="navbar-brand" href="/">
             <img src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
+            <p style="margin: 0; padding:0; display:inline-block; vertical-align: middle; width: 100%; max-width: 160px;white-space:normal; font-size: 12px; font-weight: 700"
+                class="navbar-text">Ikatan Motor Indonesia (IMI) Provinsi Jawa Barat</p>
         </a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +66,7 @@
                         <label class="label_switch_language" for="chk">
                             <div class="ball"></div>
                             <div class="flags">
-                                <img class="ball_us flag" src="{{ asset('images') }}/flag-us.svg"
-                                    alt="us flag">
+                                <img class="ball_us flag" src="{{ asset('images') }}/flag-us.svg" alt="us flag">
                                 <img class="ball_id flag" src="{{ asset('images') }}/flag-indonesia.svg"
                                     alt="is flag">
                             </div>
