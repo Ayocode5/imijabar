@@ -58,6 +58,19 @@ class SubscriptionController extends Controller
 
     public function verify()
     {
+        $settings = DB::table('general_settings')->select(
+			'logo',
+			'top_bar_email',
+			'top_bar_phone',
+			'footer_address',
+			'footer_email',
+			'footer_phone',
+			'footer_copyright',
+			'footer_column1_heading',
+			'footer_column2_heading',
+			'footer_column3_heading',
+		)->first();
+
         $email_from_url = request()->segment(count(request()->segments()));
         $aa = DB::table('subscribers')->where('subs_email', $email_from_url)->first();
 
@@ -75,6 +88,6 @@ class SubscriptionController extends Controller
         $data['subs_token'] = '';
         Subscriber::where('subs_email', $email_from_url)->update($data);
 
-        return 'Subscription is successful. Thank you.';
+        return view('pages.email_verified', compact('settings'));
     }
 }

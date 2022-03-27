@@ -13,7 +13,7 @@ body {
 }
 
 #content-404 {
-  margin-top: 100px;
+  margin-top: 20px;
 }
 
 .title-404 {
@@ -44,7 +44,7 @@ body {
 
 @media screen and (min-width: 992px) {
   .img-404 {
-    width: 860px;
+    width: 500px;
     height: 570px;
   }
 }
