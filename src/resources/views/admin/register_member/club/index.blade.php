@@ -30,7 +30,7 @@
                             <td>{{ $value['Total Member'] }}</td>
                             {{-- <td></td> --}}
                             <td>
-                                <a href="{{ url('admin/registration/club/registrant/' . $loop->iteration . '/export') }}" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <a href="{{ url('admin/registration/club/registrant/' . $loop->iteration . '/export') }}" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i> Export to PDF</a>
                                 {{-- <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a> --}}
                             </td>
                         </tr>
