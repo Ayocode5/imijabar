@@ -117,6 +117,7 @@ class GeneralSettingController extends Controller
     public function topbar_update(Request $request)
     {
 
+        $data['top_bar_organization_name'] = $request->get('top_bar_organization_name');
         $data['top_bar_email'] = $request->get('top_bar_email');
         $data['top_bar_phone'] = $request->get('top_bar_phone');
         $data['top_bar_social_status'] = $request->get('top_bar_social_status');
