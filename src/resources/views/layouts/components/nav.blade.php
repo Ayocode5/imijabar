@@ -74,14 +74,7 @@
                         </label>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link mr-lg-3">
-                        <img class="mb-1 mr-2" src="{{ asset('images') }}/Telephone-Icon.svg"
-                            alt="icon contact telephone">
-                        {{-- 0857-XXXX-XXXX --}}
-                        {{ $settings?->top_bar_phone }}
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
                         <img class="mb-1 mr-2" src="{{ asset('images') }}/Email-Icon.svg"
