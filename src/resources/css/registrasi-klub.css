@@ -49,10 +49,57 @@ body {
     font-size: 1em;
 }
 
-.feature_image_pendaftaran_klub img {
-    width: 60%;
+/*  */
+
+.wrap_header_club_register {
+    padding: 0 8%;
 }
 
+.overlay_image_club_register {
+    background: rgba(38, 56, 64, 0.5);
+    /* border-radius: 0px 0px 10px 10px; */
+}
+
+.content_overlay_image_club_register,
+.content_overlay_image_club_register>.card-title {
+    font-family: 'Tinos', serif;
+    text-align: center;
+    font-weight: 700 !important;
+    color: #fff;
+}
+
+.content_overlay_image_club_register>.card-title {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.featured_image_club_register {
+    min-height: 250px;
+    object-fit: cover;
+}
+
+.btn_daftar_club {
+    color: #f8f8f8;
+    background-color: transparent;
+    outline: none;
+    border: 3px solid #F4F4F9;
+    transform: translate(0, 0);
+    transition: all 0.8s ease-in-out;
+    padding: 4px 16px;
+    border-radius: 5px;
+}
+
+.btn_daftar_club:hover,
+.btn_daftar_club:active,
+.btn_daftar_club:focus {
+    outline: none;
+    border: none;
+    transform: translate(0, -5px);
+    background-color: #FFCE51;
+    color: #111111;
+}
+
+/*  */
 .fitur_pengembangan_regis_klub {
     margin-top: 16px;
     text-align: center;
@@ -148,10 +195,20 @@ body {
         width: 80px;
     }
 
-    .feature_image_pendaftaran_klub img {
-        width: 50%;
+    /*  */
+    .wrap_header_club_register {
+        padding: 0 50px;
     }
 
+    .featured_image_club_register {
+        min-height: 370px;
+    }
+
+    .content_overlay_image_club_register>.card-title {
+        font-size: 32px;
+    }
+
+    /*  */
     .fitur_pengembangan_regis_klub {
         margin-top: 24px;
         padding: 0 16%;
@@ -193,9 +250,22 @@ body {
         width: 140px;
     }
 
-    .feature_image_pendaftaran_klub img {
-        width: 30%;
+    /*  */
+
+    .wrap_header_club_register {
+        padding: 0 100px;
     }
+
+    .featured_image_club_register {
+        min-height: 377px;
+    }
+
+    .content_overlay_image_club_register>.card-title {
+        font-size: 48px;
+
+    }
+
+    /*  */
 
     .fitur_pengembangan_regis_klub {
         margin-top: 32px;

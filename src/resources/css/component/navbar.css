@@ -17,6 +17,10 @@
     border-bottom: 1px solid rgba(38, 56, 64, 0.5)
 }
 
+.wrap_navbar {
+    margin: 0 0;
+}
+
 .my_nav .navbar-brand img {
     max-width: 60px;
     max-height: 90px;
@@ -114,6 +118,10 @@
 
 
 @media screen and (min-width: 992px) {
+    .wrap_navbar {
+        margin: 0 50px;
+    }
+
     .switch_language {
         margin-top: 5px;
         margin-left: 0;

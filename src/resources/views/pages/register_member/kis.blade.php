@@ -4,7 +4,30 @@
     @include('layouts.components.breadcrumb')
 
     <section id="header_page_pendaftaran_kis">
+
         <div class="head_pendaftaran_kis">
+            <h1>{{ $section1->name }}</h1>
+            <p>{!! $section1->content1 !!}</p>
+        </div>
+
+        <div class="wrap_header_kis_register">
+            <div class="card border-0">
+                <img class="img-fluid card-img featured_image_kis_register"
+                    src="{{ asset('uploads') . "/$section1->banner" }}" alt="featured image kis">
+
+                <div class="card-img-overlay overlay_image_kis_register d-flex">
+                    <div class="my-auto mx-auto text-center content_overlay_image_kis_register">
+                        <h4 class="card-title">Belum Punya Kartu Izin Start?, <br> Klik Tombol Dibawah Ini:</h4>
+                    
+                        <a href="{{ $section1->link }}">
+                            <button class="btn_daftar_kis">Daftar Disini</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="head_pendaftaran_kis">
             <h1>{{ $section1->name }}</h1>
 
             <p>{!! $section1->content1 !!}</p>
@@ -17,7 +40,7 @@
         </div>
 
         <a class="daftar_kis_individu text-decoration-none text-dark" href="{{ $section1->link }}"><button>Daftar
-                Sekarang</button></a>
+                Sekarang</button></a> -->
     </section>
 
     <main id="main_registrasi_kis_individu">

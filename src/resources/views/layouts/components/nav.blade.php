@@ -1,9 +1,9 @@
 <!-- START NAVBAR -->
-<nav class="my_nav navbar sticky-top navbar-expand-lg navbar-light bg-light border-bottom">
-    <div style="margin: -9px 0;" class="container-fluid">
+<nav class="my_nav navbar sticky-top navbar-expand-lg navbar-light bg-light border-bottom py-2">
+    <div class="container-fluid wrap_navbar">
 
         <a style="font-size: 16px;" class="navbar-brand" href="/">
-            <img src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
+            <img style="height: 50px; width: 42px" src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
             <p style="margin: 0; padding:0; display:inline-block; vertical-align: middle; width: 100%; max-width: 160px;white-space:normal; font-size: 12px; font-weight: 700"
                 class="navbar-text">Ikatan Motor Indonesia (IMI) Provinsi Jawa Barat</p>
         </a>
@@ -12,33 +12,48 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto navbar_list">
-                <li class="nav-item mr-lg-3">
+            <ul class="navbar-nav mx-auto navbar_list">
+                <!-- <li class="nav-item mx-lg-2">
                     @if ($menus[0]->status)
                         <a class="nav-link @if (in_array('about', $url)) active @endif"
                             href="{{ url('/about') }}">{{ $menus[0]->name }}<span
                                 class="sr-only">(current)</span></a>
                     @endif
+                </li> -->
+                <li class="nav-item mx-lg-2 dropdown">
+                    @if ($menus[0]->status)
+                        <a class="nav-link dropdown-toggle  @if (in_array('about', $url)) active @endif" href="#"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{ $menus[0]->name }}
+                        </a>
+                    @endif
+                    <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('/about') }}">Organisasi</a>
+                            <a class="dropdown-item" href="/car">Mobil</a>
+                            <a class="dropdown-item" href="/motor">Motor</a>
+                            <a class="dropdown-item" href="/mobility">Mobility</a>
+                    </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-lg-2">
                     @if ($menus[1]->status)
-                        <a class="nav-link mr-lg-3 @if (in_array('news', $url)) active @endif"
+                        <a class="nav-link @if (in_array('news', $url)) active @endif"
                             href="/news">{{ $menus[1]->name }}</a>
                     @endif
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-lg-2">
                     @if ($menus[2]->status)
-                        <a class="nav-link mr-lg-3 @if (in_array('event', $url)) active @endif"
+                        <a class="nav-link @if (in_array('event', $url)) active @endif"
                             href="/event">{{ $menus[2]->name }}</a>
                     @endif
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-lg-2">
                     @if ($menus[3]->status)
-                        <a class="nav-link mr-lg-3 @if (in_array('gallery', $url)) active @endif"
+                        <a class="nav-link @if (in_array('gallery', $url)) active @endif"
                             href="/gallery?category={{ $first_gallery_category->slug ?? '' }}">{{ $menus[3]->name }}</a>
                     @endif
                 </li>
-                <li class="nav-item dropdown mr-lg-3">
+                <li class="nav-item mx-lg-2 dropdown">
                     @if ($menus[4]->status)
                         <a class="nav-link dropdown-toggle  @if (in_array('pendaftaran', $url)) active @endif" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -75,13 +90,13 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link mr-lg-3">
                         <img class="mb-1 mr-2" src="{{ asset('images') }}/Email-Icon.svg"
                             alt="icon contact email">
                         {{ $settings?->top_bar_email }}
                     </a>
-                </li>
+                </li> -->
             </ul>
 
 

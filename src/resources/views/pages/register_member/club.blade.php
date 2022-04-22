@@ -8,7 +8,26 @@
             <h1>{{ $section1->name }}</h1>
             <p>{!! $section1->content1 !!}</p>
         </div>
-        <div class="feature_image_pendaftaran_kis">
+
+        <div class="wrap_header_club_register">
+            <div class="card border-0">
+                <img class="img-fluid card-img featured_image_club_register"
+                    src="{{ asset('uploads') . "/$section1->banner" }}" alt="featured image kis">
+
+                <div class="card-img-overlay overlay_image_club_register d-flex">
+                    <div class="my-auto mx-auto text-center content_overlay_image_club_register">
+                        <h4 class="card-title">Daftarkan Klub mu, dan Jadilah Bagian Resmi Dari IMI Jawa Barat</h4>
+                    
+                        <a href="{{ $section1->link }}">
+                            <button class="btn_daftar_club">Daftar Disini</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="feature_image_pendaftaran_kis">
             <img class="d-block mx-auto" src="{{ asset('uploads/') . "/$section1->banner" }}"
                 alt="image pendaftaran kis">
         </div>
@@ -17,7 +36,7 @@
         </div>
 
         <a class="daftar_kis_individu text-decoration-none text-dark" href="{{ $section1->link }}"><button>Daftar
-                Sekarang</button></a>
+                Sekarang</button></a> -->
     </section>
 
     <main id="main_registrasi_kis_individu">

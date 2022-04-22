@@ -5,11 +5,11 @@
             <div class="col-12 col-lg-5  mb-3 mb-lg-0 align-self-center">
                 <div class="row mx-0">
                     <div class="col-12 col-sm-3">
-                        <img class="d-block mb-4 logo_footer" src="{{ asset('uploads/') . "/$settings?->logo" }}"
+                        <img style="height: 75px; width: 57px" class="d-block mb-4 logo_footer" src="{{ asset('uploads/') . "/$settings?->logo" }}"
                             alt="logo imi jawa barat">
                     </div>
                     <div class="footer_ttd col-12 col-sm-9 text-sm-right text-center position-relative">
-                        <p>Optimization to Execellence.</p>
+                        <p>IMI Jabar Juara</p>
                         <p class="text_ttd_footer">IMI Jawa Barat</p>
                         <img class="position-absolute line_border" src="{{ asset('images') }}/line_blue.svg"
                             alt="line blue">
