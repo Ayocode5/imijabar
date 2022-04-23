@@ -76,11 +76,9 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-
         $this->authorize('create', Event::class);
 
         $event = new Event();
-
         $data = $request->only($event->getFillable());
 
         $request->validate([
@@ -167,7 +165,6 @@ class EventController extends Controller
                 $data['event_featured_photo'] = $fileName;
             }
         } else {
-
             $data['event_featured_photo'] = $event->event_featured_photo;
         }
 
@@ -180,8 +177,8 @@ class EventController extends Controller
 
     public function destroy($id)
     {
-
         $this->authorize('delete', Event::class);
+
         $event = Event::findOrFail($id);
         unlink(public_path('uploads/' . $event->event_featured_photo));
         $event->delete();

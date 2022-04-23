@@ -20,7 +20,7 @@ class EventSportController extends Controller
     {
         $this->authorize('viewAny', Sport::class);
         $sports = Sport::with(['category' => fn ($q) => $q->select('id', 'name'),])->get();
-        return view('admin.event_sports.index', compact('sports'));
+        return view('admin.event.sports.index', compact('sports'));
     }
 
     /**
@@ -32,7 +32,7 @@ class EventSportController extends Controller
     {
         $this->authorize('create', Sport::class);
         $categories = DB::table('event_categories')->get();
-        return view('admin.event_sports.create', compact('categories'));
+        return view('admin.event.sports.create', compact('categories'));
     }
 
     /**
@@ -64,7 +64,7 @@ class EventSportController extends Controller
             'seo_meta_description' => $request->seo_meta_description ?? ''
         ]);
 
-        return redirect()->route('admin.event_sport.index')->with('success', 'Sport created successfully');
+        return redirect()->route('admin.event.sport.index')->with('success', 'Sport created successfully');
     }
 
 
@@ -81,7 +81,7 @@ class EventSportController extends Controller
         $categories = DB::table('event_categories')->get()->toArray();
         $sport = Sport::with(['category' => fn ($q) => $q->select('id', 'name'),])->find($id);
         // dd($sport);
-        return view('admin.event_sports.edit', compact(['sport', 'categories']));
+        return view('admin.event.sports.edit', compact(['sport', 'categories']));
     }
 
     /**
@@ -133,10 +133,10 @@ class EventSportController extends Controller
             'seo_title' => $request->seo_title ?? '',
             'seo_meta_description' => $request->seo_meta_description ?? ''
         ])) {
-            return redirect()->route('admin.event_sport.index')->with('success', 'Sport updated successfully');
+            return redirect()->route('admin.event.sport.index')->with('success', 'Sport updated successfully');
         }
 
-        return redirect()->route('admin.event_sport.index')->withErrors('Sport failed to update');
+        return redirect()->route('admin.event.sport.index')->withErrors('Sport failed to update');
     }
 
     /**
@@ -152,7 +152,7 @@ class EventSportController extends Controller
         $sport = Sport::withCount('events')->findOrFail($id);
         // dd($sport);
         if ($sport->events_count > 0) {
-            return redirect()->route('admin.event_sport.index')->withErrors("Selected sport can't be deleted, there are some events under this sport");
+            return redirect()->route('admin.event.sport.index')->withErrors("Selected sport can't be deleted, there are some events under this sport");
         } else {
             if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
                 # code...
@@ -161,7 +161,7 @@ class EventSportController extends Controller
 
             $sport->delete();
 
-            return redirect()->route('admin.event_sport.index')->with('success', 'Sport deleted successfully');
+            return redirect()->route('admin.event.sport.index')->with('success', 'Sport deleted successfully');
         }
     }
 }

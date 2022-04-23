@@ -26,7 +26,7 @@ class PhotoController extends Controller
 
         ])->orderBy('photo_order')->get();
 
-        return view('admin.photo.index', compact('photos'));
+        return view('admin.galleries.photo.index', compact('photos'));
     }
 
     public function create()
@@ -34,7 +34,7 @@ class PhotoController extends Controller
         $this->authorize('create', Photo::class);
 
         $categories = DB::table('gallery_categories')->select(['name', 'id'])->get();
-        return view('admin.photo.create', compact('categories'));
+        return view('admin.galleries.photo.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class PhotoController extends Controller
             'photo_caption' => $request->photo_caption ?? null,
         ]);
 
-        return redirect()->route('admin.photo.index')->with('success', 'Photo is added successfully!');
+        return redirect()->route('admin.galleries.photo.index')->with('success', 'Photo is added successfully!');
     }
 
     public function edit($id)
@@ -67,7 +67,7 @@ class PhotoController extends Controller
         $photo = Photo::findOrFail($id);
         $categories = DB::table('gallery_categories')->select(['name', 'id'])->get();
 
-        return view('admin.photo.edit', compact('photo', 'categories'));
+        return view('admin.galleries.photo.edit', compact('photo', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -104,7 +104,7 @@ class PhotoController extends Controller
             'category_id' => $request->category_id
         ]);
 
-        return redirect()->route('admin.photo.index')->with('success', 'Photo is updated successfully!');
+        return redirect()->route('admin.galleries.photo.index')->with('success', 'Photo is updated successfully!');
     }
 
     public function destroy($id)

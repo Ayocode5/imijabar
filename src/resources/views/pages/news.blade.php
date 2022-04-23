@@ -32,7 +32,7 @@
                                     alt="{{ $news_carousel->title }}" width="100%" height="600">
                                 <div class="carousel-caption">
                                     <p class="date_author">
-                                        {{ date_format(date_create($news_carousel->created_at), 'd F Y') }} |
+                                        {{ Illuminate\Support\Carbon::parse($news_carousel->created_at)->isoFormat("D MMMM Y") }} |
                                         Editor</p>
                                     <h2>{{ $news_carousel->title }}</h2>
                                     <p>
@@ -121,7 +121,7 @@
                                                 {{ $news_data->title }}
                                             </h3>
                                             <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-                                                <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
+                                                <span>{{ Illuminate\Support\Carbon::parse($news_data->created_at)->isoFormat("D MMMM Y") }}</span>
                                             </p>
                                             <p class="card-text">
                                                 {{ $news_data->summary }}

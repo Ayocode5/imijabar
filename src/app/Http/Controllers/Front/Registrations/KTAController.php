@@ -61,6 +61,6 @@ class KTAController extends Controller
             ->where('dynamic_page_slug', 'registration-kta-howto-page')
             ->first();
 
-        return view('pages.register_member.kta', compact('settings', 'section1', 'section2', 'section3'));
+        return view('pages.registrations.kta', compact('settings', 'section1', 'section2', 'section3'));
     }
 }

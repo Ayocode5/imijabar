@@ -7,6 +7,17 @@
 /src/public/css/
 /src/public/uploads/*
 !/src/public/uploads/.gitkeep
+!/src/public/uploads/advertisements/.gitkeep
+!/src/public/uploads/committee/.gitkeep
+!/src/public/uploads/communities/.gitkeep
+!/src/public/uploads/dokumen/.gitkeep
+!/src/public/events/.gitkeep
+!/src/public/galleries/.gitkeep
+!/src/public/general_settings/.gitkeep
+!/src/public/greetings/.gitkeep
+!/src/public/news/.gitkeep
+!/src/public/registrations/.gitkeep
+!/src/public/users/.gitkeep
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key

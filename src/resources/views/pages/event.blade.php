@@ -30,7 +30,7 @@
                                     width="100%" height="600">
                                 <div class="carousel-caption">
                                     <p class="date_author">
-                                        {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->format('d F Y') }}
+                                        {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->isoFormat('dddd, D MMMM Y') }}
                                         | Editor</p>
                                     <h2>{{ $crl_event->name }}</h2>
                                     <p>
@@ -65,7 +65,7 @@
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
                     <select class="col categories category-sport" name="filterCategoryEvents" id="filterCategoryEvents">
-                        <option style="display:none" value disabled selected>Category</option>
+                        <option style="display:none" value disabled selected>Kategori Event</option>
                         <option categories="all" value="all">Semua</option>
                         @foreach ($categories as $category)
                             <option categories="{{ $category->slug }}" value="{{ $category->slug }}">
@@ -80,7 +80,7 @@
                         $url_filter_prefix = url()->current() . '?page=1';
                     @endphp
                     <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports">
-                        <option style="display:none" selected value disabled>Sports</option>
+                        <option style="display:none" selected value disabled>Jenis Event</option>
                         <option categories="all" value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
                         @foreach ($sports as $sport)
@@ -157,14 +157,14 @@
                                                     <div class="d-flex justify-content-center">
 
                                                         <p class="ml-2">
-                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('dddd') }}
                                                             -
-                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('dddd') }}
                                                             <br />
                                                             <span>
-                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('D MMMM') }}
                                                                 -
-                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('D MMMM Y') }}
                                                             </span>
                                                         </p>
                                                     </div>

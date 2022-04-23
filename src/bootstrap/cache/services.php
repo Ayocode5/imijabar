@@ -24,7 +24,7 @@
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Alexusmai\\LaravelFileManager\\FileManagerServiceProvider',
-    23 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    23 => 'Barryvdh\\Snappy\\ServiceProvider',
     24 => 'Facade\\Ignition\\IgnitionServiceProvider',
     25 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     26 => 'Fruitcake\\Cors\\CorsServiceProvider',
@@ -41,6 +41,7 @@
     37 => 'App\\Providers\\EventServiceProvider',
     38 => 'App\\Providers\\RouteServiceProvider',
     39 => 'Spatie\\Permission\\PermissionServiceProvider',
+    40 => 'Barryvdh\\Snappy\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,7 +56,7 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Alexusmai\\LaravelFileManager\\FileManagerServiceProvider',
-    11 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    11 => 'Barryvdh\\Snappy\\ServiceProvider',
     12 => 'Facade\\Ignition\\IgnitionServiceProvider',
     13 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     14 => 'Fruitcake\\Cors\\CorsServiceProvider',
@@ -69,6 +70,7 @@
     22 => 'App\\Providers\\EventServiceProvider',
     23 => 'App\\Providers\\RouteServiceProvider',
     24 => 'Spatie\\Permission\\PermissionServiceProvider',
+    25 => 'Barryvdh\\Snappy\\ServiceProvider',
   ),
   'deferred' => 
   array (

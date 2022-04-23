@@ -7,8 +7,8 @@
     'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com',
     'asset_url' => NULL,
     'timezone' => 'Asia/Jakarta',
-    'locale' => 'en',
-    'fallback_locale' => 'en',
+    'locale' => 'id',
+    'fallback_locale' => 'id',
     'faker_locale' => 'en_US',
     'key' => 'base64:Uox4hu5ObUMDVjSGTJLU5ddACB8Srq4IHhxMYJqBHCM=',
     'cipher' => 'AES-256-CBC',
@@ -41,6 +41,7 @@
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
       26 => 'Spatie\\Permission\\PermissionServiceProvider',
+      27 => 'Barryvdh\\Snappy\\ServiceProvider',
     ),
     'aliases' => 
     array (
@@ -79,6 +80,7 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
   ),
   'auth' => 
@@ -729,6 +731,33 @@
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',
+  ),
+  'snappy' => 
+  array (
+    'pdf' => 
+    array (
+      'enabled' => true,
+      'binary' => '/usr/local/bin/wkhtmltopdf-amd64',
+      'timeout' => false,
+      'options' => 
+      array (
+      ),
+      'env' => 
+      array (
+      ),
+    ),
+    'image' => 
+    array (
+      'enabled' => true,
+      'binary' => '/usr/local/bin/wkhtmltoimage-amd64',
+      'timeout' => false,
+      'options' => 
+      array (
+      ),
+      'env' => 
+      array (
+      ),
+    ),
   ),
   'test' => 
   array (

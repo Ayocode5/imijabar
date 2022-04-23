@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
+use App\Repository\RegistrationRepository\ClubRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
 {
-    public function __invoke()
+
+    private static $registrationRepository;
+
+    public function __construct(ClubRegistrationRepository $repository)
+    {
+        self::$registrationRepository = $repository;
+    }
+
+    public function index()
     {
         $settings = DB::table('general_settings')->select(
             'logo',
@@ -65,6 +74,45 @@ class ClubController extends Controller
             )->where('dynamic_page_slug', 'registration-club-howto-page')
             ->first();
 
-        return view('pages.register_member.club', compact('settings', 'section1', 'section2', 'section3'));
+        return view("pages.registrations.club.index", compact('settings', 'section1', 'section2', 'section3'));
+    }
+
+    public function getForm() {
+        return view("pages.registrations.club.registration_form");
+    }
+
+    public function store(Request $request) {
+
+        $this->validate($request, [
+            "q30_namaKlub" => "required",
+            "q301_email" => "required|email",
+            "q37_alamat" => "required|array",
+            "*.addr_line1" => "string",
+            "*.addr_line2" => "string",
+            "*.city" => "string",
+            "*.state" => "string",
+            "*.postal" => "string",
+            "q110_pengurusInti" => "required|string",
+            "q106_typeA106" => "required|string",
+            "q112_tandaTangan" => "required|string"
+        ]);
+
+        $data = [
+            "nama_klub" => $request->q30_namaKlub,
+            "email" => $request->q301_email,
+            "alamat_jalan" => $request->q37_alamat["addr_line1"],
+            "alamat_kel_kec" => $request->q37_alamat["addr_line2"],
+            "alamat_kota" => $request->q37_alamat["city"],
+            "alamat_provinsi" => $request->q37_alamat["state"],
+            "alamat_kodepos" => $request->q37_alamat["postal"],
+            "anggota_inti" => $request->q110_pengurusInti,
+            "anggota" => $request->q106_typeA106,
+            "signature_ketua_anggota" => $request->q112_tandaTangan
+        ];
+
+        if(self::$registrationRepository->storeData($data)) {
+            return view("pages.registrations.club.success");
+        };
+
     }
 }

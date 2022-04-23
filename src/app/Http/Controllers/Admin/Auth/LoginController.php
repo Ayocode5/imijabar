@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         if(auth()->check()) {
             return redirect('/admin/dashboard');
-        } 
+        }
 
     	return view('admin.auth.login');
     }
@@ -31,7 +31,6 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
 
         if(Auth::attempt($credential)) {
 

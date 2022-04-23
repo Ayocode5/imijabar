@@ -201,6 +201,7 @@ class RoleController extends Controller
     {
 
         $role = Role::with('permissions')->find($id);
+        // dd($request->input);
         $role->syncPermissions($request->input('input'));
 
         return redirect()->route('admin.role.index')->with('success', 'Access Setup is updated successfully!');

@@ -23,9 +23,10 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Admin\Photo' => 'App\Policies\PhotoPolicy',
         'App\Models\Admin\Video' => 'App\Policies\VideoPolicy',
         'App\Models\Admin\TeamMember' => 'App\Policies\CommitteePolicy',
+        'App\Models\Admin\CommitteeGreeting' => 'App\Policies\CommitteePolicy',
         'App\Models\Admin\SocialMediaItem' => 'App\Policies\SocialMediaPolicy',
         'App\Models\Admin\Subscriber' => 'App\Policies\SubscribersPolicy',
-
+        'App\Models\Admin\Advertisement' => 'App\Policies\AdvertisementPolicy',
     ];
 
     /**
@@ -47,10 +48,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin', function ($user) {
             return $user->hasRole('admin');
         });
-
-        // Gate::define('isEditor', function ($user) {
-        //     return $user->hasRole('editor');
-        // });
 
         //Registration Controller Gates 
         Gate::define('view-registration', function ($user) {

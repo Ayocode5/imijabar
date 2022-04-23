@@ -17,9 +17,10 @@
                             <div class="my-auto mx-auto text-center content_overlay_image_event_detail">
                                 <h4 class="card-title">{{ $event->name }}</h4>
                                 <h6 class="text location_detail_event">{{ $event->location }}
-                                    {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
+                                    <br>
+                                    Tanggal: {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('D MMMM') }}
                                     -
-                                    {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F Y') }}</h6>
+                                    {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('D MMMM Y') }}</h6>
 
                                 @if ($event->organizer)
                                     <p class="card-text">Presented by: {{ $event->organizer }}</p>
@@ -134,6 +135,45 @@
                                         @if ($event->document_link)
                                             <p>Surat Rekomendasi {{ $event->name }}</p>
                                             <a href="{{ $event->document_link }}" target="_blank"
+                                                rel="noreferrer nofollow"><button type="button"
+                                                    class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
+                                                        class="mr-3" src="{{ asset('images/') }}/pdf-icon.png"
+                                                        alt="">
+                                                    Download
+                                                    File</button></a>
+                                        @else
+                                            <p>Dokument Tidak Ada</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="surat_rekomendasi">
+                    <div class="wrap_surat_rekomendasi">
+                        <div class="accordion" id="hasilLomba">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center justify-content-between"
+                                    id="hasilLomba_headingOne" data-toggle="collapse"
+                                    data-target="#hasilLomba_collapseOne" aria-expanded="false"
+                                    aria-controls="hasilLomba_collapseOne">
+                                    <h3 class="mb-0 col-10 text_surat_rekomendasi">
+                                        <button class="btn btn-link" type="button">
+                                            Hasil Lomba
+                                        </button>
+                                    </h3>
+                                    <div class="col-2">
+                                        <img src="{{ asset('images/') }}/arrow_top.svg" alt="arrow top">
+                                    </div>
+                                </div>
+
+                                <div id="hasilLomba_collapseOne" class="collapse"
+                                    aria-labelledby="hasilLomba_headingOne" data-parent="#hasilLomba">
+                                    <div class="card-body">
+                                        @if ($event->document_link)
+                                            <p>Dokumentasi Hasil Lomba {{ $event->name }}</p>
+                                            <a href="{{ $event->document_link2 }}" target="_blank"
                                                 rel="noreferrer nofollow"><button type="button"
                                                     class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
                                                         class="mr-3" src="{{ asset('images/') }}/pdf-icon.png"

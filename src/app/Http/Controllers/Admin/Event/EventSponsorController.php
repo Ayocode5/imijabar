@@ -21,7 +21,7 @@ class EventSponsorController extends Controller
         $this->authorize('viewAny', Sponsor::class);
 
         $sponsors = Sponsor::all();
-        return view('admin.event_sponsor.index', compact('sponsors'));
+        return view('admin.event.sponsor.index', compact('sponsors'));
     }
 
     /**
@@ -33,7 +33,7 @@ class EventSponsorController extends Controller
     {
         $this->authorize('create', Sponsor::class);
 
-        return view('admin.event_sponsor.create');
+        return view('admin.event.sponsor.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class EventSponsorController extends Controller
             'seo_meta_description' => $request->seo_meta_description ?? null
         ]);
 
-        return redirect()->route('admin.event_sponsor.index')->with('success', 'Sponsor created successfully');
+        return redirect()->route('admin.event.sponsor.index')->with('success', 'Sponsor created successfully');
 
     }
 
@@ -78,7 +78,7 @@ class EventSponsorController extends Controller
         $this->authorize('update', Sponsor::class);
 
         $sponsor = Sponsor::findOrFail($id);
-        return view('admin.event_sponsor.edit', compact('sponsor'));
+        return view('admin.event.sponsor.edit', compact('sponsor'));
     }
 
     /**
@@ -133,7 +133,7 @@ class EventSponsorController extends Controller
             'seo_meta_description' => $request->seo_meta_description ?? null
         ]);
 
-        return redirect()->route('admin.event_sponsor.index')->with('success', 'Sponsor updated successfully');
+        return redirect()->route('admin.event.sponsor.index')->with('success', 'Sponsor updated successfully');
 
 
     }
@@ -156,7 +156,7 @@ class EventSponsorController extends Controller
 
         $sponsor->delete();
 
-        return redirect()->route('admin.event_sponsor.index')->with('success', 'Sponsor deleted successfully');
+        return redirect()->route('admin.event.sponsor.index')->with('success', 'Sponsor deleted successfully');
 
     }
 }

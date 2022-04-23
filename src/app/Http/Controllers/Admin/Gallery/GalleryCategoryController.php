@@ -25,7 +25,7 @@ class GalleryCategoryController extends Controller
         $this->authorize('viewAny', GalleryCategory::class);
 
         $categories = GalleryCategory::all();
-        return view('admin.gallery_category.index', compact('categories'));
+        return view('admin.galleries.category.index', compact('categories'));
     }
 
     /**
@@ -37,7 +37,7 @@ class GalleryCategoryController extends Controller
     {
         $this->authorize('create', GalleryCategory::class);
 
-        return view('admin.gallery_category.create');
+        return view('admin.galleries.category.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class GalleryCategoryController extends Controller
 
         $newCategory->save();
 
-        return redirect()->route('admin.gallery_category.index')->with('success', 'Category Successfuly added!');
+        return redirect()->route('admin.galleries.category.index')->with('success', 'Category Successfuly added!');
     }
 
     /**
@@ -78,7 +78,7 @@ class GalleryCategoryController extends Controller
 
         $category = GalleryCategory::findOrFail($id);
         // dd($category);
-        return view('admin.gallery_category.edit', compact('category'));
+        return view('admin.galleries.category.edit', compact('category'));
     }
 
     /**
@@ -104,7 +104,7 @@ class GalleryCategoryController extends Controller
         $category->seo_meta_description = $request->input('seo_meta_description') ?? '';
         $category->save();
 
-        return redirect()->route('admin.gallery_category.index')->with('success', 'Category updated successfuly');
+        return redirect()->route('admin.galleries.category.index')->with('success', 'Category updated successfuly');
     }
 
     /**
@@ -120,8 +120,8 @@ class GalleryCategoryController extends Controller
         $g = GalleryCategory::withCount(['videos', 'photos'])->find($id);
         if ($g->can_delete) {
             $g->delete();
-            return redirect()->route('admin.gallery_category.index')->with('success', 'Category deleted successfuly');
+            return redirect()->route('admin.galleries.category.index')->with('success', 'Category deleted successfuly');
         }
-        return redirect()->route('admin.gallery_category.index')->withErrors("Category can't be deleted, there are posts under this category");
+        return redirect()->route('admin.galleries.category.index')->withErrors("Category can't be deleted, there are posts under this category");
     }
 }
