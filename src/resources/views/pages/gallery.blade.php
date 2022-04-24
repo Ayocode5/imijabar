@@ -22,7 +22,7 @@
                             @foreach ($categories as $category)
                                 @if ($category->slug == request()->category)
                                     @if (!is_null($category->created_at))
-                                        {{ Illuminate\Support\Carbon::parse($category->created_at)->format('d F Y') }}
+                                        {{ Illuminate\Support\Carbon::parse($category->created_at)->isoFormat('D MMMM Y') }}
                                     @endif
                                 @endif
                             @endforeach

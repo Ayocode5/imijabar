@@ -5,7 +5,7 @@
         <a style="font-size: 16px;" class="navbar-brand" href="/">
             <img style="height: 50px; width: 42px" src="{{ asset('uploads/') . "/$settings?->logo" }}" alt="Logo IMI Jabar">
             <p style="margin: 0; padding:0; display:inline-block; vertical-align: middle; width: 100%; max-width: 160px;white-space:normal; font-size: 12px; font-weight: 700"
-                class="navbar-text">Ikatan Motor Indonesia (IMI) Provinsi Jawa Barat</p>
+                class="navbar-text">{{ $settings?->top_bar_organization_name }}</p>
         </a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +71,7 @@
                         @if ($menus[7]->status)
                             <a class="dropdown-item" href="/registration/club">{{ $menus[7]->name }}</a>
                         @endif
+                        <a class="dropdown-item" href="{{ route("eo.registration.index") }}">Event Organizer</a>
                     </div>
                 </li>
             </ul>

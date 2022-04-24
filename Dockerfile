@@ -11,7 +11,11 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    nano
+    nano \
+    libxrender-dev \
+    libfontconfig1 \
+    fontconfig \
+    libfontconfig1-dev
 
 # Install PHP extensions
 #RUN docker-php-ext-install bcmath ctype fileinfo json mbstring openssl pdo_mysql tokenizer xml exif pcntl gd  

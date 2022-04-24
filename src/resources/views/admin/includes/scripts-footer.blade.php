@@ -32,11 +32,13 @@
 @if(session()->get('error'))
     <script>
         toastr.error('{{ session()->get('error') }}');
+        {{ session()->forget('error') }}
     </script>
 @endif
 
 @if(session()->get('success'))
     <script>
         toastr.success('{{ session()->get('success') }}');
+        {{ session()->forget('success') }}
     </script>
 @endif

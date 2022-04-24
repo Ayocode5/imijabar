@@ -19,7 +19,7 @@ class VideoController extends Controller
         $this->authorize('viewAny', Video::class);
 
         $videos = Video::with(['category' => fn ($q) => $q->select(['id', 'name'])])->orderBy('video_order')->get();
-        return view('admin.video.index', compact('videos'));
+        return view('admin.galleries.video.index', compact('videos'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class VideoController extends Controller
         $this->authorize('create', Video::class);
 
         $categories = DB::table('gallery_categories')->get();
-        return view('admin.video.create', compact('categories'));
+        return view('admin.galleries.video.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class VideoController extends Controller
             'video_caption' => $request->video_caption
         ]);
 
-        return redirect()->route('admin.video.index')->with('success', 'Video is added successfully!');
+        return redirect()->route('admin.galleries.video.index')->with('success', 'Video is added successfully!');
     }
 
     public function edit($id)
@@ -56,7 +56,7 @@ class VideoController extends Controller
 
         $video = Video::findOrFail($id);
         $categories = DB::table('gallery_categories')->get();
-        return view('admin.video.edit', compact(['video', 'categories']));
+        return view('admin.galleries.video.edit', compact(['video', 'categories']));
     }
 
     public function update(Request $request, $id)
@@ -72,7 +72,7 @@ class VideoController extends Controller
         ]);
 
         $video->update($request->only($video->getFillable()));
-        return redirect()->route('admin.video.index')->with('success', 'Video is updated successfully!');
+        return redirect()->route('admin.galleries.video.index')->with('success', 'Video is updated successfully!');
     }
 
     public function destroy($id)

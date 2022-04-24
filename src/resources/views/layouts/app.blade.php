@@ -50,7 +50,7 @@
     <p id="typed" hidden></p>
     {{-- Scripts --}}
     @include('layouts.assets.scripts')
-
+ 
 </body>
 
 </html>

@@ -74,9 +74,14 @@
                         autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Document Link (Optional)</label>
-                    <input type="text" name="event_document_link" class="form-control"
+                    <label for="">Document Link - Surat Rekomendasi (Optional)</label>
+                    <input type="text" name="event_document_link" placeholder="example: https://www.document/docuement1.pdf"  class="form-control"
                         value="{{ $event->event_document_link }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Document Link - Hasil Lomba (Optional)</label>
+                    <input type="text" name="event_document_link2" placeholder="example: https://www.document/docuement1.pdf" class="form-control"
+                           value="{{ $event->event_document_link2 }}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Current Banner</label>

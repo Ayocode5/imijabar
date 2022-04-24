@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.components.jumbotron', ['news' => $news, 'default_banner' => $home_banner_default])
+    @include('layouts.components.jumbotron', [
+        'ads_greetings' => $ads_greetings,
+        'default_banner' => $home_banner_default,
+    ])
 
     <main>
         <!-- START BERITA & EVENT -->
@@ -79,11 +82,11 @@
                                             <h3 class="date_start_event">
                                                 {{ date_format(date_create($event->event_start_date), 'd F Y') }}
                                                 @if ($event->status == 'Current')
-                                                    <span class="badge badge-success">Sedang berlangsung</span>
+                                                    &nbsp;&nbsp;<span class="badge badge-success">tersedia</span>
                                                 @elseif ($event->status == 'Upcoming')
-                                                    <span class="badge badge-info">Akan datang</span>
+                                                    &nbsp;&nbsp;<span class="badge badge-info">akan datang</span>
                                                 @elseif ($event->status == 'Past')
-                                                    <span class="badge badge-danger">Berakhir</span>
+                                                    &nbsp;&nbsp;<span class="badge badge-danger">berakhir</span>
                                                 @endif
                                             </h3>
                                             <p class="event_location_province">{{ $event->location }},
@@ -148,9 +151,9 @@
 
         <!-- START KEPENGURUSAN -->
         @include('layouts.components.committee', [
-        'title' => $home_settings->committee_title,
-        'detail' => $home_settings->committee_detail,
-        'committee' => $committee
+            'title' => $home_settings->committee_title,
+            'detail' => $home_settings->committee_detail,
+            'committee' => $committee,
         ])
         <!-- END KEPENGURUSAN -->
 

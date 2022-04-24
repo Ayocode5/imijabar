@@ -9,7 +9,6 @@
 <script src="{{ asset('backend/js/jquery.timepicker.js') }}"></script>
 <script src="{{ asset('backend/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('backend/js/summernote-bs4.min.js') }}"></script>
-
 <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
 
 <!-- Latest compiled and minified JavaScript -->
@@ -53,6 +52,7 @@
                 });
             }
         })
+        
         $(".permission-item").click((e) => {
             if (e.currentTarget.checked) {
                 const total_permissions = permissions.length
@@ -71,17 +71,5 @@
                 permissionsCheckboxAll.checked = null;
             }
         })
-
-
-        $('.editor').summernote({
-            height: 200,
-            callback: {
-
-                onImageUpload: function(files, editor, welEditable) {
-                    // sendFile(files[0], editor, welEditable);
-                    console.log(files);
-                }
-            }
-        });
     })
 </script>

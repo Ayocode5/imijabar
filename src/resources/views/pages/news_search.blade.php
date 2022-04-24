@@ -83,7 +83,7 @@
                                                 </h3>
                                             </a>
                                             <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-                                                <span>{{ date_format(date_create($news_data->created_at), 'd F Y') }}</span>
+                                                <span>{{ Illuminate\Support\Carbon::parse($news_data->created_at)->isoFormat("D MMMM Y") }}</span>
                                             </p>
                                             <p class="card-text">
                                                 {{ $news_data->summary }}

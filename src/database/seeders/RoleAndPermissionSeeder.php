@@ -44,7 +44,8 @@ class RoleAndPermissionSeeder extends Seeder
             'gallery-video',
             'committee',
             'social-media',
-            'registration'
+            'registration',
+            'advertisement'
         ];
 
         $permissionPayload = [

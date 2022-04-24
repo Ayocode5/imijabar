@@ -23,6 +23,7 @@ class Event extends Model
         'event_location_province',
         'event_link',
         'event_document_link',
+        'event_document_link2',
         'event_map',
         'event_video',
         'event_featured_photo',
@@ -43,7 +44,7 @@ class Event extends Model
     }
 
     public function getStatusAttribute() {
-        
+
         $event_start_date = intval(date_format(date_create($this->event_start_date), 'Ymd'));
         $event_end_date = intval(date_format(date_create($this->event_end_date), 'Ymd'));
         $date_today = intval(date('Ymd'));

@@ -46,7 +46,8 @@
                             <form action="{{ url('admin/page/home/jumbotron') }}" method="POST" enctype="multipart/form-data">
 
                                 @method('PATCH')
-                                <input type="hidden" name="current_photo" value="{{ $page_home?->jumbotron_bg }}">
+                                <input type="hidden" name="current_bg" value="{{ $page_home?->jumbotron_bg }}">
+                                <input type="hidden" name="current_icon" value="{{ $page_home?->jumbotron_icon }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -56,6 +57,16 @@
                                     <label for="">Details</label>
                                     <textarea name="jumbotron_detail" class="form-control h_100" cols="30" rows="10">{{ $page_home?->jumbotron_detail }}</textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="">Icon</label>
+                                    <div><img src="{{ asset('uploads/'.$page_home?->jumbotron_icon) }}" alt="" class="w_200"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Change Icon</label>
+                                    <div><input type="file" name="jumbotron_icon"></div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="">Banner</label>
                                     <div><img src="{{ asset('uploads/'.$page_home?->jumbotron_bg) }}" alt="" class="w_200"></div>

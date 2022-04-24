@@ -10,6 +10,10 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="form-group">
+                            <label for="">Organization's Name (Max 50 Characters)</label>
+                            <input type="text" name="top_bar_organization_name" class="form-control" value="{{ $general_setting->top_bar_organization_name }}">
+                        </div>
+                        <div class="form-group">
                             <label for="">Top Bar Email</label>
                             <input type="text" name="top_bar_email" class="form-control" value="{{ $general_setting->top_bar_email }}">
                         </div>

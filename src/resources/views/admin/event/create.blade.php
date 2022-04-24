@@ -74,9 +74,14 @@
                         autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Document Link (Optional)</label>
+                    <label for="">Document Link 1 - Surat Rekomendasi (Optional)</label>
                     <input type="text" name="event_document_link" class="form-control"
-                        value="{{ old('event_document_link') }}" autofocus>
+                        value="{{ old("event_document_link") }}" placeholder="example: https://www.document/docuement1.pdf" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Document Link 2 - Hasil Lomba (Optional)</label>
+                    <input type="text" name="event_document_link2" class="form-control"
+                           value="{{ old('event_document_link2') }}" placeholder="example: https://www.document/docuement1.pdf" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Sports *</label>
@@ -119,7 +124,7 @@
                 <div class="form-group">
                     <label for="">Add Banner * (Max: 2MB)</label>
                     <div>
-                        <input required type="file" name="event_featured_photo" id="event_featured_photo">
+                        <input required type="file" name="event_featured_photo" id="event_featured_photo" value="{{ old("event_featured_photo") }}">
                     </div>
                 </div>
             </div>
