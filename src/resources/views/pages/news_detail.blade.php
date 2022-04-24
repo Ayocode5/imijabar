@@ -106,9 +106,7 @@
             </section>
         </main>
     @else
-        <center>
-            <h2>Opps, Berita tidak ditemukan</h2>
-        </center>
+       @include('layouts.components.404')
     @endif
 
     <div id="fb-root"></div>

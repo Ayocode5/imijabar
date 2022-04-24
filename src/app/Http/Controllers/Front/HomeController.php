@@ -40,7 +40,7 @@ class HomeController extends Controller
 			GROUP_CONCAT(DISTINCT sp.id SEPARATOR ', ') as sports_id,
 			GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
 		")->where('deleted_at', null)
-			->orderBy('e.event_start_date', 'ASC')
+			->orderBy('e.event_start_date', 'DESC')
 			->groupBy('id')
 			->limit($home_settings->events_total)
 			->get();

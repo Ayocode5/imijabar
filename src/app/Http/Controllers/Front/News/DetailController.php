@@ -32,7 +32,8 @@ class DetailController extends Controller
             'blog_title as title',
             'blog_slug as slug',
             'blog_photo as photo',
-            'blog_content as content'
+            'blog_content as content',
+            'created_at'
         )->where('blog_slug', $slug)->first();
 
         // dd($news);

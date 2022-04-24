@@ -6,7 +6,7 @@
     <section id="header_page_list_events">
         <div class="head_list_events">
             <h1>Pencarian Event</h1>
-            <p>Kata Kunci : <strong>{{ request()->q }}</strong></p>
+            <p>Menampilkan Hasil Pencarian : <strong>{{ request()->q }}</strong></p>
         </div>
     </section>
 

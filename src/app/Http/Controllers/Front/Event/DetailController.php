@@ -69,7 +69,8 @@ class DetailController extends Controller
 
             return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
         } else {
-            return abort(404);
+            $event = false;
+            return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
         }
     }
 }
