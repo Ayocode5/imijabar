@@ -3,8 +3,8 @@
 @section('content')
     @include('layouts.components.breadcrumb')
 
-    <section id="header_page_pendaftaran_kis">
-        <div class="head_pendaftaran_kis">
+    <section id="header_page_registration_club">
+        <div class="head_registration_club">
             <h1>{{ $section1->name }}</h1>
             <p>{!! $section1->content1 !!}</p>
         </div>
@@ -12,7 +12,7 @@
         <div class="wrap_header_club_register">
             <div class="card border-0">
                 <img class="img-fluid card-img featured_image_club_register"
-                    src="{{ asset('uploads') . "/$section1->banner" }}" alt="featured image kis">
+                    src="{{ asset('uploads') . "/$section1->banner" }}" alt="featured image club">
 
                 <div class="card-img-overlay overlay_image_club_register d-flex">
                     <div class="my-auto mx-auto text-center content_overlay_image_club_register">
@@ -25,32 +25,20 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- <div class="feature_image_pendaftaran_kis">
-            <img class="d-block mx-auto" src="{{ asset('uploads/') . "/$section1->banner" }}"
-                alt="image pendaftaran kis">
-        </div>
-        <div class="fitur_pengembangan_regis_kis">
-            {!! $section1->content2 !!}
-        </div>
-
-        <a class="daftar_kis_individu text-decoration-none text-dark" href="{{ $section1->link }}"><button>Daftar
-                Sekarang</button></a> -->
     </section>
 
-    <main id="main_registrasi_kis_individu">
-        <section id="persyaratan_resgis_kis">
-            <div class="wrap_persyaratan_resgis_kis py-5">
+    <main id="main_registrasi_club">
+        <section id="requirements_resgis_club">
+            <div class="wrap_requirements_resgis_club py-5">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="title_persyaratan_regis_kis col-12 col-md-7">
+                    <div class="title_requirements_regis_club col-12 col-md-7">
                         <h2>{{ $section2->name }}</h2>
                     </div>
-                    <div class="wrap_image_line_persyaratan_regis_kis col-12 col-md-5">
+                    <div class="wrap_image_line_requirements_regis_club col-12 col-md-5">
                         <img class="w-100" src="{{ asset('images') }}/line_blue.svg" alt="line image">
                     </div>
                 </div>
-                <div class="mt-3 list_persyaratan_regis_kis">
+                <ul class="mt-3 list_requirements_regis_club">
                     {{-- <li>
                         Scan File KTP/SIM,
                     </li>
@@ -67,21 +55,21 @@
                         Bukti Transfer Biaya Pembuatan KIS.
                     </li> --}}
                     {!! $section2->content1 !!}
-                </div>
+                    </ul>
             </div>
         </section>
 
-        <section id="tatacara_resgis_kis">
-            <div class="wrap_persyaratan_resgis_kis py-5">
+        <section id="tatacara_resgis_club">
+            <div class="wrap_requirements_resgis_club py-5">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="title_persyaratan_regis_kis col-12 col-md-5">
+                    <div class="title_requirements_regis_club col-12 col-md-5">
                         <h2>{{ $section3->name }}</h2>
                     </div>
-                    <div class="wrap_image_line_persyaratan_regis_kis col-12 col-md-7">
+                    <div class="wrap_image_line_requirements_regis_club col-12 col-md-7">
                         <img class="w-100" src="{{ asset('images') }}/line_blue.svg" alt="line image">
                     </div>
                 </div>
-                <ul class="list_tatacara_pendaftaran_kis">
+                <ul class="list_tatacara_registration_club">
                     {{-- <li>
                         Menyiapkan berkas yang disebutkan diatas,
                     </li>
@@ -89,14 +77,14 @@
                         Melakukan pengisian berkas pada link berikut: bit.ly/Pendaftaran-KIS-IMIJABAR
                     </li>
                     <li>
-                        Melakukan pembayaran via transfer untuk biaya pendaftaran KIS sebesar 300.000 Rupiah,
+                        Melakukan pembayaran via transfer untuk biaya registration KIS sebesar 300.000 Rupiah,
                     </li>
                     <li>
                         Melakukan konfirmasi pembayaran via Whatsapp.
                     </li> --}}
                     {!! $section3->content1 !!}
                 </ul>
-                {{-- <ul class="note_tatacara_pendaftaran">
+                {{-- <ul class="note_tatacara_registration">
                     <li>Catatan:
                         Untuk Biaya Pendaftaran / Perpanjangan Kartu Tanda Anggota Ikatan Motor Indonesia adalah sebesar
                         150.000 Rupiah (Pendaftaran) & 130.000 Rupiah (Perpanjangan),
