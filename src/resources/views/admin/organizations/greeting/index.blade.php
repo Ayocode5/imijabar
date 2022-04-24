@@ -25,7 +25,7 @@
                         @foreach($greetings as $greeting)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img src="{{url('uploads/greetings/' . $greeting->image )}}" alt="" class="w_200"></td>
+                                <td><img src="{{asset("uploads/$greeting->image")}}" alt="" class="w_200"></td>
                                 <td>{{ $greeting->order }}</td>
                                 <td style="display: flex; flex-direction: row; flex: 50%;">
                                     <a href="{{ route("admin.organizations.greeting.edit", $greeting->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

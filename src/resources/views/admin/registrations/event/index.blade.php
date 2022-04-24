@@ -31,7 +31,7 @@
                                 <td>{{ $registrar->email }}</td>
                                 {{-- <td></td> --}}
                                 <td>
-                                    <a href="{{ url('admin/registration/event/registrant/' . $registrar->id . '/export') }}" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i>Export PDF</a>
+                                    <a href="{{ url('admin/registration/event/registrant/' . $registrar->id . '/export') }}" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i>&nbsp; Export to PDF</a>
                                     {{-- <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i
                                             class="fas fa-trash-alt"></i></a> --}}
                                 </td>

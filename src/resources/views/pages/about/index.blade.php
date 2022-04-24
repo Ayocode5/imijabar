@@ -49,6 +49,171 @@
     </section>
     <!-- END VISI MISI -->
 
+    <!-- START PAPAN BULETIN -->
+    <section id="buletin">
+        <div class="container-fluid wrap_buletin">
+            <div class="col-12 col-md-7 order-2 order-md-1 align-items-center d-flex">
+                <h1 class="title_buletin">
+                    Papan Buletin
+                </h1>
+            </div>
+
+            <div class="accordion" id="accordionExample">
+                <div class="">
+
+                    <img src="./assets/img/icon-calendar.png" alt="icon-calendar" class="buletin_icon_cal">
+                </div>
+                <div class="card buletin_card">
+                    <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingOne">
+                        <div>
+                            <button class="btn btn-link buletin_card_title" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Rakernas IMI Jawa Barat 2022
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn btn-link buletin_card_subtitle" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Swiss-Belresort Dago Heritage, Senin, 17 Maret 2022
+                            </button>
+                        </div>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body buletin_card_body">
+                            <div>
+                                <h4>
+                                    Deskripsi Acara:
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus sed tellus augue fusce
+                                    interdum ut scelerisque. Pulvinar condimentum massa volutpat cursus amet. Urna eu ac
+                                    ullamcorper sit a lectus sed. Purus fusce ullamcorper risus sollicitudin et facilisi
+                                    quam semper. Quis duis quis commodo nunc, in. Lectus ullamcorper massa purus vel
+                                    scelerisque diam. Commodo leo gravida lacus enim justo, diam magna pretium nunc.
+                                    Maecenas purus proin tempus blandit velit ut sit. Pharetra proin vitae fames massa urna.
+                                    Turpis at arcu laoreet ornare. Malesuada arcu, et suspendisse a cras nisi nibh at nibh.
+                                    Sapien donec consectetur quam gravida augue.
+                                </p>
+                            </div>
+                            <div>
+                                <h4>
+                                    Detail Acara:
+                                </h4>
+                                <p>
+                                    Tempat: Swiss-Belresort Dago Heritage <br>
+                                    Tanggal: Senin, 17 Maret 2022 <br>
+                                    Waktu: 17:00 - Selesai
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+
+                    <img src="./assets/img/icon-pin.png" alt="icon-calendar" class="buletin_icon_pin">
+                </div>
+                <div class="card buletin_card">
+                    <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingTwo">
+                        <div>
+                            <button class="btn btn-link buletin_card_title" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Pengumuman !
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn btn-link buletin_card_subtitle" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Perubahan aturan pembuatan KIS
+                            </button>
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionExample">
+                        <div class="card-body buletin_card_body">
+                            <div>
+                                <h4>
+                                    Baca Artikel Lengkap Disini:
+                                </h4>
+                                <a href="#">
+                                    <p>
+                                        Selengkapnya
+                                    </p>
+                                </a>
+                            </div>
+                            <div>
+                                <h4>
+                                    Download Disini:
+                                </h4>
+                                <a class="text-decoration-none text-dark" target="_blank" rel="noreferrer noopener"
+                                    href="#">
+                                    <button type="button"
+                                        class="btn btn-light btn-outline-dark text-center button_download_file mt-2"><img
+                                            class="mr-3" src="./assets/img/pdf-icon.png" alt=""> Download
+                                        File</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+
+                    <img src="./assets/img/icon-calendar.png" alt="icon-calendar" class="buletin_icon_cal">
+                </div>
+                <div class="card buletin_card">
+                    <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingThree">
+                        <div>
+                            <button class="btn btn-link buletin_card_title" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                Rakernas IMI Jawa Barat 2022
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn btn-link buletin_card_subtitle" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                Swiss-Belresort Dago Heritage, Senin, 17 Maret 2022
+                            </button>
+                        </div>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body buletin_card_body">
+                            <div>
+                                <h4>
+                                    Deskripsi Acara:
+                                </h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus sed tellus augue fusce
+                                    interdum ut scelerisque. Pulvinar condimentum massa volutpat cursus amet. Urna eu ac
+                                    ullamcorper sit a lectus sed. Purus fusce ullamcorper risus sollicitudin et facilisi
+                                    quam semper. Quis duis quis commodo nunc, in. Lectus ullamcorper massa purus vel
+                                    scelerisque diam. Commodo leo gravida lacus enim justo, diam magna pretium nunc.
+                                    Maecenas purus proin tempus blandit velit ut sit. Pharetra proin vitae fames massa urna.
+                                    Turpis at arcu laoreet ornare. Malesuada arcu, et suspendisse a cras nisi nibh at nibh.
+                                    Sapien donec consectetur quam gravida augue.
+                                </p>
+                            </div>
+                            <div>
+                                <h4>
+                                    Detail Acara:
+                                </h4>
+                                <p>
+                                    Tempat: Swiss-Belresort Dago Heritage <br>
+                                    Tanggal: Senin, 17 Maret 2022 <br>
+                                    Waktu: 17:00 - Selesai
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_load_more_buletin mx-auto d-block">
+                Load More
+            </button>
+        </div>
+    </section>
+    <!-- END PAPAN BULETIN -->
+
     <!-- START SEJARAH -->
     <section id="sejarah">
         <div class="container-fluid wrap_sejarah_imi">
@@ -75,8 +240,7 @@
                     </p>
                 </div>
                 <div class="col-12 col-lg-2 d-flex justify-content-center">
-                    <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right"
-                        class="sejarah-arrow2">
+                    <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
                 </div>
                 <div class="col-12 col-lg-5">
                     <p class="sejarah-text">
@@ -184,9 +348,9 @@
 
     <!-- START KEPENGURUSAN -->
     @include('layouts.components.committee', [
-    'title' => $home_settings->committee_title,
-    'detail' => $home_settings->committee_detail,
-    'committee' => $committee
+        'title' => $home_settings->committee_title,
+        'detail' => $home_settings->committee_detail,
+        'committee' => $committee,
     ])
     <!-- END KEPENGURUSAN -->
 
@@ -194,41 +358,39 @@
     <section>
         <div class="wrap_anggaran">
             <div id="accordion">
-                
+
                 <div class="card my_card">
                     <div style="cursor: pointer" class="card-header ad_imi" id="headingOne" data-toggle="collapse"
-                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed card-title" 
-                                style="padding: 0px;">
-                                {{ $ad_section_page->name }}
-                            </button>
-                        </h5>
-                        <img src="{{ asset('images') }}/arrow_down.svg" alt="collaps anggaran dasar">
-                    </div>
+                        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed card-title" style="padding: 0px;">
+                                    {{ $ad_section_page->name }}
+                                </button>
+                            </h5>
+                            <img src="{{ asset('images') }}/arrow_down.svg" alt="collaps anggaran dasar">
+                        </div>
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body ad_imi">
 
                             {!! $ad_section_page->content1 !!}
-                            
+
                         </div>
                     </div>
                 </div>
 
                 <div class="card my_card">
                     <div style="cursor: pointer" class="card-header ad_imi" id="headingTwo" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed card-title" 
-                                style="padding: 0px;">
-                                {{ $art_section_page->name }}
-                            </button>
-                        </h5>
-                        <img src="{{ asset('images') }}/arrow_down.svg" alt="collaps anggaran dasar">
-                    </div>
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed card-title" style="padding: 0px;">
+                                    {{ $art_section_page->name }}
+                                </button>
+                            </h5>
+                            <img src="{{ asset('images') }}/arrow_down.svg" alt="collaps anggaran dasar">
+                        </div>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body ad_imi">

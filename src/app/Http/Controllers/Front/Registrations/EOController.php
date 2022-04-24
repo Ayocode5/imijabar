@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Registrations;
 use App\Http\Controllers\Controller;
 use App\Repository\RegistrationRepository\EventOrganizerRegistrationRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EOController extends Controller
 {
@@ -14,6 +15,25 @@ class EOController extends Controller
     public function __construct(EventOrganizerRegistrationRepository $repository)
     {
         $this->registraionRepository = $repository;
+    }
+
+    public function index() {
+
+        $settings = DB::table('general_settings')->select(
+			'logo',
+			'top_bar_organization_name',
+			'top_bar_email',
+			'top_bar_phone',
+			'footer_address',
+			'footer_email',
+			'footer_phone',
+			'footer_copyright',
+			'footer_column1_heading',
+			'footer_column2_heading',
+			'footer_column3_heading',
+		)->first();
+
+        return view("pages.registrations.eo.index", compact("settings"));
     }
 
     public function getForm()

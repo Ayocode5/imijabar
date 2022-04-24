@@ -28,36 +28,39 @@
                 <div id="carouselJumbotron" class="carousel slide carousel-fade carousel_jumbotron"
                     data-ride="carousel">
                     <ul class="carousel-indicators">
-                        @if (count($news) > 0)
-                            @foreach ($news as $key => $c_news)
+                        @if (count($ads_greetings) > 0)
+                            @foreach ($ads_greetings as $key => $ag)
                                 <li data-target="#carouselJumbotron" data-slide-to="{{ $key }}"
                                     class="@if ($key == 0) active @endif"></li>
                             @endforeach
                         @endif
                     </ul>
                     <div class="carousel-inner">
-                        @if (count($news) > 0)
-                            @foreach ($news as $key => $news)
+                        @if (count($ads_greetings) > 0)
+                            @foreach ($ads_greetings as $key => $ag)
                                 <div
                                     class="carousel-item position-relative  @if ($key == 0) active @endif">
                                     <div
                                         class="d-flex align-items-center justify-content-center justify-content-md-start overlay_carousel_jumbotron position-absolute">
                                         <div class="content_overlay_carousel_jumbotron">
                                             <p class="date_author">
-                                                {{ \Illuminate\Support\Carbon::parse($news->created_at)->format('d F Y') }}
-                                                | Editor</p>
-                                            <h2>{{ $news->blog_title }}</h2>
-                                            <p>{{ $news->blog_content_short }}</p>
-                                            <a href="/news/{{ $news->blog_slug }}">
+                                                {{-- {{ \Illuminate\Support\Carbon::parse($news->created_at)->format('d F Y') | Editor }} --}}
+                                            </p>
+                                            {{-- <h2>{{ $news->blog_title }}</h2> --}}
+                                            {{-- <p>{{ $news->blog_content_short }}</p> --}}
+                                            {{-- <a href="/news/{{ $news->blog_slug }}"> --}}
 
-                                                <button type="button"
+                                                {{-- <button type="button"
                                                     class="btn btn-outline-light btn_show_jumbotron">Show
-                                                    More</button>
+                                                    More</button> --}}
                                             </a>
                                         </div>
                                     </div>
-                                    <img src="{{ asset('uploads') . "/$news->blog_photo" }}" class="d-block w-100"
-                                        alt="iteration">
+                                    <a href="{{ $ag->redirect_url ? $ag->redirect_url : '#' }}">
+                                        
+                                        <img src="{{ asset("uploads/$ag->image") }}" class="d-block w-100"
+                                            alt="iteration">
+                                    </a>
                                 </div>
                             @endforeach
                         @else

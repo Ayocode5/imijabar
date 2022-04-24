@@ -56,6 +56,7 @@
                         @if ($menus[7]->status)
                             <a class="dropdown-item" href="/registration/club">{{ $menus[7]->name }}</a>
                         @endif
+                        <a class="dropdown-item" href="{{ route("eo.registration.index") }}">Event Organizer</a>
                     </div>
                 </li>
             </ul>

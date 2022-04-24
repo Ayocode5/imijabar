@@ -14,7 +14,7 @@ class AdvertisementController extends Controller
     public function __construct()
     {
         $this->middleware("auth:web");
-        self::setAdsImageLocation(public_path('uploads/advertisements/'));
+        self::setAdsImageLocation(public_path('uploads/'));
     }
 
     /**
@@ -76,10 +76,10 @@ class AdvertisementController extends Controller
         /*
          * Store the image and its name
          * */
-        $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
+        $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
 
         Advertisement::create([
-            "image" => $fileName,
+            "image" => "advertisements/".$fileName,
             "redirect_url" => $request->redirect_url,
             "order" => $request->order,
             "show" => $request->show
@@ -144,21 +144,24 @@ class AdvertisementController extends Controller
                 preg_match('/(ads-)(.*).(jpg|png|jpeg|gif|svg)/', $ads->image, $ads_image_format_split);
                 $fileName = $ads_image_format_split[1] . $ads_image_format_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
                 /* Saving the image */
-                $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
+                $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = $fileName;
+                $new_data['image'] = "advertisements/$fileName";
+
             } else {
                 /* Get the image file and rename it */
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'ads-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
+                $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = $fileName;
+                $new_data['image'] = "advertisements/$fileName";
             }
         }
 
         $ads->update($new_data);
+
+        // dd($ads);
 
         return redirect()->route('admin.advertisement.index')->with('success', 'Ads is updated successfully!');
 

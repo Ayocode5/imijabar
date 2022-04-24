@@ -238,7 +238,7 @@
     ),
     'allowed_origins' => 
     array (
-      0 => '*',
+      0 => 'http://localhost:8000',
     ),
     'allowed_origins_patterns' => 
     array (

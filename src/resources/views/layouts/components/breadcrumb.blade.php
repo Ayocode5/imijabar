@@ -15,20 +15,24 @@
                     $urls = array_slice(explode('/', url()->current()), 2);
                     $urls[0] = 'home';
                     $urls_last = array_key_last($urls);
+
+                    // dd($urls);                    
                 @endphp
                 @foreach ($urls as $key => $url)
                     <li class="breadcrumb-item  @if ($key == $urls_last) active @endif">
                         <a href="@if ($key == 0) /@elseif($key == $urls_last)#@else/{{ $url }} @endif"
                             style="color: #263840; text-decoration: none; @if ($key == $urls_last) font-weight: 700; @endif">
-                            @if ($key == $urls_last)
+                            {{-- @if ($key == $urls_last)
                                 @if ($key == 2)
                                     &nbsp;
+                                    
                                 @else
                                     {{ $url }}
                                 @endif
                             @else
                                 {{ $url }}
-                            @endif
+                            @endif --}}
+                            {{$url}}
                         </a>
                     </li>
                 @endforeach

@@ -1,11 +1,9 @@
 <?php
 
 
-/**
- * Admin Panel Controllers
- */
+/*** Admin Panel Controllers */
 
-//Admin Auth Controller
+// Auth Controller
 use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
@@ -14,7 +12,6 @@ use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeCo
 use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
-// Admin Menu Controller
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
 use App\Http\Controllers\Admin\Registrations\ClubController;
 use App\Http\Controllers\Admin\Registrations\KisController;
@@ -30,18 +27,11 @@ use App\Http\Controllers\Admin\Organizations\CommitteeController as CommitteeAdm
 use App\Http\Controllers\Admin\Organizations\GreetingController as GreetingAdminController;
 use App\Http\Controllers\Admin\Organizations\AgendaController as AgendaAdminController;
 use App\Http\Controllers\Admin\Organizations\InfoController as InfoAdminController;
-// use App\Http\Controllers\Admin\SliderController;
-// use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
-
 use App\Http\Controllers\Admin\Gallery\PhotoController;
 use App\Http\Controllers\Admin\Gallery\VideoController;
 use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCategoryControllerForAdmin;
-
-//Admin Panel Blog Menu
 use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
-
-//Admin Panel Event Menu
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
@@ -49,7 +39,6 @@ use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorContr
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\CommunitiesController;
-//Admin Panel Page Front Setting
 use App\Http\Controllers\Admin\Page\PageHomeController;
 use App\Http\Controllers\Admin\Page\PageBlogController;
 use App\Http\Controllers\Admin\Page\PageAboutController;
@@ -77,17 +66,27 @@ use App\Http\Controllers\Front\Registrations\KTAController as FrontKTAController
 use App\Http\Controllers\Front\Registrations\ClubController as FrontClubController;
 use App\Http\Controllers\Front\Registrations\EOController as FrontEOController;
 use App\Http\Controllers\Front\GalleryController as FrontGalleryController;
-
+use App\Http\Controllers\Front\Organizations\CommitteeController;
 use Illuminate\Support\Facades\Route;
 
 /* --------------------------------------- */
 /* Front Panel */
 /* --------------------------------------- */
-
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/subscription', [SubscriptionController::class, 'subscribe'])->name('front.subscription');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
-Route::get('/about', AboutController::class)->name('front.about');
+
+Route::group(["prefix" => "about"], function() {
+    Route::get('/', [AboutController::class, "index"])->name('front.about');
+    Route::get('/club/{category}', [AboutController::class, "club_list"])->name("front.about.club");
+    Route::get('/club-data/{category}', [AboutController::class, "club_data"]);
+});
+
+Route::group(["prefix" => "organizations"], function() {
+    Route::get('/committee', [CommitteeController::class, "index"]);
+    Route::get('/committee-data', [CommitteeController::class, "committee_data"]);
+});
+
 Route::get('/news', NewsIndexController::class)->name('front.news');
 Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
 Route::get('/news/{slug}', NewsDetailControler::class);
@@ -102,6 +101,7 @@ Route::group(['prefix' => 'registration'], function () {
     Route::get('/club', [FrontClubController::class, "index"])->name("club.registration.index");
     Route::get('/club/form', [FrontClubController::class, "getForm"])->name('club.registration.form');
     Route::post('/club/form', [FrontClubController::class, "store"])->name('club.registration.store');
+    Route::get('/eo', [FrontEOController::class, "index"])->name("eo.registration.index");
     Route::get('/eo/form', [FrontEOController::class, "getForm"])->name("eo.registration.form");
     Route::post('/eo', [FrontEOController::class, "store"])->name("eo.registration.store");
 });
@@ -109,9 +109,8 @@ Route::get('/gallery', FrontGalleryController::class);
 
 
 /* --------------------------------------- */
-/* Admin Login and profile management */
+/* Admin Panel                             */
 /* --------------------------------------- */
-
 Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
     // Dashboard
@@ -260,44 +259,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/about/edit', [PageAboutController::class, 'edit'])->name('admin.page_about.edit');
         Route::post('/about/update', [PageAboutController::class, 'update']);
 
-        // Route::get('/shop/edit', [PageShopController::class, 'edit'])->name('admin.page_shop.edit');
-        // Route::post('/shop/update', [PageShopController::class, 'update']);
-
         Route::get('/blog/edit', [PageBlogController::class, 'edit'])->name('admin.page_blog.edit');
         Route::post('/blog/update', [PageBlogController::class, 'update']);
 
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
 
-        // Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
-        // Route::post('/faq/update', [PageFaqController::class, 'update']);
-
         Route::get('/team/edit', [PageTeamController::class, 'edit'])->name('admin.page_team.edit');
         Route::post('/team/update', [PageTeamController::class, 'update']);
 
         Route::get('/gallery/edit', [PageGalleryController::class, 'edit'])->name('admin.page_gallery.edit');
         Route::post('/gallery/update', [PageGalleryController::class, 'update']);
-
-        // Route::get('/photo-gallery/edit', [PagePhotoGalleryController::class, 'edit'])->name('admin.page_photo_gallery.edit');
-        // Route::post('/photo-gallery/update', [PagePhotoGalleryController::class, 'update']);
-
-        // Route::get('/video-gallery/edit', [PageVideoGalleryController::class, 'edit'])->name('admin.page_video_gallery.edit');
-        // Route::post('/video-gallery/update', [PageVideoGalleryController::class, 'update']);
-
-        // Route::get('/contact/edit', [PageContactController::class, 'edit'])->name('admin.page_contact.edit');
-        // Route::post('/contact/update', [PageContactController::class, 'update']);
-
-        // Route::group(['prefix' => 'other'], function () {
-        //     Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
-        //     Route::post('/1', [PageOtherController::class, 'update1']);
-        //     Route::post('/2', [PageOtherController::class, 'update2']);
-        //     Route::post('/3', [PageOtherController::class, 'update3']);
-        //     Route::post('/4', [PageOtherController::class, 'update4']);
-        //     Route::post('/5', [PageOtherController::class, 'update5']);
-        //     Route::post('/6', [PageOtherController::class, 'update6']);
-        //     Route::post('/7', [PageOtherController::class, 'update7']);
-        //     Route::post('/8', [PageOtherController::class, 'update8']);
-        // });
     });
 
     /* --------------------------------------- */
@@ -323,32 +295,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::post('/update/{id}', [CategoryControllerForAdmin::class, 'update']);
         });
     });
-
-
-    /* --------------------------------------- */
-    /* Blog / News Comment - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'comment'], function () {
-    //     Route::get('/approved', [CommentController::class, 'approved'])->name('admin.comment.approved');
-    //     Route::get('/make-pending/{id}', [CommentController::class, 'make_pending']);
-    //     Route::get('/pending', [CommentController::class, 'pending'])->name('admin.comment.pending');
-    //     Route::get('/make-approved/{id}', [CommentController::class, 'make_approved']);
-    //     Route::get('/delete/{id}', [CommentController::class, 'destroy']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Slider - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
-    //     Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
-    //     Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
-    //     Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
-    //     Route::get('/delete/{id}', [SliderController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [SliderController::class, 'edit']);
-    //     Route::post('/update/{id}', [SliderController::class, 'update']);
-    // });
-
 
     /* --------------------------------------- */
     /* Dynamic Pages - Admin */

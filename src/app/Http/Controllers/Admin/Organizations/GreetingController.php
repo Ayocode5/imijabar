@@ -15,7 +15,7 @@ class GreetingController extends Controller
     public function __construct()
     {
         $this->middleware('auth:web');
-        self::setStoredImageLocation(public_path("uploads/greetings/"));
+        self::setStoredImageLocation(public_path("uploads/"));
     }
     /**
      * @param string $STORED_IMAGE_LOCATION
@@ -71,11 +71,11 @@ class GreetingController extends Controller
         $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
 
         /* Store the image and its name */
-        $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
+        $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
 
         /* Store Data */
         CommitteeGreeting::create([
-            "image" => $fileName,
+            "image" => "greetings/".$fileName,
             "order" => $request->order,
             "show" => $request->show
         ]);
@@ -137,17 +137,17 @@ class GreetingController extends Controller
                 preg_match('/(greeting-)(.*).(jpg|png|jpeg|gif|svg)/', $greeting->image, $ads_image_format_split);
                 $fileName = $ads_image_format_split[1] . $ads_image_format_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
                 /* Saving the image */
-                $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
+                $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = $fileName;
+                $new_data['image'] = "greetings/".$fileName;
             } else {
                 /* Get the image file and rename it */
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
+                $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = $fileName;
+                $new_data['image'] = "greetings/".$fileName;
             }
         }
 
