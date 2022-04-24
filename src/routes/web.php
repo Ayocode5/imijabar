@@ -67,6 +67,7 @@ use App\Http\Controllers\Front\Registrations\ClubController as FrontClubControll
 use App\Http\Controllers\Front\Registrations\EOController as FrontEOController;
 use App\Http\Controllers\Front\GalleryController as FrontGalleryController;
 use App\Http\Controllers\Front\Organizations\CommitteeController;
+use App\Http\Controllers\Front\Organizations\AgendaController as AgendaFrontController;
 use Illuminate\Support\Facades\Route;
 
 /* --------------------------------------- */
@@ -85,6 +86,8 @@ Route::group(["prefix" => "about"], function() {
 Route::group(["prefix" => "organizations"], function() {
     Route::get('/committee', [CommitteeController::class, "index"]);
     Route::get('/committee-data', [CommitteeController::class, "committee_data"]);
+
+    Route::get('/agenda-data/{category}', [AgendaFrontController::class, "agenda_data"]);
 });
 
 Route::get('/news', NewsIndexController::class)->name('front.news');
