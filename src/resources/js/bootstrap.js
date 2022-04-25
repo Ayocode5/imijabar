@@ -15,6 +15,9 @@ require('./components/welcome');
 require('./components/switch_language');
 require('./components/recaptcha_size');
 require('./components/gallery');
+require('./components/lazyload/lazyload_klub_mobil');
+require('./components/card_klub');
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

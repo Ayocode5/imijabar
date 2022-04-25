@@ -14,6 +14,10 @@ const API_ENDPOINT = {
     URL_SEARCH_EVENTS: (q, pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}/search?q=${q}&page=${pageCount}`,
     URL_SEARCH_CATEGORY_EVENTS: (q, pageCount, categoryName) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}/search?q=${q}&page=${pageCount}&sport=${categoryName}`,
 
+
+    // Klub Mobil
+    URL_KLUB_MOBIL: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_KLUB_MOBIL}?page=${pageCount}`,
+
 }
 
 export default API_ENDPOINT;

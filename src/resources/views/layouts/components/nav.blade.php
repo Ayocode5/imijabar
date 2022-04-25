@@ -30,9 +30,9 @@
                     @endif
                     <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/about') }}">Organisasi</a>
-                            <a class="dropdown-item" href="/car">Mobil</a>
-                            <a class="dropdown-item" href="/motor">Motor</a>
-                            <a class="dropdown-item" href="/mobility">Mobility</a>
+                            <a class="dropdown-item" href="{{ url('/about/club/mobil') }}">Mobil</a>
+                            <a class="dropdown-item" href="{{ url('/about/club/motor') }}">Motor</a>
+                            <a class="dropdown-item" href="{{ url('/about/club/mobility') }}">Mobility</a>
                     </div>
                 </li>
                 <li class="nav-item mx-lg-2">

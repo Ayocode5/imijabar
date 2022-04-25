@@ -18,6 +18,7 @@ body {
     border-right: 1px solid rgba(38, 56, 64, 0.5);
     margin: 0 3%;
     padding: 0 3%;
+    padding-bottom: 24px;
 }
 
 /* Header page klub mobil */
@@ -57,13 +58,32 @@ body {
     border-radius: 10px;
 }
 
+.wrap_card_community::-webkit-scrollbar {
+    display: none;
+    background: linear-gradient(163.89deg, #263840 -2.61%, #5996EC 88.8%);
+    border: none;
+    padding-bottom: 16px;
+    /* for Chrome, Safari, and Opera */
+}
+
+.scroll_wrap_card_community {
+    overflow: scroll;
+    background: linear-gradient(163.89deg, #263840 -2.61%, #5996EC 88.8%);
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+
 .image_card_klub_mobil {
-    min-height: 300px;
+    height: 300px;
     object-fit: cover;
 }
 
 .overlay_car_community {
-    padding: 20px;
+    padding: 16px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -75,11 +95,12 @@ body {
 }
 
 .overlay_collaps {
-    transform: translate(0, 60%);
+    /* transform: translate(0, 60%); */
 }
 
 .overlay_show {
-    transform: translate(0, 0);
+    transition: all 0.5s ease-in-out;
+    transform: translate(0, 0) !important;
 }
 
 .opacity_object {
@@ -89,10 +110,12 @@ body {
 
 .overlay_car_community h5 {
     font-weight: 700;
-    color: #F4F4F9;
+    color: #F4F4F9 !important;
     font-size: 16px;
+    text-align: left !important;
     margin-bottom: 0;
 }
+
 
 .subtittle_card>p {
     font-size: 0.8em;
@@ -150,7 +173,7 @@ body {
     margin-left: 0;
 }
 
-.btn_load_more {
+.btn_load_more_klub_mobil {
     background-color: transparent;
     border: 1px solid #263840;
     padding: 8px 24px;
@@ -160,9 +183,9 @@ body {
 }
 
 
-.btn_load_more:active,
-.btn_load_more:hover,
-.btn_load_more:focus {
+.btn_load_more_klub_mobil:active,
+.btn_load_more_klub_mobil:hover,
+.btn_load_more_klub_mobil:focus {
     background-color: #FFCE51;
     border: none;
     outline: none;
@@ -194,7 +217,7 @@ body {
     /* Head Klub Mobil */
 
     .overlay_collaps {
-        transform: translate(0, 55%);
+        /* transform: translate(0, 55%); */
     }
 
     .overlay_car_community h5 {
@@ -202,6 +225,7 @@ body {
     }
 
     .subtittle_card>p {
+        text-align: center;
         font-size: 16px;
     }
 
