@@ -27,6 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Admin\SocialMediaItem' => 'App\Policies\SocialMediaPolicy',
         'App\Models\Admin\Subscriber' => 'App\Policies\SubscribersPolicy',
         'App\Models\Admin\Advertisement' => 'App\Policies\AdvertisementPolicy',
+        'App\Models\Admin\Organizations\Agenda' => 'App\Policies\InfoAgendaPolicy',
     ];
 
     /**

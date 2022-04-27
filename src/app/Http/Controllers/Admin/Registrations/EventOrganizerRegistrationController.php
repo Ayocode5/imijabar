@@ -60,7 +60,7 @@ class EventOrganizerRegistrationController extends Controller
 
         $pdf = PDF::loadView('admin.registrations.event.outputforms', compact("registrar"));
 
-        $fileName = "pendaftaran-event-" . $registrar->nama_klub . "-" . $registrar->created_at . ".pdf";
+        $fileName = "pendaftaran-event-" . $registrar->nama_event . "-" . $registrar->created_at . ".pdf";
 
         return $pdf->download($fileName);
     }

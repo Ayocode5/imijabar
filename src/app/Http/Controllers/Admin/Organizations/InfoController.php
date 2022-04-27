@@ -8,6 +8,10 @@ use App\Models\Admin\Organizations\Agenda;
 
 class InfoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +19,8 @@ class InfoController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Agenda::class);
+
         $informations = Agenda::orderBy("created_at", "DESC")->where("type", "info")->get();
         return view("admin.organizations.info.index", compact("informations"));
     }
@@ -26,6 +32,8 @@ class InfoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Agenda::class);
+
         return view("admin.organizations.info.create");
     }
 
@@ -37,6 +45,8 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Agenda::class);
+
         if(Agenda::create([
             "type" => "info",
             "name" => $request->name,
@@ -68,6 +78,8 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Agenda::class);
+
         $info = Agenda::find($id);
         return view("admin.organizations.info.edit", compact("info"));
     }
@@ -81,6 +93,8 @@ class InfoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Agenda::class);
+
         $agenda = Agenda::find($id);
 
         $agenda->update([
@@ -101,6 +115,8 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Agenda::class);
+
         $agenda = Agenda::find($id);
         $agenda->delete();
 

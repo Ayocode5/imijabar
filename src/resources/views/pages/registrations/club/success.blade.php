@@ -125,9 +125,7 @@
                 <p><strong><span style="font-size:24pt;font-family:helvetica, arial, sans-serif;">Terima
                             Kasih!</span></strong></p>
                 <p style="text-align:center;"><span
-                        style="font-family:helvetica, arial, sans-serif;font-size:14pt;">Formulir kamu telah berhasil
-                        terdaftar,&nbsp;Untuk melanjutkan proses registrasi silahkan lakukan pembayaran biaya pembuatan
-                        KIS (Kartu Izin Start) sebesar Rp.300.000, dan Melaporkan bukti transfer kepada Admin.</span>
+                        style="font-family:helvetica, arial, sans-serif;font-size:14pt;">Formulir kamu telah berhasil terdaftar, Untuk melanjutkan proses registrasi silahkan lakukan pembayaran biaya pendaftaran Klub sebesar Rp.300.000, dan Melaporkan bukti transfer kepada Admin.</span>
                 </p>
                 <p style="text-align:center;"><span style="font-size:12pt;"><span
                             style="font-family:helvetica, arial, sans-serif;">Rekening BCA: 01234567 - Ikatan Motor

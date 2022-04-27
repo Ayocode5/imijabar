@@ -61,7 +61,7 @@ class KisController extends Controller
 
         $pdf = PDF::loadView('admin.registrations.kis.outputforms', $registrar)->setPaper("a4", "portrait");
 
-        $fileName = "pendaftar-" . $registrar->nama . "-" . $registrar->nomor_kta . ".pdf";
+        $fileName = "pendaftaran-kis-" . $registrar->nama . "-" . $registrar->nomor_kta . ".pdf";
 
         return $pdf->download($fileName);
     }

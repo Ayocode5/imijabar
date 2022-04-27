@@ -28,9 +28,9 @@ class CommitteeController extends Controller
         return view("pages.organizations.committee", compact("settings"));
     }
 
-    public function committee_data() {
+    public function committee_data(Request $request) {
 
-        $committee = TeamMember::paginate(10);
+        $committee = TeamMember::paginate($request->perPage ? $request->perPage : 10);
 
         return response()->json($committee, 200);
 

@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Admin\Organizations;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Organizations\Agenda\AgendaStoreRequest;
 use App\Models\Admin\Organizations\Agenda;
-use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AgendaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +20,8 @@ class AgendaController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Agenda::class);
+
         $agendas = Agenda::orderBy("created_at", "DESC")->where("type", "activity")->get();
         return view("admin.organizations.agenda.index", compact("agendas"));
     }
@@ -27,6 +33,8 @@ class AgendaController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Agenda::class);
+
         return view("admin.organizations.agenda.create");
     }
 
@@ -39,11 +47,12 @@ class AgendaController extends Controller
     public function store(AgendaStoreRequest $request)
     {
         // dd($request);
+        $this->authorize('create', Agenda::class);
 
         if(Agenda::create([
             "type" => "activity",
             "name" => $request->name,
-            "date" => $request->date,
+            "date" => Carbon::parse($request->date),
             "description" => $request->description
         ])) {
             return redirect()->route("admin.organizations.agenda.index")->with("success", "New Agenda Created Successfully");
@@ -72,6 +81,8 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Agenda::class);
+
         $agenda = Agenda::find($id);
         return view("admin.organizations.agenda.edit", compact("agenda"));
     }
@@ -85,12 +96,16 @@ class AgendaController extends Controller
      */
     public function update(AgendaStoreRequest $request, $id)
     {
+        $this->authorize('update', Agenda::class);
+
         $agenda = Agenda::find($id);
+
+        // dd(Carbon::parse($request->date));
 
         $agenda->update([
             "type" => "activity",
             "name" => $request->name,
-            "date" => $request->date,
+            "date" => Carbon::parse($request->date),
             "description" => $request->description
         ]);
 
@@ -106,6 +121,8 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Agenda::class);
+
         $agenda = Agenda::find($id);
         $agenda->delete();
 
