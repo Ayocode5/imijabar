@@ -28,7 +28,6 @@ class AgendaController extends Controller
             $agendas->where('type', $category);
         }
 
-
         $agendas = $agendas->orderBy("created_at", "DESC")
             ->paginate($request->perPage ? $request->perPage : 10);
 

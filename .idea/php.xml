@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="1b3840e6-fc45-485c-bf90-50a0010a4a3c" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/src/app/Repository/Registration/ClubRegistrationRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Repository/Registration/EventOrganizerRegistrationRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Repository/Registration/Traits/RegistrationFiles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Front/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Front/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/ClubController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/ClubController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/EOController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/EOController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/KISController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Registrations/KISController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Repository/RegistrationRepository/ClubRegistrationRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Repository/RegistrationRepository/EventOrganizerRegistrationRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Repository/RegistrationRepository/KISRegistrationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Repository/Registration/KISRegistrationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Repository/RegistrationRepository/Registration.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/seeders/EmailTemplateSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/seeders/EmailTemplateSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/admin/general_setting/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/admin/general_setting/topbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/admin/registrations/club/outputforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/admin/registrations/club/outputforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/admin/registrations/event/outputforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/admin/registrations/event/outputforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/pages/registrations/club/registration_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/pages/registrations/club/registration_form.blade.php" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Organizations/AgendaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/Front/Organizations/AgendaController.php" afterDir="false" />
->>>>>>> f752329 (test)
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" synchronizationState="DONT_SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/src/composer.json</pharConfigPath>
-    <execution />
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/src/vendor/dragonmantank/cron-expression" />
       <path value="$PROJECT_DIR$/src/vendor/brick/math" />
@@ -155,72 +119,10 @@
       <path value="$PROJECT_DIR$/src/vendor/ramsey/uuid" />
     </include_path>
   </component>
-  <component name="ProjectId" id="28Rl54BWiErn6Rg5mAPNU5iLgqH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/src/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
-  <component name="PropertiesComponent">
-<<<<<<< HEAD
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="database.main" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/Repository/Registration/Traits" />
-    </key>
-=======
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/src/composer.json" />
-      <method v="2" />
-    </configuration>
->>>>>>> f752329 (test)
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="1b3840e6-fc45-485c-bf90-50a0010a4a3c" name="Changes" comment="" />
-      <created>1651187101577</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1651187101577</updated>
-<<<<<<< HEAD
-      <workItem from="1651187106298" duration="16651000" />
-=======
-      <workItem from="1651187106298" duration="314000" />
->>>>>>> f752329 (test)
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-<<<<<<< HEAD
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-=======
->>>>>>> f752329 (test)
 </project>
