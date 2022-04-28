@@ -6,18 +6,6 @@
       0 => 'Alexusmai\\LaravelFileManager\\FileManagerServiceProvider',
     ),
   ),
-  'barryvdh/laravel-snappy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\Snappy\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\Snappy\\Facades\\SnappyPdf',
-      'SnappyImage' => 'Barryvdh\\Snappy\\Facades\\SnappyImage',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -80,28 +68,6 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
-  'pulkitjalan/google-apiclient' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'PulkitJalan\\Google\\GoogleServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Google' => 'PulkitJalan\\Google\\Facades\\Google',
-    ),
-  ),
-  'revolution/laravel-google-sheets' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Revolution\\Google\\Sheets\\Providers\\SheetsServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Sheets' => 'Revolution\\Google\\Sheets\\Facades\\Sheets',
     ),
   ),
   'spatie/laravel-permission' => 

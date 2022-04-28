@@ -9,7 +9,7 @@
 
     <style>
         .size_a4 {
-            width: 23cm;
+            width: 21cm;
             height: 29.7cm;
             /* border: 2px solid black; */
 
@@ -109,7 +109,7 @@
             <div>
                 <div class="row_layout">
                     <div class="column_layout">
-                        <img class="logo_img" height="120px" width="120px" src="{{ public_path("images/logoIMIJabar.png") }}"
+                        <img class="logo_img" height="120px" width="120px" src="{{ asset("images/logoIMIJabar.png") }}"
                             alt="logo imi">
                     </div>
                     <div style="flex-basis: 0;
@@ -146,56 +146,56 @@
                 <tr>
                     <td>Nama (Sesuai KTP)</td>
                     <td>:</td>
-                    <td>{{ $nama }}</td>
+                    <td>{{ $registrar->nama }}</td>
                 </tr>
 
                 <tr>
                     <td>Tempat dan Tanggal Lahir</td>
                     <td>:</td>
-                    <td>{{ $tempat_tgl_lahir }}</td>
+                    <td>{{ $registrar->tempat_tgl_lahir }}</td>
                 </tr>
 
                 <tr>
                     <td>Jenis Kelamin</td>
                     <td>:</td>
-                    <td>@if($gender == "L") Laki-Laki @else Perempuan @endif</td>
+                    <td>@if($registrar->gender == "L") Laki-Laki @else Perempuan @endif</td>
                 </tr>
 
                 <tr>
                     <td>Golongan Darah</td>
                     <td>:</td>
-                    <td>{{ $golongan_darah }}</td>
+                    <td>{{ $registrar->golongan_darah }}</td>
                 </tr>
 
                 <tr>
                     <td>Pendidikan</td>
                     <td>:</td>
-                    <td>{{ $pendidikan }}</td>
+                    <td>{{ $registrar->pendidikan }}</td>
                 </tr>
 
                 <tr>
                     <td>Nomor KTP</td>
                     <td>:</td>
-                    <td>{{ $nomor_kartu_identitas }}</td>
+                    <td>{{ $registrar->nomor_kartu_identitas }}</td>
                 </tr>
 
                 <tr>
                     <td>Dikeluarkan Di</td>
                     <td>:</td>
-                    <td>{{ $kota_kartu_identitas }}</td>
+                    <td>{{ $registrar->kota_kartu_identitas }}</td>
                 </tr>
 
                 <tr>
                     <td>Nomor Passport</td>
                     <td>:</td>
-                    <td>{{ $nomor_passport }}</td>
+                    <td>{{ $registrar->nomor_passport }}</td>
                 </tr>
 
                 <tr>
                     <td>Alamat</td>
                     <td>:</td>
                     {{-- <td colspan="3"><b>JL. </b> <span>Sakit perut 4x berak berak di hutan .</span></td> --}}
-                    <td colspan="3"><span>{{ $alamat_jalan1 }},&nbsp;{{ $alamat_jalan2 }}</span></td>
+                    <td colspan="3"><span>{{ $registrar->alamat_jalan1 }},&nbsp;{{ $registrar->alamat_jalan2 }}</span></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -221,14 +221,14 @@
                     <td></td>
                     <td><b>Kota</b></td>
                     <td>:</td>
-                    <td>{{ $alamat_kota }}</td>
+                    <td>{{ $registrar->alamat_kota }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td><b>Kode POS</b></td>
                     <td>:</td>
-                    <td>{{ $alamat_kodepos }}</td>
+                    <td>{{ $registrar->alamat_kodepos }}</td>
                 </tr>
 
 
@@ -251,33 +251,33 @@
                     <td></td>
                     <td>Handphone</td>
                     <td>:</td>
-                    <td>{{ $telp }}</td>
+                    <td>{{ $registrar->telp }}</td>
                 </tr>
 
                 <tr>
                     <td>Surat Izin Mengemudi</td>
                     <td>:</td>
-                    <td>{{ $jenis_sim }}</td>
+                    <td>{{ $registrar->jenis_sim }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Nomor</td>
                     <td>:</td>
-                    <td>{{ $nomor_sim }}</td>
+                    <td>{{ $registrar->nomor_sim }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Polda</td>
                     <td>:</td>
-                    <td>{{ $tempat_dikeluarkan_sim }}</td>
+                    <td>{{ $registrar->tempat_dikeluarkan_sim }}</td>
                 </tr>
 
                 <tr>
                     <td>Iuran Anggota</td>
                     <td>:</td>
-                    <td>{{ $iuran_anggota }} Th</td>
+                    <td>{{ $registrar->iuran_anggota }} Th</td>
                 </tr>
                 <tr>
                     <td>Nomor Keanggotaan</td>
@@ -327,25 +327,25 @@
                             ( __________________________ )
                         </div>
                         <div class="">
-                            <p style="margin-left: 35px;">Tanda Tangan & Nama</p>
+                            <p style="">Tanda Tangan & Nama</p>
                         </div>
                     </div>
                     <div class="column_layout">
-                            <img style="height: 4cm; width: 3cm;"
-                                src="{{ public_path("uploads/".$pas_photo) }}" alt="photo register kis">
+                            <img style="height: 4cm; width: 3cm; margin: 0 auto; display: block;"
+                                src="{{ asset("uploads/".$registrar->pas_photo) }}" alt="photo register kis">
                     </div>
                     <div class="column_layout">
                         <div class="">
-                            <u>{{ \Illuminate\Support\Carbon::parse($created_at)->isoFormat('D MMMM Y') }}</u>
+                            __________, {{ \Illuminate\Support\Carbon::parse($registrar->created_at)->isoFormat('D MMMM Y') }}
                         </div>
                         <div class="">
                             <p>Pemohon,</p>
                         </div>
                         <div class="">
-                            <img height="60px" width="150px" src="{{ public_path("uploads/".$signature_pemohon) }}" alt="ttd_pemohon">
+                            <img height="60px" width="150px" src="{{ asset("uploads/".$registrar->signature_pemohon) }}" alt="ttd_pemohon">
                         </div>
                         <div class=" signature_applicant">
-                            ( {{$nama}} )
+                            ( {{$registrar->nama}} )
                         </div>
                         <div class="">
                             <p>Tanda Tangan & Nama</p>
