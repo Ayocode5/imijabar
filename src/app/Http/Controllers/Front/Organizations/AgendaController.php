@@ -8,15 +8,29 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
-    public function index() {
-
+    public function index()
+    {
     }
 
-    public function agenda_data($category, Request $request) {
+    public function agenda_data($category = null, Request $request)
+    {
 
-       $agendas = Agenda::where("type", $category)->orderBy("created_at", "DESC")->paginate($request->perPage ? $request->perPage : 10);
+        $agendas = Agenda::query()->select([
+            'name',
+            'date',
+            'description',
+            'type',
+            'created_at'
+        ]);
 
-       return response()->json($agendas, 200);
+        if (!is_null($category)) {
+            $agendas->where('type', $category);
+        }
 
+
+        $agendas = $agendas->orderBy("created_at", "DESC")
+            ->paginate($request->perPage ? $request->perPage : 10);
+
+        return response()->json($agendas, 200);
     }
 }
