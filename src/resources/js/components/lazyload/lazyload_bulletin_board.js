@@ -1,5 +1,5 @@
 import API_ENDPOINT from "../../global/api_endpoint";
-import { cardBulletinBoardTemplate } from "../../global/template";
+import { cardBulletinBoardTemplate, cardBulletinBoardInfoTemplate } from "../../global/template";
 
 
 $(document).ready(function async() {
@@ -28,12 +28,22 @@ $(document).ready(function async() {
     const firstLoad = async () => {
         const resultData = await getAPI(`${API_ENDPOINT.URL_BULLETIN_BOARD_AGENDA(1)}`);
         resultData.data.map((data) => {
-            wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
-                data.type,
-                data.name,
-                data.description,
-                data.date,
-            ));
+            if (data.type === "info") {
+                wrapBulletingBoard.innerHTML += cardBulletinBoardInfoTemplate(
+                    data.id,
+                    data.type,
+                    data.name,
+                    data.description,
+                )
+            } else {
+                wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
+                    data.id,
+                    data.type,
+                    data.name,
+                    data.description,
+                    data.date,
+                ));
+            }
         });
 
 
@@ -50,13 +60,25 @@ $(document).ready(function async() {
     $('.btn_load_more_buletin').on("click", async () => {
         const resultData = await getAPI(`${API_ENDPOINT.URL_BULLETIN_BOARD_AGENDA(pageCountBulletinBoard)}`);
         if (resultData.current_page <= resultData.last_page) {
+
             resultData.data.forEach(data => {
-                wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
-                    data.type,
-                    data.name,
-                    data.description,
-                    data.date,
-                ));
+
+                if (data.type === "info") {
+                    wrapBulletingBoard.innerHTML += cardBulletinBoardInfoTemplate(
+                        data.id,
+                        data.type,
+                        data.name,
+                        data.description,
+                    )
+                } else {
+                    wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
+                        data.id,
+                        data.type,
+                        data.name,
+                        data.description,
+                        data.date,
+                    ));
+                }
             });
 
             if (resultData.current_page === resultData.last_page) {
