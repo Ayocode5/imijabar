@@ -27,7 +27,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $agenda->name }}</td>
-                                <td>{{ Illuminate\Support\Carbon::parse($agenda->date)->format("d/M/Y h:m") }}</td>
+                                <td>{{ Illuminate\Support\Carbon::parse($agenda->date)->format("d/M/Y h:i") }}</td>
                                 <td>{!! $agenda->description !!}</td>
                                 <td style="display: flex; flex-direction: row; flex: 50%;">
                                     <a href="{{ route("admin.organizations.agenda.edit", $agenda->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

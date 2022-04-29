@@ -29,7 +29,6 @@ const API_ENDPOINT = {
 
     // Agenda Page
     URL_BULLETIN_BOARD_AGENDA: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_BULLETIN_BOARD_AGENDA}?page=${pageCount}&perPage=3`,
-    URL_BULLETIN_BOARD_INFO: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_BULLETIN_BOARD_INFO}?page=${pageCount}&perPage=3`,
 
 }
 

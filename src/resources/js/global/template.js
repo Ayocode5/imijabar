@@ -303,13 +303,13 @@ const cardCommitteeTemplate = (name, designation, address, photo, listSocialMedi
     `;
 }
 
-const cardBulletinBoardTemplate = (id, type, name, description, date) => {
+const cardBulletinBoardTemplate = (iteration, type, name, description, date) => {
     return `
     <div>
         <div>
             <img src="${type === "activity" ? '/images/icon-calendar.svg' : '/images/icon-pin.svg'}" alt="icon-calendar" class="buletin_icon_cal">
         </div>
-        <div style="cursor: pointer" class="card buletin_card" data-toggle="collapse" data-target="#collapsBulletin${id}" aria-expanded="false" aria-controls="collapsBulletin${id}">
+        <div style="cursor: pointer" class="card buletin_card" data-toggle="collapse" data-target="#collapsBulletin${iteration}" aria-expanded="false" aria-controls="collapsBulletin${iteration}">
             <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingOne">
                 <div class="d-flex justify-content-betweet align-items-center">
                     <div>
@@ -330,7 +330,7 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                 </div>
             </div>
 
-            <div id="collapsBulletin${id}" class="collapse" aria-labelledby="headingOne"
+            <div id="collapsBulletin${iter}" class="collapse" aria-labelledby="headingOne"
                 data-parent="#accordionPapanBuletin">
                 <div class="card-body buletin_card_body">
                     <div>
@@ -342,29 +342,71 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                         </p>
                     </div>
                     <div>
-                        <h4>
-                            Detail Acara:
-                        </h4>
-                        <p>
-                            Tempat: Swiss-Belresort Dago Heritage <br>
-                            Tanggal: ${new Date(date.replace(/-/g, '/')).toLocaleDateString('en-GB', {
+                    <h4>
+                        Detail Acara:
+                    </h4>
+                    <p>
+                       Tanggal: ${new Date(date.replace(/-/g, '/')).toLocaleDateString('en-GB', {
         day: "numeric",
         month: "long",
         year: "numeric",
     })} <br>
-                            Waktu: ${new Date(date).toLocaleTimeString('en-GB', {
+                        Waktu: ${new Date(date).toLocaleTimeString('en-GB', {
         // en-US can be set to 'default' to use user's browser settings
         hour: '2-digit',
         minute: '2-digit',
     })} - Selesai
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </p > 
+                        
+                    </div >
+                </div >
+            </div >
+        </div >
+    </div >
     `;
 }
+
+const cardBulletinBoardInfoTemplate = (iteration, type, name, description, date) => {
+    return `
+    <div>
+        <div>
+            <img src="/images/icon-pin.svg" alt="icon-pin" class="buletin_icon_cal">
+        </div>
+        <div style="cursor: pointer" class="card buletin_card" data-toggle="collapse" data-target="#collapsBulletin${iteration}" aria-expanded="false" aria-controls="collapsBulletin${iteration}">
+            <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingOne">
+                <div class="d-flex justify-content-betweet align-items-center">
+                    <div>
+                        <div>
+                            <button class="btn btn-link buletin_card_title" type="button">
+                                Pengumuman
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn btn-link buletin_card_subtitle">${name}</button>
+                        </div> 
+                    </div>
+                    <img style="scale(1.4);" class="d-block ml-auto" src="/images/icon-arrow-down.svg" alt="arrow collaps">
+                </div>
+            </div>
+
+            <div id="collapsBulletin${iter}" class="collapse" aria-labelledby="headingOne"
+                data-parent="#accordionPapanBuletin">
+                <div class="card-body buletin_card_body">
+                    <div>
+                        <h4>
+                            Detail Info :
+                        </h4>
+                        <p>
+                            ${description}
+                        </p>
+                    </div>
+                </div >
+            </div >
+        </div >
+    </div >
+    `;
+}
+
 
 export {
     newsCardTemplate,

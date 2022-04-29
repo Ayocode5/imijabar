@@ -1,10 +1,14 @@
 window._ = require('lodash');
 global.$ = global.jQuery = require('jquery');
+
 import Popper from 'popper.js/dist/umd/popper.js';
 window.Popper = Popper;
+
 require('bootstrap')
+
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+
 require('./components/newsletter');
 require('./components/carousel');
 require('./components/event_category_filter');

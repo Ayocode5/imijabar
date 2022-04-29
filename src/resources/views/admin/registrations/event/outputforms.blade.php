@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <style>
         * {
             margin: 0;
@@ -15,7 +14,7 @@
         }
 
         .size_a4 {
-            width: 25cm;
+            width: 24cm;
             height: 29.7cm;
             /* border: 2px solid black; */
         }
@@ -65,17 +64,33 @@
                 bottom: 0;
             }
         }
+
     </style>
 
 </head>
 
 
 <body>
+
+    @php
+        $jenis_kendaraan = json_decode($registrar->jenis_kendaraan);
+        $oc = json_decode($registrar->oc)[0];
+        // dd($oc);
+        $rc = json_decode($registrar->rc)[0];
+        // dd($rc);
+        $sc = json_decode($registrar->sc)[0];
+        $sponsor_donatur_lain = json_decode($registrar->sponsor_dontaur_lain);
+        
+        $kelas_lomba = json_decode($registrar->kelas_lomba);
+        $penghargaan = json_decode($registrar->penghargaan);
+    @endphp
+
     <div class="size_a4">
         <header>
             <div style="align-items: center;" class="flex_row">
                 <div class="">
-                    <img height="150px" width="150px" src="" alt="logo imi jabar">
+                    <img height="150px" width="150px" src="{{ asset('images') }}/logoIMIJabar.png"
+                        alt="logo imi jabar">
                 </div>
                 <div style="margin-left: 100px;" class="">
                     <div style="text-align: center;">
@@ -87,13 +102,14 @@
             </div>
         </header>
 
-        <main style="margin: 0 24px; margin-top: 130px;">
+        <main style="margin: 0 24px; margin-top: 140px;">
             <h2 style="font-size: 18px; text-align: center; text-decoration: underline;">PERNYATAAN PERMOHONAN IJIN
                 KEGIATAN</h2>
             <p>Kami yang bertandatangan dibawah ini mengajukan pernyataan permohonan ijin Kegiatan Wilayah Provinsi Jawa
                 Barat dan tercatat dalam kalender kegiatan IMI - Jabar periode 2021-2025 untuk :
             </p>
 
+            <br>
             <table style="text-align: left;">
                 <tr>
                     <th>I. </th>
@@ -104,40 +120,45 @@
                     <th></th>
                     <th>NAMA EVENT</th>
                     <td>:</td>
-                    <td>..............................................</td>
+                    <td>{{ $registrar->nama_event }}</td>
                 </tr>
 
                 <tr>
                     <th></th>
                     <th>TEMPAT</th>
                     <td>:</td>
-                    <td>..............................................</td>
+                    <td>{{ $registrar->tempat_penyelenggaraan }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>TANGGAL</th>
                     <td>:</td>
-                    <td>..............................................</td>
+                    <td>{{ $registrar->tanggal_penyelenggaraan }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>JENIS</th>
                     <td>:</td>
-                    <td>a) Mber</td>
+                    <td>
+                        @foreach ($jenis_kendaraan as $jk)
+                            {{ $loop->iteration }}. {{ $jk }} <br>
+                        @endforeach
+                    </td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>KLASIFIKASI</th>
                     <td>:</td>
-                    <td>a) Internasional</td>
+                    <td>{{ $registrar->klasifikasi_lomba }}</td>
                 </tr>
             </table>
 
             <p>Keterangan singkat mengenai kegiatan : </p>
             <p style="word-wrap: break-word;">
-                ................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+                {{ $registrar->deskripsi_lomba }}
             </p>
 
+            <br>
             <table style="text-align: left;">
                 <tr>
                     <th>II. </th>
@@ -150,28 +171,28 @@
                     <th>- Ketua Penyelenggara (OC)</th>
                     <td>Nama</td>
                     <td> :</td>
-                    <td>Naruto Shipuden Udin Konoha</td>
+                    <td>{{ $oc->{'Nama'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>Alamat</td>
                     <td> :</td>
-                    <td>Konohagakure, No. 7, Kelurahan Kembangan Tenggara, Kecamatan Tenggara, Jakarta Barat, 11001</td>
+                    <td>{{ $oc->{'Alamat'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>Pekerjaan</td>
                     <td> :</td>
-                    <td>Hokage 4 Periode</td>
+                    <td>{{ $oc->{'Pekerjaan'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td style="padding-bottom: 16px;">No. KTA</td>
                     <td style="padding-bottom: 16px;"> :</td>
-                    <td style="padding-bottom: 16px;">112109100000000000</td>
+                    <td style="padding-bottom: 16px;">{{ $oc->{'No. KTA'} }}</td>
                 </tr>
 
                 <!-- Ketua komite perlombaan (rc) -->
@@ -180,7 +201,7 @@
                     <th>- Ketua Komite Perlombaan (RC)</th>
                     <td>Nama</td>
                     <td> :</td>
-                    <td>Naruto Shipuden Udin Konoha</td>
+                    <td>{{ $rc->{'Nama'} }}</td>
                 </tr>
 
                 <tr>
@@ -188,42 +209,42 @@
                     <th></th>
                     <td>Alamat</td>
                     <td> :</td>
-                    <td>Konohagakure, No. 7, Kelurahan Kembangan Tenggara, Kecamatan Tenggara, Jakarta Barat, 11001</td>
+                    <td>{{ $rc->{'Alamat'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>Pekerjaan</td>
                     <td> :</td>
-                    <td>Hokage 4 Periode</td>
+                    <td>{{ $rc->{'Pekerjaan'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>No. KTA</td>
                     <td> :</td>
-                    <td>112109100000000000</td>
+                    <td>{{ $rc->{'No. KTA'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>No. Anggota IMI-JABAR / Klub</td>
                     <td> :</td>
-                    <td>213123123123123123</td>
+                    <td>{{ $rc->{"No. Anggota IMI Jabar/Klub"} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>No. TKT</td>
                     <td> :</td>
-                    <td>21312312334</td>
+                    <td>{{ $rc->{'No. TKT'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td style="padding-bottom: 16px;">No. Lisensi</td>
                     <td style=" padding-bottom: 16px;"> :</td>
-                    <td style="padding-bottom: 16px;">202902920</td>
+                    <td style="padding-bottom: 16px;">{{ $rc->{'No. Lisensi'} }}</td>
                 </tr>
                 <!-- Petugas Scrutineering -->
                 <tr>
@@ -231,28 +252,28 @@
                     <th>- Petugas Scrutineering</th>
                     <td>Nama</td>
                     <td> :</td>
-                    <td>Ngetes</td>
+                    <td>{{ $sc->{'Nama'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>Alamat</td>
                     <td> :</td>
-                    <td>Konohagakure, No. 7, Kelurahan Kembangan Tenggara, Kecamatan Tenggara, Jakarta Barat, 11001</td>
+                    <td>{{ $sc->{'Alamat'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>No. Lisensi</td>
                     <td> :</td>
-                    <td>K1323213</td>
+                    <td>{{ $sc->{'No. Lisensi'} }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <td>No. KTA</td>
                     <td> :</td>
-                    <td>3123123212rew213</td>
+                    <td>{{ $sc->{'No. KTA'} }}</td>
                 </tr>
             </table>
 
@@ -271,36 +292,55 @@
                     <th>1. </th>
                     <th>Sponsor Tunggal</th>
                     <td> :</td>
-                    <td style="text-decoration: underline;">YAMAHA SUZUKI</td>
+                    <td style="text-decoration: underline;">{{ $registrar->sponsor_tunggal }}</td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>2. </th>
                     <th>Sponsor Utama</th>
                     <td> :</td>
-                    <td style="text-decoration: underline;">Honda</td>
+                    <td style="text-decoration: underline;">{{ $registrar->sponsor_utama }}</td>
                 </tr>
-                <tr>
+                @if (is_array($sponsor_donatur_lain))
+                    @foreach ($sponsor_donatur_lain as $sd)
+                        <tr>
+                            <th></th>
+                            <th>{{ $loop->iteration }}. </th>
+                            <th>Sponsor / Donatur</th>
+                            <td> :</td>
+                            <td style="text-decoration: underline;">{{ $sd }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <th></th>
+                        <th>3. </th>
+                        <th>Sponsor / Donatur</th>
+                        <td> :</td>
+                        <td style="text-decoration: underline;">{{ $sponsor_donatur_lain }}</td>
+                    </tr>
+                @endif
+                {{-- <tr>
                     <th></th>
                     <th>3. </th>
                     <th>Sponsor / Donatur</th>
                     <td> :</td>
                     <td style="text-decoration: underline;">..................................</td>
-                </tr>
-                <tr>
+                </tr> --}}
+                {{-- <tr>
                     <th></th>
                     <th>4. </th>
                     <th>Lain-lain</th>
                     <td> :</td>
                     <td style="text-decoration: underline;">..................................</td>
-                </tr>
+                </tr> --}}
             </table>
-            <p><b>JENIS HUBUNGAN DENGAN PENYANDANG DANA</b></p>
+            <p><b>JENIS HUBUNGAN DENGAN PENYANDANG DANA:</b></p>
             <p style="word-wrap: break-word;">
-                ................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+                {{ $registrar->hubungan_sponsor_penyelenggara }}
             </p>
 
-
+            <br>
             <table>
                 <tr>
                     <th>IV. </th>
@@ -317,39 +357,56 @@
                         <th></th>
                         <td style="text-align: center;"><br>KELAS YANG DILOMBAKAN</td>
                     </tr>
-                    <tr>
-                        <th></th>
-                        <th>1. </th>
-                        <td> .......................................................</td>
-                    </tr>
-                    <tr>
+                    @if (is_array($kelas_lomba))
+                        @foreach ($kelas_lomba as $kl)
+                            <tr>
+                                <th></th>
+                                <th>{{ $loop->iteration }}. </th>
+                                <td>{{ $kl }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <th></th>
+                            <th>1. </th>
+                            <td>{{ $kelas_lomba }}</td>
+                        </tr>
+                    @endif
+
+                    {{-- <tr>
                         <th></th>
                         <th>2. </th>
                         <td> ......................................................</td>
-                    </tr>
+                    </tr> --}}
                 </table>
                 <table>
                     <tr>
                         <th></th>
                         <th></th>
-                        <td style="text-align: center;">PENGHARGAAN<br>(Trophy + Uang/Barang)</td>
+                        <td style="text-align: center;"><br>PENGHARGAAN (Trophy + Uang/Barang)</td>
                     </tr>
-                    <tr>
-                        <th></th>
-                        <th>1. </th>
-                        <td> .......................................................</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th>2. </th>
-                        <td> ......................................................</td>
-                    </tr>
+                    @if (is_array($penghargaan))
+                        @foreach ($penghargaan as $p)
+                            <tr>
+                                <th></th>
+                                <th>{{ $loop->iteration }}. </th>
+                                <td>{{ $p }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <th></th>
+                            <th>1. </th>
+                            <td>{{ $penghargaan }}</td>
+                        </tr>
+                    @endif
                 </table>
             </div>
 
 
             <p style="page-break-after: always;">&nbsp;</p>
             <p style="page-break-before: always;">&nbsp;</p>
+
 
             <p style="margin-top: 130px;">
 
@@ -359,11 +416,13 @@
 
             <div style="justify-content: center; justify-items: center;" class="flex_row">
                 <div class="flex_column">
+                    <br>
                     <p>....................................</p>
                     <p>Ketua Komite Organisasi (OC)</p>
                     <br />
+                    <img src="{{ asset('uploads/' . $registrar->oc_signature) }}" alt="tanda tangaan OC">
                     <br />
-                    <p>( __________________________ )</p>
+                    <p style="margin-left: 50px">( {{ $oc->{"Nama"} }} )</p>
 
                 </div>
 
@@ -372,12 +431,14 @@
                     <p>Rp. 6.000,-</p>
                 </div>
 
-                <div class="flex_column">
-                    <p>Bandung, ______________________</p>
-                    <p>Ketua Komite Perlombaan (RC)</p>
+                <div  style="align-self: flex-end; text-align: center;" class="flex_column">
                     <br>
+                    <p>________, {{Illuminate\Support\Carbon::parse($registrar->created_at)->isoFormat("D MMMM Y")}}</p>
+                    <center><p>Ketua Komite Perlombaan (RC)</p></center>
                     <br>
-                    <p>( __________________________ )</p>
+                    <img src="{{ asset('uploads/' . $registrar->rc_signature) }}" alt="tanda tangaan RC">
+                    <br>
+                    <center><p>( {{ $rc->{"Nama"} }} )</p></center>
                 </div>
             </div>
 
@@ -386,8 +447,9 @@
                 <div style="text-align: center;">
                     <p>Petugas Scrutineering</p>
                     <br>
+                    <img src="{{ asset('uploads/' . $registrar->sc_signature) }}" alt="tanda tangaan SC">
                     <br>
-                    <p>( ___________________________ )</p>
+                    <p>( {{ $sc->{"Nama"} }} )</p>
                 </div>
             </div>
 
@@ -417,25 +479,29 @@
             </table>
         </main>
 
-        <footer style="margin-top: 24px;">
-            <div style="justify-items: center; justify-content: center;" class="flex_row">
-                <div class="flex_column">
-                    <img style="margin: 0 auto; display: block;" height="45px" width="75px"
-                        src="" alt="fia logo">
+
+
+        <footer style="margin-top: 24px; position: fixed; bottom: 0; ">
+            <div>
+                <div style="justify-items: center; justify-content: center;" class="flex_row">
+                    <div class="flex_column">
+                        <img style="margin: 0 auto; display: block;" height="45px" width="75px"
+                            src="{{ asset('images') }}/fia-logo.png" alt="fia logo">
+                    </div>
+                    <div class="flex_column">
+                        <img style="margin: 0 auto; display: block;" height="45px" width="75px"
+                            src="{{ asset('images') }}/fia-logo.png" alt="fia logo">
+                    </div>
+                    <div class="flex_column">
+                        <img style="margin: 0 auto; display: block;" height="60px" width="90px"
+                            src="{{ asset('images') }}/fim-logo.png" alt="fim logo">
+                    </div>
                 </div>
-                <div class="flex_column">
-                    <img style="margin: 0 auto; display: block;" height="45px" width="75px"
-                        src="" alt="fia logo">
+                <hr style="border: 1px solid black;" />
+                <div style="text-align: center; margin-top: 16px;">
+                    <p>Jl. Batununggal Indah Raya No. 81 Komplek Batununggal Indah Bandung 40266</p>
+                    <p>Telp. 022 873130161 email: sekretariat.imijabar@gmail.com</p>
                 </div>
-                <div class="flex_column">
-                    <img style="margin: 0 auto; display: block;" height="60px" width="90px"
-                        src="" alt="fim logo">
-                </div>
-            </div>
-            <hr style="border: 1px solid black;" />
-            <div style="text-align: center; margin-top: 16px;">
-                <p>Jl. Batununggal Indah Raya No. 81 Komplek Batununggal Indah Bandung 40266</p>
-                <p>Telp. 022 873130161 email: sekretariat.imijabar@gmail.com</p>
             </div>
         </footer>
     </div>

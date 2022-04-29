@@ -9,7 +9,7 @@
 
     <style>
         .size_a4 {
-            width: 23cm;
+            width: 21cm;
             height: 29.7cm;
             /* border: 2px solid black; */
 
@@ -86,14 +86,6 @@
             margin-left: -15px;
         }
 
-        /* .margin_template_output_form {
-  margin: 0 200px;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-} */
-
         .signature_form_content {
             align-items: center !important;
             justify-content: center !important;
@@ -117,7 +109,7 @@
             <div>
                 <div class="row_layout">
                     <div class="column_layout">
-                        <img class="logo_img" height="120px" width="120px" src=""
+                        <img class="logo_img" height="120px" width="120px" src="{{ asset("images/logoIMIJabar.png") }}"
                             alt="logo imi">
                     </div>
                     <div style="flex-basis: 0;
@@ -137,7 +129,7 @@
                                 020752</p>
                         </div>
                         <div class="content_header_bottom">
-                            <h1 style="text-align: center!important; text-decoration: underline; font-size: 24px;">
+                            <h1 style="text-decoration: underline; font-size: 24px;">
                                 FORMULIR PENDAFTARAN
                                 KARTU IZIN
                                 START</h1>
@@ -154,62 +146,63 @@
                 <tr>
                     <td>Nama (Sesuai KTP)</td>
                     <td>:</td>
-                    <td>Nancy</td>
+                    <td>{{ $registrar->nama }}</td>
                 </tr>
 
                 <tr>
                     <td>Tempat dan Tanggal Lahir</td>
                     <td>:</td>
-                    <td>Jakarta, 15 Januari 2022</td>
+                    <td>{{ $registrar->tempat_tgl_lahir }}</td>
                 </tr>
 
                 <tr>
                     <td>Jenis Kelamin</td>
                     <td>:</td>
-                    <td>Perempuan</td>
+                    <td>@if($registrar->gender == "L") Laki-Laki @else Perempuan @endif</td>
                 </tr>
 
                 <tr>
                     <td>Golongan Darah</td>
                     <td>:</td>
-                    <td>XXX</td>
+                    <td>{{ $registrar->golongan_darah }}</td>
                 </tr>
 
                 <tr>
                     <td>Pendidikan</td>
                     <td>:</td>
-                    <td>UIN Jakarta</td>
+                    <td>{{ $registrar->pendidikan }}</td>
                 </tr>
 
                 <tr>
                     <td>Nomor KTP</td>
                     <td>:</td>
-                    <td>000000000000000</td>
+                    <td>{{ $registrar->nomor_kartu_identitas }}</td>
                 </tr>
 
                 <tr>
                     <td>Dikeluarkan Di</td>
                     <td>:</td>
-                    <td>UIN Jakarta</td>
+                    <td>{{ $registrar->kota_kartu_identitas }}</td>
                 </tr>
 
                 <tr>
                     <td>Nomor Passport</td>
                     <td>:</td>
-                    <td>666666</td>
+                    <td>{{ $registrar->nomor_passport }}</td>
                 </tr>
 
                 <tr>
                     <td>Alamat</td>
                     <td>:</td>
-                    <td colspan="3"><b>JL. </b> <span>Sakit perut 4x berak berak di hutan .</span></td>
+                    {{-- <td colspan="3"><b>JL. </b> <span>Sakit perut 4x berak berak di hutan .</span></td> --}}
+                    <td colspan="3"><span>{{ $registrar->alamat_jalan1 }},&nbsp;{{ $registrar->alamat_jalan2 }}</span></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><b>RT.</b> <span>666</span> <b>RW. </b> <span>666</span></td>
+                    {{-- <td><b>RT.</b> <span>666</span> <b>RW. </b> <span>666</span></td> --}}
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td></td>
                     <td></td>
                     <td><b>Kelurahan</b></td>
@@ -222,20 +215,20 @@
                     <td><b>Kecamatan</b></td>
                     <td>:</td>
                     <td>Cengkareng</td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td></td>
                     <td></td>
                     <td><b>Kota</b></td>
                     <td>:</td>
-                    <td>Cengkareng City</td>
+                    <td>{{ $registrar->alamat_kota }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td><b>Kode POS</b></td>
                     <td>:</td>
-                    <td>1111</td>
+                    <td>{{ $registrar->alamat_kodepos }}</td>
                 </tr>
 
 
@@ -244,47 +237,47 @@
                     <td>:</td>
                     <td>Rumah</td>
                     <td>:</td>
-                    <td>0215 0000000</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Kantor</td>
                     <td>:</td>
-                    <td>0215 0000000</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Handphone</td>
                     <td>:</td>
-                    <td>08888888888</td>
+                    <td>{{ $registrar->telp }}</td>
                 </tr>
 
                 <tr>
                     <td>Surat Izin Mengemudi</td>
                     <td>:</td>
-                    <td>A/B/C</td>
+                    <td>{{ $registrar->jenis_sim }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Nomor</td>
                     <td>:</td>
-                    <td>013123120312031239</td>
+                    <td>{{ $registrar->nomor_sim }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Polda</td>
                     <td>:</td>
-                    <td>Cengkareng </td>
+                    <td>{{ $registrar->tempat_dikeluarkan_sim }}</td>
                 </tr>
 
                 <tr>
                     <td>Iuran Anggota</td>
                     <td>:</td>
-                    <td>1 Th/ 2Th/ 3Th</td>
+                    <td>{{ $registrar->iuran_anggota }} Th</td>
                 </tr>
                 <tr>
                     <td>Nomor Keanggotaan</td>
@@ -297,10 +290,10 @@
                 <tr>
                     <td><i>(Diisi oleh PengProv)</i></td>
                     <td></td>
-                    <td>02</td>
+                    <td>__</td>
                     <td></td>
-                    <td>003</td>
-                    <td>00000</td>
+                    <td>___</td>
+                    <td>_______</td>
                 </tr>
                 <tr>
                     <td><i>(Diisi olh PP. IMI)</i></td>
@@ -310,7 +303,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>1111111</td>
+                    <td>________</td>
                 </tr>
             </table>
 
@@ -334,25 +327,25 @@
                             ( __________________________ )
                         </div>
                         <div class="">
-                            <p style="margin-left: 35px;">Tanda Tangan & Nama</p>
+                            <p style="">Tanda Tangan & Nama</p>
                         </div>
                     </div>
                     <div class="column_layout">
-                            <img style="height: 4cm; width: 3cm;"
-                                src="{{ public_path("uploads/".$pas_photo) }}" alt="photo register kis">
+                            <img style="height: 4cm; width: 3cm; margin: 0 auto; display: block;"
+                                src="{{ asset("uploads/".$registrar->pas_photo) }}" alt="photo register kis">
                     </div>
                     <div class="column_layout">
                         <div class="">
-                            ______,________________
+                            __________, {{ \Illuminate\Support\Carbon::parse($registrar->created_at)->isoFormat('D MMMM Y') }}
                         </div>
                         <div class="">
                             <p>Pemohon,</p>
                         </div>
                         <div class="">
-                            <img height="60px" width="150px" src="{{ public_path("uploads/".$signature_pemohon) }}" alt="ttd_pemohon">
+                            <img height="60px" width="150px" src="{{ asset("uploads/".$registrar->signature_pemohon) }}" alt="ttd_pemohon">
                         </div>
                         <div class=" signature_applicant">
-                            ( Septian Putra Pratama )
+                            ( {{$registrar->nama}} )
                         </div>
                         <div class="">
                             <p>Tanda Tangan & Nama</p>

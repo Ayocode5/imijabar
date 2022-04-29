@@ -82,12 +82,12 @@
                         <tr>
                             <td nowrap><b>NAMA KLUB </b></td>
                             <td>:</td>
-                            <td>{{ $nama_klub }}</td>
+                            <td>{{ $registrar->nama_klub }}</td>
                         </tr>
                         <tr>
                             <td><b>ALAMAT </b></td>
                             <td>:</td>
-                            <td>{{ $alamat_jalan }}, {{ $alamat_kel_kec }}, {{ $alamat_kota }}, {{ $alamat_provinsi }}, {{ $alamat_kodepos }}
+                            <td>{{ $registrar->alamat_jalan }}, {{ $registrar->alamat_kel_kec }}, {{ $registrar->alamat_kota }}, {{ $registrar->alamat_provinsi }}, {{ $registrar->alamat_kodepos }}
                             </td>
                         </tr>
                         <tr>
@@ -101,11 +101,11 @@
                                 </tr>
                                 @php
                                     
-                                    $anggota_inti = json_decode($anggota_inti);
+                                    $registrar->anggota_inti = json_decode($registrar->anggota_inti);
                                     
                                 @endphp
 
-                                @foreach ($anggota_inti as $a)
+                                @foreach ($registrar->anggota_inti as $a)
                                     <tr class="blank_row">
                                         <td>{{ $a->{'Nama'} }}</td>
                                         <td>{{ $a->{'Jabatan'} }}</td>
@@ -154,9 +154,9 @@
                                 </tr>
 
                                 @php
-                                    $anggota = json_decode($anggota);
+                                    $registrar->anggota = json_decode($registrar->anggota);
                                 @endphp
-                                @foreach ($anggota as $a)
+                                @foreach ($registrar->anggota as $a)
                                     
                                 <tr class="blank_row">
                                     <td class="middle_text_on_table">{{ $loop->iteration }}</td>
@@ -279,11 +279,11 @@
 
                     <p>Demikian data ini kami sampaikan dengan sebenar-benarnya sebagai salah satu syarat penerbitan
                         Sertifikat Tanda Klub Terdaftar dari Ikatan Motor Indonesia ( IMI )</p>
-                    <p>Tanggal, {{ Illuminate\Support\Carbon::parse($created_at)->format("d F Y") }}</p>
-                    <img height="70px" width="200px" src="{{ public_path("uploads/registrations/club/") . "$signature_ketua_anggota" }}" alt="ttd ketua klub">
+                    <p>Tanggal, {{ Illuminate\Support\Carbon::parse($registrar->created_at)->format("d F Y") }}</p>
+                    <img height="70px" width="200px" src="{{ asset("uploads/registrations/club/") . "/$registrar->signature_ketua_anggota" }}" alt="ttd ketua klub">
                     <p style="text-decoration:underline">
                     .......................................</p>
-                    <p>Ketua Klub: {{ $anggota_inti[0]->{'Nama'} }}</p>
+                    <p>Ketua Klub: {{ $registrar->anggota_inti[0]->{'Nama'} }}</p>
                     <hr>
                     <div class="form_filled_by_imi">
                         <p style="text-align: right;">( diisi oleh Pengprov IMI dan diberi silang pada kotak yang

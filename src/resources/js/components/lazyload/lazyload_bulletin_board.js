@@ -1,5 +1,5 @@
 import API_ENDPOINT from "../../global/api_endpoint";
-import { cardBulletinBoardTemplate, cardCommitteeTemplate } from "../../global/template";
+import { cardBulletinBoardTemplate } from "../../global/template";
 
 
 $(document).ready(function async() {
@@ -27,28 +27,14 @@ $(document).ready(function async() {
 
     const firstLoad = async () => {
         const resultData = await getAPI(`${API_ENDPOINT.URL_BULLETIN_BOARD_AGENDA(1)}`);
-        const resultDataInfo = await getAPI(`${API_ENDPOINT.URL_BULLETIN_BOARD_INFO(1)}`);
-
-
-        allBulletin.push(...resultData.data);
-        allBulletin.push(...resultDataInfo.data);
-        console.log(allBulletin)
-
-        allBulletin.sort(function (a, b) {
-            return new Date(b.created_at) - new Date(a.created_at);
-        });
-
-        allBulletin.map((data) => {
+        resultData.data.map((data) => {
             wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
-                data.id,
                 data.type,
                 data.name,
                 data.description,
                 data.date,
             ));
         });
-
-
 
 
         if (resultData.current_page === resultData.last_page) {
@@ -66,7 +52,6 @@ $(document).ready(function async() {
         if (resultData.current_page <= resultData.last_page) {
             resultData.data.forEach(data => {
                 wrapBulletingBoard.innerHTML += (cardBulletinBoardTemplate(
-                    data.id,
                     data.type,
                     data.name,
                     data.description,

@@ -9,7 +9,10 @@
 <script src="{{ asset('backend/js/jquery.timepicker.js') }}"></script>
 <script src="{{ asset('backend/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('backend/js/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('backend/js/print.min.js') }}"></script>
 <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
+{{-- <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script> --}}
+{{-- <script src="https://printjs-4de6.kxcdn.com/print.min.css"></script> --}}
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
@@ -21,7 +24,7 @@
     $(document).ready(function() {
         const permissionsCheckboxAll = document.querySelector(".permission-select-all");
 
-        // PERMISSIONS SELECTOR 
+        // USER ROLE PERMISSIONS SELECTOR 
         const permissions = Array.from($(".permission-item"));
 
         $(".permission-item").each((index, item) => {
@@ -32,7 +35,6 @@
                 permissionsCheckboxAll.setAttribute('checked', true)
             }
         })
-
 
         $(".permission-select-all").click(() => {
             const total_permissions = permissions.length;
@@ -52,7 +54,7 @@
                 });
             }
         })
-        
+
         $(".permission-item").click((e) => {
             if (e.currentTarget.checked) {
                 const total_permissions = permissions.length
@@ -71,5 +73,29 @@
                 permissionsCheckboxAll.checked = null;
             }
         })
+
+
+        /** GET REGISTRATION DOCUMENT (VIEW) AND FEEDING LOADED VIEW TO PRINT.JS */
+        $(".btn.btn-danger.export").click(function(event) {
+
+            let doc_url = event.target.getAttribute("export-url");
+
+            $.ajax({
+                url: doc_url,
+                success: function(result) {
+                    
+                    $(".pdf-export-result-wrapper").html(result);
+                    
+                },
+                error: function(err) {
+                    console.log(err);
+                },
+                complete: function () {
+                    $(".pdf-export-result-wrapper").attr("hidden", false);
+                    printJS('pdf-export-result-wrapper', 'html');
+                    $(".pdf-export-result-wrapper").attr("hidden", true);
+                }
+            });
+        });
     })
 </script>

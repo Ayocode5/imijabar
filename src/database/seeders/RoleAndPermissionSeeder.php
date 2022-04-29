@@ -43,6 +43,7 @@ class RoleAndPermissionSeeder extends Seeder
             'gallery-photo',
             'gallery-video',
             'committee',
+            'info-agenda',
             'social-media',
             'registration',
             'advertisement'

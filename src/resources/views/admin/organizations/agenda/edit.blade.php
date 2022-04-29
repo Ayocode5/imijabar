@@ -24,7 +24,8 @@
                 <div class="form-group">
                     <label for="name">Date</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input value="{{ Illuminate\Support\Carbon::parse($agenda->date)->format("Y-m-d") . "T" . Illuminate\Support\Carbon::parse($agenda->date)->format("h:m") }}" type="datetime-local" name="date" class="col-12 col-md-7 form-control name_sports_show" autofocus>
+                        {{-- {{ dd($agenda->date, Illuminate\Support\Carbon::parse($agenda->date)->format("Y-m-d") . "T" . Illuminate\Support\Carbon::parse($agenda->date)->format("h:i"))}} --}}
+                        <input value="{{ Illuminate\Support\Carbon::parse($agenda->date)->format("Y-m-d") . "T" . Illuminate\Support\Carbon::parse($agenda->date)->format("h:i") }}" type="datetime-local" name="date" class="col-12 col-md-7 form-control name_sports_show" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
