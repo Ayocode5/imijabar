@@ -40,7 +40,7 @@
                             @foreach ($ads_greetings as $key => $ag)
                                 <div
                                     class="carousel-item position-relative  @if ($key == 0) active @endif">
-                                    <div
+                                    <!-- <div
                                         class="d-flex align-items-center justify-content-center justify-content-md-start overlay_carousel_jumbotron position-absolute">
                                         <div class="content_overlay_carousel_jumbotron">
                                             <p class="date_author">
@@ -55,8 +55,8 @@
                                                     More</button> --}}
                                             </a>
                                         </div>
-                                    </div>
-                                    <a href="{{ $ag->redirect_url ? $ag->redirect_url : '#' }}">
+                                    </div> -->
+                                    <a target="_blank" rel="noopener noreferrer" href="{{ $ag->redirect_url ? $ag->redirect_url : '#' }}">
                                         
                                         <img src="{{ asset("uploads/$ag->image") }}" class="d-block w-100"
                                             alt="iteration">

@@ -175,6 +175,33 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
+.description_bulletin_info a::before {
+    background-image: url('../../images/right-arrow.png');
+    vertical-align: middle;
+    width: 20px;
+    background-size: 20px 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    content: "";
+}
+
+.description_bulletin_info a {
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: 1px solid #263840;
+    box-sizing: border-box;
+    color: #000000;
+    transition: all 0.5s ease-in-out;
+}
+
+.description_bulletin_info a:hover {
+    background-color: #263840;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .buletin_card_header,
 .buletin_card_body {
     background-color: transparent;
@@ -415,7 +442,6 @@ body {
 
 .ad_imi {
     padding: 16px 7% !important;
-
 }
 
 .ad_imi a::before {

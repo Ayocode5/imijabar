@@ -140,8 +140,8 @@ const klubMobilCardTemplate = (clubName, leader, linkImage, establishmentDate, l
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
                         ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                        class="fa-brands fa-${key}"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                        class="fa-brands fa-${key}"></i></a>`).join("")}
+                        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+                        class="fab fa-${key} fa-2xl"></i></a>`).join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -192,8 +192,8 @@ const klubMotorCardTemplate = (clubName, leader, linkImage, establishmentDate, l
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
                           ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa-brands fa-${key}"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fa-brands fa-${key}"></i></a>`).join("")}
+        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+        class="fab fa-${key} fa-2xl"></i></a>`).join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -244,8 +244,8 @@ const klubMobilityCardTemplate = (clubName, leader, linkImage, establishmentDate
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
                           ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa-brands fa-${key}"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fa-brands fa-${key}"></i></a>`).join("")}
+        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+        class="fab fa-${key}"></i></a>`).join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -293,8 +293,8 @@ const cardCommitteeTemplate = (name, designation, address, photo, listSocialMedi
                 <span class="sosial_media_committe">
                     <p>
                     ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? false : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                    class="fa-brands fa-${key}"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                    class="fa-brands fa-${key}"></i></a>`).join("")}
+                    class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+                    class="fab fa-${key}"></i></a>`).join("")}
                     </p>
                 </span>
             </div>
@@ -378,7 +378,7 @@ const cardBulletinBoardInfoTemplate = (id, type, name, description) => {
                     <div>
                         <div>
                             <button class="btn btn-link buletin_card_title" type="button">
-                                Pengumuman
+                                PENGUMUMAN !
                             </button>
                         </div>
                         <div>
@@ -396,14 +396,14 @@ const cardBulletinBoardInfoTemplate = (id, type, name, description) => {
                         <h4>
                             Detail Info :
                         </h4>
-                        <p>
+                        <div class="description_bulletin_info">
                             ${description}
-                        </p>
+                        </div>
                     </div>
-                </div >
-            </div >
-        </div >
-    </div >
+                </div>
+            </div>
+        </div>
+    </div>
     `;
 }
 
