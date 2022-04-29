@@ -20,49 +20,49 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="organizer-create-event">Event Organizer</label>
+                    <label for="organizer-create-event">Event Organizer *</label>
                     <input id="organizer-create-event" required type="text" name="event_organizer" class="form-control"
                         value="{{ old('event_organizer') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Content</label>
+                    <label for="">Content *</label>
                     <textarea required name="event_content" class="form-control editor" cols="30"
                         rows="10">{{ old('event_content') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Summary</label>
-                    <textarea required name="event_content_short" class="form-control h_100" cols="30"
+                    <label for="">Summary *</label>
+                    <textarea required name="event_content_short" class="form-control" cols="30"
                         rows="10">{{ old('event_content_short') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Start Date</label>
+                    <label for="">Start Date *</label>
                     <input required type="date" name="event_start_date" class="form-control"
                         value="{{ old('event_start_date') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">End Date</label>
-                    <input required type="date" name="event_end_date" class="form-control"
+                    <label for="">End Date *</label>
+                    <input required type="date" placeholder="dd-mm-yyyy" name="event_end_date" class="form-control"
                         value="{{ old('event_end_date') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Address</label>
+                    <label for="">Address *</label>
                     <input required type="text" name="event_location" class="form-control"
                         value="{{ old('event_location') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">City</label>
+                    <label for="">City *</label>
                     <input required type="text" name="event_location_city" class="form-control"
                         value="{{ old('event_location_city') }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Province</label>
+                    <label for="">Province *</label>
                     <input required type="text" name="event_location_province" class="form-control"
                         value="{{ old('event_location_province') }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Maps (Optional)</label>
                     <input type="text" name="event_map" class="form-control" value="{{ old('event_map') }}" autofocus>
-                </div>
+                </div> --}}
                 {{-- <div class="form-group">
                     <label for="">Video (YouTube ID) - (Optional)</label>
                     <input type="text" name="event_video" class="form-control" value="{{ old('event_video') }}"
@@ -74,12 +74,17 @@
                         autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Document Link (Optional)</label>
+                    <label for="">Document Link 1 - Surat Rekomendasi (Optional)</label>
                     <input type="text" name="event_document_link" class="form-control"
-                        value="{{ old('event_document_link') }}" autofocus>
+                        value="{{ old("event_document_link") }}" placeholder="example: https://www.document/docuement1.pdf" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Sports</label>
+                    <label for="">Document Link 2 - Hasil Lomba (Optional)</label>
+                    <input type="text" name="event_document_link2" class="form-control"
+                           value="{{ old('event_document_link2') }}" placeholder="example: https://www.document/docuement1.pdf" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Sports *</label>
                     @if (count($sports) <= 0)
                         <select class="form-control" disabled>
                             <option value="">There is no Sports available, Create first</option>
@@ -101,7 +106,7 @@
                             <option value="">There is no Sponsor available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
                             multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }}>{{ $sponsor->name }}</option>
@@ -117,9 +122,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="">Image (Max: 2MB)</label>
+                    <label for="">Add Banner * (Max: 2MB)</label>
                     <div>
-                        <input required type="file" name="event_featured_photo" id="event_featured_photo">
+                        <input required type="file" name="event_featured_photo" id="event_featured_photo" value="{{ old("event_featured_photo") }}">
                     </div>
                 </div>
             </div>
@@ -133,7 +138,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
-                    <textarea name="seo_meta_description" class="form-control h_100" cols="30"
+                    <textarea name="seo_meta_description" class="form-control" cols="30"
                         rows="10">{{ old('seo_meta_description') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>

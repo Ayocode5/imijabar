@@ -8,7 +8,7 @@
 
 <style>
     .wrap_list_berita .card .header_card_image .label_header_card_image {
-        background-color: #263840;
+        background-color: #f5ea59;
         border-radius: 0 0 5 px 5 px;
     }
 </style>

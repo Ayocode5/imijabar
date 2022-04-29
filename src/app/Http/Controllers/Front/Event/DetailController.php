@@ -13,6 +13,7 @@ class DetailController extends Controller
     {
         $settings = DB::table('general_settings')->select(
             'logo',
+            'top_bar_organization_name',
             'top_bar_email',
             'top_bar_phone',
             'footer_address',
@@ -69,7 +70,8 @@ class DetailController extends Controller
 
             return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
         } else {
-            return abort(404);
+            $event = false;
+            return view('pages.event_detail', compact('settings', 'event', 'event_categories'));
         }
     }
 }

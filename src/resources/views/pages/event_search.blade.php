@@ -6,7 +6,7 @@
     <section id="header_page_list_events">
         <div class="head_list_events">
             <h1>Pencarian Event</h1>
-            <p>Kata Kunci : <strong>{{ request()->q }}</strong></p>
+            <p>Menampilkan Hasil Pencarian : <strong>{{ request()->q }}</strong></p>
         </div>
     </section>
 
@@ -16,7 +16,7 @@
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
                     <select class="col categories category-sport" name="filterCategoryEvents" id="filterCategoryEvents">
-                        <option style="display:none" value disabled selected>Category</option>
+                        <option style="display:none" value disabled selected>Kategori Event</option>
                         <option value="all">Semua</option>
                         @foreach ($categories as $category)
                             <option categories="{{ $category->slug }}" value="{{ $category->slug }}">
@@ -30,7 +30,7 @@
                         $url_filter_prefix = url()->current() . '?q=' . request()->input('q') . '&page=1';
                     @endphp
                     <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports">
-                        <option style="display:none" value disabled selected>Sports</option>
+                        <option style="display:none" value disabled selected>Jenis Event</option>
 
                         <option value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
@@ -59,13 +59,15 @@
             </div>
         </section>
 
-        {{-- LIST EVENTS --}}
-        <section class="pb-5 mt-4" id="list_card_events">
-            <div class="wrap_list_events">
-                <div class="row row-cols-1 row-cols-md-2">
-                    @if (count($events) == 0)
-                        <p class="event_not_found">Oops, Event tidak ditemukan</p>
-                    @else
+        @if (count($events) == 0)
+            {{-- <p class="event_not_found">Oops, Event tidak ditemukan</p> --}}
+            @include('layouts.components.404')
+        @else
+            {{-- LIST EVENTS --}}
+            <section class="pb-5 mt-4" id="list_card_events">
+                <div class="wrap_list_events">
+                    <div class="row row-cols-1 row-cols-md-2">
+
                         @foreach ($events as $event)
                             <div class="col mb-4">
                                 <a class="text-decoration-none text-dark" href="/event/{{ $event->slug }}">
@@ -108,14 +110,14 @@
                                                 <div class="col-12 col-md-7 pt-3 date_events_list pl-0 align-self-center">
                                                     <div class="d-flex justify-content-center">
                                                         <p class="ml-2">
-                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('dddd') }}
                                                             -
-                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('dddd') }}
                                                             <br />
                                                             <span>
-                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('D MMMM') }}
                                                                 -
-                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('D MMMM Y') }}
                                                             </span>
                                                         </p>
                                                     </div>
@@ -126,21 +128,23 @@
                                 </a>
                             </div>
                         @endforeach
-                    @endif
+
+                    </div>
                 </div>
-            </div>
-            {{-- @if (count($events) != 0)
+                {{-- @if (count($events) != 0)
                 <button class="btn_load_more_list_events mx-auto d-block">
                     Load More
                 </button>
             @endif --}}
-            <div id="loader" class="spinner-border text-secondary" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div id="load_content_events">
+                <div id="loader" class="spinner-border text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div id="load_content_events">
 
-            </div>
-        </section>
+                </div>
+            </section>
+        @endif
+
 
     </main>
 @endsection

@@ -14,6 +14,7 @@ class IndexController extends Controller
     {
         $settings = DB::table('general_settings')->select(
             'logo',
+            'top_bar_organization_name',
             'top_bar_email',
             'top_bar_phone',
             'footer_address',
@@ -65,7 +66,7 @@ class IndexController extends Controller
                     $s_query->where('slug', $events_sport_filter);
                 }
             })
-            ->orderBy('event_start_date')
+            ->orderBy('event_start_date', 'DESC')
             ->paginate(6);
 
 
@@ -82,6 +83,8 @@ class IndexController extends Controller
             }
         }
 
-        return view('pages.event', compact('events', 'categories', 'sports', 'settings', 'page_event_settings'));
+        $event_banner_default = DB::table('general_settings')->select('banner_event as banner')->first();
+
+        return view('pages.event', compact('events', 'categories', 'sports', 'event_banner_default', 'settings', 'page_event_settings'));
     }
 }

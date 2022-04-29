@@ -23,9 +23,11 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Admin\Photo' => 'App\Policies\PhotoPolicy',
         'App\Models\Admin\Video' => 'App\Policies\VideoPolicy',
         'App\Models\Admin\TeamMember' => 'App\Policies\CommitteePolicy',
+        'App\Models\Admin\CommitteeGreeting' => 'App\Policies\CommitteePolicy',
         'App\Models\Admin\SocialMediaItem' => 'App\Policies\SocialMediaPolicy',
         'App\Models\Admin\Subscriber' => 'App\Policies\SubscribersPolicy',
-
+        'App\Models\Admin\Advertisement' => 'App\Policies\AdvertisementPolicy',
+        'App\Models\Admin\Organizations\Agenda' => 'App\Policies\InfoAgendaPolicy',
     ];
 
     /**
@@ -48,13 +50,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
-        Gate::define('isEditor', function ($user) {
-            return $user->hasRole('editor');
+        //Registration Controller Gates
+        Gate::define('view-registration', function ($user) {
+            return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });
 
-        //Registration Controller Gates 
-        Gate::define('view-registration', function (User $user) {
-            return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
+        //File Manager Controller Gates
+        Gate::define('view-file-manager', function ($user) {
+            return in_array('view-file-manager', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });
     }
 }

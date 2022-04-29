@@ -15,7 +15,8 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Title *</label>
-                    <input required type="text" name="blog_title" class="form-control" value="{{ old('blog_title') }}" autofocus>
+                    <input required type="text" name="blog_title" class="form-control" value="{{ old('blog_title') }}"
+                        autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Content *</label>
@@ -24,14 +25,15 @@
                 </div>
                 <div class="form-group">
                     <label for="">Summary *</label>
-                    <textarea required name="blog_content_short" class="form-control h_100" cols="30"
+                    <textarea required name="blog_content_short" class="form-control" cols="30"
                         rows="10">{{ old('blog_content_short') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Image *</label>
+                    <label for="">Add Banner *</label>
                     <div>
                         <img id="preview_news_image" src="" alt="" class="w_300"><br><br>
-                        <input required accept="image/*" type="file" id="blog_photo" name="blog_photo">                    </div>
+                        <input required accept="image/*" type="file" id="blog_photo" name="blog_photo">
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -71,7 +73,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
-                    <textarea name="seo_meta_description" class="form-control h_100" cols="30"
+                    <textarea name="seo_meta_description" class="form-control" cols="30"
                         rows="10">{{ old('seo_meta_description') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>
@@ -80,7 +82,6 @@
     </form>
 
     <script>
-
         blog_photo.onchange = (event) => {
             const [file] = blog_photo.files
             if (file) {
@@ -91,5 +92,4 @@
             }
         }
     </script>
-
 @endsection

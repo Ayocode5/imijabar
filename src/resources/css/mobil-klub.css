@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+/* 
+    font-family: 'Barlow', sans-serif;  
+    font-family: 'Tinos', serif;
+    font-family: 'Zeyada', cursive;
+*/
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+#page_klub_mobil {
+    border-left: 1px solid rgba(38, 56, 64, 0.5);
+    border-right: 1px solid rgba(38, 56, 64, 0.5);
+    margin: 0 3%;
+    padding: 0 3%;
+    padding-bottom: 24px;
+}
+
+/* Header page klub mobil */
+#header_page_klub_mobil {
+    margin: 0 auto;
+    background-color: #f8f8f8;
+}
+
+.head_klub_mobil {
+    padding: 40px 0 10px 0;
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.head_klub_mobil h1 {
+    font-family: "Tinos", serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+    text-decoration-color: hsl(215, 79%, 64%);
+}
+
+
+.head_klub_mobil p {
+    text-align: center;
+    margin: 0 0;
+    font-size: 1em;
+}
+
+/* End Header page klub mobil */
+
+
+.wrap_card_community {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.wrap_card_community::-webkit-scrollbar {
+    display: none;
+    border: none;
+    padding-bottom: 16px;
+    /* for Chrome, Safari, and Opera */
+}
+
+.scroll_wrap_card_community {
+    overflow: scroll;
+    background-color: #5996EC;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+.scroll_wrap_card_motor_community {
+    overflow: scroll;
+    background-color: #FFCE51;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+.scroll_wrap_card_mobility_community {
+    overflow: scroll;
+    background-color: #51FF58;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+.image_card_klub_mobil {
+    height: 300px;
+    object-fit: cover;
+}
+
+.overlay_car_community {
+    padding: 16px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(163.89deg, #263840 -2.61%, #5996EC 88.8%);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    transform: translateY(0);
+    box-shadow: 0px -5px 4px rgba(0, 0, 0, 0.37);
+}
+
+.overlay_collaps {
+    /* transform: translate(0, 60%); */
+}
+
+.overlay_show {
+    transition: all 0.5s ease-in-out;
+    transform: translate(0, 0) !important;
+}
+
+.opacity_object {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay_car_community h5 {
+    font-weight: 700;
+    color: #F4F4F9 !important;
+    font-size: 16px;
+    text-align: left !important;
+    margin-bottom: 0;
+}
+
+
+.subtittle_card>p {
+    font-size: 0.8em;
+}
+
+.content_overlay_collaps p {
+    font-size: 0.8em;
+}
+
+.content_overlay_collaps>p {
+    font-weight: 700;
+    color: #F4F4F9;
+}
+
+.content_overlay_collaps .leader_name {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.content_overlay_collaps .leader_name p:nth-child(1) {
+    color: #F4F4F9;
+    font-weight: 700;
+}
+
+.content_overlay_collaps .leader_name p:nth-child(2) {
+    color: #F4F4F9;
+    opacity: 0.8;
+}
+
+.sosial_media_klub_mobil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.sosial_media_klub_mobil p {
+    font-size: 24px;
+    display: block;
+    margin: auto 0;
+    padding-bottom: 10px;
+}
+
+.sosial_media_klub_mobil p a {
+    color: #F4F4F9;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.sosial_media_klub_mobil p i {
+    margin: 0 10px;
+
+}
+
+.sosial_media_klub_mobil p i:nth-child(1) {
+    margin-left: 0;
+}
+
+.btn_load_more_klub_mobil,
+.btn_load_more_klub_motor,
+.btn_load_more_klub_mobility {
+    background-color: transparent;
+    border: 1px solid #263840;
+    padding: 8px 24px;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+
+.btn_load_more_klub_mobil:active,
+.btn_load_more_klub_mobil:hover,
+.btn_load_more_klub_mobil:focus,
+.btn_load_more_klub_motor:active,
+.btn_load_more_klub_motor:hover,
+.btn_load_more_klub_motor:focus,
+.btn_load_more_klub_mobility:active,
+.btn_load_more_klub_mobility:hover,
+.btn_load_more_klub_mobility:focus {
+    background-color: #FFCE51;
+    border: none;
+    outline: none;
+    transform: translate(0, -10px);
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Head List Klub Mobil */
+    #header_page_klub_mobil {
+        padding: 0 0;
+    }
+
+    .head_klub_mobil {
+        padding: 40px 0 40px 0;
+    }
+
+    .head_klub_mobil p {
+        max-width: 400px;
+        margin: 0 auto;
+        word-wrap: break-word;
+        font-size: 1.2em;
+    }
+
+    .head_klub_mobil h1 {
+        font-size: 48px;
+    }
+
+    /* Head Klub Mobil */
+
+    .overlay_collaps {
+        /* transform: translate(0, 55%); */
+    }
+
+    .overlay_car_community h5 {
+        font-size: 24px;
+    }
+
+    .subtittle_card>p {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .content_overlay_collaps p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    /* Head Klub Mobil */
+    .head_klub_mobil {
+        padding: 100px 0 100px 0;
+    }
+
+    .head_klub_mobil p {
+        max-width: 500px;
+        font-size: 24px;
+    }
+
+    /* Head Klub Mobil */
+}

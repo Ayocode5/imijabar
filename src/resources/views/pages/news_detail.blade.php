@@ -19,7 +19,7 @@
                     </div>
                     <div class="d-flex flex-wrap justify-content-between author_date_detail_berita">
                         <p>Editor</p>
-                        <p>{{ date_format(date_create($news->created_at), 'd F Y') }}</p>
+                        <p>{{ Illuminate\Support\Carbon::parse($news->created_at)->isoFormat("D MMMM Y") }}</p>
                     </div>
                 </div>
             </div>
@@ -106,9 +106,7 @@
             </section>
         </main>
     @else
-        <center>
-            <h2>Opps, Berita tidak ditemukan</h2>
-        </center>
+       @include('layouts.components.404')
     @endif
 
     <div id="fb-root"></div>

@@ -3,16 +3,26 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Registration\KISRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class KISController extends Controller
 {
-    public function __invoke()
+
+    private static $registrationRepository;
+
+    public function __construct(KISRegistrationRepository $repository)
+    {
+        self::$registrationRepository = $repository;
+    }
+
+    public function index()
     {
 
         $settings = DB::table('general_settings')->select(
             'logo',
+            'top_bar_organization_name',
             'top_bar_email',
             'top_bar_phone',
             'footer_address',
@@ -38,7 +48,7 @@ class KISController extends Controller
             ->where('dynamic_page_slug', 'registration-kis-head-page')
             ->first();
 
-        if(!$section1) {
+        if (!$section1) {
             return abort(404);
         }
 
@@ -65,6 +75,49 @@ class KISController extends Controller
 
         // dd($section3);
 
-        return view('pages.register_member.kis', compact('settings', 'section1', 'section2', 'section3'));
+        return view('pages.registrations.kis.index', compact('settings', 'section1', 'section2', 'section3'));
+    }
+
+    public function getForm()
+    {
+        return view("pages.registrations.kis.registration_form");
+    }
+
+    public function store(Request $request)
+    {
+
+        $this->validate($request, [
+            "q301_email" => "required|email",
+            "q30_nomorKartu" => "required|string",
+            "q44_dikeluarkanDi" => "required|string",
+            "q34_nomorPasport" => "string",
+            "q19_namaLengkap" => "required|string|max:50",
+            "q23_tempatTanggal" => "required|string",
+            "q22_jenisKelamin" => "required|in:L,P",
+            "q24_golonganDarah" => "required|in:A+,B+,C+,AB+,A-,B-,C-,AB-",
+            "q29_pendidikan" => "required|string",
+            "q37_alamat" => "required|array",
+            "q37_alamat.addr_line1" => "required|string",
+            "q37_alamat.addr_line2" => "required|string",
+            "q37_alamat.city" => "required|string",
+            "q37_alamat.state" => "required|string",
+            "q37_alamat.postal" => "required|string",
+            "q39_nomorHandphone" => "required|string",
+            "q42_jenisSim" => "in:A,B,C",
+            "q43_nomorSim" => "string",
+            "q45_polda" => "string",
+            "q48_iuranAnggota" => "required|in:1,2,3",
+            "q60_nomorKartu60" => "required|string",
+            "q81_tandaTangan" => "required|string",
+            "q73_uploadPas" => "required|mimes:png,jpg,jpeg|max:1024",
+            "q77_uploadKartu" => "required|mimes:png,jpg,jpeg,pdf|max:1024",
+            "q78_uploadSurat" => "mimes:png,jpg,jpeg,pdf|max:1024",
+        ]);
+
+        if(self::$registrationRepository->storeData($request)) {
+            return view("pages.registrations.kis.success");
+        }
+
+        return "kesalahan";
     }
 }

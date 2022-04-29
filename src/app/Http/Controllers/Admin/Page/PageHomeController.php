@@ -33,22 +33,43 @@ class PageHomeController extends Controller
     // Update HomePage Jumbotron Section
     public function jumbotron(Request $request)
     {
+
         if ($request->hasFile('jumbotron_bg')) {
             $request->validate([
                 'jumbotron_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
-            // Unlink old photo
-            if(file_exists(public_path('uploads/' . $request->input('current_photo'))) && !empty($request->input('current_photo'))) {
-                unlink(public_path('uploads/' . $request->input('current_photo')));
+            // Unlink old background
+            if(file_exists(public_path('uploads/' . $request->input('current_bg'))) && !empty($request->input('current_bg'))) {
+                unlink(public_path('uploads/' . $request->input('current_bg')));
             }
 
-            // Uploading new photo
+            // Saving new background
             $ext = $request->file('jumbotron_bg')->extension();
             $final_name = 'jumbotron_bg' . '.' . $ext;
             $request->file('jumbotron_bg')->move(public_path('uploads/'), $final_name);
 
             $data['jumbotron_bg'] = $final_name;
+        }
+
+        // Jumbotron Icon Processing
+        if($request->hasFile('jumbotron_icon')) {
+
+            $request->validate([
+                'jumbotron_icon' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+
+            // Unlink old Icon
+            if(file_exists(public_path('uploads/' . $request->input('current_icon'))) && !empty($request->input('current_icon'))) {
+                unlink(public_path('uploads/' . $request->input('current_icon')));
+            }
+
+            // Saving new background
+            $ext = $request->file('jumbotron_icon')->extension();
+            $final_name = 'jumbotron_icon' . '.' . $ext;
+            $request->file('jumbotron_icon')->move(public_path('uploads/'), $final_name);
+
+            $data['jumbotron_icon'] = $final_name;
         }
 
         $data['jumbotron_title'] = $request->input('jumbotron_title');
@@ -57,7 +78,7 @@ class PageHomeController extends Controller
 
         PageHomeItem::where('id', 1)->update($data);
 
-        return redirect()->back()->with('success', 'Newsletter Section is updated successfully!');
+        return redirect()->back()->with('success', 'Jumbotron Section is updated successfully!');
     }
 
     // Update HomePage News Section

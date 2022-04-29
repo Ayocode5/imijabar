@@ -14,6 +14,7 @@ class DetailController extends Controller
     {
         $settings = DB::table('general_settings')->select(
             'logo',
+            'top_bar_organization_name',
             'top_bar_email',
             'top_bar_phone',
             'footer_address',
@@ -32,7 +33,8 @@ class DetailController extends Controller
             'blog_title as title',
             'blog_slug as slug',
             'blog_photo as photo',
-            'blog_content as content'
+            'blog_content as content',
+            'created_at'
         )->where('blog_slug', $slug)->first();
 
         // dd($news);

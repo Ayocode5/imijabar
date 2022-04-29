@@ -22,7 +22,7 @@ class RoleController extends Controller
     {
         $admin_users = User::with(['roles' => function ($q) {
             return $q->select('name');
-        }])->role(['admin', 'editor'])->get();
+        }])->get();
 
         $roles = DB::table('roles')->select('name')->get()->pluck('name');
 
@@ -80,6 +80,7 @@ class RoleController extends Controller
             'name' => 'required',
             'email' => [Rule::unique('users')->ignore($id)],
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'role_id' => 'required|numeric'
         ]);
 
 
@@ -99,6 +100,14 @@ class RoleController extends Controller
             'email' => $request->email,
             'photo' => $fileName ?? $user->photo
         ]);
+
+        if($user->hasRole('admin') && $user->id == 1) {
+            if($request->role_id > 1) {
+                abort(403, "Forbidden, Admin role cannot be downgradded!");
+            }
+        }
+
+        $user->syncRoles($request->role_id);
 
         return redirect()->route('admin.role.user')->with('success', 'Admin User is updated successfully!');
     }
@@ -124,6 +133,10 @@ class RoleController extends Controller
 
     public function user_destroy($id)
     {
+        if(auth()->user()->id == 1 || $id == 1) {
+            abort(403, 'Forbidden, Cannot delete super admin!');
+        }
+
         $user = User::findOrFail($id);
         $user->syncRoles([]);
         //unlink(public_path('uploads/' . $user->photo));
@@ -188,6 +201,7 @@ class RoleController extends Controller
     {
 
         $role = Role::with('permissions')->find($id);
+        // dd($request->input);
         $role->syncPermissions($request->input('input'));
 
         return redirect()->route('admin.role.index')->with('success', 'Access Setup is updated successfully!');

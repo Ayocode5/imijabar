@@ -56,8 +56,6 @@ body {
     object-fit: cover;
 }
 
-
-
 .carousel_jumbotron .carousel-item .overlay_carousel_jumbotron {
     height: 100%;
     width: 100%;
@@ -513,7 +511,7 @@ main {
     .jumbotron_logo {
         left: 95px;
         margin: 0;
-        width: 164px;
+        width: 250px;
         top: 74px;
         bottom: 0;
     }

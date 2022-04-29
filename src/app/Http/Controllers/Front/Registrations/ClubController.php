@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Registration\ClubRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
 {
-    public function __invoke()
+
+    private static $registrationRepository;
+
+    public function __construct(ClubRegistrationRepository $repository)
+    {
+        self::$registrationRepository = $repository;
+    }
+
+    public function index()
     {
         $settings = DB::table('general_settings')->select(
             'logo',
+            'top_bar_organization_name',
             'top_bar_email',
             'top_bar_phone',
             'footer_address',
@@ -64,6 +74,32 @@ class ClubController extends Controller
             )->where('dynamic_page_slug', 'registration-club-howto-page')
             ->first();
 
-        return view('pages.register_member.club', compact('settings', 'section1', 'section2', 'section3'));
+        return view("pages.registrations.club.index", compact('settings', 'section1', 'section2', 'section3'));
+    }
+
+    public function getForm() {
+        return view("pages.registrations.club.registration_form");
+    }
+
+    public function store(Request $request) {
+
+        $this->validate($request, [
+            "q30_namaKlub" => "required",
+            "q301_email" => "required|email",
+            "q37_alamat" => "required|array",
+            "*.addr_line1" => "string",
+            "*.addr_line2" => "string",
+            "*.city" => "string",
+            "*.state" => "string",
+            "*.postal" => "string",
+            "q110_pengurusInti" => "required|string",
+            "q106_typeA106" => "required|string",
+            "q112_tandaTangan" => "required|string"
+        ]);
+
+        if(self::$registrationRepository->storeData($request)) {
+            return view("pages.registrations.club.success");
+        };
+
     }
 }

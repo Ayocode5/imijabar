@@ -1,12 +1,95 @@
 /containers/mysql/*
 /src/node_modules
 /src/public/hot
-/src/public/js
-/src/public/css
 # /src/bootstrap
 # /src/storage/app/public/*
-/src/public/js
-/src/public/css
+
+/src/public/js/
+/src/public/css/
+
+# Include Upload Folders
+/src/public/uploads/*
+!/src/public/uploads/.gitkeep
+
+# Include Advertisement Folder
+!/src/public/uploads/advertisements/
+/src/public/uploads/advertisements/*
+!/src/public/uploads/advertisements/.gitkeep
+
+# Include Committee Folder
+!/src/public/uploads/committee/
+/src/public/uploads/committee/*
+!/src/public/uploads/committee/.gitkeep
+
+# Include Communities Folder
+!/src/public/uploads/communities/
+/src/public/uploads/communities/*
+!/src/public/uploads/communities/.gitkeep
+
+# Include Dokumen Folder
+!/src/public/uploads/dokumen/
+/src/public/uploads/dokumen/*
+!/src/public/uploads/dokumen/.gitkeep
+
+# Include Event Folder
+!/src/public/uploads/events/
+/src/public/uploads/events/*
+!/src/public/uploads/events/.gitkeep
+
+!/src/public/uploads/events/sponsors/
+/src/public/uploads/events/sponsors/*
+!/src/public/uploads/events/sponsors/.gitkeep
+
+!/src/public/uploads/events/sports/
+/src/public/uploads/events/sports/*
+!/src/public/uploads/events/sports/.gitkeep
+
+# Include Galleries Folder
+!/src/public/uploads/galleries/
+/src/public/uploads/galleries/*
+!/src/public/uploads/galleries/.gitkeep
+
+# Include General Setting Folder
+!/src/public/uploads/general_settings/
+/src/public/uploads/general_settings/*
+!/src/public/uploads/general_settings/.gitkeep
+
+# Include Greetings Folder
+!/src/public/uploads/greetings/
+/src/public/uploads/greetings/*
+!/src/public/uploads/greetings/.gitkeep
+
+# Include News Folder
+!/src/public/uploads/news/
+/src/public/uploads/news/*
+!/src/public/uploads/news/.gitkeep
+
+# Include Registration Folder
+!/src/public/uploads/registrations/
+/src/public/uploads/registrations/*
+!/src/public/uploads/registrations/.gitkeep
+
+# Include Registration Kis Folder
+!/src/public/uploads/registrations/kis/
+/src/public/uploads/registrations/kis/*
+!/src/public/uploads/registrations/kis/.gitkeep
+
+# Include Registration EO Folder
+!/src/public/uploads/registrations/eo/
+/src/public/uploads/registrations/eo/*
+!/src/public/uploads/registrations/eo/.gitkeep
+
+# Include Registration Club Folder
+!/src/public/uploads/registrations/club/
+/src/public/uploads/registrations/club/*
+!/src/public/uploads/registrations/club/.gitkeep
+
+# Include Registration Users Folder
+!/src/public/uploads/users/
+/src/public/uploads/users/*
+!/src/public/uploads/users/.gitkeep
+
+
 /src/storage/framework/*
 /src/storage/logs/*
 /src/storage/*.key

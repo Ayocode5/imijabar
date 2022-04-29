@@ -35,6 +35,7 @@ $(document).ready(() => {
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
             window.location.href = "#googtrans(en|en)";
+            location.reload();
         } else {
             console.log($('.checkbox_switch_language').is(':checked'))
             localStorage.setItem("language", "id");

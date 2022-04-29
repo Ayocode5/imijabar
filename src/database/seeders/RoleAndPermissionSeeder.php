@@ -43,13 +43,16 @@ class RoleAndPermissionSeeder extends Seeder
             'gallery-photo',
             'gallery-video',
             'committee',
+            'info-agenda',
             'social-media',
-            'registration'
+            'registration',
+            'advertisement'
         ];
 
         $permissionPayload = [
             ['name' => 'send-email', 'guard_name' => 'web'],
-            ['name' => 'delete-subscriber', 'guard_name' => 'web']
+            ['name' => 'delete-subscriber', 'guard_name' => 'web'],
+            ['name' => 'view-file-manager', 'guard_name' => 'web']
         ];
 
         foreach($resources as $resource) {

@@ -6,13 +6,28 @@
                     {{ $home_settings->newsletter_detail }}
                 </span></h3>
 
-            <input placeholder="example@gmail.com" class="input_newsletter" type="text">
+            <input placeholder="contoh@gmail.com" class="input_newsletter" type="text">
             <img class="button_newsletter" src="{{ asset('images') }}/send_button.svg" alt="sendButton">
             <div class="invalid-feedback">
                 <h6 class="input-newsletter-invalid"></h6>
             </div>
             <div class="valid-feedback">
-                <h6 class="input-newsletter-valid"></h6>
+                {{-- <h6 class="input-newsletter-valid"></h6> --}}
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

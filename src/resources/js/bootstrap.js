@@ -1,10 +1,14 @@
 window._ = require('lodash');
 global.$ = global.jQuery = require('jquery');
+
 import Popper from 'popper.js/dist/umd/popper.js';
 window.Popper = Popper;
+
 require('bootstrap')
+
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+
 require('./components/newsletter');
 require('./components/carousel');
 require('./components/event_category_filter');
@@ -15,6 +19,13 @@ require('./components/welcome');
 require('./components/switch_language');
 require('./components/recaptcha_size');
 require('./components/gallery');
+require('./components/card_klub');
+require('./components/lazyload/lazyload_klub_motor');
+require('./components/lazyload/lazyload_klub_mobil');
+require('./components/lazyload/lazyload_klub_mobility');
+require('./components/lazyload/lazyload_committee');
+require('./components/lazyload/lazyload_bulletin_board');
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

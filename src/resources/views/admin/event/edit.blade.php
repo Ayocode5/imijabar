@@ -14,55 +14,56 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Name</label>
+                    <label for="">Name *</label>
                     <input required type="text" name="event_name" class="form-control" value="{{ $event->event_name }}"
                         autofocus>
                 </div>
+
                 <div class="form-group">
-                    <label for="organizer-event">Event Organizer</label>
+                    <label for="organizer-event">Event Organizer *</label>
                     <input id="organizer-event" required type="text" name="event_organizer" class="form-control"
                         value="{{ $event->event_organizer }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Content</label>
+                    <label for="">Content *</label>
                     <textarea required name="event_content" class="form-control editor" cols="30"
                         rows="10">{{ $event->event_content }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Summary</label>
+                    <label for="">Summary *</label>
                     <textarea required name="event_content_short" class="form-control h_100" cols="30"
                         rows="10">{{ $event->event_content_short }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="">Start Date</label>
+                    <label for="">Start Date *</label>
                     <input required type="date" name="event_start_date" class="form-control"
                         value="{{ $event->event_start_date }}">
                 </div>
                 <div class="form-group">
-                    <label for="">End Date</label>
+                    <label for="">End Date *</label>
                     <input required type="date" name="event_end_date" class="form-control"
                         value="{{ $event->event_end_date }}">
                 </div>
                 <div class="form-group">
-                    <label for="">Address</label>
+                    <label for="">Address *</label>
                     <input required type="text" name="event_location" class="form-control"
                         value="{{ $event->event_location }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">City</label>
+                    <label for="">City *</label>
                     <input required type="text" name="event_location_city" class="form-control"
                         value="{{ $event->event_location_city }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Province</label>
+                    <label for="">Province *</label>
                     <input required type="text" name="event_location_province" class="form-control"
                         value="{{ $event->event_location_province }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Maps (Optional)</label>
                     <input type="text" name="event_location_map" class="form-control" value="{{ $event->event_map }}"
                         autofocus>
-                </div>
+                </div> --}}
                 {{-- <div class="form-group">
                     <label for="">Video (YouTube ID) - (Optional)</label>
                     <input type="text" name="event_video" class="form-control" value="{{ $event->event_video }}" autofocus>
@@ -73,19 +74,24 @@
                         autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Document Link (Optional)</label>
-                    <input type="text" name="event_document_link" class="form-control"
+                    <label for="">Document Link - Surat Rekomendasi (Optional)</label>
+                    <input type="text" name="event_document_link" placeholder="example: https://www.document/docuement1.pdf"  class="form-control"
                         value="{{ $event->event_document_link }}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="">Current Image</label>
+                    <label for="">Document Link - Hasil Lomba (Optional)</label>
+                    <input type="text" name="event_document_link2" placeholder="example: https://www.document/docuement1.pdf" class="form-control"
+                           value="{{ $event->event_document_link2 }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="">Current Banner</label>
                     <div>
                         <img id="event_preview_image" src="{{ asset('uploads/' . $event->event_featured_photo) }}" alt=""
                             class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Change Image (Max: 2MB)</label>
+                    <label for="">Change Banner (Max: 2MB)</label>
                     <div>
                         <input type="file" id="event_featured_photo" name="event_featured_photo">
                     </div>
@@ -115,7 +121,7 @@
                             <option value="">There is no Sponsors available, Create first</option>
                         </select>
                     @else
-                        <select required name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
+                        <select name="sponsors_id[]" id="sponsors_id" class="form-control selectpicker"
                             multiple="multiple" autofocus>
                             @foreach ($sponsors as $sponsor)
                                 <option value={{ $sponsor->id }} @if (in_array($sponsor->id, $event->sponsors->pluck('id')->toArray())) selected @endif>

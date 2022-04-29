@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-{{-- {{ dd($sports)}} --}}
-
 @section('content')
     @include('layouts.components.breadcrumb')
 
@@ -13,36 +11,44 @@
         <div class="carousel_head_list_events">
             <div id="demo" class="carousel slide carousel-fade jumbotron_carousel" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    @foreach ($events as $key => $item)
-                        <li data-target="#demo" data-slide-to="{{ $key }}"
-                            class="@if ($key == 0) active @endif"></li>
-                    @endforeach
+                    @if (count($events) > 0)
+                        @foreach ($events as $key => $item)
+                            <li data-target="#demo" data-slide-to="{{ $key }}"
+                                class="@if ($key == 0) active @endif"></li>
+                        @endforeach
+                    @endif
                 </ul>
                 {{-- Carousel Banner --}}
                 <div class="carousel-inner">
-                    @foreach ($events as $key => $crl_event)
-                        <div class="carousel-item @if ($key == 0) active @endif">
-                            <div class="overlay_jumbotron">
+                    @if (count($events) > 0)
+                        @foreach ($events as $key => $crl_event)
+                            <div class="carousel-item @if ($key == 0) active @endif">
+                                <div class="overlay_jumbotron">
 
+                                </div>
+                                <img src="{{ asset('uploads') . "/$crl_event->photo" }}" alt="{{ $crl_event->name }}"
+                                    width="100%" height="600">
+                                <div class="carousel-caption">
+                                    <p class="date_author">
+                                        {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->isoFormat('dddd, D MMMM Y') }}
+                                        | Editor</p>
+                                    <h2>{{ $crl_event->name }}</h2>
+                                    <p>
+                                        {{ $crl_event->summary }}
+                                    </p>
+                                    <a href="/event/{{ $crl_event->slug }}">
+                                        <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
+                                            More
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                            <img src="{{ asset('uploads') . "/$crl_event->photo" }}" alt="Los Angeles" width="100%"
-                                height="600">
-                            <div class="carousel-caption">
-                                <p class="date_author">
-                                    {{ \Illuminate\Support\Carbon::parse($crl_event->end_date)->format('d F Y') }}
-                                    | Editor</p>
-                                <h2>{{ $crl_event->name }}</h2>
-                                <p>
-                                    {{ $crl_event->summary }}
-                                </p>
-                                <a href="/event/{{ $crl_event->slug }}">
-                                    <button type="button" class="btn btn-outline-light btn_show_jumbotron">Show
-                                        More
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <img src="{{ asset('uploads') . "/$event_banner_default->banner" }}"
+                            alt="Default Event Page Banner" width="100%" height="600">
+                    @endif
+
                 </div>
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -59,7 +65,7 @@
             <div class="wrap_content_list_events row py-2 py-md-5">
                 <div class="filter_parent_category_events my-auto col-12 col-md-6 col-lg-3 mb-4 order-2">
                     <select class="col categories category-sport" name="filterCategoryEvents" id="filterCategoryEvents">
-                        <option style="display:none" value disabled selected>Category</option>
+                        <option style="display:none" value disabled selected>Kategori Event</option>
                         <option categories="all" value="all">Semua</option>
                         @foreach ($categories as $category)
                             <option categories="{{ $category->slug }}" value="{{ $category->slug }}">
@@ -74,7 +80,7 @@
                         $url_filter_prefix = url()->current() . '?page=1';
                     @endphp
                     <select onchange="location = this.value;" class="col" name="filterSports" id="filterSports">
-                        <option style="display:none" selected value disabled>Sports</option>
+                        <option style="display:none" selected value disabled>Jenis Event</option>
                         <option categories="all" value="{{ $url_filter_prefix . '#content_list_events' }}">Semua</option>
 
                         @foreach ($sports as $sport)
@@ -151,14 +157,14 @@
                                                     <div class="d-flex justify-content-center">
 
                                                         <p class="ml-2">
-                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('dddd') }}
                                                             -
-                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('l') }}
+                                                            {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('dddd') }}
                                                             <br />
                                                             <span>
-                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->format('d F') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->start_date)->isoFormat('D MMMM') }}
                                                                 -
-                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->format('d F Y') }}
+                                                                {{ \Illuminate\Support\Carbon::parse($event->end_date)->isoFormat('D MMMM Y') }}
                                                             </span>
                                                         </p>
                                                     </div>

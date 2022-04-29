@@ -40,7 +40,7 @@ class EventController extends Controller
                 GROUP_CONCAT(DISTINCT ec.id SEPARATOR ', ') as categories_id
             ")
             ->where('e.deleted_at', null)
-            ->orderBy('e.created_at')
+            ->orderBy('e.event_end_date', 'DESC')
             ->groupBy('id')
             ->get();
 
@@ -58,7 +58,7 @@ class EventController extends Controller
             } elseif ($event->event_end_date < $date_today) {
                 return $event->status = 'Past';
             } else {
-                return $event->status = "Invalid Logic";
+                return $event->status = "Invalid Date";
             }
         });
 
@@ -76,11 +76,9 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-
         $this->authorize('create', Event::class);
 
         $event = new Event();
-
         $data = $request->only($event->getFillable());
 
         $request->validate([
@@ -167,7 +165,6 @@ class EventController extends Controller
                 $data['event_featured_photo'] = $fileName;
             }
         } else {
-
             $data['event_featured_photo'] = $event->event_featured_photo;
         }
 
@@ -180,8 +177,8 @@ class EventController extends Controller
 
     public function destroy($id)
     {
-
         $this->authorize('delete', Event::class);
+
         $event = Event::findOrFail($id);
         unlink(public_path('uploads/' . $event->event_featured_photo));
         $event->delete();

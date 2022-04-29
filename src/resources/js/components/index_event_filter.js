@@ -29,13 +29,10 @@ $(document).ready(function () {
             eventListsWrapper.append(event);
         })
     })
-    // $(".event-category .list-dropdown .dropdown-item").click(function () {
-    //     $(".select_category:first-child").text($(this).text());
-    //     $(".select_category:first-child").val($(this).text());
-    //     eventListsWrapper.innerHTML = '';
-    //     filterEvents(events, this.getAttribute('filters').split(',')).forEach((event) => {
-    //         eventListsWrapper.append(event);
-    //     })
-    // });
 
+
+    const contentOvrlayEvent = document.querySelector('.content_overlay_image_event_detail');
+    const featuredImageEvent = document.querySelector('.featured_image_event_detail');
+
+    featuredImageEvent.style.height = `${contentOvrlayEvent.clientHeight + 48}px`;
 })

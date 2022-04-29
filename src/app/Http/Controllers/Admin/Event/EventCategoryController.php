@@ -26,7 +26,7 @@ class EventCategoryController extends Controller
         $this->authorize('viewAny', EventCategory::class);
 
         $categories = EventCategory::all();
-        return view('admin.event_category.index', compact('categories'));
+        return view('admin.event.category.index', compact('categories'));
     }
 
     /**
@@ -38,7 +38,7 @@ class EventCategoryController extends Controller
     {
         $this->authorize('create', EventCategory::class);
 
-        return view('admin.event_category.create');
+        return view('admin.event.category.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class EventCategoryController extends Controller
 
         $newCategory->save();
 
-        return redirect()->route('admin.event_category.index')->with('success', 'Event Category Successfuly added!');
+        return redirect()->route('admin.event.category.index')->with('success', 'Event Category Successfuly added!');
     }
 
     /**
@@ -79,7 +79,7 @@ class EventCategoryController extends Controller
 
         $category = EventCategory::findOrFail($id);
         // dd($category);
-        return view('admin.event_category.edit', compact('category'));
+        return view('admin.event.category.edit', compact('category'));
     }
 
     /**
@@ -105,7 +105,7 @@ class EventCategoryController extends Controller
         $category->seo_meta_description = $request->input('seo_meta_description') ?? '';
         $category->save();
 
-        return redirect()->route('admin.event_category.index')->with('success', 'Event Category updated successfuly');
+        return redirect()->route('admin.event.category.index')->with('success', 'Event Category updated successfuly');
     }
 
     /**
@@ -121,10 +121,10 @@ class EventCategoryController extends Controller
         $sports = DB::table('sports')->where('category_id', $id)->count();
 
         if ($sports > 0) {
-            return redirect()->route('admin.event_category.index')->withErrors("Category can't be deleted, some event are under this category");
+            return redirect()->route('admin.event.category.index')->withErrors("Category can't be deleted, some event are under this category");
         }
 
         EventCategory::find($id)->delete();
-        return redirect()->route('admin.event_category.index')->with('success', 'Event Category deleted successfuly');
+        return redirect()->route('admin.event.category.index')->with('success', 'Event Category deleted successfuly');
     }
 }

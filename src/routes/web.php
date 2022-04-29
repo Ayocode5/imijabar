@@ -1,11 +1,9 @@
 <?php
 
 
-/**
- * Admin Panel Controllers
- */
+/*** Admin Panel Controllers */
 
-//Admin Auth Controller
+// Auth Controller
 use App\Http\Controllers\Admin\Auth\LoginController as LoginControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\LogoutController as LogoutControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\ForgetPasswordController as ForgetPasswordControllerForAdmin;
@@ -14,38 +12,33 @@ use App\Http\Controllers\Admin\Auth\PasswordChangeController as PasswordChangeCo
 use App\Http\Controllers\Admin\Auth\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\Auth\PhotoChangeController;
 
-// Admin Menu Controller
 use App\Http\Controllers\Admin\DashboardController as DashboardControllerForAdmin;
-use App\Http\Controllers\Admin\RegistrationMember\ClubController;
-use App\Http\Controllers\Admin\RegistrationMember\KisController;
-use App\Http\Controllers\Admin\RegistrationMember\RegistrationEventController;
+use App\Http\Controllers\Admin\Registrations\ClubController;
+use App\Http\Controllers\Admin\Registrations\KisController;
+use App\Http\Controllers\Admin\Registrations\EventOrganizerRegistrationController;
 use App\Http\Controllers\Admin\DynamicPageController;
 use App\Http\Controllers\Admin\EmailTemplateController;
-// use App\Http\Controllers\Admin\FooterColumnController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\Role\RoleController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
-use App\Http\Controllers\Admin\TeamMemberController as TeamMemberControllerForAdmin;
-// use App\Http\Controllers\Admin\SliderController;
-// use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
-
+use App\Http\Controllers\Admin\Organizations\CommitteeController as CommitteeAdminController;
+use App\Http\Controllers\Admin\Organizations\GreetingController as GreetingAdminController;
+use App\Http\Controllers\Admin\Organizations\AgendaController as AgendaAdminController;
+use App\Http\Controllers\Admin\Organizations\InfoController as InfoAdminController;
 use App\Http\Controllers\Admin\Gallery\PhotoController;
 use App\Http\Controllers\Admin\Gallery\VideoController;
 use App\Http\Controllers\Admin\Gallery\GalleryCategoryController as GalleryCategoryControllerForAdmin;
-
-//Admin Panel Blog Menu
 use App\Http\Controllers\Admin\Blog\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\Blog\CategoryController as CategoryControllerForAdmin;
-
-//Admin Panel Event Menu
 use App\Http\Controllers\Admin\Event\EventController as EventControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventCategoryController as EventCategoryControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSportController as EventSportControllerForAdmin;
 use App\Http\Controllers\Admin\Event\EventSponsorController as EventSponsorControllerForAdmin;
 use App\Http\Controllers\Admin\FileManagerController;
-//Admin Panel Page Front Setting
+use App\Http\Controllers\Admin\AdvertisementController;
+use App\Http\Controllers\Admin\CommunitiesController;
 use App\Http\Controllers\Admin\Page\PageHomeController;
 use App\Http\Controllers\Admin\Page\PageBlogController;
 use App\Http\Controllers\Admin\Page\PageAboutController;
@@ -54,27 +47,6 @@ use App\Http\Controllers\Admin\Page\PageGalleryController;
 // use App\Http\Controllers\Admin\Page\PageFaqController;
 use App\Http\Controllers\Admin\Page\PageTeamController;
 
-//Admin Panel SHOP
-// use App\Http\Controllers\Admin\Shop\CouponController;
-// use App\Http\Controllers\Admin\Shop\CustomerController;
-// use App\Http\Controllers\Admin\Shop\ProductController as ProductControllerForAdmin;
-// use App\Http\Controllers\Admin\Shop\OrderController as OrderControllerForAdmin;
-// use App\Http\Controllers\Admin\Shop\ShippingController;
-
-
-/**
- * Front Panel - Customer
- */
-// use App\Http\Controllers\Customer\CheckoutController;
-// use App\Http\Controllers\Customer\DashboardController as DashboardControllerForCustomer;
-// use App\Http\Controllers\Customer\ForgetPasswordController as ForgetPasswordControllerForCustomer;
-// use App\Http\Controllers\Customer\LoginController as LoginControllerForCustomer;
-// use App\Http\Controllers\Customer\LogoutController as LogoutControllerForCustomer;
-// use App\Http\Controllers\Customer\OrderController as OrderControllerForCustomer;
-// use App\Http\Controllers\Customer\PasswordChangeController as PasswordChangeControllerForCustomer;
-// use App\Http\Controllers\Customer\ProfileChangeController as ProfileChangeControllerForCustomer;
-// use App\Http\Controllers\Customer\RegistrationController;
-// use App\Http\Controllers\Customer\ResetPasswordController as ResetPasswordControllerForCustomer;
 
 
 /**
@@ -92,18 +64,31 @@ use App\Http\Controllers\Front\Event\DetailController as EventDetailController;
 use App\Http\Controllers\Front\Registrations\KISController as FrontKISController;
 use App\Http\Controllers\Front\Registrations\KTAController as FrontKTAController;
 use App\Http\Controllers\Front\Registrations\ClubController as FrontClubController;
+use App\Http\Controllers\Front\Registrations\EOController as FrontEOController;
 use App\Http\Controllers\Front\GalleryController as FrontGalleryController;
-
+use App\Http\Controllers\Front\Organizations\CommitteeController;
+use App\Http\Controllers\Front\Organizations\AgendaController as AgendaFrontController;
 use Illuminate\Support\Facades\Route;
 
 /* --------------------------------------- */
 /* Front Panel */
 /* --------------------------------------- */
-
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/subscription', [SubscriptionController::class, 'subscribe'])->name('front.subscription');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriptionController::class, 'verify']);
-Route::get('/about', AboutController::class)->name('front.about');
+
+Route::group(["prefix" => "about"], function() {
+    Route::get('/', [AboutController::class, "index"])->name('front.about');
+    Route::get('/club/{category}', [AboutController::class, "club_list"])->name("front.about.club");
+    Route::get('/club-data/{category}', [AboutController::class, "club_data"]);
+});
+
+Route::group(["prefix" => "organizations"], function() {
+    Route::get('/committee', [CommitteeController::class, "index"]);
+    Route::get('/committee-data', [CommitteeController::class, "committee_data"]);
+    Route::get('/agenda-data/{category?}', [AgendaFrontController::class, "agenda_data"]);
+});
+
 Route::get('/news', NewsIndexController::class)->name('front.news');
 Route::get('/news/search/', NewsSearchController::class)->name('front.news.search');
 Route::get('/news/{slug}', NewsDetailControler::class);
@@ -111,43 +96,23 @@ Route::get('/event', EventIndexController::class)->name('front.event');
 Route::get('/event/search/', EventSearchController::class)->name('front.event.search');
 Route::get('/event/{slug}', EventDetailController::class);
 Route::group(['prefix' => 'registration'], function () {
-    Route::get('/kis', FrontKISController::class);
+    Route::get('/kis', [FrontKISController::class, "index"]);
+    Route::get('/kis/form', [FrontKISController::class, "getForm"])->name('kis.registration.form');
+    Route::post('/kis/form', [FrontKISController::class, "store"])->name('kis.registration.store');
     Route::get('/kta', FrontKTAController::class);
-    Route::get('/club', FrontClubController::class);
+    Route::get('/club', [FrontClubController::class, "index"])->name("club.registration.index");
+    Route::get('/club/form', [FrontClubController::class, "getForm"])->name('club.registration.form');
+    Route::post('/club/form', [FrontClubController::class, "store"])->name('club.registration.store');
+    Route::get('/eo', [FrontEOController::class, "index"])->name("eo.registration.index");
+    Route::get('/eo/form', [FrontEOController::class, "getForm"])->name("eo.registration.form");
+    Route::post('/eo', [FrontEOController::class, "store"])->name("eo.registration.store");
 });
 Route::get('/gallery', FrontGalleryController::class);
 
 
 /* --------------------------------------- */
-/* Customer Login and profile management */
+/* Admin Panel                             */
 /* --------------------------------------- */
-// Route::get('customer/login', [LoginControllerForCustomer::class, 'index'])->name('customer.login');
-// Route::post('customer/login/store', [LoginControllerForCustomer::class, 'store'])->name('customer.login.store');
-// Route::post('customer/checkout/login/store', [CheckoutController::class, 'login'])->name('customer.login_from_checkout_page.store');
-// Route::get('customer/logout', [LogoutControllerForCustomer::class, 'index'])->name('customer.logout');
-// Route::get('customer/register', [RegistrationController::class, 'index'])->name('customer.registration');
-// Route::post('customer/registration/store', [RegistrationController::class, 'store'])->name('customer.registration.store');
-// Route::get('customer/dashboard', [DashboardControllerForCustomer::class, 'index'])->name('customer.dashboard');
-// Route::get('customer/registration/verify/{token}/{email}', [RegistrationController::class, 'verify']);
-// Route::get('customer/forget-password', [ForgetPasswordControllerForCustomer::class, 'index'])->name('customer.forget_password');
-// Route::post('customer/forget-password/store', [ForgetPasswordControllerForCustomer::class, 'store'])->name('customer.forget_password.store');
-// Route::get('customer/reset-password/{token}/{email}', [ResetPasswordControllerForCustomer::class, 'index']);
-// Route::post('customer/reset-password/update', [ResetPasswordControllerForCustomer::class, 'update']);
-// Route::get('customer/password-change', [PasswordChangeControllerForCustomer::class, 'index'])->name('customer.password_change');
-// Route::post('customer/password-change/update', [PasswordChangeControllerForCustomer::class, 'update']);
-// Route::get('customer/profile-change', [ProfileChangeControllerForCustomer::class, 'index'])->name('customer.profile_change');
-// Route::post('customer/profile-change/update', [ProfileChangeControllerForCustomer::class, 'update']);
-// Route::get('customer/order', [OrderControllerForCustomer::class, 'index'])->name('customer.order');
-// Route::post('customer/checkout/billing/shipping', [CheckoutController::class, 'billing_shipping'])->name('customer.billing_shipping_submit');
-// Route::get('customer/payment', [CheckoutController::class, 'payment'])->name('customer.payment');
-// Route::post('customer/payment/stripe', [CheckoutController::class, 'stripe'])->name('customer.stripe');
-// Route::get('customer/execute-payment', [CheckoutController::class, 'paypal']);
-
-
-/* --------------------------------------- */
-/* Admin Login and profile management */
-/* --------------------------------------- */
-
 Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
 
     // Dashboard
@@ -279,7 +244,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Page Content Settings - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'page', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'page'], function () {
 
         Route::group(['prefix' => 'home'], function () {
             Route::get('/edit', [PageHomeController::class, 'edit'])->name('admin.page_home.edit');
@@ -296,50 +261,23 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::get('/about/edit', [PageAboutController::class, 'edit'])->name('admin.page_about.edit');
         Route::post('/about/update', [PageAboutController::class, 'update']);
 
-        // Route::get('/shop/edit', [PageShopController::class, 'edit'])->name('admin.page_shop.edit');
-        // Route::post('/shop/update', [PageShopController::class, 'update']);
-
         Route::get('/blog/edit', [PageBlogController::class, 'edit'])->name('admin.page_blog.edit');
         Route::post('/blog/update', [PageBlogController::class, 'update']);
 
         Route::get('/event/edit', [PageEventController::class, 'edit'])->name('admin.page_event.edit');
         Route::post('/event/update', [PageEventController::class, 'update']);
 
-        // Route::get('/faq/edit', [PageFaqController::class, 'edit'])->name('admin.page_faq.edit');
-        // Route::post('/faq/update', [PageFaqController::class, 'update']);
-
         Route::get('/team/edit', [PageTeamController::class, 'edit'])->name('admin.page_team.edit');
         Route::post('/team/update', [PageTeamController::class, 'update']);
 
         Route::get('/gallery/edit', [PageGalleryController::class, 'edit'])->name('admin.page_gallery.edit');
         Route::post('/gallery/update', [PageGalleryController::class, 'update']);
-
-        // Route::get('/photo-gallery/edit', [PagePhotoGalleryController::class, 'edit'])->name('admin.page_photo_gallery.edit');
-        // Route::post('/photo-gallery/update', [PagePhotoGalleryController::class, 'update']);
-
-        // Route::get('/video-gallery/edit', [PageVideoGalleryController::class, 'edit'])->name('admin.page_video_gallery.edit');
-        // Route::post('/video-gallery/update', [PageVideoGalleryController::class, 'update']);
-
-        // Route::get('/contact/edit', [PageContactController::class, 'edit'])->name('admin.page_contact.edit');
-        // Route::post('/contact/update', [PageContactController::class, 'update']);
-
-        // Route::group(['prefix' => 'other'], function () {
-        //     Route::get('/edit', [PageOtherController::class, 'edit'])->name('admin.page_other.edit');
-        //     Route::post('/1', [PageOtherController::class, 'update1']);
-        //     Route::post('/2', [PageOtherController::class, 'update2']);
-        //     Route::post('/3', [PageOtherController::class, 'update3']);
-        //     Route::post('/4', [PageOtherController::class, 'update4']);
-        //     Route::post('/5', [PageOtherController::class, 'update5']);
-        //     Route::post('/6', [PageOtherController::class, 'update6']);
-        //     Route::post('/7', [PageOtherController::class, 'update7']);
-        //     Route::post('/8', [PageOtherController::class, 'update8']);
-        // });
     });
 
     /* --------------------------------------- */
     /* Blog / News - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'news', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'news'], function () {
         Route::get('/', [BlogControllerForAdmin::class, 'index'])->name('admin.news.index');
         Route::get('/create', [BlogControllerForAdmin::class, 'create'])->name('admin.news.create');
         Route::post('/store', [BlogControllerForAdmin::class, 'store'])->name('admin.news.store');
@@ -350,7 +288,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Blog / News Category - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
+        Route::group(['prefix' => 'category'], function () {
             Route::get('/', [CategoryControllerForAdmin::class, 'index'])->name('admin.category.index');
             Route::get('/create', [CategoryControllerForAdmin::class, 'create'])->name('admin.category.create');
             Route::post('/store', [CategoryControllerForAdmin::class, 'store'])->name('admin.category.store');
@@ -359,32 +297,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
             Route::post('/update/{id}', [CategoryControllerForAdmin::class, 'update']);
         });
     });
-
-
-    /* --------------------------------------- */
-    /* Blog / News Comment - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'comment', 'middleware' => 'can:isEditor'], function () {
-    //     Route::get('/approved', [CommentController::class, 'approved'])->name('admin.comment.approved');
-    //     Route::get('/make-pending/{id}', [CommentController::class, 'make_pending']);
-    //     Route::get('/pending', [CommentController::class, 'pending'])->name('admin.comment.pending');
-    //     Route::get('/make-approved/{id}', [CommentController::class, 'make_approved']);
-    //     Route::get('/delete/{id}', [CommentController::class, 'destroy']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Slider - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'slider', 'middleware' => 'can:isAdmin'], function () {
-    //     Route::get('/', [SliderController::class, 'index'])->name('admin.slider.index');
-    //     Route::get('/create', [SliderController::class, 'create'])->name('admin.slider.create');
-    //     Route::post('/store', [SliderController::class, 'store'])->name('admin.slider.store');
-    //     Route::get('/delete/{id}', [SliderController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [SliderController::class, 'edit']);
-    //     Route::post('/update/{id}', [SliderController::class, 'update']);
-    // });
-
 
     /* --------------------------------------- */
     /* Dynamic Pages - Admin */
@@ -402,7 +314,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Event - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'event', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'event'], function () {
         Route::get('/', [EventControllerForAdmin::class, 'index'])->name('admin.event.index');
         Route::get('/create', [EventControllerForAdmin::class, 'create'])->name('admin.event.create');
         Route::post('/store', [EventControllerForAdmin::class, 'store'])->name('admin.event.store');
@@ -416,10 +328,10 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Category - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'category', 'middleware' => 'can:isEditor'], function () {
-            Route::get('/', [EventCategoryControllerForAdmin::class, 'index'])->name('admin.event_category.index');
-            Route::get('/create', [EventCategoryControllerForAdmin::class, 'create'])->name('admin.event_category.create');
-            Route::post('/store', [EventCategoryControllerForAdmin::class, 'store'])->name('admin.event_category.store');
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('/', [EventCategoryControllerForAdmin::class, 'index'])->name('admin.event.category.index');
+            Route::get('/create', [EventCategoryControllerForAdmin::class, 'create'])->name('admin.event.category.create');
+            Route::post('/store', [EventCategoryControllerForAdmin::class, 'store'])->name('admin.event.category.store');
             Route::get('/delete/{id}', [EventCategoryControllerForAdmin::class, 'destroy']);
             Route::get('/edit/{id}', [EventCategoryControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [EventCategoryControllerForAdmin::class, 'update']);
@@ -429,10 +341,10 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Sports - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'sport', 'middleware' => 'can:isEditor'], function () {
-            Route::get('/', [EventSportControllerForAdmin::class, 'index'])->name('admin.event_sport.index');
-            Route::get('/create', [EventSportControllerForAdmin::class, 'create'])->name('admin.event_sport.create');
-            Route::post('/store', [EventSportControllerForAdmin::class, 'store'])->name('admin.event_sport.store');
+        Route::group(['prefix' => 'sport'], function () {
+            Route::get('/', [EventSportControllerForAdmin::class, 'index'])->name('admin.event.sport.index');
+            Route::get('/create', [EventSportControllerForAdmin::class, 'create'])->name('admin.event.sport.create');
+            Route::post('/store', [EventSportControllerForAdmin::class, 'store'])->name('admin.event.sport.store');
             Route::get('/delete/{id}', [EventSportControllerForAdmin::class, 'destroy']);
             Route::get('/edit/{id}', [EventSportControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [EventSportControllerForAdmin::class, 'update']);
@@ -442,10 +354,10 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         /* --------------------------------------- */
         /* Event Sponsor - Admin */
         /* --------------------------------------- */
-        Route::group(['prefix' => 'sponsor', 'middleware' => 'can:isEditor'], function () {
-            Route::get('/', [EventSponsorControllerForAdmin::class, 'index'])->name('admin.event_sponsor.index');
-            Route::get('/create', [EventSponsorControllerForAdmin::class, 'create'])->name('admin.event_sponsor.create');
-            Route::post('/store', [EventSponsorControllerForAdmin::class, 'store'])->name('admin.event_sponsor.store');
+        Route::group(['prefix' => 'sponsor'], function () {
+            Route::get('/', [EventSponsorControllerForAdmin::class, 'index'])->name('admin.event.sponsor.index');
+            Route::get('/create', [EventSponsorControllerForAdmin::class, 'create'])->name('admin.event.sponsor.create');
+            Route::post('/store', [EventSponsorControllerForAdmin::class, 'store'])->name('admin.event.sponsor.store');
             Route::get('/delete/{id}', [EventSponsorControllerForAdmin::class, 'destroy']);
             Route::get('/edit/{id}', [EventSponsorControllerForAdmin::class, 'edit']);
             Route::post('/update/{id}', [EventSponsorControllerForAdmin::class, 'update']);
@@ -456,63 +368,67 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Gallery - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'gallery', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'gallery'], function () {
 
         /* --------------------------------------- */
         /* Photo Gallery - Admin */
         /* --------------------------------------- */
         Route::group(['prefix' => 'photo'], function () {
-            Route::get('/', [PhotoController::class, 'index'])->name('admin.photo.index');
-            Route::get('/create', [PhotoController::class, 'create'])->name('admin.photo.create');
-            Route::post('/store', [PhotoController::class, 'store'])->name('admin.photo.store');
-            Route::get('/delete/{id}', [PhotoController::class, 'destroy']);
-            Route::get('/edit/{id}', [PhotoController::class, 'edit']);
-            Route::post('/update/{id}', [PhotoController::class, 'update']);
+            Route::get('/', [PhotoController::class, 'index'])->name('admin.galleries.photo.index');
+            Route::get('/create', [PhotoController::class, 'create'])->name('admin.galleries.photo.create');
+            Route::post('/store', [PhotoController::class, 'store'])->name('admin.galleries.photo.store');
+            Route::get('/delete/{id}', [PhotoController::class, 'destroy'])->name('admin.galleries.photo.delete');
+            Route::get('/edit/{id}', [PhotoController::class, 'edit'])->name('admin.galleries.photo.edit');
+            Route::post('/update/{id}', [PhotoController::class, 'update'])->name('admin.galleries.photo.update');
         });
 
         /* --------------------------------------- */
         /* Video Gallery - Admin */
         /* --------------------------------------- */
         Route::group(['prefix' => 'video'], function () {
-            Route::get('/', [VideoController::class, 'index'])->name('admin.video.index');
-            Route::get('/create', [VideoController::class, 'create'])->name('admin.video.create');
-            Route::post('/store', [VideoController::class, 'store'])->name('admin.video.store');
-            Route::get('/delete/{id}', [VideoController::class, 'destroy']);
-            Route::get('/edit/{id}', [VideoController::class, 'edit']);
-            Route::post('/update/{id}', [VideoController::class, 'update']);
+            Route::get('/', [VideoController::class, 'index'])->name('admin.galleries.video.index');
+            Route::get('/create', [VideoController::class, 'create'])->name('admin.galleries.video.create');
+            Route::post('/store', [VideoController::class, 'store'])->name('admin.galleries.video.store');
+            Route::get('/delete/{id}', [VideoController::class, 'destroy'])->name('admin.galleries.video.delete');
+            Route::get('/edit/{id}', [VideoController::class, 'edit'])->name('admin.galleries.video.edit');
+            Route::post('/update/{id}', [VideoController::class, 'update'])->name('admin.galleries.video.update');
         });
 
         /* --------------------------------------- */
         /* Gallery Category - Admin */
         /* --------------------------------------- */
         Route::group(['prefix' => 'category'], function () {
-            Route::get('/', [GalleryCategoryControllerForAdmin::class, 'index'])->name('admin.gallery_category.index');
-            Route::get('/create', [GalleryCategoryControllerForAdmin::class, 'create'])->name('admin.gallery_category.create');
-            Route::post('/store', [GalleryCategoryControllerForAdmin::class, 'store'])->name('admin.gallery_category.store');
-            Route::get('/delete/{id}', [GalleryCategoryControllerForAdmin::class, 'destroy']);
-            Route::get('/edit/{id}', [GalleryCategoryControllerForAdmin::class, 'edit']);
-            Route::post('/update/{id}', [GalleryCategoryControllerForAdmin::class, 'update']);
+            Route::get('/', [GalleryCategoryControllerForAdmin::class, 'index'])->name('admin.galleries.category.index');
+            Route::get('/create', [GalleryCategoryControllerForAdmin::class, 'create'])->name('admin.galleries.category.create');
+            Route::post('/store', [GalleryCategoryControllerForAdmin::class, 'store'])->name('admin.galleries.category.store');
+            Route::get('/delete/{id}', [GalleryCategoryControllerForAdmin::class, 'destroy'])->name('admin.galleries.category.delete');
+            Route::get('/edit/{id}', [GalleryCategoryControllerForAdmin::class, 'edit'])->name('admin.galleries.category.edit');
+            Route::post('/update/{id}', [GalleryCategoryControllerForAdmin::class, 'update'])->name('admin.galleries.category.update');
         });
     });
 
 
     /* --------------------------------------- */
-    /* Team Member - Admin */
+    /* Committee Members & Greetings - Admin   */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'committee', 'middleware' => 'can:isEditor'], function () {
-        Route::get('/', [TeamMemberControllerForAdmin::class, 'index'])->name('admin.team_member.index');
-        Route::get('/create', [TeamMemberControllerForAdmin::class, 'create'])->name('admin.team_member.create');
-        Route::post('/store', [TeamMemberControllerForAdmin::class, 'store'])->name('admin.team_member.store');
-        Route::get('/delete/{id}', [TeamMemberControllerForAdmin::class, 'destroy']);
-        Route::get('/edit/{id}', [TeamMemberControllerForAdmin::class, 'edit']);
-        Route::post('/update/{id}', [TeamMemberControllerForAdmin::class, 'update']);
+    Route::group(['prefix' => 'organizations'], function () {
+        Route::resource("committee", CommitteeAdminController::class, ["names" => "admin.organizations.committee"])->except("show");
+        Route::resource("greetings",GreetingAdminController::class, ["names" => 'admin.organizations.greeting'])->except("show");
+        Route::resource("agenda", AgendaAdminController::class, ["names" => "admin.organizations.agenda"])->except("show");
+        Route::resource("info", InfoAdminController::class, ["names" => "admin.organizations.info"])->except("show");
     });
+
+
+    /* --------------------- */
+    /* Communities - Admin   */
+    /* --------------------- */
+    Route::resource("communities", CommunitiesController::class, ["names" => "admin.communities"])->except("show");
 
 
     // /* --------------------------------------- */
     // /* FAQ - Admin */
     // /* --------------------------------------- */
-    // Route::group(['prefix' => 'faq', 'middleware' => 'can:isEditor'], function () {
+    // Route::group(['prefix' => 'faq'], function () {
     //     Route::get('/', [FaqControllerForAdmin::class, 'index'])->name('admin.faq.index');
     //     Route::get('/create', [FaqControllerForAdmin::class, 'create'])->name('admin.faq.create');
     //     Route::post('/store', [FaqControllerForAdmin::class, 'store'])->name('admin.faq.store');
@@ -535,7 +451,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Social Media - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'social-media', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'social-media'], function () {
         Route::get('/', [SocialMediaItemController::class, 'index'])->name('admin.social_media.index');
         Route::get('/create', [SocialMediaItemController::class, 'create'])->name('admin.social_media.create');
         Route::post('/store', [SocialMediaItemController::class, 'store'])->name('admin.social_media.store');
@@ -548,7 +464,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
     /* --------------------------------------- */
     /* Subscriber - Admin */
     /* --------------------------------------- */
-    Route::group(['prefix' => 'subscriber', 'middleware' => 'can:isEditor'], function () {
+    Route::group(['prefix' => 'subscriber'], function () {
         Route::get('/', [SubscriberController::class, 'index'])->name('admin.subscriber.index');
         Route::get('/create', [SubscriberController::class, 'create'])->name('admin.subscriber.create');
         Route::post('/store', [SubscriberController::class, 'store'])->name('admin.subscriber.store');
@@ -557,82 +473,6 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
         Route::post('/send-email-action', [SubscriberController::class, 'send_email_action'])->name('admin.subscriber.send_email_action');
     });
 
-
-    /* --------------------------------------- */
-    /* Coupon - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'coupon', 'middleware' => 'can:isSeller'], function () {
-    //     Route::get('/', [CouponController::class, 'index'])->name('admin.coupon.index');
-    //     Route::get('/create', [CouponController::class, 'create'])->name('admin.coupon.create');
-    //     Route::post('/store', [CouponController::class, 'store'])->name('admin.coupon.store');
-    //     Route::get('/delete/{id}', [CouponController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [CouponController::class, 'edit']);
-    //     Route::post('/update/{id}', [CouponController::class, 'update']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Shipping - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'shipping', 'middleware' => 'can:isSeller'], function () {
-    //     Route::get('/', [ShippingController::class, 'index'])->name('admin.shipping.index');
-    //     Route::get('/create', [ShippingController::class, 'create'])->name('admin.shipping.create');
-    //     Route::post('/store', [ShippingController::class, 'store'])->name('admin.shipping.store');
-    //     Route::get('/delete/{id}', [ShippingController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [ShippingController::class, 'edit']);
-    //     Route::post('/update/{id}', [ShippingController::class, 'update']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Product - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'product', 'middleware' => 'can:isSeller'], function () {
-    //     Route::get('/', [ProductControllerForAdmin::class, 'index'])->name('admin.product.index');
-    //     Route::get('/create', [ProductControllerForAdmin::class, 'create'])->name('admin.product.create');
-    //     Route::post('/store', [ProductControllerForAdmin::class, 'store'])->name('admin.product.store');
-    //     Route::get('/delete/{id}', [ProductControllerForAdmin::class, 'destroy']);
-    //     Route::get('/edit/{id}', [ProductControllerForAdmin::class, 'edit']);
-    //     Route::post('/update/{id}', [ProductControllerForAdmin::class, 'update']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Order - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'order', 'middleware' => 'can:isSeller'], function () {
-    //     Route::get('/', [OrderControllerForAdmin::class, 'index'])->name('admin.order.index');
-    //     Route::get('/create', [OrderControllerForAdmin::class, 'create'])->name('admin.order.create');
-    //     Route::post('/store', [OrderControllerForAdmin::class, 'store'])->name('admin.order.store');
-    //     Route::get('/detail/{id}', [OrderControllerForAdmin::class, 'detail']);
-    //     Route::get('/invoice/{id}', [OrderControllerForAdmin::class, 'invoice']);
-    //     Route::get('/delete/{id}', [OrderControllerForAdmin::class, 'destroy']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Customer - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'customer', 'middleware' => 'can:isSeller'], function () {
-    //     Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
-    //     Route::get('/detail/{id}', [CustomerController::class, 'detail']);
-    //     Route::get('/make-active/{id}', [CustomerController::class, 'make_active']);
-    //     Route::get('/make-pending/{id}', [CustomerController::class, 'make_pending']);
-    //     Route::get('/delete/{id}', [CustomerController::class, 'destroy']);
-    // });
-
-
-    /* --------------------------------------- */
-    /* Footer Columns - Admin */
-    /* --------------------------------------- */
-    // Route::group(['prefix' => 'footer', 'middleware' => 'can:isAdmin'], function () {
-    //     Route::get('/', [FooterColumnController::class, 'index'])->name('admin.footer.index');
-    //     Route::get('/create', [FooterColumnController::class, 'create'])->name('admin.footer.create');
-    //     Route::post('/store', [FooterColumnController::class, 'store'])->name('admin.footer.store');
-    //     Route::get('/delete/{id}', [FooterColumnController::class, 'destroy']);
-    //     Route::get('/edit/{id}', [FooterColumnController::class, 'edit']);
-    //     Route::post('/update/{id}', [FooterColumnController::class, 'update']);
-    // });
 
 
     /* --------------------------------------- */
@@ -671,9 +511,17 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin'], function () {
      */
     Route::group(['prefix' => 'registration'], function () {
         Route::get('kis', [KisController::class, 'index'])->name('admin.register.kis');
+        Route::get('kis/registrant/{index}/export', [KisController::class, 'generatePDF']);
+
         Route::get('club', [ClubController::class, 'index'])->name('admin.register.club');
-        Route::get('event', [RegistrationEventController::class, 'index'])->name('admin.register.event');
+        Route::get('club/registrant/{index}/export', [ClubController::class, 'generatePDF']);
+
+        Route::get('event', [EventOrganizerRegistrationController::class, 'index'])->name('admin.register.event');
+        Route::get('event/registrant/{index}/export', [EventOrganizerRegistrationController::class, 'generatePDF']);
     });
 
-    Route::get('/file-manager', FileManagerController::class)->middleware('can:isAdmin')->name('admin.file_manager');
+    Route::get('/file-manager', FileManagerController::class)->name('admin.file_manager');
+
+    Route::resource("advertisement", AdvertisementController::class, ['names' => 'admin.advertisement'])->except("show");
+
 });
