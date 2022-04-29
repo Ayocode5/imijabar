@@ -19,28 +19,28 @@ class DatabaseSeeder extends Seeder
         // CommitteeGreeting::factory(10)->create();
         // Community::factory(100)->create();
 
-//        $this->call([
-//            AdminSeeder::class,
-//            GeneralSettingSeeder::class,
-//            RoleAndPermissionSeeder::class,
-//            PageAboutItemSeeder::class,
-//            PageEventItemSeeder::class,
-//            PageNewsItemSeeder::class,
-//            PageHomeItemSeeder::class,
-//            PageGalleryItemSeeder::class,
-//            CommitteeSeeder::class,
-//            EmailTemplateSeeder::class,
-//            SubscriberSeeder::class,
-//            WebsiteMenuStatusSeeder::class,
-//            DynamicPageRegistrationEventSeeder::class,
-//            DynamicPageADPage::class,
-//            DynamicPageARTPage::class,
-//            DynamicPageClubRegistration::class,
-//            DynamicPageKIS::class,
-//            DynamicPageKTA::class,
-//            NewsSeeder::class,
-//            EventSeeder::class,
-//            GallerySeeder::class,
-//        ]);
+       $this->call([
+           AdminSeeder::class,
+           GeneralSettingSeeder::class,
+           RoleAndPermissionSeeder::class,
+           PageAboutItemSeeder::class,
+           PageEventItemSeeder::class,
+           PageNewsItemSeeder::class,
+           PageHomeItemSeeder::class,
+           PageGalleryItemSeeder::class,
+        //    CommitteeSeeder::class,
+           EmailTemplateSeeder::class,
+        //    SubscriberSeeder::class,
+           WebsiteMenuStatusSeeder::class,
+           DynamicPageRegistrationEventSeeder::class,
+           DynamicPageADPage::class,
+           DynamicPageARTPage::class,
+           DynamicPageClubRegistration::class,
+           DynamicPageKIS::class,
+           DynamicPageKTA::class,
+        //    NewsSeeder::class,
+        //    EventSeeder::class,
+        //    GallerySeeder::class,
+       ]);
     }
 }
