@@ -68,21 +68,26 @@
     </style>
 
 </head>
-
-
 <body>
 
     @php
         $jenis_kendaraan = json_decode($registrar->jenis_kendaraan);
+
         $oc = json_decode($registrar->oc)[0];
-        // dd($oc);
+
         $rc = json_decode($registrar->rc)[0];
-        // dd($rc);
+
         $sc = json_decode($registrar->sc)[0];
-        $sponsor_donatur_lain = json_decode($registrar->sponsor_dontaur_lain);
-        
-        $kelas_lomba = json_decode($registrar->kelas_lomba);
-        $penghargaan = json_decode($registrar->penghargaan);
+
+        preg_match_all("/[a-zA-Z.\s\d]+/", str_replace("\r\n", ",", json_decode($registrar->sponsor_dontaur_lain)), $sponsor_donatur_lain);
+        $sponsor_donatur_lain = $sponsor_donatur_lain[0];
+
+        preg_match_all("/[a-zA-Z.\s\d]+/", str_replace("\r\n", ",", json_decode($registrar->kelas_lomba)),   $kelas_lomba);
+        $kelas_lomba = $kelas_lomba[0];
+
+        preg_match_all("/[a-zA-Z.\s\d]+/", str_replace("\r\n", ",", json_decode($registrar->penghargaan)), $penghargaan);
+        $penghargaan = $penghargaan[0];
+
     @endphp
 
     <div class="size_a4">
@@ -305,7 +310,7 @@
                     @foreach ($sponsor_donatur_lain as $sd)
                         <tr>
                             <th></th>
-                            <th>{{ $loop->iteration }}. </th>
+                            <th>{{ $loop->iteration + 2 }}. </th>
                             <th>Sponsor / Donatur</th>
                             <td> :</td>
                             <td style="text-decoration: underline;">{{ $sd }}</td>

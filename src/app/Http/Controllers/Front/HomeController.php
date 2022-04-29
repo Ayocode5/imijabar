@@ -35,7 +35,7 @@ class HomeController extends Controller
 		/** Load Committe Member */
 		$committee = DB::table('team_members')->limit(5)->get();
 
-		/** Load Active Events With Categories */ 
+		/** Load Active Events With Categories */
 		$events = DB::table('events as e')
 			->join('event_sport as es', 'es.event_id', '=', 'e.id')
 			->join('sports as sp', 'sp.id', '=', 'es.sport_id')

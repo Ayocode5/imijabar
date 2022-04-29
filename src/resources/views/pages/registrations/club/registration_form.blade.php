@@ -874,8 +874,8 @@
                     </div>
                 </li>
                 <li class="form-line" data-type="control_signature" id="id_112">
-                    <label class="form-label form-label-top form-label-auto" id="label_112" for="input_112"> 
-                        Tanda Tangan ketua Klub    
+                    <label class="form-label form-label-top form-label-auto" id="label_112" for="input_112">
+                        Tanda Tangan ketua Klub
                     </label>
                     <div id="cid_112" class="form-input-wide" data-layout="half">
                         <div data-wrapper-react="true">
@@ -938,7 +938,7 @@
         </script>
         <div class="formFooter-heightMask">
         </div>
-        
+
     </form>
 </body>
 
