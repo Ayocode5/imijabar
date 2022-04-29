@@ -50,12 +50,12 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
-        //Registration Controller Gates 
+        //Registration Controller Gates
         Gate::define('view-registration', function ($user) {
             return in_array('view-registration', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });
 
-        //File Manager Controller Gates 
+        //File Manager Controller Gates
         Gate::define('view-file-manager', function ($user) {
             return in_array('view-file-manager', $user->getPermissionsViaRoles()->pluck('name')->toArray());
         });

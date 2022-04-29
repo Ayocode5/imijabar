@@ -16,6 +16,7 @@ class AgendaController extends Controller
     {
 
         $agendas = Agenda::query()->select([
+            'id',
             'name',
             'date',
             'description',

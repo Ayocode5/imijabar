@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
-use App\Repository\RegistrationRepository\ClubRegistrationRepository;
+use App\Repository\Registration\ClubRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -97,20 +97,7 @@ class ClubController extends Controller
             "q112_tandaTangan" => "required|string"
         ]);
 
-        $data = [
-            "nama_klub" => $request->q30_namaKlub,
-            "email" => $request->q301_email,
-            "alamat_jalan" => $request->q37_alamat["addr_line1"],
-            "alamat_kel_kec" => $request->q37_alamat["addr_line2"],
-            "alamat_kota" => $request->q37_alamat["city"],
-            "alamat_provinsi" => $request->q37_alamat["state"],
-            "alamat_kodepos" => $request->q37_alamat["postal"],
-            "anggota_inti" => $request->q110_pengurusInti,
-            "anggota" => $request->q106_typeA106,
-            "signature_ketua_anggota" => $request->q112_tandaTangan
-        ];
-
-        if(self::$registrationRepository->storeData($data)) {
+        if(self::$registrationRepository->storeData($request)) {
             return view("pages.registrations.club.success");
         };
 

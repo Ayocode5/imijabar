@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
-use App\Repository\RegistrationRepository\KISRegistrationRepository;
+use App\Repository\Registration\KISRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -117,5 +117,7 @@ class KISController extends Controller
         if(self::$registrationRepository->storeData($request)) {
             return view("pages.registrations.kis.success");
         }
+
+        return "kesalahan";
     }
 }

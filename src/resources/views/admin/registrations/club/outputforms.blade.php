@@ -100,9 +100,9 @@
                                     <th>NO. KTA</th>
                                 </tr>
                                 @php
-                                    
+
                                     $registrar->anggota_inti = json_decode($registrar->anggota_inti);
-                                    
+
                                 @endphp
 
                                 @foreach ($registrar->anggota_inti as $a)
@@ -157,7 +157,7 @@
                                     $registrar->anggota = json_decode($registrar->anggota);
                                 @endphp
                                 @foreach ($registrar->anggota as $a)
-                                    
+
                                 <tr class="blank_row">
                                     <td class="middle_text_on_table">{{ $loop->iteration }}</td>
                                     <td>{{ $a->{'Nama'} }}</td>
@@ -280,7 +280,7 @@
                     <p>Demikian data ini kami sampaikan dengan sebenar-benarnya sebagai salah satu syarat penerbitan
                         Sertifikat Tanda Klub Terdaftar dari Ikatan Motor Indonesia ( IMI )</p>
                     <p>Tanggal, {{ Illuminate\Support\Carbon::parse($registrar->created_at)->format("d F Y") }}</p>
-                    <img height="70px" width="200px" src="{{ asset("uploads/registrations/club/") . "/$registrar->signature_ketua_anggota" }}" alt="ttd ketua klub">
+                    <img height="70px" width="200px" src="{{ asset("uploads/" . $registrar->signature_ketua_anggota) }}" alt="ttd ketua klub">
                     <p style="text-decoration:underline">
                     .......................................</p>
                     <p>Ketua Klub: {{ $registrar->anggota_inti[0]->{'Nama'} }}</p>

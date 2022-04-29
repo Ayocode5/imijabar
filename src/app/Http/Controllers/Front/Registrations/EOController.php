@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
-use App\Repository\RegistrationRepository\EventOrganizerRegistrationRepository;
+use App\Repository\Registration\EventOrganizerRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,8 +67,9 @@ class EOController extends Controller
         ]);
 
         if($this->registraionRepository->storeData($request)) {
-            return "Berhasil Menyimpan EO";
+            return view("pages.registrations.eo.success");
         }
-    
+
+        return "Kesalahan";
     }
 }
