@@ -6,7 +6,7 @@
             <div class="d-flex flex-wrap justify-content-between">
                 <p>{{ $detail }}</p>
                 <a style="background-color: #F8F8F8; color: #263840;"
-                    class="px-3 py-2 mt-2 mt-md-1 link_selengkapnya_struktur_pengurus" href="/about">Selengkapnya
+                    class="px-3 py-2 mt-2 mt-md-1 link_selengkapnya_struktur_pengurus" href="/organizations/committee">Selengkapnya
                     <span>→</span></a>
             </div>
         </div>

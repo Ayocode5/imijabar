@@ -109,17 +109,17 @@ body {
     padding: 0 8px;
     border-bottom: 1px solid rgba(38, 56, 64, 0.5);
     /* margin: 0px 100px */
-  }
-  
-  .wrap_buletin{
+}
+
+.wrap_buletin {
     margin: 0 auto;
     width: 100%;
     border-left: 1px solid rgba(38, 56, 64, 0.5);
     border-right: 1px solid rgba(38, 56, 64, 0.5);
     padding: 50px 8px;
-  }
-  
-  .title_buletin{
+}
+
+.title_buletin {
     font-family: "Barlow", sans-serif;
     font-weight: bolder;
     font-size: 24px;
@@ -127,10 +127,11 @@ body {
     margin-top: 50px;
     margin-bottom: 16px;
     border-bottom: 3px solid #5996ec;
-  
-  }
-  
-  .buletin_icon_cal, .buletin_icon_pin{
+
+}
+
+.buletin_icon_cal,
+.buletin_icon_pin {
     /* position: absolute; */
     position: relative;
     z-index: 999;
@@ -138,34 +139,51 @@ body {
     left: 0;
     width: 57px;
     height: 57px;
-  }
-  
-  .buletin_card_title, .buletin_card_title:hover{
+}
+
+.buletin_card_title,
+.buletin_card_title:hover {
     color: #263840;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
-  }
-  
-  .buletin_card_subtitle, .buletin_card_subtitle:hover{
+
+}
+
+.buletin_card_subtitle,
+.buletin_card_subtitle:hover {
     color: #263840;
     text-decoration: none;
     font-weight: 500;
     font-size: 11px;
-  }
-  
-  .buletin_card{
+}
+
+.buletin_card {
     border: 0;
     background-color: transparent;
-  }
-  
-  .buletin_card_header, .buletin_card_body{
+}
+
+#accordionPapanBuletin .wrap_bulletin_board div .buletin_card[aria-expanded="false"] .buletin_card_header .d-flex img {
+    width: 16px;
+    transform: rotate(0deg) scale(1.4);
+    transition: all 0.5s ease-in-out;
+}
+
+#accordionPapanBuletin .wrap_bulletin_board .buletin_card[aria-expanded="true"] .buletin_card_header .d-flex img {
+    width: 16px;
+    transform: rotate(180deg) scale(1.4);
+    transition: all 0.5s ease-in-out;
+}
+
+.buletin_card_header,
+.buletin_card_body {
     background-color: transparent;
     border: 2px solid #26384032;
     margin: 0px 20px;
     border-radius: 10px;
-  }
-  .btn_load_more_buletin {
+}
+
+.btn_load_more_buletin {
     background-color: transparent;
     border: 1px solid #263840;
     padding: 8px 24px;
@@ -173,17 +191,18 @@ body {
     border-radius: 5px;
     font-weight: 500;
     margin-top: 50px;
-  }
-  
-  .btn_load_more_buletin:active,
-  .btn_load_more_buletin:hover,
-  .btn_load_more_buletin:focus {
+}
+
+.btn_load_more_buletin:active,
+.btn_load_more_buletin:hover,
+.btn_load_more_buletin:focus {
     background-color: #FFCE51;
     border: none;
     outline: none;
     transform: translate(0, -10px);
-  }
-  /* End Buletin */
+}
+
+/* End Buletin */
 
 /* Start sejarah imi style */
 #sejarah {
@@ -333,7 +352,12 @@ body {
 
 /* 
     Start Style Struktur Pengurus
+
 */
+#strukturPengurus {
+    margin: 0 auto;
+}
+
 .wrap_struktur_pengurus {
     width: 100%;
     margin: 0 auto;
@@ -535,6 +559,13 @@ body {
 
 
     /* End Sejarah */
+
+    /* Bulettin */
+    #buletin {
+        padding: 0 3.5%;
+    }
+
+    /* End bulettin */
     .wrap_struktur_pengurus {
         padding-top: 100px;
         padding-bottom: 100px;
@@ -565,6 +596,11 @@ body {
 
     #strukturPengurus {
         max-width: 2300px;
+    }
+
+    .wrap_buletin {
+        max-width: 2300px;
+        margin: 0 auto;
     }
 
     .wrap_anggaran {

@@ -15,8 +15,12 @@ require('./components/welcome');
 require('./components/switch_language');
 require('./components/recaptcha_size');
 require('./components/gallery');
-require('./components/lazyload/lazyload_klub_mobil');
 require('./components/card_klub');
+require('./components/lazyload/lazyload_klub_motor');
+require('./components/lazyload/lazyload_klub_mobil');
+require('./components/lazyload/lazyload_klub_mobility');
+require('./components/lazyload/lazyload_committee');
+require('./components/lazyload/lazyload_bulletin_board');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

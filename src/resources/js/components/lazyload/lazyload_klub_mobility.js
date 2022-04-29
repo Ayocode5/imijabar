@@ -1,9 +1,9 @@
 import API_ENDPOINT from "../../global/api_endpoint";
-import { klubMobilCardTemplate } from "../../global/template";
+import { klubMobilityCardTemplate } from "../../global/template";
 
 $(document).ready(function async() {
-    const wrapListClubMobil = document.querySelector('.list_klub_mobil');
-    let pageCountClubMobil = 2;
+    const wrapListClubMobility = document.querySelector('.list_klub_mobility');
+    let pageCountMobility = 2;
 
     function getAPI(url) {
         return $.ajax({
@@ -18,16 +18,16 @@ $(document).ready(function async() {
                 return result;
             },
             error: function (err) {
-                return wrapListClubMobil.append("Error Something wrong !", p);
+                return wrapListClubMobility.append("Error Something wrong !", p);
             }
         });
     }
 
     const firstLoad = async () => {
-        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBIL(1)}`);
+        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBILITY(1)}`);
 
         resultData.data.map((data) => {
-            wrapListClubMobil.innerHTML += (klubMobilCardTemplate(
+            wrapListClubMobility.innerHTML += (klubMobilityCardTemplate(
                 data.club_name,
                 data.leader,
                 data.image,
@@ -37,20 +37,21 @@ $(document).ready(function async() {
         });
 
         if (resultData.current_page === resultData.last_page) {
-            $('.btn_load_more_klub_mobil').remove();
+            $('.btn_load_more_klub_mobility').remove();
         }
 
     };
 
-    if (window.location.pathname === "/about/club/mobil") {
+    if (window.location.pathname === "/about/club/mobility") {
         firstLoad();
     }
 
-    $('.btn_load_more_klub_mobil').on("click", async () => {
-        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBIL(pageCountClubMobil)}`);
+
+    $('.btn_load_more_klub_mobility').on("click", async () => {
+        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBILITY(pageCountMobility)}`);
         if (resultData.current_page <= resultData.last_page) {
             resultData.data.forEach(data => {
-                wrapListClubMobil.innerHTML += (klubMobilCardTemplate(
+                wrapListClubMobility.innerHTML += (klubMobilityCardTemplate(
                     data.club_name,
                     data.leader,
                     data.image,
@@ -61,15 +62,14 @@ $(document).ready(function async() {
             });
 
             if (resultData.current_page === resultData.last_page) {
-                $('.btn_load_more_klub_mobil ').remove();
+                $('.btn_load_more_klub_mobility').remove();
             }
         } else {
-            $('.btn_load_more_klub_mobil ').remove();
+            $('.btn_load_more_klub_mobility').remove();
             return false;
         }
-        pageCountClubMobil += 1;
+        pageCountMobility += 1;
     });
-
 
 
 });

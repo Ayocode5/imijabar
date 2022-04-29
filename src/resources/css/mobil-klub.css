@@ -60,7 +60,6 @@ body {
 
 .wrap_card_community::-webkit-scrollbar {
     display: none;
-    background: linear-gradient(163.89deg, #263840 -2.61%, #5996EC 88.8%);
     border: none;
     padding-bottom: 16px;
     /* for Chrome, Safari, and Opera */
@@ -68,7 +67,7 @@ body {
 
 .scroll_wrap_card_community {
     overflow: scroll;
-    background: linear-gradient(163.89deg, #263840 -2.61%, #5996EC 88.8%);
+    background-color: #5996EC;
     padding-bottom: 16px;
     -ms-overflow-style: none;
     /* for Internet Explorer, Edge */
@@ -76,6 +75,25 @@ body {
     /* for Firefox */
 }
 
+.scroll_wrap_card_motor_community {
+    overflow: scroll;
+    background-color: #FFCE51;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+.scroll_wrap_card_mobility_community {
+    overflow: scroll;
+    background-color: #51FF58;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
 
 .image_card_klub_mobil {
     height: 300px;
@@ -156,6 +174,7 @@ body {
     font-size: 24px;
     display: block;
     margin: auto 0;
+    padding-bottom: 10px;
 }
 
 .sosial_media_klub_mobil p a {
@@ -173,7 +192,9 @@ body {
     margin-left: 0;
 }
 
-.btn_load_more_klub_mobil {
+.btn_load_more_klub_mobil,
+.btn_load_more_klub_motor,
+.btn_load_more_klub_mobility {
     background-color: transparent;
     border: 1px solid #263840;
     padding: 8px 24px;
@@ -185,7 +206,13 @@ body {
 
 .btn_load_more_klub_mobil:active,
 .btn_load_more_klub_mobil:hover,
-.btn_load_more_klub_mobil:focus {
+.btn_load_more_klub_mobil:focus,
+.btn_load_more_klub_motor:active,
+.btn_load_more_klub_motor:hover,
+.btn_load_more_klub_motor:focus,
+.btn_load_more_klub_mobility:active,
+.btn_load_more_klub_mobility:hover,
+.btn_load_more_klub_mobility:focus {
     background-color: #FFCE51;
     border: none;
     outline: none;

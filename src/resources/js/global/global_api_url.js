@@ -4,6 +4,9 @@ const GLOBAL_API_URL = {
     PAGE_API_URL_KLUB_MOBIL: `http://localhost:8090/about/club-data/mobil`,
     PAGE_API_URL_KLUB_MOTOR: `http://localhost:8090/about/club-data/motor`,
     PAGE_API_URL_KLUB_MOBILITY: `http://localhost:8090/about/club-data/mobility`,
+    PAGE_API_URL_ORGANIZATION_COMMITTEE: `http://localhost:8090/organizations/committee-data`,
+    PAGE_API_URL_BULLETIN_BOARD_AGENDA: `http://localhost:8090/organizations/agenda-data/activity`,
+    PAGE_API_URL_BULLETIN_BOARD_INFO: `http://localhost:8090/organizations/agenda-data/info`,
 }
 
 export default GLOBAL_API_URL;

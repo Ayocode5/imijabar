@@ -14,9 +14,22 @@ const API_ENDPOINT = {
     URL_SEARCH_EVENTS: (q, pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}/search?q=${q}&page=${pageCount}`,
     URL_SEARCH_CATEGORY_EVENTS: (q, pageCount, categoryName) => `${GLOBAL_API_URL.PAGE_API_URL_EVENTS}/search?q=${q}&page=${pageCount}&sport=${categoryName}`,
 
+    // ===== Page KLUB =====
+    // Klub Mobilx  
+    URL_KLUB_MOBIL: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_KLUB_MOBIL}?page=${pageCount}&perPage=9`,
+    // Klub Motor
+    URL_KLUB_MOTOR: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_KLUB_MOTOR}?page=${pageCount}&perPage=9`,
+    // Klub Mobility
+    URL_KLUB_MOBILITY: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_KLUB_MOBILITY}?page=${pageCount}&perPage=9`,
 
-    // Klub Mobil
-    URL_KLUB_MOBIL: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_KLUB_MOBIL}?page=${pageCount}`,
+
+    // Organization Committee
+    URL_COMMITTEE: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_ORGANIZATION_COMMITTEE}?page=${pageCount}&perPage=9`,
+
+
+    // Agenda Page
+    URL_BULLETIN_BOARD_AGENDA: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_BULLETIN_BOARD_AGENDA}?page=${pageCount}&perPage=3`,
+    URL_BULLETIN_BOARD_INFO: (pageCount) => `${GLOBAL_API_URL.PAGE_API_URL_BULLETIN_BOARD_INFO}?page=${pageCount}&perPage=3`,
 
 }
 

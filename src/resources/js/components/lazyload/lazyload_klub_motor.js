@@ -1,9 +1,9 @@
 import API_ENDPOINT from "../../global/api_endpoint";
-import { klubMobilCardTemplate } from "../../global/template";
+import { klubMotorCardTemplate } from "../../global/template";
 
 $(document).ready(function async() {
-    const wrapListClubMobil = document.querySelector('.list_klub_mobil');
-    let pageCountClubMobil = 2;
+    const wrapListClubMotor = document.querySelector('.list_klub_motor');
+    let pageCountMotor = 2;
 
     function getAPI(url) {
         return $.ajax({
@@ -18,16 +18,16 @@ $(document).ready(function async() {
                 return result;
             },
             error: function (err) {
-                return wrapListClubMobil.append("Error Something wrong !", p);
+                return wrapListClubMotor.append("Error Something wrong !", p);
             }
         });
     }
 
     const firstLoad = async () => {
-        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBIL(1)}`);
+        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOTOR(1)}`);
 
         resultData.data.map((data) => {
-            wrapListClubMobil.innerHTML += (klubMobilCardTemplate(
+            wrapListClubMotor.innerHTML += (klubMotorCardTemplate(
                 data.club_name,
                 data.leader,
                 data.image,
@@ -37,20 +37,19 @@ $(document).ready(function async() {
         });
 
         if (resultData.current_page === resultData.last_page) {
-            $('.btn_load_more_klub_mobil').remove();
+            $('.btn_load_more_klub_motor').remove();
         }
 
     };
-
-    if (window.location.pathname === "/about/club/mobil") {
+    if (window.location.pathname === "/about/club/motor") {
         firstLoad();
     }
 
-    $('.btn_load_more_klub_mobil').on("click", async () => {
-        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBIL(pageCountClubMobil)}`);
+    $('.btn_load_more_klub_motor').on("click", async () => {
+        const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOTOR(pageCountMotor)}`);
         if (resultData.current_page <= resultData.last_page) {
             resultData.data.forEach(data => {
-                wrapListClubMobil.innerHTML += (klubMobilCardTemplate(
+                wrapListClubMotor.innerHTML += (klubMotorCardTemplate(
                     data.club_name,
                     data.leader,
                     data.image,
@@ -61,15 +60,14 @@ $(document).ready(function async() {
             });
 
             if (resultData.current_page === resultData.last_page) {
-                $('.btn_load_more_klub_mobil ').remove();
+                $('.btn_load_more_klub_motor').remove();
             }
         } else {
-            $('.btn_load_more_klub_mobil ').remove();
+            $('.btn_load_more_klub_motor').remove();
             return false;
         }
-        pageCountClubMobil += 1;
+        pageCountMotor += 1;
     });
-
 
 
 });

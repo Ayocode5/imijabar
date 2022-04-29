@@ -19,20 +19,18 @@
                     // dd($urls);                    
                 @endphp
                 @foreach ($urls as $key => $url)
-                    <li class="breadcrumb-item  @if ($key == $urls_last) active @endif">
+                <li class="breadcrumb-item  @if ($key == $urls_last) active @endif">
                         <a href="@if ($key == 0) /@elseif($key == $urls_last)#@else/{{ $url }} @endif"
                             style="color: #263840; text-decoration: none; @if ($key == $urls_last) font-weight: 700; @endif">
-                            {{-- @if ($key == $urls_last)
+                            @if ($key == $urls_last)
                                 @if ($key == 2)
                                     &nbsp;
-                                    
                                 @else
                                     {{ $url }}
                                 @endif
                             @else
                                 {{ $url }}
-                            @endif --}}
-                            {{$url}}
+                            @endif
                         </a>
                     </li>
                 @endforeach
