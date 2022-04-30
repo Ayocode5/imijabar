@@ -25,8 +25,8 @@ class SubscriptionController extends Controller
 
         if (!$captcha_validation['success']) {
             return response()->json([
-                'message' => 'Captcha Validation Error'
-            ], 200);
+                'message' => $captcha_validation
+            ], 422);
         }
 
         // Save data into database
@@ -62,6 +62,7 @@ class SubscriptionController extends Controller
 			'logo',
 			'top_bar_email',
 			'top_bar_phone',
+            'top_bar_organization_name',
 			'footer_address',
 			'footer_email',
 			'footer_phone',
