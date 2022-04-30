@@ -20,6 +20,7 @@ require('./components/switch_language');
 require('./components/recaptcha_size');
 require('./components/gallery');
 require('./components/card_klub');
+require('./components/tooltip.js');
 require('./components/lazyload/lazyload_klub_motor');
 require('./components/lazyload/lazyload_klub_mobil');
 require('./components/lazyload/lazyload_klub_mobility');

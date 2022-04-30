@@ -139,16 +139,14 @@ body {
     font-size: 0.8em;
 }
 
-.content_overlay_collaps p {
-    font-size: 0.8em;
-}
-
 .content_overlay_collaps>p {
     font-weight: 700;
+    font-size: 0.8em;
     color: #F4F4F9;
 }
 
 .content_overlay_collaps .leader_name {
+    font-size: 0.8em;
     margin-top: 20px;
     margin-bottom: 50px;
 }
@@ -243,22 +241,28 @@ body {
 
     /* Head Klub Mobil */
 
-    .overlay_collaps {
-        /* transform: translate(0, 55%); */
-    }
 
     .overlay_car_community h5 {
         font-size: 24px;
     }
 
     .subtittle_card>p {
-        text-align: center;
         font-size: 16px;
     }
 
-    .content_overlay_collaps p {
+    .content_overlay_collaps .leader_name {
         font-size: 16px;
     }
+
+
+    .content_overlay_collaps>p {
+        font-size: 16px;
+    }
+
+    .sosial_media_klub_mobil p {
+        font-size: 32px;
+    }
+
 }
 
 @media screen and (min-width: 992px) {
