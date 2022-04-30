@@ -7,8 +7,8 @@
     <div id="page_klub_mobil">
         <section id="header_page_klub_mobil">
             <div class="head_klub_mobil">
-                <h1>Klub Mobil</h1>
-                <p>Daftar Klub Mobil Yang Resmi Terdaftar di IMI Jawa Barat.</p>
+                <h1>{{ $sub_page_head_section->name }}</h1>
+                <p>{!! $sub_page_head_section->content1 !!}</p>
             </div>
         </section>
 

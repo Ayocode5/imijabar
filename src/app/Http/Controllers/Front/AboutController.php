@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Community;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AboutController extends Controller
 {
@@ -29,7 +29,7 @@ class AboutController extends Controller
 			'committee_title',
 			'committee_detail'
 		)->first();
-		
+
 		$committee = DB::table('team_members')->limit(5)->get();
 
 		$art_section_page = DB::table('dynamic_pages')
@@ -51,8 +51,9 @@ class AboutController extends Controller
 		return view('pages.about.index', compact(['settings', 'home_settings', 'about_settings', 'art_section_page', 'ad_section_page', 'committee']));
 	}
 
-	public function club_list($category) {
-		
+	public function club_list($category)
+	{
+
 		$settings = DB::table('general_settings')->select(
 			'logo',
 			'top_bar_organization_name',
@@ -67,15 +68,20 @@ class AboutController extends Controller
 			'footer_column3_heading',
 		)->first();
 
+		$sub_page_head_section = DB::table("dynamic_pages")
+			->select(["dynamic_page_name as name", "dynamic_page_content1 as content1"])
+			->where("dynamic_page_slug", "$category-page-head-section")->first();
+
+
 		switch ($category) {
 			case 'motor':
-				return view("pages.about.motor", compact("settings"));
+				return view("pages.about.motor", compact(["settings", "sub_page_head_section"]));
 				break;
 			case 'mobil';
-				return view("pages.about.mobil", compact("settings"));
+				return view("pages.about.mobil", compact("settings", "sub_page_head_section"));
 				break;
 			case 'mobility';
-				return view("pages.about.mobility", compact("settings")); 
+				return view("pages.about.mobility", compact("settings", "sub_page_head_section"));
 				break;
 			default:
 				return abort(404, "PAGE NOT FOUND");
@@ -83,7 +89,8 @@ class AboutController extends Controller
 		}
 	}
 
-	public function club_data($category, Request $request) {
+	public function club_data($category, Request $request)
+	{
 
 		$communities = Community::select([
 			"club_name",

@@ -25,7 +25,11 @@ class CommitteeController extends Controller
 			'footer_column3_heading',
 		)->first();
 
-        return view("pages.organizations.committee", compact("settings"));
+		$committee_page_head_section = DB::table("dynamic_pages")
+		->select(["dynamic_page_name as name", "dynamic_page_content1 as content1", "dynamic_page_content2 as content2"])
+		->where("dynamic_page_slug", "committee-page-head-section")->first();
+
+        return view("pages.organizations.committee", compact("settings", "committee_page_head_section"));
     }
 
     public function committee_data(Request $request) {

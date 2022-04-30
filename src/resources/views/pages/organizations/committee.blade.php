@@ -7,8 +7,8 @@
     <div style="background-color: #F8F8F8;">
         <section id="header_page_committee">
             <div class="head_list_committee">
-                <h1>Pengurus IMI Jawa Barat</h1>
-                <p>Susunan Pengurus Ikatan Motor Indonesia (IMI) Provinsi Jawa Barat, Periode 2021 - 2025.</p>
+                <h1>{{ $committee_page_head_section->name }}</h1>
+                <p>{!! $committee_page_head_section->content1 !!}</p>
             </div>
         </section>
 
@@ -68,8 +68,7 @@
             </div>
             <button class="btn_load_more_list_committee mx-auto d-block mb-5">Load More</button>
             <div class="download_structure_committee">
-                <p>Struktur Organisasi IMI Jawa Barat periode 2021 - 2025, Silahkan unduh disini:</p>
-                <a href="www.google.com"><img class="mr-3" src="{{ asset('images/') }}/pdf-icon.png" alt="pdf icon">Download File</a>
+                {!! $committee_page_head_section->content2 !!}
             </div>
         </main>
     </div>

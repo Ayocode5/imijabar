@@ -17,23 +17,62 @@ class EOController extends Controller
         $this->registraionRepository = $repository;
     }
 
-    public function index() {
+    public function index()
+    {
 
         $settings = DB::table('general_settings')->select(
-			'logo',
-			'top_bar_organization_name',
-			'top_bar_email',
-			'top_bar_phone',
-			'footer_address',
-			'footer_email',
-			'footer_phone',
-			'footer_copyright',
-			'footer_column1_heading',
-			'footer_column2_heading',
-			'footer_column3_heading',
-		)->first();
+            'logo',
+            'top_bar_organization_name',
+            'top_bar_email',
+            'top_bar_phone',
+            'footer_address',
+            'footer_email',
+            'footer_phone',
+            'footer_copyright',
+            'footer_column1_heading',
+            'footer_column2_heading',
+            'footer_column3_heading',
+        )->first();
 
-        return view("pages.registrations.eo.index", compact("settings"));
+        // Head Content
+        $head_section = DB::table('dynamic_pages')
+            ->select(
+                'dynamic_page_name as name',
+                'dynamic_page_content1 as content1',
+                'dynamic_page_content2 as content2',
+                'dynamic_page_link1 as link',
+                'dynamic_page_banner as banner',
+                'seo_title',
+                'seo_meta_description'
+            )
+            ->where('dynamic_page_slug', 'registration-eo-page-head-section')
+            ->first();
+
+        // dd($head_section);
+
+        $requirement_section = DB::table('dynamic_pages')
+            ->select(
+                'dynamic_page_name as name',
+                'dynamic_page_content1 as content1',
+                'seo_title',
+                'seo_meta_description'
+            )->where('dynamic_page_slug', 'registration-eo-page-requirement-section')
+            ->first();
+
+        // dd($requirement_section);
+
+        $howto_section = DB::table('dynamic_pages')
+            ->select(
+                'dynamic_page_name as name',
+                'dynamic_page_content1 as content1',
+                'seo_title',
+                'seo_meta_description'
+            )->where('dynamic_page_slug', 'registration-eo-page-howto-section')
+            ->first();
+        
+        // dd($howto_section);
+
+        return view("pages.registrations.eo.index", compact(["settings", "head_section", "requirement_section", "howto_section"]));
     }
 
     public function getForm()
@@ -66,7 +105,7 @@ class EOController extends Controller
             "q143_penghargaan" => "required|string",
         ]);
 
-        if($this->registraionRepository->storeData($request)) {
+        if ($this->registraionRepository->storeData($request)) {
             return view("pages.registrations.eo.success");
         }
 

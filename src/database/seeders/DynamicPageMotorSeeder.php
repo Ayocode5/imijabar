@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class DynamicPageMotorSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('dynamic_pages')->insert(
+            [
+                'dynamic_page_name' => 'Klub Motor',
+                'dynamic_page_slug' => 'motor-page-head-section',
+                'dynamic_page_content1' => '<p>Daftar Klub Motor Yang Resmi Terdaftar di IMI Jawa Barat.</p>',
+            ]
+        );
+    }
+}

@@ -38,6 +38,11 @@ class DatabaseSeeder extends Seeder
            DynamicPageClubRegistration::class,
            DynamicPageKIS::class,
            DynamicPageKTA::class,
+           DynamicPageMobilitySeeder::class,
+           DynamicPageMobilSeeder::class,
+           DynamicPageMotorSeeder::class,
+           DynamicPageCommitteeSeeder::class,
+           DynamicPageEORegistrationSeeder::class
         //    NewsSeeder::class,
         //    EventSeeder::class,
         //    GallerySeeder::class,

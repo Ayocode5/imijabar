@@ -75,7 +75,7 @@ class DynamicPageController extends Controller
                 ],
                 'dynamic_page_banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-            if(file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
+            if(!empty($dynamic_page->dynamic_page_banner) && file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
                 unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
             }
             $ext = $request->file('dynamic_page_banner')->extension();
@@ -102,7 +102,7 @@ class DynamicPageController extends Controller
     public function destroy($id)
     {
         $dynamic_page = DynamicPage::findOrFail($id);
-        if(file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
+        if(!empty($dynamic_page->dynamic_page_banner) && file_exists(public_path('uploads/' . $dynamic_page->dynamic_page_banner))) {
             unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
         }
         $dynamic_page->delete();
