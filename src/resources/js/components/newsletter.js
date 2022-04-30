@@ -16,6 +16,7 @@ $(document).ready(() => {
                     $(".input_newsletter").addClass("is-valid");
                     $(".input_newsletter").removeClass("is-invalid");
                     $(".input-newsletter-valid").text(result.message);
+                    $(".input_newsletter").val('');
                 },
                 error: function (err) {
                     $(".input-newsletter-invalid").text(
@@ -23,6 +24,7 @@ $(document).ready(() => {
                     );
                     $(".input_newsletter").removeClass("is-valid");
                     $(".input_newsletter").addClass("is-invalid");
+                    $(".input_newsletter").val('')
                 },
             });
         } else {
