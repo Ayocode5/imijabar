@@ -7,7 +7,7 @@
     'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com',
     'asset_url' => NULL,
     'timezone' => 'Asia/Jakarta',
-    'locale' => 'id',
+    'locale' => 'en',
     'fallback_locale' => 'id',
     'faker_locale' => 'en_US',
     'key' => 'base64:Uox4hu5ObUMDVjSGTJLU5ddACB8Srq4IHhxMYJqBHCM=',
@@ -794,8 +794,8 @@
     'route' => NULL,
     'paths' => 
     array (
-      0 => '/var/www/html/public/upload',
-      1 => '/var/www/html/public/images',
+      0 => '/var/www/html/public_html/upload',
+      1 => '/var/www/html/public_html/images',
     ),
     'templates' => 
     array (
