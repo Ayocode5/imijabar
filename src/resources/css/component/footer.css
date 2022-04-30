@@ -4,6 +4,10 @@ footer {
     padding: 48px 0;
 }
 
+.wrap_content_footer {
+    gap: 16px;
+}
+
 .content_footer {
     padding: 0 5%;
     height: 100%;
@@ -53,6 +57,10 @@ footer {
 
 }
 
+.sitemap_footer li a:hover {
+    color: #464646;
+}
+
 /* end footer */
 
 
@@ -79,6 +87,10 @@ footer {
 
     .content_footer {
         padding: 0 8%;
+    }
+
+    .wrap_content_footer {
+        gap: 20px;
     }
 
     .logo_footer {

@@ -80,10 +80,10 @@
                     <h2 class="sejarah-title">
                         {!! $about_settings?->subtitle !!}
                     </h2>
-                    <p class="sejarah-text">
+                    <div class="sejarah-text">
                         <span class="sejarah-text-bold"> {{ $about_settings?->heading3 }} - </span>
                         {!! $about_settings?->body3 !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6 order-1 order-md-2">
                     <img src="{{ asset('images') }}/sejarah-img.png" alt="sejarah img" class="sejarah-img mt-5">
@@ -92,19 +92,19 @@
             <img src="{{ asset('images') }}/sejarah-arrow-down.png" alt="arrow down" class="sejarah-arrow">
             <div class="row">
                 <div class="col-12 col-lg-5">
-                    <p class="sejarah-text">
+                    <div class="sejarah-text">
                         <span class="sejarah-text-bold"> {{ $about_settings?->heading4 }} - </span>
                         {!! $about_settings?->body4 !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-2 d-flex justify-content-center">
                     <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right" class="sejarah-arrow2">
                 </div>
                 <div class="col-12 col-lg-5">
-                    <p class="sejarah-text">
+                    <div class="sejarah-text">
                         <span class="sejarah-text-bold"> {{ $about_settings?->heading5 }} - </span>
                         {!! $about_settings?->body5 !!}
-                    </p>
+                    </div>
                 </div>
             </div>
             <div class="showmore-btn">
@@ -119,40 +119,40 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading6 }} - </span>
                                             {!! $about_settings?->body6 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
                                         <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading7 }}- </span>
                                             {!! $about_settings?->body7 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <img src="{{ asset('images') }}/sejarah-arrow-down.png" alt="arrow down"
                                     class="sejarah-arrow">
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading8 }} - </span>
                                             {!! $about_settings?->body8 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-2 d-flex justify-content-center">
                                         <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow2">
                                     </div>
                                     <div class="col-12 col-lg-5">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading9 }} - </span>
                                             {!! $about_settings?->body9 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-end mr-md-2">
@@ -161,20 +161,20 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-lg-5 order-3 order-lg-1">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading10 }} - </span>
                                             {!! $about_settings?->body10 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-2 order-2 d-flex justify-content-center">
                                         <img src="{{ asset('images') }}/sejarah-arrow-right.png" alt="arrow right"
                                             class="sejarah-arrow4">
                                     </div>
                                     <div class="col-12 col-lg-5 order-1 order-lg-3">
-                                        <p class="sejarah-text">
+                                        <div class="sejarah-text">
                                             <span class="sejarah-text-bold"> {{ $about_settings?->heading11 }} - </span>
                                             {!! $about_settings?->body11 !!}
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

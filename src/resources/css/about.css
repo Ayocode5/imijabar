@@ -232,6 +232,36 @@ body {
 /* End Buletin */
 
 /* Start sejarah imi style */
+
+.wrap_tooltip {
+    background-color: #5996EC;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    max-width: 200px;
+}
+
+.wrap_tooltip .content_tooltip {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wrap_tooltip h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.wrap_tooltip p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.wrap_tooltip img {
+    width: 200px;
+    height: 200px;
+}
+
 #sejarah {
     background-color: #FBFBFB;
     padding: 0 8px;
@@ -259,6 +289,11 @@ body {
     font-weight: medium;
     font-size: 1em;
     text-align: justify
+}
+
+.sejarah-text p:nth-child(2) {
+    display: inline;
+
 }
 
 .sejarah-text-bold {

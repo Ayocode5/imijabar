@@ -290,13 +290,11 @@ const cardCommitteeTemplate = (name, designation, address, photo, listSocialMedi
                     ${name}
                 </h2>
                 <p class="selectDisable position_committee">${designation}</p>
-                <span class="sosial_media_committe">
-                    <p>
+                <div class="sosial_media_committe">
                     ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? false : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
                     class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
                     class="fab fa-${key}"></i></a>`).join("")}
-                    </p>
-                </span>
+                </div>
             </div>
         </div>
     </div>

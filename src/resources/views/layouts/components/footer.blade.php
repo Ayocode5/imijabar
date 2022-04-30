@@ -1,8 +1,8 @@
 <footer class="position-relative border-top border-bottom">
     <div class="container-fluid content_footer">
 
-        <div class="row my-auto mx-0 justify-content-md-between h-100">
-            <div class="col-12 col-lg-5  mb-3 mb-lg-0 align-self-center">
+        <div class="wrap_content_footer row my-auto mx-0 justify-content-md-between h-100">
+            <div class="col-12 col-lg-4  mb-3 mb-lg-0 align-self-center">
                 <div class="row mx-0">
                     <div class="col-12 col-sm-3">
                         <img style="height: 75px; width: 57px" class="d-block mb-4 logo_footer" src="{{ asset('uploads/') . "/$settings?->logo" }}"
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-1"></div>
+            <!-- <div class="col-1"></div> -->
             <div class="col-12 col-lg-3">
                 <div class="address_footer">
                     <h4 style="font-weight: 700;">{{ $settings?->footer_column1_heading }}</h4>
@@ -45,17 +45,26 @@
                     </p>
                 </div>
             </div>
-            <div class="col-1"></div>
+            <!-- <div class="col-1"></div> -->
             <div class="col-12 col-lg-2">
                 <h4 style="font-weight: 700;">{{ $settings?->footer_column3_heading }}</h4>
                 <ul style="font-weight: 500;" class="sitemap_footer">
-                    <li><a href="/about">Tentang IMI Jabar</a></li>
+                    <li><a href="/about">Sejarah IMI Jabar</a></li>
+                    <li><a href="/about/club/mobil">Mobil</a></li>
+                    <li><a href="/about/club/motor">Motor</a></li>
+                    <li><a href="/about/club/mobility">Mobility</a></li>
                     <li><a href="/news">Berita</a></li>
-                    <li><a href="/gallery">Galeri</a></li>
-                    <li><a href="/event">Acara</a></li>
-                    <li><a href="/registration/kis">Pendaftaran KIS</a></li>
+                    <li><a href="/event">Kalender Event</a></li>
+                </ul>
+
+            </div>
+            <div class="col-12 col-lg-2 align-self-center">
+                <ul style="font-weight: 500;" class="sitemap_footer">
+                    <li><a href="/gallery?category=category-1">Galeri</a></li>
                     <li><a href="/registration/kta">Pendaftaran KTA</a></li>
+                    <li><a href="/registration/kis">Pendaftaran KIS</a></li>
                     <li><a href="/registration/club">Pendaftaran Klub</a></li>
+                    <li><a href="/registration/eo">Pendaftaran Event</a></li>
                 </ul>
 
             </div>
