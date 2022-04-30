@@ -236,7 +236,7 @@
     ),
     'allowed_origins' => 
     array (
-      0 => '*',
+      0 => 'www.imijabar.org:*',
     ),
     'allowed_origins_patterns' => 
     array (
@@ -794,8 +794,8 @@
     'route' => NULL,
     'paths' => 
     array (
-      0 => '/var/www/html/public_html/upload',
-      1 => '/var/www/html/public_html/images',
+      0 => '/var/www/html/public/upload',
+      1 => '/var/www/html/public/images',
     ),
     'templates' => 
     array (
