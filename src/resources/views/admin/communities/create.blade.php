@@ -60,7 +60,7 @@
                         <input type="text" name="socmed[facebook]" class="col-12 col-md-7 form-control" value="{{ old("socmed[facebook]") }}" autofocus>
                     </div>
                 </div>
-                <img id="ads_preview_image" src="" alt="" class="w_300">
+                <img id="com_preview_image" src="" alt="" class="w_300">
                 <div class="form-group">
                     <label for="">Image *</label><br>
                     <input type="file" id="image" name="image" value="{{ old('image') }}" autofocus>
@@ -85,10 +85,10 @@
         image.onchange = (event) => {
             const [file] = image.files
             if (file) {
-                ads_preview_image.src = URL.createObjectURL(file)
+                com_preview_image.src = URL.createObjectURL(file)
             }
-            ads_preview_image.onload = () => {
-                URL.revokeObjectURL(ads_preview_image.src)
+            com_preview_image.onload = () => {
+                URL.revokeObjectURL(com_preview_image.src)
             }
         }
     </script>

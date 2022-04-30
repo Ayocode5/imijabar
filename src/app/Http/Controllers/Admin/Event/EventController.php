@@ -151,15 +151,21 @@ class EventController extends Controller
 
         if ($request->hasFile('event_featured_photo')) {
 
-            if (!empty($event->event_featured_photo)) {
+            if (file_exists(public_path('uploads/' . $event->event_featured_photo)) && !empty($event->event_featured_photo)) {
 
                 unlink(public_path('uploads/' . $event->event_featured_photo));
 
-                preg_match('/(event-featured-photo-)(.*).(jpg|png|jpeg|gif)/', $event->event_featured_photo, $event_photo_format_split);
-                $fileName = $event_photo_format_split[1] . $event_photo_format_split[2] . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
+                // preg_match('/(event-featured-photo-)(.*).(jpg|png|jpeg|gif)/', $event->event_featured_photo, $event_photo_format_split);
+                // $fileName = $event_photo_format_split[1] . $event_photo_format_split[2] . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
+                // $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+                // $data['event_featured_photo'] = $fileName;
+
+                $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
                 $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
                 $data['event_featured_photo'] = $fileName;
+
             } else {
+
                 $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
                 $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
                 $data['event_featured_photo'] = $fileName;
