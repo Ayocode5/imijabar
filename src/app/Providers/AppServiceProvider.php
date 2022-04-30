@@ -16,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      
+        $this->app->bind('path.public', function() {
+            return '/home/u1721315/public_html';
+        });
     }
 
     /**
