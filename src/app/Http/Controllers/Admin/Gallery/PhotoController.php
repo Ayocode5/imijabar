@@ -86,10 +86,12 @@ class PhotoController extends Controller
 
         if ($request->hasFile('photo_name')) {
 
-            if ($photo->photo_name) {
+            if (!is_null($photo->photo_name) && file_exists(public_path('uploads/' . $photo->photo_name))) {
                 unlink(public_path('uploads/' . $photo->photo_name));
-                preg_match('/(photo-)(.*).(jpg|png|jpeg|gif)/', $photo->photo_name, $photo_name_format_split);
-                $fileName = $photo_name_format_split[1] . $photo_name_format_split[2] . '.' . $request->file('photo_name')->getClientOriginalExtension();
+                // preg_match('/(photo-)(.*).(jpg|png|jpeg|gif)/', $photo->photo_name, $photo_name_format_split);
+                // $fileName = $photo_name_format_split[1] . $photo_name_format_split[2] . '.' . $request->file('photo_name')->getClientOriginalExtension();
+                // $request->file('photo_name')->move(public_path('uploads/'), $fileName);
+                $fileName = 'photo-' . Uuid::uuid4() . '.' . $request->file('photo_name')->getClientOriginalExtension();
                 $request->file('photo_name')->move(public_path('uploads/'), $fileName);
             } else {
                 $fileName = 'photo-' . Uuid::uuid4() . '.' . $request->file('photo_name')->getClientOriginalExtension();

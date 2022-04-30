@@ -99,14 +99,15 @@ class CommunityRepository {
             unlink(self::getUploadedFileBasePath() . $oldfile);
 
             /* Reformat image name */
-            preg_match($regex, $oldfile, $community_image_format_split);
-            $fileName = $community_image_format_split[1] . $community_image_format_split[2] . '.' . $file->getClientOriginalExtension();
+            // preg_match($regex, $oldfile, $community_image_format_split);
+            // $fileName = $community_image_format_split[1] . $community_image_format_split[2] . '.' . $file->getClientOriginalExtension();
     
-            /* Saving the image */
-            $file->move(self::getUploadedFilePath(), $fileName);
+            // /* Saving the image */
+            // $file->move(self::getUploadedFilePath(), $fileName);
 
-            /* insert image name to the new_data */
-            return "/" . self::getUploadedFilePath() . $fileName;
+            // /* insert image name to the new_data */
+            // return "/" . self::getUploadedFilePath() . $fileName;
+            return $this->saveUploadedFile($file, 'community-' . Uuid::uuid4());
 
         } else {
             return $this->saveUploadedFile($file, 'community-' . Uuid::uuid4());

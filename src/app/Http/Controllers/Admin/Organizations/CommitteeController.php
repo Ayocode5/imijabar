@@ -84,11 +84,13 @@ class CommitteeController extends Controller
             if(!empty($team_member->photo) && file_exists(public_path('uploads/'.$team_member->photo))) {
 
                 unlink(public_path('uploads/' . $team_member->photo));
-                preg_match('/(team-member-)(.*).(jpg|png|jpeg|gif)/', $team_member->photo, $team_member_photo_format_name_split);
 
-                $fileName = $team_member_photo_format_name_split[1].
-                    $team_member_photo_format_name_split[2].
-                    '.'.$request->file('photo')->getClientOriginalExtension();
+                // preg_match('/(team-member-)(.*).(jpg|png|jpeg|gif)/', $team_member->photo, $team_member_photo_format_name_split);
+
+                // $fileName = $team_member_photo_format_name_split[1].
+                //     $team_member_photo_format_name_split[2].
+                //     '.'.$request->file('photo')->getClientOriginalExtension();
+                $fileName = 'team-member-'.Uuid::uuid4().'.'.$request->file('photo')->getClientOriginalExtension();
 
             } else {
 

@@ -116,14 +116,20 @@ class BlogController extends Controller
 
             //remove old photo
             !empty($blog->blog_photo) && file_exists(public_path('uploads/' . $blog->blog_photo)) ? unlink(public_path('uploads/' . $blog->blog_photo)) : null;
-            preg_match('/(blog-)(.*).(jpg|png|jpeg|gif)/', $blog->blog_photo, $blog_photo_split);
 
-            // Rebuild the name of photo 
-            $filename = $blog_photo_split[1] . $blog_photo_split[2] . '.' . $request->file('blog_photo')->getClientOriginalExtension();
-            //Separates photo name and extension
+            // preg_match('/(blog-)(.*).(jpg|png|jpeg|gif)/', $blog->blog_photo, $blog_photo_split);
 
-            // Save The Photo
-            $request->file('blog_photo')->move(public_path('uploads/'), $filename);
+            // // Rebuild the name of photo 
+            // $filename = $blog_photo_split[1] . $blog_photo_split[2] . '.' . $request->file('blog_photo')->getClientOriginalExtension();
+            // //Separates photo name and extension
+
+            // // Save The Photo
+            // $request->file('blog_photo')->move(public_path('uploads/'), $filename);
+
+            $ext = $request->file('blog_photo')->getClientOriginalExtension();
+            $filename = 'blog-' . Uuid::uuid4()->toString() . '.' . $ext;
+
+            $request->file('blog_photo')->move(public_path('uploads'), $filename);
 
             //set new file photo
             unset($data['blog_photo']);

@@ -134,12 +134,19 @@ class GreetingController extends Controller
                 /* Unlink the old image if exists */
                 unlink(self::$STORED_IMAGE_LOCATION . $greeting->image);
                 /* Reformat the name of image */
-                preg_match('/(greeting-)(.*).(jpg|png|jpeg|gif|svg)/', $greeting->image, $ads_image_format_split);
-                $fileName = $ads_image_format_split[1] . $ads_image_format_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
-                /* Saving the image */
+                // preg_match('/(greeting-)(.*).(jpg|png|jpeg|gif|svg)/', $greeting->image, $ads_image_format_split);
+                // $fileName = $ads_image_format_split[1] . $ads_image_format_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
+                // /* Saving the image */
+                // $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
+                // /* insert image name to the new_data */
+                // $new_data['image'] = "greetings/".$fileName;
+                $ext = $request->file('image')->getClientOriginalExtension();
+                $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
+                /* Store new Image */
                 $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
                 /* insert image name to the new_data */
                 $new_data['image'] = "greetings/".$fileName;
+                
             } else {
                 /* Get the image file and rename it */
                 $ext = $request->file('image')->getClientOriginalExtension();
