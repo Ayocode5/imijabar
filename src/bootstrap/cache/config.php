@@ -227,8 +227,7 @@
   array (
     'paths' => 
     array (
-      0 => 'api/*',
-      1 => 'sanctum/csrf-cookie',
+      0 => '*',
     ),
     'allowed_methods' => 
     array (
@@ -236,7 +235,8 @@
     ),
     'allowed_origins' => 
     array (
-      0 => 'www.imijabar.org:*',
+      0 => 'imijabar.org:*',
+      1 => 'www.imijabar.org:*',
     ),
     'allowed_origins_patterns' => 
     array (
