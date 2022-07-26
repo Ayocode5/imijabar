@@ -138,7 +138,7 @@
                 <div class="col-12 col-lg-6 ml-auto my-auto signature_imijabar position-relative">
                     <p class="position-relative"><span class="position-absolute">“</span></p>
                     <div class="mt-4 position-relative slide_tentangImi2">
-                        <p>Optimization to Execellence.</p>
+                        <p>IMI Jabar Juara</p>
                         <p class="signature_text">IMI Jawa Barat</p>
                         <img class="position-absolute" src="{{ asset('images') }}/line_blue.svg" alt="line_blue">
                         <a class="selengkapnya_tentangImi" href="/about">Selengkapnya →</a>
