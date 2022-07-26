@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Repository\Registration\KISRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class KISController extends Controller
 {
 
-    private static $registrationRepository;
+    private $registrationRepository;
 
     public function __construct(KISRegistrationRepository $repository)
     {
-        self::$registrationRepository = $repository;
+        $this->registrationRepository = $repository;
     }
 
     public function index()
@@ -85,8 +86,7 @@ class KISController extends Controller
 
     public function store(Request $request)
     {
-
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             "q301_email" => "required|email",
             "q30_nomorKartu" => "required|string",
             "q44_dikeluarkanDi" => "required|string",
@@ -114,7 +114,9 @@ class KISController extends Controller
             "q78_uploadSurat" => "mimes:png,jpg,jpeg,pdf|max:1024",
         ]);
 
-        if(self::$registrationRepository->storeData($request)) {
+        if($validator->fails()) return redirect()->back()->withErrors($validator);
+
+        if($this->registrationRepository->storeData($request)) {
             return view("pages.registrations.kis.success");
         }
 

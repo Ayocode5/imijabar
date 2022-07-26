@@ -8,8 +8,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait RegistrationFiles
 {
-    public function storeSignature(string $base64image, string $path, string $registrationFolderName, string $fileName): string
+    public function storeSignature(string $base64image, string $fileName): string
     {
+        $path = $this->getRegistrarPath();
+        $registrationFolderName = $this->getRegistrationDirectory() . $this->getPerRegistrarDirectory();
+
         // Extract E-Signature Image from encoded base64 image
         $decoded_e_signature = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64image));
 
@@ -32,12 +35,34 @@ trait RegistrationFiles
         }
     }
 
-    public function saveUploadedFile(UploadedFile $file, string $fileName, string $folderName): string
+    public function saveUploadedFile(UploadedFile $file, string $fileName): string
     {
+        $folderName = $this->getRegistrationDirectory() . $this->getPerRegistrarDirectory();
+
         $fileName =  $fileName . '.' . $file->getClientOriginalExtension();
 
-        $file->move("uploads/".$folderName, $fileName);
+        $file->move($this->getBasePath() . $folderName, $fileName);
 
         return $folderName . "/" . $fileName;
+    }
+
+    public function deleteFile(string $file_path) {
+        
+        try {
+            return Storage::disk("public")->delete($file_path);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteDirectory($directory) {
+
+        preg_match("/\b[^\/].+\//", $directory, $directory);
+
+        try {
+            return File::deleteDirectory($this->getBasePath().$directory[0]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

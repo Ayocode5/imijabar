@@ -43,7 +43,8 @@ class CommunityRepository {
             "establishment_date" => Carbon::createFromFormat('Y/m/d', str_replace("-", "/", $request->establishment_date)),
             "social_media" => json_encode($request->socmed),
             "category" => $request->category,
-            "image" => $this->saveUploadedFile($request->file("image"), 'community-' . Uuid::uuid4())
+            "image" => $this->saveUploadedFile($request->file("image"), 'community-' . Uuid::uuid4()),
+            "address" => $request->address
         ];
 
         if(Community::create($new_data)) return true; return false;
@@ -60,6 +61,7 @@ class CommunityRepository {
             "social_media" => json_encode($request->socmed),
             "category" => $request->category,
             "image" => $community->image,
+            "address" => $request->address
         ];
 
         if($request->hasFile("image")) {
@@ -71,7 +73,7 @@ class CommunityRepository {
     }
 
     public function deleteData(int $id) {
-        
+
         $community = Community::find($id);
 
         if(file_exists(self::getUploadedFileBasePath() . $community->image)) {
@@ -85,7 +87,7 @@ class CommunityRepository {
     public function saveUploadedFile(UploadedFile $file, string $fileName) {
 
         $fileName =  $fileName . '.' . $file->getClientOriginalExtension();
- 
+
         $file->move(self::getUploadedFilePath(), $fileName);
 
         return "/" . self::getUploadedFilePath() . $fileName;
@@ -94,14 +96,14 @@ class CommunityRepository {
     public function replaceUploadedFile(UploadedFile $file, $oldfile, string $regex) {
 
         if(file_exists(self::getUploadedFileBasePath() . $oldfile)) {
-        
+
             /* Unlink the old image if exists */
             unlink(self::getUploadedFileBasePath() . $oldfile);
 
             /* Reformat image name */
             // preg_match($regex, $oldfile, $community_image_format_split);
             // $fileName = $community_image_format_split[1] . $community_image_format_split[2] . '.' . $file->getClientOriginalExtension();
-    
+
             // /* Saving the image */
             // $file->move(self::getUploadedFilePath(), $fileName);
 

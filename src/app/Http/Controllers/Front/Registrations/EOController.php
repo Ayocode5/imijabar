@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\Registration\EventOrganizerRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class EOController extends Controller
 {
@@ -82,9 +83,7 @@ class EOController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             "q301_email" => "required|email",
             "q30_namaEvent" => "required|string",
             "q112_tempatPenyelenggaraan" => "required|string",
@@ -104,6 +103,8 @@ class EOController extends Controller
             "q142_kelasYang142" => "required|string",
             "q143_penghargaan" => "required|string",
         ]);
+
+        if($validator->fails()) return redirect()->back()->withErrors($validator);
 
         if ($this->registraionRepository->storeData($request)) {
             return view("pages.registrations.eo.success");

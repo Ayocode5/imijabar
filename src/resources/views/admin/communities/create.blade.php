@@ -31,33 +31,43 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="">Alamat *</label><br>
+                    <input type="text" class="col-12 col-md-7 form-control" id="address" name="address" value="{{ old('address') }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="name">No Telp *</label>
+                    <div style="gap: 24px" class="d-flex flex-wrap">
+                        <input type="text" name="socmed[no_telp]" class="col-12 col-md-7 form-control" value="{{ old("socmed")['no_telp'] ?? "" }}" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="name">Email *</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="socmed[email]" class="col-12 col-md-7 form-control" value="{{ old("socmed[email]") }}" autofocus>
+                        <input type="text" name="socmed[email]" class="col-12 col-md-7 form-control" value="{{ old("socmed")["email"] ?? "" }}" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Youtube</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="socmed[youtube]" class="col-12 col-md-7 form-control" value="{{ old("socmed[youtube]") }}" autofocus>
+                        <input type="text" name="socmed[youtube]" class="col-12 col-md-7 form-control" value="{{ old("socmed")["youtube"] ?? "" }}" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Twitter</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="socmed[twitter]" class="col-12 col-md-7 form-control" value="{{ old("socmed[twitter]") }}" autofocus>
+                        <input type="text" name="socmed[twitter]" class="col-12 col-md-7 form-control" value="{{ old("socmed")["twitter"] ?? ""}}" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Instagram</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="socmed[instagram]" class="col-12 col-md-7 form-control" value="{{ old("socmed[instagram]") }}" autofocus>
+                        <input type="text" name="socmed[instagram]" class="col-12 col-md-7 form-control" value="{{ old("socmed")["instagram"] ?? ""}}" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Facebook</label>
                     <div style="gap: 24px" class="d-flex flex-wrap">
-                        <input type="text" name="socmed[facebook]" class="col-12 col-md-7 form-control" value="{{ old("socmed[facebook]") }}" autofocus>
+                        <input type="text" name="socmed[facebook]" class="col-12 col-md-7 form-control" value="{{ old("socmed")["facebook"] ?? ""}}" autofocus>
                     </div>
                 </div>
                 <img id="com_preview_image" src="" alt="" class="w_300">
@@ -65,6 +75,7 @@
                     <label for="">Image *</label><br>
                     <input type="file" id="image" name="image" value="{{ old('image') }}" autofocus>
                 </div>
+
                 <div class="form-group">
                     <label for="">Category</label>
                     <select name="category" class="form-control">

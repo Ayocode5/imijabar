@@ -1,30 +1,11 @@
 <?php
 
 namespace App\Repository\Registration;
-use App\Repository\Registration\Traits\RegistrationFiles;
+
 use App\Models\Admin\Registration\KISRegistration;
+use App\Repository\Registration\Abstracts\RegistrationBase;
 
-class KISRegistrationRepository implements RegistrationContract {
-
-    private static $BASE_PATH;
-    private static $REGISTRATION_DIRECTORY;
-    private static $FULL_PATH;
-    private static $PER_REGISTRAR_DIRECTORY;
-    private static $REGISTRAR_PATH;
-
-    use RegistrationFiles;
-
-    public function __construct()
-    {
-        /*REGISTRATION FOLDER WHERE DATA WILL BE STORED*/
-        self::setRegistrationDirectory("registrations/kis/");
-
-        /*RELATIVE PATH FOR REGISTRATION FOLDER*/
-        self::setBasePath(public_path("uploads/"));
-
-        /*REGISTRATION PATH & RELATIVE PATH COMBINED*/
-        self::setFullPath(self::getBasePath() . self::getRegistrationDirectory());
-    }
+class KISRegistrationRepository extends RegistrationBase {
 
     public function storeData(mixed $request): bool
     {
@@ -55,91 +36,55 @@ class KISRegistrationRepository implements RegistrationContract {
             // "photo_sk_orangtua" => $request->q78_uploadSurat
         ];
 
-        /* SET PATH */
-        self::setPerRegistrarDirectory( $data["nama"] . "-" . $data["nomor_kartu_identitas"]);
-        self::setRegistrarPath(self::getFullPath() . self::getPerRegistrarDirectory());
+        // Set user registration data folder name, 
+        // otherwise the data will be saved in folder with random name
+        $this->setPerRegistrarDirectory($data["nama"] . "-" . $data["nomor_kartu_identitas"]);
 
         /* STORE SIGNATURE */
         $data["signature_pemohon"] = $this->storeSignature(
             $data["signature_pemohon"],
-            self::getRegistrarPath(),
-            self::getRegistrationDirectory().self::getPerRegistrarDirectory(),
             "tanda_tangan_pemohon.png"
         );
 
         /* STORE PAS-PHOTO */
         $data["pas_photo"] = $this->saveUploadedFile(
             $request->file('q73_uploadPas'),
-            "pas_photo",
-             self::getRegistrationDirectory().self::getPerRegistrarDirectory()
+            "pas_photo"        
         );
 
         /* STORE PHOTO KARTU IDENTITAS */
         $data["photo_kartu_identitas"] = $this->saveUploadedFile(
             $request->file('q77_uploadKartu'),
-            "photo_kartu_identitas",
-            self::getRegistrationDirectory().self::getPerRegistrarDirectory()
+            "photo_kartu_identitas"
         );
 
         /* STORE SK ORANG TUA - OPTIONAL */
         if ($request->hasFile("q78_uploadSurat")) {
             $data["photo_sk_orangtua"] = $this->saveUploadedFile(
                 $request->file('q78_uploadSurat'),
-                "photo_sk_orangtua",
-                self::getRegistrationDirectory().self::getPerRegistrarDirectory()
+                "photo_sk_orangtua"
             );
         }
 
         if(KISRegistration::create($data)) return true; return false;
     }
 
-    public static function getBasePath(): string
+    public function deleteData(int $id): bool
     {
-        return self::$BASE_PATH;
-    }
+        $data = KISRegistration::select('id', 'pas_photo', 'photo_kartu_identitas', 'photo_sk_orangtua', 'signature_pemohon')
+        ->where('id', $id)->first();
 
-    public static function setBasePath($BASE_PATH): void
-    {
-        self::$BASE_PATH = $BASE_PATH;
-    }
+        if(!$res = $this->deleteFile($data->pas_photo)) return $res;
+        if(!$res = $this->deleteFile($data->photo_kartu_identitas)) return $res;
 
-    public static function getRegistrationDirectory(): string
-    {
-        return self::$REGISTRATION_DIRECTORY;
-    }
+        if(!empty($data->photo_sk_orangtua)) {
+            if(!$res = $this->deleteFile($data->photo_sk_orangtua)) return $res;
+        }
 
-    public static function setRegistrationDirectory($REGISTRATION_DIRECTORY): void
-    {
-        self::$REGISTRATION_DIRECTORY = $REGISTRATION_DIRECTORY;
-    }
+        if(!$res = $this->deleteFile($data->signature_pemohon)) return $res;
+        if(!$res = $this->deleteDirectory($data->signature_pemohon)) return $res;
+        if(!$res = $data->delete()) return $res;
 
-    public static function getFullPath(): string
-    {
-        return self::$FULL_PATH;
-    }
-
-    public static function setFullPath($FULL_PATH): void
-    {
-        self::$FULL_PATH = $FULL_PATH;
-    }
-
-    public static function getPerRegistrarDirectory(): string
-    {
-        return self::$PER_REGISTRAR_DIRECTORY;
-    }
-
-    public static function setPerRegistrarDirectory($PER_REGISTRAR_DIRECTORY): void
-    {
-        self::$PER_REGISTRAR_DIRECTORY = $PER_REGISTRAR_DIRECTORY;
-    }
-
-    public static function getRegistrarPath(): string
-    {
-        return self::$REGISTRAR_PATH;
-    }
-
-    public static function setRegistrarPath($REGISTRAR_PATH): void
-    {
-        self::$REGISTRAR_PATH = $REGISTRAR_PATH;
+        return true;
     }
 }

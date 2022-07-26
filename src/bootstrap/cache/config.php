@@ -4,7 +4,7 @@
     'name' => 'IMI-JABAR',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com',
+    'url' => '',
     'asset_url' => NULL,
     'timezone' => 'Asia/Jakarta',
     'locale' => 'en',
@@ -182,7 +182,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/var/www/html/storage/framework/cache/data',
+        'path' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -386,13 +386,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/var/www/html/storage/app/public',
+        'root' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/app/public',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/var/www/html/public/uploads',
-        'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com/uploads',
+        'root' => '/home/u1721315/public_html/uploads',
+        'url' => '/uploads',
         'visibility' => 'public',
       ),
       's3' => 
@@ -408,7 +408,7 @@
     ),
     'links' => 
     array (
-      '/var/www/html/public/storage' => '/var/www/html/storage/app/public',
+      '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/public/storage' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/app/public',
     ),
   ),
   'google' => 
@@ -468,13 +468,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/var/www/html/storage/logs/laravel.log',
+        'path' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/var/www/html/storage/logs/laravel.log',
+        'path' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -524,7 +524,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/var/www/html/storage/logs/laravel.log',
+        'path' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -581,7 +581,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/var/www/html/resources/views/vendor/mail',
+        0 => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -712,7 +712,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/var/www/html/storage/framework/sessions',
+    'files' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -736,9 +736,9 @@
   array (
     'paths' => 
     array (
-      0 => '/var/www/html/resources/views',
+      0 => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/resources/views',
     ),
-    'compiled' => '/var/www/html/storage/framework/views',
+    'compiled' => '/run/media/global/Data Y/Documents/Projects/Web/imijabar/src/storage/framework/views',
   ),
   'flare' => 
   array (
@@ -794,8 +794,8 @@
     'route' => NULL,
     'paths' => 
     array (
-      0 => '/var/www/html/public/upload',
-      1 => '/var/www/html/public/images',
+      0 => '/home/u1721315/public_html/upload',
+      1 => '/home/u1721315/public_html/images',
     ),
     'templates' => 
     array (
