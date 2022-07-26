@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Repository\Registration\ClubRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ClubController extends Controller
 {
-
-    private static $registrationRepository;
+    private $registrationRepository;
 
     public function __construct(ClubRegistrationRepository $repository)
     {
-        self::$registrationRepository = $repository;
+        $this->registrationRepository = $repository;
     }
 
     public function index()
@@ -49,7 +49,7 @@ class ClubController extends Controller
 
         // dd($section1);
 
-        if(!$section1) {
+        if (!$section1) {
             return abort(404);
         }
 
@@ -77,13 +77,14 @@ class ClubController extends Controller
         return view("pages.registrations.club.index", compact('settings', 'section1', 'section2', 'section3'));
     }
 
-    public function getForm() {
+    public function getForm()
+    {
         return view("pages.registrations.club.registration_form");
     }
 
-    public function store(Request $request) {
-
-        $this->validate($request, [
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             "q30_namaKlub" => "required",
             "q301_email" => "required|email",
             "q37_alamat" => "required|array",
@@ -97,9 +98,12 @@ class ClubController extends Controller
             "q112_tandaTangan" => "required|string"
         ]);
 
-        if(self::$registrationRepository->storeData($request)) {
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
+
+        if ($this->registrationRepository->storeData($request)) {
             return view("pages.registrations.club.success");
         };
 
+        return "kesalahan";
     }
 }

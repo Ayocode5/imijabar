@@ -3,27 +3,10 @@
 namespace App\Repository\Registration;
 
 use App\Models\Admin\Registration\ClubRegistration;
-use App\Repository\Registration\Traits\RegistrationFiles;
+use App\Repository\Registration\Abstracts\RegistrationBase;
 
-class ClubRegistrationRepository implements RegistrationContract {
-
-    private static $BASE_PATH;
-    private static $REGISTRATION_DIRECTORY;
-    private static $FULL_PATH;
-    private static $PER_REGISTRAR_DIRECTORY;
-    private static $REGISTRAR_PATH;
-
-    use RegistrationFiles;
-
-    public function __construct()
-    {
-        self::setBasePath(public_path("uploads/"));
-
-        self::setRegistrationDirectory("registrations/club/");
-
-        self::setFullPath(self::getBasePath().self::getRegistrationDirectory());
-    }
-
+class ClubRegistrationRepository extends RegistrationBase
+{
     public function storeData(mixed $request): bool
     {
         $data = [
@@ -39,67 +22,26 @@ class ClubRegistrationRepository implements RegistrationContract {
             "signature_ketua_anggota" => $request->q112_tandaTangan
         ];
 
-        self::setPerRegistrarDirectory($data["nama_klub"]);
-        self::setRegistrarPath(self::getFullPath() . self::getPerRegistrarDirectory());
+        // Set user registration data folder name, 
+        // otherwise the data will be saved in folder with random name
+        $this->setPerRegistrarDirectory($data["nama_klub"]);
 
         $data["signature_ketua_anggota"] = $this->storeSignature(
-            $data["signature_ketua_anggota"],
-            self::getRegistrarPath(),
-            self::getRegistrationDirectory() . self::getPerRegistrarDirectory(),
+            $data["signature_ketua_anggota"], 
             "tanda_tangan_ketua.png"
         );
 
-        if(ClubRegistration::create($data)) return true; return false;
+        if (ClubRegistration::create($data)) return true; return false;
     }
 
-    public static function getBasePath(): string
+    public function deleteData(int $id): bool
     {
-        return self::$BASE_PATH;
-    }
+        $data = ClubRegistration::select('id', 'signature_ketua_anggota')->where('id', $id)->first();
 
-    public static function setBasePath($BASE_PATH): void
-    {
-        self::$BASE_PATH = $BASE_PATH;
-    }
+        if(!$res1 = $this->deleteFile($data->signature_ketua_anggota)) return $res1;
+        if(!$res2 = $this->deleteDirectory($data->signature_ketua_anggota)) return $res2;
+        if(!$res3 = $data->delete()) return $res3;
 
-    public static function getRegistrationDirectory(): string
-    {
-        return self::$REGISTRATION_DIRECTORY;
+        return true;
     }
-
-    public static function setRegistrationDirectory($REGISTRATION_DIRECTORY): void
-    {
-        self::$REGISTRATION_DIRECTORY = $REGISTRATION_DIRECTORY;
-    }
-
-    public static function getFullPath(): string
-    {
-        return self::$FULL_PATH;
-    }
-
-    public static function setFullPath($FULL_PATH): void
-    {
-        self::$FULL_PATH = $FULL_PATH;
-    }
-
-    public static function getPerRegistrarDirectory(): string
-    {
-        return self::$PER_REGISTRAR_DIRECTORY;
-    }
-
-    public static function setPerRegistrarDirectory($PER_REGISTRAR_DIRECTORY): void
-    {
-        self::$PER_REGISTRAR_DIRECTORY = $PER_REGISTRAR_DIRECTORY;
-    }
-
-    public static function getRegistrarPath(): string
-    {
-        return self::$REGISTRAR_PATH;
-    }
-
-    public static function setRegistrarPath($REGISTRAR_PATH): void
-    {
-        self::$REGISTRAR_PATH = $REGISTRAR_PATH;
-    }
-
 }

@@ -4,7 +4,7 @@
     'name' => 'IMI-JABAR',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com',
+    'url' => '',
     'asset_url' => NULL,
     'timezone' => 'Asia/Jakarta',
     'locale' => 'en',
@@ -392,7 +392,7 @@
       array (
         'driver' => 'local',
         'root' => '/var/www/html/public/uploads',
-        'url' => 'http://ec2-13-212-237-78.ap-southeast-1.compute.amazonaws.com/uploads',
+        'url' => '/uploads',
         'visibility' => 'public',
       ),
       's3' => 
@@ -794,8 +794,8 @@
     'route' => NULL,
     'paths' => 
     array (
-      0 => '/var/www/html/public_html/upload',
-      1 => '/var/www/html/public_html/images',
+      0 => '/var/www/html/public/upload',
+      1 => '/var/www/html/public/images',
     ),
     'templates' => 
     array (

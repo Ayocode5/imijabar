@@ -24,12 +24,13 @@ class CommunityUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            "address" => "required|string",
             "club_name" => "required|string",
             "club_leader" => "required|string|max:50",
             "image" => "mimes:jpg,jpeg,png,svg,gif",
             "establishment_date" => "required|date",
             "category" => "required|in:motor,mobil,mobility",
-            "socmed.email" => "required|email"
+            "socmed.no_telp" => "required|string"
         ];
     }
 }

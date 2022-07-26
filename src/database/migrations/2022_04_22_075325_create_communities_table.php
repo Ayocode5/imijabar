@@ -21,6 +21,7 @@ class CreateCommunitiesTable extends Migration
             $table->dateTime("establishment_date");
             $table->json("social_media");
             $table->enum("category", ["motor", "mobil", "mobility"]);
+            $table->text("address")->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

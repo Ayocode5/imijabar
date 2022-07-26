@@ -3,82 +3,11 @@
 namespace App\Repository\Registration;
 
 use App\Models\Admin\Registration\EORegistration;
-use App\Repository\Registration\Traits\RegistrationFiles;
+use App\Repository\Registration\Abstracts\RegistrationBase;
 use Illuminate\Support\Carbon;
 
-class EventOrganizerRegistrationRepository implements RegistrationContract
+class EventOrganizerRegistrationRepository extends RegistrationBase
 {
-    private static $BASE_PATH;
-    private static $REGISTRATION_DIRECTORY;
-    private static $FULL_PATH;
-    private static $PER_REGISTRAR_DIRECTORY;
-    private static $REGISTRAR_PATH;
-
-    use RegistrationFiles;
-
-    public function __construct()
-    {
-        /*REGISTRATION FOLDER WHERE DATA WILL BE STORED*/
-        self::setRegistrationDirectory("registrations/eo/");
-
-        /*RELATIVE PATH FOR REGISTRATION FOLDER*/
-        self::setBasePath(public_path("uploads/"));
-
-        /*REGISTRATION PATH & RELATIVE PATH COMBINED*/
-        self::setFullPath(self::getBasePath() . self::getRegistrationDirectory());
-
-    }
-
-    public static function getFullPath(): string
-    {
-        return self::$FULL_PATH;
-    }
-
-    public static function setFullPath($full_path): void
-    {
-        self::$FULL_PATH = $full_path;
-    }
-
-    public static function getRegistrarPath(): string
-    {
-        return self::$REGISTRAR_PATH;
-    }
-
-    public static function setRegistrarPath($user_path): void
-    {
-        self::$REGISTRAR_PATH = $user_path;
-    }
-
-    public static function setBasePath(string $location): void
-    {
-        self::$BASE_PATH = $location;
-    }
-
-    public static function getBasePath(): string
-    {
-        return self::$BASE_PATH;
-    }
-
-    public static function setRegistrationDirectory(string $directory): void
-    {
-        self::$REGISTRATION_DIRECTORY = $directory;
-    }
-
-    public static function getRegistrationDirectory(): string
-    {
-        return self::$REGISTRATION_DIRECTORY;
-    }
-
-    public static function setPerRegistrarDirectory(string $dirname): void
-    {
-        self::$PER_REGISTRAR_DIRECTORY = $dirname;
-    }
-
-    public static function getPerRegistrarDirectory(): string
-    {
-        return self::$PER_REGISTRAR_DIRECTORY;
-    }
-
     public function storeData(mixed $request): bool
     {
         $data = [
@@ -102,31 +31,40 @@ class EventOrganizerRegistrationRepository implements RegistrationContract
             "penghargaan" => json_encode($request->q143_penghargaan)
         ];
 
-        self::setPerRegistrarDirectory($data["nama_event"] . "-" . $data["tanggal_penyelenggaraan"]);
-        self::setRegistrarPath(self::getFullPath().self::getPerRegistrarDirectory());
+        // Set user registration data folder name, 
+        // otherwise the data will be saved in folder with random name
+        $this->setPerRegistrarDirectory($data["nama_event"] . "-" . $data["tanggal_penyelenggaraan"]);
 
         $data["oc_signature"] = $this->storeSignature(
             $data["oc_signature"],
-            self::getRegistrarPath(),
-            self::getRegistrationDirectory().self::getPerRegistrarDirectory(),
             "tanda_tangan_oc.png"
         );
 
         $data["rc_signature"] = $this->storeSignature(
             $data["rc_signature"],
-            self::getRegistrarPath(),
-            self::getRegistrationDirectory().self::getPerRegistrarDirectory(),
             "tanda_tangan_rc.png"
         );
 
         $data["sc_signature"] = $this->storeSignature(
             $data["sc_signature"],
-            self::getRegistrarPath(),
-            self::getRegistrationDirectory().self::getPerRegistrarDirectory(),
             "tanda_tangan_sc.png"
         );
 
         if(EORegistration::create($data)) return true; return false;
+    }
+
+    public function deleteData(int $id): bool
+    {
+        $data = EORegistration::select('id', 'oc_signature', 'rc_signature', 'sc_signature')
+            ->where('id', $id)->first();
+
+        if(!$res = $this->deleteFile($data->oc_signature)) return $res;
+        if(!$res = $this->deleteFile($data->rc_signature)) return $res;
+        if(!$res = $this->deleteFile($data->sc_signature)) return $res;
+        if(!$res = $this->deleteDirectory($data->sc_signature)) return $res;
+        if(!$res = $data->delete()) return $res;
+
+        return true;
     }
 
 }
