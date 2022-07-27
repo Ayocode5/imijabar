@@ -96,6 +96,7 @@ class AboutController extends Controller
 			"club_name",
 			"leader",
 			"image",
+			"address",
 			"establishment_date",
 			"social_media",
 			"category"

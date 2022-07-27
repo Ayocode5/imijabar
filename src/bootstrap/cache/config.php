@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'id',
     'faker_locale' => 'en_US',
-    'key' => 'base64:Uox4hu5ObUMDVjSGTJLU5ddACB8Srq4IHhxMYJqBHCM=',
+    'key' => 'base64:J3xctdbzfBWEdC+38FNfD98ef0BaqkEpc+vX8nfU90I=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -787,7 +787,7 @@
   'trustedproxy' => 
   array (
     'proxies' => NULL,
-    'headers' => 94,
+    'headers' => 30,
   ),
   'imagecache' => 
   array (
