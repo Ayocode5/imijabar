@@ -98,7 +98,9 @@ class CommunityRepository {
         if(file_exists(self::getUploadedFileBasePath() . $oldfile)) {
 
             /* Unlink the old image if exists */
-            unlink(self::getUploadedFileBasePath() . $oldfile);
+            if(!is_dir(self::getUploadedFileBasePath() . $oldfile)) {
+                unlink(self::getUploadedFileBasePath() . $oldfile);
+            }
 
             /* Reformat image name */
             // preg_match($regex, $oldfile, $community_image_format_split);
