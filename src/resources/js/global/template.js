@@ -92,7 +92,7 @@ const eventsCardTemplate = (
                         <p class="presented_events">
                             Presented by : ${organizer}
                         </p>
-                        
+
                     </div>
                     <div class="d-flex flex-wrap justify-content-between  card_events_list_detail">
                         <div class="col-12 col-md-5 pt-3 location_events_list">
@@ -128,7 +128,7 @@ const eventsCardTemplate = (
             </div>
         </a>
     </div>
-    
+
     `;
 };
 
@@ -141,7 +141,7 @@ const klubMobilCardTemplate = (
     category,
     address
 ) => {
-    return `    
+    return `
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
             <img src="${linkImage}" class="card-img-top image_card_klub_mobil" alt="logo club ${category}">
@@ -181,7 +181,7 @@ const klubMobilCardTemplate = (
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
-                        
+
                         ${Object.keys(listSocialMedia)
                             .map((key) =>
                                 listSocialMedia[key] === null
@@ -192,7 +192,7 @@ const klubMobilCardTemplate = (
                                     : key === "no_telp"
                                     ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
                                     : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                        class="fab fa-${key} fa-2xl"></i></a>`
+                        class="fa fa-phone"></i></a>`
                             )
                             .join("")}
                         </p>
@@ -214,13 +214,13 @@ const klubMotorCardTemplate = (
     category,
     address
 ) => {
-    return `    
+    return `
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
             <img src="${linkImage}" class="card-img-top image_card_klub_mobil" alt="logo club ${category}">
 
             <div style="background: linear-gradient(163.89deg, #A8891B -2.61%, #FFCE51 88.8%);
-            box-shadow: 0px -5px 4px rgba(0, 0, 0, 0.37);" 
+            box-shadow: 0px -5px 4px rgba(0, 0, 0, 0.37);"
             class="position-absolute overlay_collaps overlay_car_community h-100 w-100">
 
                 <div class="head_overlay_collaps">
@@ -267,7 +267,7 @@ const klubMotorCardTemplate = (
                                       : key === "no_telp"
                                       ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
                                       : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fab fa-${key} fa-2xl"></i></a>`
+        class="fa fa-phone"></i></a>`
                               )
                               .join("")}
                         </p>
@@ -289,7 +289,7 @@ const klubMobilityCardTemplate = (
     category,
     address
 ) => {
-    return `    
+    return `
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
             <img src="${linkImage}" class="card-img-top image_card_klub_mobil" alt="logo club ${category}">
@@ -340,7 +340,7 @@ const klubMobilityCardTemplate = (
                                       : key === "no_telp"
                                       ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
                                       : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fab fa-${key}"></i></a>`
+        class="fa fa-phone"></i></a>`
                               )
                               .join("")}
                         </p>
@@ -360,7 +360,7 @@ const cardCommitteeTemplate = (
     photo,
     listSocialMedia
 ) => {
-    return `    
+    return `
     <div class="col mb-4">
         <div class="wrap_committe_image selectDisable">
 
@@ -393,7 +393,7 @@ const cardCommitteeTemplate = (
                     ${name}
                 </h2>
                 <p class="selectDisable position_committee">${designation}</p>
-                
+
                 <div class="sosial_media_committe">
                     ${Object.keys(listSocialMedia)
                         .map((key) =>
@@ -440,7 +440,7 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                                 month: "long",
                                 year: "numeric",
                             })}</button>
-                        </div> 
+                        </div>
                     </div>
                     <img style="scale(1.4);" class="d-block ml-auto" src="/images/icon-arrow-down.svg" alt="arrow collaps">
                 </div>
@@ -472,8 +472,8 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                             hour: "2-digit",
                             minute: "2-digit",
                         })} - Selesai
-                    </p > 
-                        
+                    </p >
+
                     </div >
                 </div >
             </div >
@@ -499,7 +499,7 @@ const cardBulletinBoardInfoTemplate = (id, type, name, description) => {
                         </div>
                         <div>
                             <button class="btn btn-link buletin_card_subtitle">${name}</button>
-                        </div> 
+                        </div>
                     </div>
                     <img style="scale(1.4);" class="d-block ml-auto" src="/images/icon-arrow-down.svg" alt="arrow collaps">
                 </div>
