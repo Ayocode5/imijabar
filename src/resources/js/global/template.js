@@ -1,8 +1,14 @@
-import { join } from 'lodash';
-import timeSince from '../getTimeSince';
+import { join } from "lodash";
+import timeSince from "../getTimeSince";
 
-
-const newsCardTemplate = (slug, title, summary, photo, category, created_at) => {
+const newsCardTemplate = (
+    slug,
+    title,
+    summary,
+    photo,
+    category,
+    created_at
+) => {
     return `
         <div class="col mb-4" categories="${slug}">
             <a href="/news/${slug}" class="text-decoration-none">
@@ -25,11 +31,11 @@ const newsCardTemplate = (slug, title, summary, photo, category, created_at) => 
             ${title}
         </h3>
         <p class="author_date_list_berita">Editor &nbsp; | &nbsp;
-            <span>${new Date(created_at).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })}</span>
+            <span>${new Date(created_at).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+            })}</span>
         </p>
         <p class="card-text">
             ${summary}
@@ -39,11 +45,21 @@ const newsCardTemplate = (slug, title, summary, photo, category, created_at) => 
                 </div >
             </a >
         </div >
-    `
-}
+    `;
+};
 
-
-const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, location, sports, start_date, end_date) => {
+const eventsCardTemplate = (
+    slug,
+    name,
+    summary,
+    photo,
+    categories,
+    organizer,
+    location,
+    sports,
+    start_date,
+    end_date
+) => {
     return `
     <div class="col mb-4">
         <a class="text-decoration-none text-dark" href="/event/${slug}">
@@ -56,10 +72,15 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
                         <img src="/uploads/${photo}"
                             class="card-img-top image_feature_event" alt="featured image">
                         <div class="ribbon_wrapper">
-                            ${categories.map((category) => {
-        return "<div class='ribbon_category_event text-white'>" +
-            category.name + "</div>"
-    }).join("")}
+                            ${categories
+                                .map((category) => {
+                                    return (
+                                        "<div class='ribbon_category_event text-white'>" +
+                                        category.name +
+                                        "</div>"
+                                    );
+                                })
+                                .join("")}
                         </div>
                     </div>
                 </div>
@@ -80,10 +101,20 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
                         <div class="col-12 col-md-7 pt-3 date_events_list pl-0 align-self-center">
                             <div class="d-flex justify-content-center">
                                 <p class="ml-2">
-                                    ${new Date(start_date.replace(/-/g, '/')).toLocaleDateString('en', { weekday: 'long' })} - ${new Date(end_date.replace(/-/g, '/')).toLocaleDateString('en', { weekday: 'long' })}
+                                    ${new Date(
+                                        start_date.replace(/-/g, "/")
+                                    ).toLocaleDateString("en", {
+                                        weekday: "long",
+                                    })} - ${new Date(
+        end_date.replace(/-/g, "/")
+    ).toLocaleDateString("en", { weekday: "long" })}
                                     <br />
                                     <span>
-                                    ${new Date(start_date.replace(/-/g, '/')).getDate()} - ${new Date(end_date.replace(/-/g, '/')).toLocaleDateString('en-GB', {
+                                    ${new Date(
+                                        start_date.replace(/-/g, "/")
+                                    ).getDate()} - ${new Date(
+        end_date.replace(/-/g, "/")
+    ).toLocaleDateString("en-GB", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -98,11 +129,18 @@ const eventsCardTemplate = (slug, name, summary, photo, categories, organizer, l
         </a>
     </div>
     
-    `
-}
+    `;
+};
 
-
-const klubMobilCardTemplate = (clubName, leader, linkImage, establishmentDate, listSocialMedia, category) => {
+const klubMobilCardTemplate = (
+    clubName,
+    leader,
+    linkImage,
+    establishmentDate,
+    listSocialMedia,
+    category,
+    address
+) => {
     return `    
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
@@ -115,11 +153,13 @@ const klubMobilCardTemplate = (clubName, leader, linkImage, establishmentDate, l
 
                     <div style="color: rgba(244, 244, 249, 0.8);"
                         class="d-flex subtittle_card justify-content-between align-items-center">
-                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(establishmentDate.replace(/-/g, '/')).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })}</p>
+                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(
+                            establishmentDate.replace(/-/g, "/")
+                        ).toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}</p>
                         <div class="click_icon">
                             <p
                                 style="font-size:10px; font-weight: 700; margin-bottom: 0; text-align: center;">
@@ -136,12 +176,25 @@ const klubMobilCardTemplate = (clubName, leader, linkImage, establishmentDate, l
                         <p style="margin-bottom: 0;">Ketua Komunitas:</p>
                         <p class="">${leader}</p>
                     </div>
+                                        <p>Alamat: <br/> <span class="address">${address}</span></p>
+
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
-                        ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                        class="fab fa-${key} fa-2xl"></i></a>`).join("")}
+                        
+                        ${Object.keys(listSocialMedia)
+                            .map((key) =>
+                                listSocialMedia[key] === null
+                                    ? ``
+                                    : key === "email"
+                                    ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
+                        class="fa fa-envelope fa-2xl"></i></a>`
+                                    : key === "no_telp"
+                                    ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
+                                    : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+                        class="fab fa-${key} fa-2xl"></i></a>`
+                            )
+                            .join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -150,9 +203,17 @@ const klubMobilCardTemplate = (clubName, leader, linkImage, establishmentDate, l
         </div>
     </div>
     `;
-}
+};
 
-const klubMotorCardTemplate = (clubName, leader, linkImage, establishmentDate, listSocialMedia, category) => {
+const klubMotorCardTemplate = (
+    clubName,
+    leader,
+    linkImage,
+    establishmentDate,
+    listSocialMedia,
+    category,
+    address
+) => {
     return `    
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
@@ -167,11 +228,13 @@ const klubMotorCardTemplate = (clubName, leader, linkImage, establishmentDate, l
 
                     <div style="color: rgba(244, 244, 249, 0.8);"
                         class="d-flex subtittle_card justify-content-between align-items-center">
-                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(establishmentDate.replace(/-/g, '/')).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })}</p>
+                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(
+                            establishmentDate.replace(/-/g, "/")
+                        ).toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}</p>
                         <div class="click_icon">
                             <p
                                 style="font-size:10px; font-weight: 700; margin-bottom: 0; text-align: center;">
@@ -188,12 +251,25 @@ const klubMotorCardTemplate = (clubName, leader, linkImage, establishmentDate, l
                         <p style="margin-bottom: 0;">Ketua Komunitas:</p>
                         <p class="">${leader}</p>
                     </div>
+                    <p>Alamat: <br/> <span class="address">${address}</span></p>
+
+
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
-                          ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fab fa-${key} fa-2xl"></i></a>`).join("")}
+                          ${Object.keys(listSocialMedia)
+                              .map((key) =>
+                                  listSocialMedia[key] === null
+                                      ? ``
+                                      : key === "email"
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
+        class="fa fa-envelope fa-2xl"></i></a>`
+                                      : key === "no_telp"
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
+                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+        class="fab fa-${key} fa-2xl"></i></a>`
+                              )
+                              .join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -202,9 +278,17 @@ const klubMotorCardTemplate = (clubName, leader, linkImage, establishmentDate, l
         </div>
     </div>
     `;
-}
+};
 
-const klubMobilityCardTemplate = (clubName, leader, linkImage, establishmentDate, listSocialMedia, category) => {
+const klubMobilityCardTemplate = (
+    clubName,
+    leader,
+    linkImage,
+    establishmentDate,
+    listSocialMedia,
+    category,
+    address
+) => {
     return `    
     <div class="col mb-4">
         <div class="card wrap_card_community border-0 position-relative d-block">
@@ -219,11 +303,13 @@ const klubMobilityCardTemplate = (clubName, leader, linkImage, establishmentDate
 
                     <div style="color: rgba(244, 244, 249, 0.8);"
                         class="d-flex subtittle_card justify-content-between align-items-center">
-                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(establishmentDate.replace(/-/g, '/')).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })}</p>
+                        <p style="margin-bottom: 0;">Dibentuk Pada: ${new Date(
+                            establishmentDate.replace(/-/g, "/")
+                        ).toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}</p>
                         <div class="click_icon">
                             <p
                                 style="font-size:10px; font-weight: 700; margin-bottom: 0; text-align: center;">
@@ -240,12 +326,23 @@ const klubMobilityCardTemplate = (clubName, leader, linkImage, establishmentDate
                         <p style="margin-bottom: 0;">Ketua Komunitas:</p>
                         <p class="">${leader}</p>
                     </div>
+                    <p>Alamat: <br/> <span class="address">${address}</span></p>
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
-                          ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? `` : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fab fa-${key}"></i></a>`).join("")}
+                          ${Object.keys(listSocialMedia)
+                              .map((key) =>
+                                  listSocialMedia[key] === null
+                                      ? ``
+                                      : key === "email"
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
+        class="fa fa-envelope fa-2xl"></i></a>`
+                                      : key === "no_telp"
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
+                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+        class="fab fa-${key}"></i></a>`
+                              )
+                              .join("")}
                         </p>
                         <img src="/images/close_icon.svg" alt="close_icon">
                     </div>
@@ -254,9 +351,15 @@ const klubMobilityCardTemplate = (clubName, leader, linkImage, establishmentDate
         </div>
     </div>
     `;
-}
+};
 
-const cardCommitteeTemplate = (name, designation, address, photo, listSocialMedia) => {
+const cardCommitteeTemplate = (
+    name,
+    designation,
+    address,
+    photo,
+    listSocialMedia
+) => {
     return `    
     <div class="col mb-4">
         <div class="wrap_committe_image selectDisable">
@@ -290,22 +393,35 @@ const cardCommitteeTemplate = (name, designation, address, photo, listSocialMedi
                     ${name}
                 </h2>
                 <p class="selectDisable position_committee">${designation}</p>
+                
                 <div class="sosial_media_committe">
-                    ${Object.keys(listSocialMedia).map(key => listSocialMedia[key] === null ? false : key === "email" ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                    class="fa fa-envelope fa-2xl"></i></a>` : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                    class="fab fa-${key}"></i></a>`).join("")}
+                    ${Object.keys(listSocialMedia)
+                        .map((key) =>
+                            listSocialMedia[key] === null
+                                ? false
+                                : key === "email"
+                                ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
+                    class="fa fa-envelope fa-2xl"></i></a>`
+                                : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+                    class="fab fa-${key}"></i></a>`
+                        )
+                        .join("")}
                 </div>
             </div>
         </div>
     </div>
     `;
-}
+};
 
 const cardBulletinBoardTemplate = (id, type, name, description, date) => {
     return `
     <div>
         <div>
-            <img src="${type === "activity" ? '/images/icon-calendar.svg' : '/images/icon-pin.svg'}" alt="icon-calendar" class="buletin_icon_cal">
+            <img src="${
+                type === "activity"
+                    ? "/images/icon-calendar.svg"
+                    : "/images/icon-pin.svg"
+            }" alt="icon-calendar" class="buletin_icon_cal">
         </div>
         <div style="cursor: pointer" class="card buletin_card" data-toggle="collapse" data-target="#collapsBulletin${id}" aria-expanded="false" aria-controls="collapsBulletin${id}">
             <div class="card-header buletin_card_header" style="border-radius: 10px;" id="headingOne">
@@ -317,11 +433,13 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                             </button>
                         </div>
                         <div>
-                            <button class="btn btn-link buletin_card_subtitle">${new Date(date).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })}</button>
+                            <button class="btn btn-link buletin_card_subtitle">${new Date(
+                                date
+                            ).toLocaleDateString("en-GB", {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric",
+                            })}</button>
                         </div> 
                     </div>
                     <img style="scale(1.4);" class="d-block ml-auto" src="/images/icon-arrow-down.svg" alt="arrow collaps">
@@ -344,16 +462,16 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
                         Detail Acara:
                     </h4>
                     <p>
-                       Tanggal: ${new Date(date).toLocaleDateString('en-GB', {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })} <br>
-                        Waktu: ${new Date(date).toLocaleTimeString('en-GB', {
-        // en-US can be set to 'default' to use user's browser settings
-        hour: '2-digit',
-        minute: '2-digit',
-    })} - Selesai
+                       Tanggal: ${new Date(date).toLocaleDateString("en-GB", {
+                           day: "numeric",
+                           month: "long",
+                           year: "numeric",
+                       })} <br>
+                        Waktu: ${new Date(date).toLocaleTimeString("en-GB", {
+                            // en-US can be set to 'default' to use user's browser settings
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        })} - Selesai
                     </p > 
                         
                     </div >
@@ -362,7 +480,7 @@ const cardBulletinBoardTemplate = (id, type, name, description, date) => {
         </div >
     </div >
     `;
-}
+};
 
 const cardBulletinBoardInfoTemplate = (id, type, name, description) => {
     return `
@@ -403,8 +521,7 @@ const cardBulletinBoardInfoTemplate = (id, type, name, description) => {
         </div>
     </div>
     `;
-}
-
+};
 
 export {
     newsCardTemplate,
