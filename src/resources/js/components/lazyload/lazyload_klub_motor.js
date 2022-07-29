@@ -25,8 +25,6 @@ $(document).ready(function async() {
 
     const firstLoad = async () => {
         const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOTOR(1)}`);
-        console.log(resultData);
-
         resultData.data.map((data) => {
             wrapListClubMotor.innerHTML += klubMotorCardTemplate(
                 data.club_name,

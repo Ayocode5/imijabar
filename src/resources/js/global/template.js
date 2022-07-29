@@ -1,4 +1,3 @@
-import { join } from "lodash";
 import timeSince from "../getTimeSince";
 
 const newsCardTemplate = (
@@ -179,6 +178,8 @@ const klubMobilCardTemplate = (
                                         <p>Alamat: <br/> <span class="address">${address}</span></p>
 
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
+                    <p>No telp : ${listSocialMedia["no_telp"]}</p>
+
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
 
@@ -189,7 +190,7 @@ const klubMobilCardTemplate = (
                                     : key === "email"
                                     ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                     : key === "no_telp"
-                                    ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                    ? ``
                                     : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                             )
                             .join("")}
@@ -253,6 +254,7 @@ const klubMotorCardTemplate = (
 
 
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
+                    <p>No telp : ${listSocialMedia["no_telp"]}</p>
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
                           ${Object.keys(listSocialMedia)
@@ -262,7 +264,7 @@ const klubMotorCardTemplate = (
                                       : key === "email"
                                       ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                       : key === "no_telp"
-                                      ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                      ? ``
                                       : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                               )
                               .join("")}
@@ -324,6 +326,8 @@ const klubMobilityCardTemplate = (
                     </div>
                     <p>Alamat: <br/> <span class="address">${address}</span></p>
                     <p style="margin-bottom: 0;">Terhubung Bersama Kami:</p>
+                    <p>No telp : ${listSocialMedia["no_telp"]}</p>
+
                     <div class="sosial_media_klub_mobil align-self-end">
                         <p>
                           ${Object.keys(listSocialMedia)
@@ -333,7 +337,7 @@ const klubMobilityCardTemplate = (
                                       : key === "email"
                                       ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                       : key === "no_telp"
-                                      ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                      ? ``
                                       : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                               )
                               .join("")}
