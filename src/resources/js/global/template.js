@@ -187,12 +187,10 @@ const klubMobilCardTemplate = (
                                 listSocialMedia[key] === null
                                     ? ``
                                     : key === "email"
-                                    ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                        class="fa fa-envelope fa-2xl"></i></a>`
+                                    ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                     : key === "no_telp"
-                                    ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
-                                    : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                        class="fa fa-phone"></i></a>`
+                                    ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                    : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                             )
                             .join("")}
                         </p>
@@ -262,12 +260,10 @@ const klubMotorCardTemplate = (
                                   listSocialMedia[key] === null
                                       ? ``
                                       : key === "email"
-                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa fa-envelope fa-2xl"></i></a>`
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                       : key === "no_telp"
-                                      ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
-                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fa fa-phone"></i></a>`
+                                      ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                               )
                               .join("")}
                         </p>
@@ -335,12 +331,10 @@ const klubMobilityCardTemplate = (
                                   listSocialMedia[key] === null
                                       ? ``
                                       : key === "email"
-                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-        class="fa fa-envelope fa-2xl"></i></a>`
+                                      ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i class="fa fa-envelope fa-2xl"></i></a>`
                                       : key === "no_telp"
-                                      ? `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fa fa-phone"></i></a>`
-                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-        class="fa fa-phone"></i></a>`
+                                      ? `${listSocialMedia[key]}<br ><a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-phone"></i></a>`
+                                      : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i class="fab fa-${key} fa-2xl"></i></a>`
                               )
                               .join("")}
                         </p>
