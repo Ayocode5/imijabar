@@ -105,12 +105,17 @@ class CommunityRepository
     public function replaceUploadedFile(UploadedFile $file, $oldfile, string $regex)
     {
 
-        if (file_exists(self::getUploadedFileBasePath() . $oldfile)) {
+        $oldfile = self::getUploadedFileBasePath() . $oldfile;
+        $noimagejpg = self::getUploadedFileBasePath() . "noimage.jpg";
+        $noimagejpeg = self::getUploadedFileBasePath() . "noimage.jpeg";
+        $noimagepng = self::getUploadedFileBasePath() . "noimage.png";
+        $noimagesvg = self::getUploadedFileBasePath() . "noimage.svg";
+        if (file_exists($oldfile)) {
 
-            if ($oldfile != "noimage.jpg" || $oldfile != "noimage.jpeg" || $oldfile != "noimage.png" || $oldfile != "noimage.svg") {
+            if ($oldfile != $noimagejpg || $oldfile != $noimagejpeg || $oldfile != $noimagepng || $oldfile != $noimagesvg) {
                 /* Unlink the old image if exists */
-                if (!is_dir(self::getUploadedFileBasePath() . $oldfile)) {
-                    unlink(self::getUploadedFileBasePath() . $oldfile);
+                if (!is_dir($oldfile)) {
+                    unlink($oldfile);
                 }
             }
 

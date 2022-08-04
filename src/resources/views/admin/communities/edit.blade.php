@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <img id="ads_preview_image" src="" alt="" class="w_300">
+                {{-- <img id="ads_preview_image" src="" alt="" class="w_300"> --}}
                 <div class="form-group">
                     <label for="">Nama Club *</label><br>
                     <input type="text" class="col-12 col-md-7 form-control" id="club_name" name="club_name"
@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label><br>
-                    <img id="ads_preview_image" src="{{ asset($community->image) }}" alt="" class="w_300">
+                    <img id="ads_preview_image" name="ads_preview_image" src="{{ asset($community->image) }}" alt="" class="w_300">
                 </div>
                 <div class="form-group">
                     <label for="">Image *</label><br>
