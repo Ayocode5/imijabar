@@ -95,9 +95,9 @@
                 <div class="form-group">
                     <label for="">Category</label>
                     <select name="category" class="form-control">
-                        <option value="motor">Motor</option>
-                        <option value="mobil">Mobil</option>
-                        <option value="mobility">Mobility</option>
+                        <option value="motor" @if($community->category == "motor") selected @endif>Motor</option>
+                        <option value="mobil" @if($community->category == "mobil") selected @endif>Mobil</option>
+                        <option value="mobility" @if($community->category == "mobility") selected @endif>Mobility</option>
                     </select>
                 </div>
 
