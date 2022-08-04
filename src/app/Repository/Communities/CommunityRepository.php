@@ -8,7 +8,8 @@ use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Ramsey\Uuid\Uuid;
 
-class CommunityRepository {
+class CommunityRepository
+{
 
     private static $UPLOADED_FILE_PATH;
     private static $UPLOADED_FILE_BASE_PATH;
@@ -19,23 +20,28 @@ class CommunityRepository {
         self::setUploadedFileBasePath(public_path());
     }
 
-    private static function setUploadedFilePath(string $path): void {
+    private static function setUploadedFilePath(string $path): void
+    {
         self::$UPLOADED_FILE_PATH = $path;
     }
 
-    private static function getUploadedFilePath(): string {
+    private static function getUploadedFilePath(): string
+    {
         return self::$UPLOADED_FILE_PATH;
     }
 
-    private static function setUploadedFileBasePath(string $path): void {
+    private static function setUploadedFileBasePath(string $path): void
+    {
         self::$UPLOADED_FILE_BASE_PATH = $path;
     }
 
-    private static function getUploadedFileBasePath(): string {
+    private static function getUploadedFileBasePath(): string
+    {
         return self::$UPLOADED_FILE_BASE_PATH;
     }
 
-    public function storeData(Request $request) {
+    public function storeData(Request $request)
+    {
 
         $new_data = [
             "club_name" => $request->club_name,
@@ -47,10 +53,12 @@ class CommunityRepository {
             "address" => $request->address
         ];
 
-        if(Community::create($new_data)) return true; return false;
+        if (Community::create($new_data)) return true;
+        return false;
     }
 
-    public function updateData(Request $request, int $id) {
+    public function updateData(Request $request, int $id)
+    {
 
         $community = Community::find($id);
 
@@ -64,27 +72,28 @@ class CommunityRepository {
             "address" => $request->address
         ];
 
-        if($request->hasFile("image")) {
+        if ($request->hasFile("image")) {
             $new_data["image"] = $this->replaceUploadedFile($request->file("image"), $community->image, '/(community-)(.*).(jpg|png|jpeg|gif|svg)/');
         }
 
-        if($community->update($new_data)) return true; return false;
-
+        if ($community->update($new_data)) return true;
+        return false;
     }
 
-    public function deleteData(int $id) {
+    public function deleteData(int $id)
+    {
 
         $community = Community::find($id);
 
-        if(file_exists(self::getUploadedFileBasePath() . $community->image)) {
+        if (file_exists(self::getUploadedFileBasePath() . $community->image)) {
             unlink(self::getUploadedFileBasePath() . $community->image);
         }
 
         return $community->delete();
-
     }
 
-    public function saveUploadedFile(UploadedFile $file, string $fileName) {
+    public function saveUploadedFile(UploadedFile $file, string $fileName)
+    {
 
         $fileName =  $fileName . '.' . $file->getClientOriginalExtension();
 
@@ -93,13 +102,16 @@ class CommunityRepository {
         return "/" . self::getUploadedFilePath() . $fileName;
     }
 
-    public function replaceUploadedFile(UploadedFile $file, $oldfile, string $regex) {
+    public function replaceUploadedFile(UploadedFile $file, $oldfile, string $regex)
+    {
 
-        if(file_exists(self::getUploadedFileBasePath() . $oldfile)) {
+        if (file_exists(self::getUploadedFileBasePath() . $oldfile)) {
 
-            /* Unlink the old image if exists */
-            if(!is_dir(self::getUploadedFileBasePath() . $oldfile)) {
-                unlink(self::getUploadedFileBasePath() . $oldfile);
+            if ($oldfile != "noimage.jpg" || $oldfile != "noimage.jpeg" || $oldfile != "noimage.png" || $oldfile != "noimage.svg") {
+                /* Unlink the old image if exists */
+                if (!is_dir(self::getUploadedFileBasePath() . $oldfile)) {
+                    unlink(self::getUploadedFileBasePath() . $oldfile);
+                }
             }
 
             /* Reformat image name */
@@ -112,7 +124,6 @@ class CommunityRepository {
             // /* insert image name to the new_data */
             // return "/" . self::getUploadedFilePath() . $fileName;
             return $this->saveUploadedFile($file, 'community-' . Uuid::uuid4());
-
         } else {
             return $this->saveUploadedFile($file, 'community-' . Uuid::uuid4());
         }

@@ -28,7 +28,6 @@ $(document).ready(function async() {
 
     const firstLoad = async () => {
         const resultData = await getAPI(`${API_ENDPOINT.URL_KLUB_MOBILITY(1)}`);
-
         resultData.data.map((data) => {
             wrapListClubMobility.innerHTML += klubMobilityCardTemplate(
                 data.club_name,
