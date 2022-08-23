@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEoRegistrationSuccessNotification;
 use App\Repository\Registration\EventOrganizerRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,9 +71,8 @@ class EOController extends Controller
                 'seo_meta_description'
             )->where('dynamic_page_slug', 'registration-eo-page-howto-section')
             ->first();
-        
-        // dd($howto_section);
 
+        // dd($howto_section);
         return view("pages.registrations.eo.index", compact(["settings", "head_section", "requirement_section", "howto_section"]));
     }
 
@@ -104,10 +104,35 @@ class EOController extends Controller
             "q143_penghargaan" => "required|string",
         ]);
 
-        if($validator->fails()) return redirect()->back()->withErrors($validator);
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
 
         if ($this->registraionRepository->storeData($request)) {
-            return view("pages.registrations.eo.success");
+
+
+            $email_template_data = DB::table('email_templates')->where('id', 92)->first();
+            $subject = $email_template_data->et_subject;
+            $message = $email_template_data->et_content;
+
+            $message = str_replace('[[event_name]]', $request->q30_namaEvent, $message);
+
+            SendEoRegistrationSuccessNotification::dispatch([
+                'recipent' => $request->q301_email,
+                'subject' => $subject,
+                'message' => $message
+            ]);
+
+            $success_section = DB::table('dynamic_pages')
+                ->select(
+                    'dynamic_page_name as name',
+                    'dynamic_page_content1 as content1',
+                    'seo_title',
+                    'seo_meta_description'
+                )->where('dynamic_page_slug', 'registration-eo-page-success-section')
+                ->first();
+
+            // dd($success_section);
+
+            return view("pages.registrations.eo.success", compact(["success_section"]));
         }
 
         return "Kesalahan";

@@ -4,8 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="HandheldFriendly" content="true">
-    <title>Thank You</title>
+    <title>Success</title>
     <link rel="shortcut icon" href="https://cdn.jotfor.ms/assets/img/favicons/favicon-2021-dark.ico">
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('uploads/favicon.') }}"> --}}
+
     <script type="text/javascript" src="https://cdn.jotfor.ms//js/prototype.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms//css/thankyou.css">
     <style type="text/css">
@@ -122,7 +124,7 @@
             <div class="col-1"><img class="tyBgImage"
                     src="https://cdn.jotfor.ms/assets/img/thankYou/icons/icon1.png" alt=""></div>
             <div class="col-2">
-                <p><strong><span style="font-size:24pt;font-family:helvetica, arial, sans-serif;">Terima
+                {{-- <p><strong><span style="font-size:24pt;font-family:helvetica, arial, sans-serif;">Terima
                             Kasih!</span></strong></p>
                 <p style="text-align:center;"><span
                         style="font-family:helvetica, arial, sans-serif;font-size:14pt;">Formulir kamu telah berhasil terdaftar, Untuk melanjutkan proses registrasi silahkan lakukan pembayaran biaya pendaftaran Event sebesar Rp.300.000, dan Melaporkan bukti transfer kepada Admin.</span>
@@ -149,7 +151,8 @@
                             <div class="settingButonWrapper">&nbsp;</div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                {!! $success_section?->content1 !!}
             </div>
         </div>
         <div class="nonEditableInvisable isFillAnotherForm notActive">&nbsp;</div>

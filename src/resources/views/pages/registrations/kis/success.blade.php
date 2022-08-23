@@ -122,7 +122,7 @@
             <div class="col-1"><img class="tyBgImage"
                     src="https://cdn.jotfor.ms/assets/img/thankYou/icons/icon1.png" alt=""></div>
             <div class="col-2">
-                <p><strong><span style="font-size:24pt;font-family:helvetica, arial, sans-serif;">Terima
+                {{-- <p><strong><span style="font-size:24pt;font-family:helvetica, arial, sans-serif;">Terima
                             Kasih!</span></strong></p>
                 <p style="text-align:center;"><span
                         style="font-family:helvetica, arial, sans-serif;font-size:14pt;">Formulir kamu telah berhasil
@@ -151,8 +151,11 @@
                             <div class="settingButonWrapper">&nbsp;</div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                {!! $success_section?->content1 !!}
+
             </div>
+
         </div>
         <div class="nonEditableInvisable isFillAnotherForm notActive">&nbsp;</div>
         <div class="nonEditableInvisable isPDF active">

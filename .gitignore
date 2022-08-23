@@ -89,8 +89,19 @@
 /src/public/uploads/users/*
 !/src/public/uploads/users/.gitkeep
 
-!/src/storage/
+# /src/storage/
 /src/storage/*.key
+# !/src/storage/.gitkeep
+
+# /src/storage/framework/views/*
+# !/src/storage/framework/views/.gitkeep
+
+# /src/storage/framework/sessions/*
+# !/src/storage/framework/sessions/.gitkeep
+
+# /src/storage/framework/cache/*
+# !/src/storage/framework/cache/.gitkeep
+
 /src/vendor
 /src/.env
 /src/.phpunit.result.cache

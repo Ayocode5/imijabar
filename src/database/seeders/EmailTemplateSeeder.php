@@ -63,6 +63,24 @@ class EmailTemplateSeeder extends Seeder
                 'et_content' => '<p>Dear [[customer_name]],</p><p>Your order has been submitted successfully and we received the payment from you. After you process and ship the order, you will get all the products after a certain time period.&nbsp;</p><p><b>Payment Information:</b></p><p>Order Number: [[order_number]]</p><p>[[payment_method]]</p><p>Payment Date &amp; Time: [[payment_date_time]]</p><p>Transaction Id: [[transaction_id]]</p><p>Shipping Cost: [[shipping_cost]]</p><p>Coupon Code: [[coupon_code]]</p><p>Coupon Discount: [[coupon_discount]]</p><p>Paid Amount: [[paid_amount]]</p><p>Payment Status: [[payment_status]]</p><p>----------------------------------------</p><p><b>Your billing details:</b></p><p>Billing Name: [[billing_name]]</p><p>Billing Email: [[billing_email]]</p><p>Billing Phone: [[billing_phone]]</p><p>Billing Country: [[billing_country]]</p><p>Billing Address: [[billing_address]]</p><p>Billing State: [[billing_state]]</p><p>Billing City: [[billing_city]]</p><p>Billing Zip: [[billing_zip]]</p><p>----------------------------------------</p><p><b>Your shipping details:</b></p><p>Shipping Name: [[shipping_name]]</p><p>Shipping Email: [[shipping_email]]</p><p>Shipping Phone: [[shipping_phone]]</p><p>Shipping Country: [[shipping_country]]</p><p>Shipping Address: [[shipping_address]]</p><p>Shipping State: [[shipping_state]]</p><p>Shipping City: [[shipping_city]]</p><p>Shipping Zip: [[shipping_zip]]</p><p>----------------------------------------</p><p><b>Products You Purchased:&nbsp;</b></p><p>[[product_detail]]</p><p>Thank you! The ABC Team</p>',
                 'et_name' => 'Order Completed Email to Customer',
             ],
+            [
+                'id' => 90,
+                'et_subject' => 'IMI Jabar Registrasi Club',
+                'et_content' => '<p>Pendaftaran Club [[club_name]] Berhasil</p>',
+                'et_name' => 'Club Registration Email',
+            ],
+            [
+                'id' => 91,
+                'et_subject' => 'IMI Jabar Registrasi KIS',
+                'et_content' => '<p>Pendaftaran KIS [[registrar_name]] Berhasil</p>',
+                'et_name' => 'KIS Registration Email',
+            ],
+            [
+                'id' => 92,
+                'et_subject' => 'IMI Jabar Registrasi EO',
+                'et_content' => '<p>Pendaftaran Event [[event_name]]  Berhasil</p>',
+                'et_name' => 'EO Registration Email',
+            ],
 
         ]);
     }
