@@ -11,6 +11,24 @@ use Ramsey\Uuid\Uuid;
 
 class EventSportController extends Controller
 {
+
+    private $IMAGE_PATH;
+
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->eventSportsFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +71,7 @@ class EventSportController extends Controller
 
         $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
 
-        $request->file('image')->move(public_path('uploads/'), $fileName);
+        $request->file('image')->move($this->getImagePath(), $fileName);
 
         Sport::create([
             'name' => $request->name,
@@ -106,22 +124,22 @@ class EventSportController extends Controller
         $fileName = '';
 
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
+            if (file_exists($this->getImagePath() . $sport->image) && !empty($sport->image)) {
                 //remove old photo
-                unlink(public_path('uploads/') . $sport->image);
+                unlink($this->getImagePath() . $sport->image);
 
 
                 preg_match('/(sport-)(.*).(jpg|png|jpeg|gif|svg)/', $sport->image, $sport_photo_split);
 
-                // Rebuild the name of photo 
+                // Rebuild the name of photo
                 $fileName = $sport_photo_split[1] . $sport_photo_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
                 //Separates photo name and extension
 
-                $request->file('image')->move(public_path('uploads/'), $fileName);
+                $request->file('image')->move($this->getImagePath(), $fileName);
             } else {
 
                 $fileName = 'sport-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(public_path('uploads/'), $fileName);
+                $request->file('image')->move($this->getImagePath(), $fileName);
             }
         }
 
@@ -154,9 +172,9 @@ class EventSportController extends Controller
         if ($sport->events_count > 0) {
             return redirect()->route('admin.event.sport.index')->withErrors("Selected sport can't be deleted, there are some events under this sport");
         } else {
-            if (file_exists(public_path('uploads/') . $sport->image) && !empty($sport->image)) {
+            if (file_exists($this->getImagePath() . $sport->image) && !empty($sport->image)) {
                 # code...
-                unlink(public_path('uploads/') . $sport->image);
+                unlink($this->getImagePath() . $sport->image);
             }
 
             $sport->delete();

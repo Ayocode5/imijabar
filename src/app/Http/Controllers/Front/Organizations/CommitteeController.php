@@ -32,6 +32,31 @@ class CommitteeController extends Controller
         return view("pages.organizations.committee", compact("settings", "committee_page_head_section"));
     }
 
+    public function show($id) {
+
+        $settings = DB::table('general_settings')->select(
+			'logo',
+			'top_bar_organization_name',
+			'top_bar_email',
+			'top_bar_phone',
+			'footer_address',
+			'footer_email',
+			'footer_phone',
+			'footer_copyright',
+			'footer_column1_heading',
+			'footer_column2_heading',
+			'footer_column3_heading',
+		)->first();
+
+        $committee = TeamMember::find($id);
+
+        if (is_null($committee)) {
+            return abort(404);
+        }
+
+        return view("pages.organizations.committee_detail", compact("settings", "committee"));
+    }
+
     public function committee_data(Request $request) {
 
         $committee = TeamMember::paginate($request->perPage ? $request->perPage : 10);

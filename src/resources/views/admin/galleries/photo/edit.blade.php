@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
-                        <img id="photo_preview_image" src="{{ asset('uploads/' . $photo->photo_name) }}" alt=""
+                        <img id="photo_preview_image" src="{{ asset('uploads/galleries/' . $photo->photo_name) }}" alt=""
                             class="w_300">
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                                         </option>
                                     @endforeach
                                 @else
-                                    <option>Category Not Found!</option>
+                                    <option value="">Category Not Found!</option>
                                 @endif
                             </select>
                         </div>

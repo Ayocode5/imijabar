@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="">Existing Photo</label>
                             <div>
-                                <img id="photo_preview" src="{{ asset('uploads/'.$admin_user->photo) }}" alt="" class="w_200">
+                                <img id="photo_preview" src="{{ asset('uploads/users/'.$admin_user->photo) }}" alt="" class="w_200">
                             </div>
                         </div>
                         <div class="form-group">

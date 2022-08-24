@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name *</label>
-                    
+
                     <div style="gap: 24px" class="d-flex flex-wrap">
                         {{-- <input type="text" name="name" class="col-12 col-md-7 form-control name_sports_show"
                             value="{{ $sport->name }}" autofocus> --}}
@@ -29,13 +29,13 @@
                                 <input readonly type="text" name="category-sports" class="col-12 col-md-4 form-control name_category_sports" value="{{ $category->name }}">
                             @endif
                         @endforeach
-          
+
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="sport_preview_image" src="{{ asset('uploads/' . $sport->image) }}" alt=""
+                        <img id="sport_preview_image" src="{{ asset('uploads/events/sports/' . $sport->image) }}" alt=""
                             class="w_300">
                     </div>
                 </div>

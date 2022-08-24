@@ -15,9 +15,21 @@ use Ramsey\Uuid\Uuid;
 class BlogController extends Controller
 {
 
+    private $IMAGE_PATH;
+
     public function __construct()
     {
         $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->newsFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
     }
 
     public function index()
@@ -51,7 +63,7 @@ class BlogController extends Controller
         $ext = $request->file('blog_photo')->getClientOriginalExtension();
         $final_name = 'blog-' . Uuid::uuid4()->toString() . '.' . $ext;
 
-        $request->file('blog_photo')->move(public_path('uploads'), $final_name);
+        $request->file('blog_photo')->move($this->getImagePath(), $final_name);
 
         $blog = new Blog();
         $data = $request->only($blog->getFillable());
@@ -115,21 +127,21 @@ class BlogController extends Controller
         if ($request->hasFile('blog_photo')) {
 
             //remove old photo
-            !empty($blog->blog_photo) && file_exists(public_path('uploads/' . $blog->blog_photo)) ? unlink(public_path('uploads/' . $blog->blog_photo)) : null;
+            !empty($blog->blog_photo) && file_exists($this->getImagePath() . $blog->blog_photo) ? unlink($this->getImagePath() . $blog->blog_photo) : null;
 
             // preg_match('/(blog-)(.*).(jpg|png|jpeg|gif)/', $blog->blog_photo, $blog_photo_split);
 
-            // // Rebuild the name of photo 
+            // // Rebuild the name of photo
             // $filename = $blog_photo_split[1] . $blog_photo_split[2] . '.' . $request->file('blog_photo')->getClientOriginalExtension();
             // //Separates photo name and extension
 
             // // Save The Photo
-            // $request->file('blog_photo')->move(public_path('uploads/'), $filename);
+            // $request->file('blog_photo')->move($this->getImagePath()), $filename);
 
             $ext = $request->file('blog_photo')->getClientOriginalExtension();
             $filename = 'blog-' . Uuid::uuid4()->toString() . '.' . $ext;
 
-            $request->file('blog_photo')->move(public_path('uploads'), $filename);
+            $request->file('blog_photo')->move($this->getImagePath(), $filename);
 
             //set new file photo
             unset($data['blog_photo']);
@@ -152,7 +164,7 @@ class BlogController extends Controller
         $this->authorize('delete', Blog::class);
 
         $blog = Blog::findOrFail($id);
-        unlink(public_path('uploads/' . $blog->blog_photo));
+        unlink($this->getImagePath() . $blog->blog_photo);
         $blog->delete();
 
         // Success Message and redirect

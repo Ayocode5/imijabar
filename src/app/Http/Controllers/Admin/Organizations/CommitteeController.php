@@ -11,9 +11,22 @@ use Ramsey\Uuid\Uuid;
 
 class CommitteeController extends Controller
 {
+
+    private $IMAGE_PATH;
+
     public function __construct()
     {
         $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->committeeFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
     }
 
     public function index()
@@ -46,7 +59,7 @@ class CommitteeController extends Controller
         ]);
 
         $fileName = 'team-member-'.Uuid::uuid4().'.'.$request->file('photo')->getClientOriginalExtension();
-        $request->file('photo')->move(public_path('uploads/'), $fileName);
+        $request->file('photo')->move($this->getImagePath(), $fileName);
 
         $data['photo'] = $fileName;
         $data['slug'] = Str::slug($request->name);
@@ -81,9 +94,9 @@ class CommitteeController extends Controller
 
         if($request->hasFile('photo')) {
 
-            if(!empty($team_member->photo) && file_exists(public_path('uploads/'.$team_member->photo))) {
+            if(!empty($team_member->photo) && file_exists($this->getImagePath().$team_member->photo)) {
 
-                unlink(public_path('uploads/' . $team_member->photo));
+                unlink($this->getImagePath() . $team_member->photo);
 
                 // preg_match('/(team-member-)(.*).(jpg|png|jpeg|gif)/', $team_member->photo, $team_member_photo_format_name_split);
 
@@ -97,13 +110,13 @@ class CommitteeController extends Controller
                 $fileName = 'team-member-'.Uuid::uuid4().'.'.$request->file('photo')->getClientOriginalExtension();
             }
 
-            $request->file('photo')->move(public_path('uploads/'), $fileName);
+            $request->file('photo')->move($this->getImagePath(), $fileName);
             $data['photo'] = $fileName;
 
         }
 
         $team_member->fill($data)->save();
-        
+
         return redirect()->route('admin.organizations.committee.index')->with('success', 'Committee is updated successfully!');
     }
 
@@ -112,8 +125,8 @@ class CommitteeController extends Controller
         $this->authorize('delete', TeamMember::class);
 
         $team_member = TeamMember::findOrFail($id);
-        if(!($team_member->photo == '') && file_exists(public_path('uploads/'.$team_member->photo))) {
-            unlink(public_path('uploads/'.$team_member->photo));
+        if(!($team_member->photo == '') && file_exists($this->getImagePath().$team_member->photo)) {
+            unlink($this->getImagePath().$team_member->photo);
         }
         $team_member->delete();
         return Redirect()->back()->with('success', 'Committee is deleted successfully!');

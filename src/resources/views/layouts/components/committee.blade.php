@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <img style="height: 100%; object-fit: cover;"
-                            src="{{ asset('uploads/') . "/$committee->photo" }}" alt="commite1">
+                            src="{{ asset('uploads/committee/') . "/$committee->photo" }}" alt="commite1">
                     </div>
                 @endforeach
             </div>

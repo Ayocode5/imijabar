@@ -76,7 +76,7 @@
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
-                        <img id="team_member_preview_image" src="{{ asset('uploads/'.$team_member->photo) }}" alt="" class="w_150">
+                        <img id="team_member_preview_image" src="{{ asset('uploads/committee/'.$team_member->photo) }}" alt="" class="w_150">
                     </div>
                 </div>
                 <div class="form-group">

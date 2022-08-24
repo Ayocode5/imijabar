@@ -11,7 +11,7 @@
                 <div class="wrap_header_detail_event">
                     <div class="card border-0">
                         <img class="img-fluid card-img featured_image_event_detail"
-                            src="{{ asset('uploads/') . "/$event->photo" }}" alt="featured image">
+                            src="{{ asset('uploads/events/') . "/$event->photo" }}" alt="featured image">
 
                         <div class="card-img-overlay overlay_image_event_detail d-flex">
                             <div class="my-auto mx-auto text-center content_overlay_image_event_detail">
@@ -77,7 +77,7 @@
                                 <div class="owl-carousel owl-theme carousel_cabor_detail_event">
                                     @foreach ($event->sports as $sport)
                                         <div categories="{{ $sport->category->slug }}" class="item">
-                                            <img src="{{ asset('uploads') . "/$sport->image" }}"
+                                            <img src="{{ asset('uploads/events/sports/') . "/$sport->image" }}"
                                                 alt="{{ $sport->name }}">
                                         </div>
                                     @endforeach
@@ -101,7 +101,7 @@
                                 {{-- {{ dd($event) }} --}}
                                 @foreach ($event->sponsors as $sponsor)
                                     <div>
-                                        <img src="{{ asset('uploads') . "/$sponsor->image" }}"
+                                        <img src="{{ asset('uploads/events/sponsors/') . "/$sponsor->image" }}"
                                             alt="{{ $sponsor->name }}"><br>
                                     </div>
                                 @endforeach

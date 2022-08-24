@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="ads_preview_image" src="{{ asset("uploads/$greeting->image")  }}" alt=""
+                        <img id="ads_preview_image" src="{{ asset("uploads/greetings/$greeting->image")  }}" alt=""
                              class="w_300">
                     </div>
                 </div>

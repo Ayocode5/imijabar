@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="">Existing Image</label>
                     <div>
-                        <img id="preview_news_image" src="{{ asset('uploads/' . $blog->blog_photo) }}" alt=""
+                        <img id="preview_news_image" src="{{ asset('uploads/news/' . $blog->blog_photo) }}" alt=""
                             class="w_200">
                     </div>
                 </div>

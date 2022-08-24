@@ -52,7 +52,7 @@
                                         </option>
                                     @endforeach
                                 @else
-                                    <option>Category Not Found!</option>
+                                    <option value="">Category Not Found!</option>
                                 @endif
                             </select>
                         </div>

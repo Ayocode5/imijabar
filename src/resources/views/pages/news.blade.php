@@ -28,7 +28,7 @@
                                 <div class="overlay_jumbotron">
 
                                 </div>
-                                <img src="{{ asset('uploads/') . "/$news_carousel->photo" }}"
+                                <img src="{{ asset('uploads/news/') . "/$news_carousel->photo" }}"
                                     alt="{{ $news_carousel->title }}" width="100%" height="600">
                                 <div class="carousel-caption">
                                     <p class="date_author">
@@ -47,7 +47,7 @@
                             </div>
                         @endforeach
                     @else
-                        <img src="{{ asset('uploads/') . "/$news_banner_default->banner" }}"
+                        <img src="{{ asset('uploads/news/') . "/$news_banner_default->banner" }}"
                             alt="News page default banner" width="100%" height="600">
                     @endif
                 </div>
@@ -84,7 +84,7 @@
                                     class="form-control rounded border-0" placeholder="Search" aria-label="Search"
                                     aria-describedby="search-addon" />
                                 <button type="submit" class="btn"><img
-                                        src="{{ asset('/images/') }}/search-icon.svg" alt="search icon">
+                                        src="{{ asset('images/') }}/search-icon.svg" alt="search icon">
                                 </button>
                             </form>
                         </div>
@@ -103,7 +103,7 @@
                                 <a href="/news/{{ $news_data->slug }}" class="text-decoration-none">
                                     <div class="card">
                                         <div class="header_card_image">
-                                            <img src="{{ asset('uploads') . "/$news_data->photo" }}"
+                                            <img src="{{ asset('uploads/news/') . "/$news_data->photo" }}"
                                                 class="card-img-top skeleton" alt="{{ $news_data->title }}">
                                             <div
                                                 class="label_header_card_image d-flex justify-content-between align-items-center px-3">

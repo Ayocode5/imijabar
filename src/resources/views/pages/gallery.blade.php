@@ -84,7 +84,7 @@
                                                 <img loading="lazy" class="position-absolute icon_type_file"
                                                     src="{{ asset('images') }}/icon_picture.svg" alt="icon picture">
                                                 <img loading="lazy"
-                                                    src="{{ asset('uploads') . "/$gallery->photo_name" }}"
+                                                    src="{{ asset('uploads/galleries/') . "/$gallery->photo_name" }}"
                                                     alt="image gallery" class="gallery-image mx-auto d-block skeleton">
                                             @else
                                                 <img loading="lazy" class="position-absolute icon_type_file"

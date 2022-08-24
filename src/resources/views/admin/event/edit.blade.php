@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label for="">Current Banner</label>
                     <div>
-                        <img id="event_preview_image" src="{{ asset('uploads/' . $event->event_featured_photo) }}" alt=""
+                        <img id="event_preview_image" src="{{ asset('uploads/events/' . $event->event_featured_photo) }}" alt=""
                             class="w_300">
                     </div>
                 </div>

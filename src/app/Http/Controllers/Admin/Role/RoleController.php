@@ -12,10 +12,21 @@ use Ramsey\Uuid\Uuid;
 
 class RoleController extends Controller
 {
+    private $IMAGE_PATH;
+
     public function __construct()
     {
         $this->middleware('auth:web');
-        // $this->authorize('isAdmin');
+        parent::__construct();
+        $this->setImagePath($this->usersFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
     }
 
     public function user()
@@ -47,7 +58,7 @@ class RoleController extends Controller
         ]);
 
         $fileName = 'user-' . Uuid::uuid4() . '.' . $request->file('photo')->getClientOriginalExtension();
-        $request->file('photo')->move(public_path('uploads/'), $fileName);
+        $request->file('photo')->move($this->getImagePath(), $fileName);
 
         $user = User::create([
             'name' => $request->name,
@@ -75,7 +86,7 @@ class RoleController extends Controller
     {
         $user = User::findOrFail($id);
         $fileName = null;
-    
+
         $request->validate([
             'name' => 'required',
             'email' => [Rule::unique('users')->ignore($id)],
@@ -85,13 +96,13 @@ class RoleController extends Controller
 
 
         if ($request->hasFile('photo')) {
-        
-            unlink(public_path('uploads/' . $user->photo));
+
+            unlink($this->getImagePath() . $user->photo);
 
             //Separates photo name format
             preg_match('/(user-)(.*).(jpg|png|jpeg|gif)/', $user->photo, $user_photo_split);
             $fileName = $user_photo_split[1] . $user_photo_split[2] . '.' . $request->file('photo')->getClientOriginalExtension();
-            $request->file('photo')->move(public_path('uploads/'), $fileName);
+            $request->file('photo')->move($this->getImagePath(), $fileName);
 
         }
 
@@ -139,7 +150,7 @@ class RoleController extends Controller
 
         $user = User::findOrFail($id);
         $user->syncRoles([]);
-        //unlink(public_path('uploads/' . $user->photo));
+        unlink($this->getImagePath() . $user->photo);
         $user->delete();
         return Redirect()->back()->with('success', 'Admin User is deleted successfully!');
     }

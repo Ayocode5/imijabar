@@ -47,6 +47,7 @@ class EventSeeder extends Seeder
                 'category_id' => $eventCategoryId[array_rand($eventCategoryId, 1)],
                 'name' => $sport,
                 'slug' => Str::slug($sport),
+                'image' => "sport.jpeg"
             ]);
         }
 
@@ -60,7 +61,7 @@ class EventSeeder extends Seeder
             array_push($sponsorsPayload, [
                 'name' => $sponsor,
                 'slug' => Str::slug($sponsor),
-                'image' => "sponsor-$key.jpeg"
+                'image' => "sponsor.jpeg"
             ]);
         }
 
@@ -83,7 +84,7 @@ class EventSeeder extends Seeder
                 'event_location_city' => 'Jakarta Pusat',
                 'event_location_province' => 'DKI Jakarta',
                 'event_map' => "https://www.google.com/maps/d/viewer?ie=UTF8&t=h&oe=UTF8&msa=0&mid=1pRr96dk8bzZtAoXcOJjjIJXcmjU&ll=-6.175392999999987%2C106.82702099999997&z=17",
-                'event_featured_photo' => 'event-featured.jpeg',
+                'event_featured_photo' => 'event.jpeg',
                 'event_link' => 'https://www.google.com',
                 'event_document_link' => 'https://www.files.com/suratrekomendasi.pdf',
                 'created_at' => Carbon::now(),

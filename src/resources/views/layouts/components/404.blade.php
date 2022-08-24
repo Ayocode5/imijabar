@@ -3,10 +3,10 @@
         <div class="text-center">
             <div class="col" style="padding: 0px;">
                 <h1 class="title-404">
-                    Tidak ditemukan
+                    Kesalahan
                 </h1>
                 {{-- <img src="{{ asset('images') }}/line_blue.svg" alt="line blue" style="width: 85%;"> --}}
-                <p class="subtitle-404">Mohon maaf, resource yang anda cari tidak tersedia</p>
+                <p class="subtitle-404">Mohon maaf, resource tidak tersedia</p>
             </div>
         </div>
     </div>

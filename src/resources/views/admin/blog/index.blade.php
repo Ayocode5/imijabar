@@ -26,7 +26,7 @@
                         @foreach($blog as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('uploads/'.$row->blog_photo) }}" alt="" class="w_100"></td>
+                            <td><img src="{{ asset('uploads/news/'.$row->blog_photo) }}" alt="" class="w_100"></td>
                             <td>{{ $row->blog_title }}</td>
                             <td>{{ $row->category->category_name }}</td>
                             <td>

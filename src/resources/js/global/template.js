@@ -13,7 +13,7 @@ const newsCardTemplate = (
             <a href="/news/${slug}" class="text-decoration-none">
                 <div class="card">
                     <div class="header_card_image">
-                        <img src="/uploads/${photo}"
+                        <img src="/uploads/news/${photo}"
                             class="card-img-top" alt="${title}">
                         <div
                             class="label_header_card_image d-flex justify-content-between align-items-center px-3">
@@ -68,7 +68,7 @@ const eventsCardTemplate = (
             <div class="card">
                 <div class="header_card_image shadow">
                     <div class="feature_image_event_list">
-                        <img src="/uploads/${photo}"
+                        <img src="/uploads/events/${photo}"
                             class="card-img-top image_feature_event" alt="featured image">
                         <div class="ribbon_wrapper">
                             ${categories
@@ -362,7 +362,7 @@ const cardCommitteeTemplate = (
     <div class="col mb-4">
         <div class="wrap_committe_image selectDisable">
 
-            <img class="photo_committe selectDisable" src="/uploads/${photo}" alt="pengurus imi">
+            <img class="photo_committe selectDisable" src="/uploads/committee/${photo}" alt="pengurus imi">
             <div class="ribbon_committee">
 
                 <div class="d-flex align-items-center">

@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'id',
     'faker_locale' => 'en_US',
-    'key' => 'base64:J3xctdbzfBWEdC+38FNfD98ef0BaqkEpc+vX8nfU90I=',
+    'key' => 'base64:Uox4hu5ObUMDVjSGTJLU5ddACB8Srq4IHhxMYJqBHCM=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -413,8 +413,8 @@
   ),
   'google' => 
   array (
-    'application_name' => 'PHPLaravelSheets',
-    'client_id' => '103864966889689275315',
+    'application_name' => '',
+    'client_id' => '',
     'client_secret' => '',
     'redirect_uri' => '',
     'scopes' => 
@@ -422,11 +422,11 @@
     ),
     'access_type' => 'online',
     'approval_prompt' => 'auto',
-    'developer_key' => 'AIzaSyDfkS79Is1hImWVn8D7NJI8z739xbML-Ic',
+    'developer_key' => '',
     'service' => 
     array (
-      'enable' => true,
-      'file' => '/var/www/html/credentials.json',
+      'enable' => false,
+      'file' => '',
     ),
     'config' => 
     array (
@@ -531,6 +531,15 @@
   'mail' => 
   array (
     'default' => 'smtp',
+    'stream' => 
+    array (
+      'ssl' => 
+      array (
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+      ),
+    ),
     'mailers' => 
     array (
       'smtp' => 
@@ -539,8 +548,8 @@
         'host' => 'smtp.gmail.com',
         'port' => '587',
         'encryption' => 'tls',
-        'username' => 'iyanputra906@gmail.com',
-        'password' => 'bxsukjatzjzzaako',
+        'username' => 'noreply.imijabar@gmail.com',
+        'password' => 'yyxldbqyuduyhhgk',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -573,7 +582,7 @@
     ),
     'from' => 
     array (
-      'address' => 'iyanputra906@gmail.com',
+      'address' => 'noreply.imijabar@gmail.com',
       'name' => 'IMI-JABAR',
     ),
     'markdown' => 
@@ -787,7 +796,7 @@
   'trustedproxy' => 
   array (
     'proxies' => NULL,
-    'headers' => 30,
+    'headers' => 94,
   ),
   'imagecache' => 
   array (
