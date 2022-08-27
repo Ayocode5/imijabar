@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zeyada&display=swap");
 /* 
     font-family: 'Barlow', sans-serif;  
     font-family: 'Tinos', serif;
@@ -7,7 +7,7 @@
 */
 
 body {
-    font-family: 'Barlow', sans-serif;
+    font-family: "Barlow", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -20,7 +20,7 @@ body {
 /* Head List committee */
 #header_page_committee {
     margin: 0 auto;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     padding: 40px 0;
 }
 
@@ -33,7 +33,7 @@ body {
 .head_list_committee h1 {
     margin: 0;
     line-height: 38px;
-    font-family: 'Tinos', serif;
+    font-family: "Tinos", serif;
     font-size: 24px;
     font-weight: 700;
     text-decoration: underline;
@@ -41,7 +41,6 @@ body {
     text-underline-offset: 8px;
     text-decoration-color: hsl(215, 79%, 64%);
 }
-
 
 .head_list_committee p {
     text-align: center;
@@ -52,7 +51,7 @@ body {
 
 /* Main content page committee */
 #content_page_committee {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
 }
 
 .wrap_content_page_commiittee .scroll_content_page {
@@ -83,16 +82,16 @@ body {
     /* background: url(https://picsum.photos/360/360?image=0); */
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 50px rgba(#000, .85);
+    box-shadow: 0 5px 50px rgba(#000, 0.85);
 }
 
 .wrap_committe_image::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: rgba(#000, .92);
+    background-color: rgba(#000, 0.92);
 }
 
 .wrap_animation_img_overlay_committe {
@@ -121,7 +120,7 @@ body {
     background-color: black;
     opacity: 0.5;
     transform: translateY(100%);
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .wrap_animation_img_overlay_committe span:nth-child(1) {
@@ -129,17 +128,16 @@ body {
 }
 
 .wrap_animation_img_overlay_committe span:nth-child(2) {
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
 
 .wrap_animation_img_overlay_committe span:nth-child(3) {
-    transition-delay: .2s;
+    transition-delay: 0.2s;
 }
 
 .wrap_animation_img_overlay_committe span:nth-child(4) {
-    transition-delay: .3s;
+    transition-delay: 0.3s;
 }
-
 
 .content_overlay_committes {
     /* background-color: #000;
@@ -155,7 +153,6 @@ body {
     width: 100%;
     height: 100%;
     transform: translateY(100%);
-
 }
 
 .wrap_committe_image:hover .wrap_animation_img_overlay_committe span {
@@ -166,19 +163,20 @@ body {
     top: 0;
     transform: translateY(0%);
     transition: 1s;
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
-
 
 .content_overlay_committes .name_committe {
     font-size: 24px;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .position_committee {
     margin-top: 50px;
     font-weight: 500;
     font-size: 12px;
+    color: #ffffff;
 }
 
 .ribbon_committee {
@@ -188,7 +186,7 @@ body {
     column-gap: 16px;
     bottom: 16px;
     left: 8px;
-    color: #F8F8F8;
+    color: #f8f8f8;
     font-size: 8px;
     font-weight: 700;
 }
@@ -211,10 +209,8 @@ body {
 
 .sosial_media_committe a {
     font-size: 24px;
-    color: #F4F4F9;
-
+    color: #f4f4f9;
 }
-
 
 .selectDisable {
     user-drag: none;
@@ -252,12 +248,11 @@ body {
 .btn_load_more_list_committee:active,
 .btn_load_more_list_committee:hover,
 .btn_load_more_list_committee:focus {
-    background-color: #FFCE51;
+    background-color: #ffce51;
     border: none;
     outline: none;
     transform: translate(0, -10px);
 }
-
 
 .download_structure_committee {
     padding: 0 1rem;
@@ -268,7 +263,7 @@ body {
 }
 
 .download_structure_committee a::before {
-    content: url('../img/pdf-icon.png');
+    content: url("../img/pdf-icon.png");
     vertical-align: middle;
     margin-right: 8px;
 }
@@ -324,14 +319,12 @@ body {
         padding-bottom: 100px;
     }
 
-
     .sosial_media_committe a {
         font-size: 32px;
     }
 }
 
 @media screen and (min-width: 992px) {
-
     /* Head List committee */
     .head_list_committee {
         padding: 100px 0 40px 0;
@@ -344,7 +337,6 @@ body {
 
     .head_list_committee h1 {
         font-size: 64px;
-
     }
 
     /* Main content page committee */
@@ -356,7 +348,6 @@ body {
         padding: 0 100px;
         padding-bottom: 100px;
     }
-
 }
 
 @media screen and (min-width: 2300px) {
