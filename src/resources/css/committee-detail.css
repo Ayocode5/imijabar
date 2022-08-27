@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zeyada&display=swap");
+
+.committee__detail-image {
+    max-width: 100%;
+    max-height: 500px;
+}
+.committee__detail-image-overlay {
+    bottom: 0;
+}
+
+.committee-designation {
+    -webkit-text-stroke: 1px #263840;
+    -webkit-text-fill-color: white;
+}
+.committee-degree > p {
+    color: #000000 !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    line-height: 32px !important;
+    text-align: justify;
+}
+.committee-detail {
+    padding: 16px 7% !important;
+}
+.committee-detail * {
+    color: #000000 !important;
+}
+#committee__detail
+    #accordion
+    .my_card
+    .card-header[aria-expanded="false"]
+    .d-flex
+    img {
+    width: 16px;
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+}
+#committee__detail
+    #accordion
+    .my_card
+    .card-header[aria-expanded="true"]
+    .d-flex
+    img {
+    width: 16px;
+    transform: rotate(180deg);
+    transition: all 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+    #committee__detail > .container {
+        max-width: 100% !important;
+    }
+    .committee__detail-image {
+        max-height: 100%;
+        max-width: 475px;
+        height: 823px;
+        object-fit: cover;
+        border-radius: 0px 0px 150px 0px;
+    }
+    .committee__detail-bio {
+        padding: 100px;
+    }
+
+    #committee__detail
+        #accordion
+        .my_card
+        .card-header[aria-expanded="false"]
+        .d-flex
+        img {
+        width: 24px;
+    }
+
+    #committee__detail
+        #accordion
+        .my_card
+        .card-header[aria-expanded="true"]
+        .d-flex
+        img {
+        width: 24px;
+    }
+}
+
+@media screen and(min-width: 992px) {
+    #committee__detail
+        #accordion
+        .my_card
+        .card-header[aria-expanded="false"]
+        .d-flex
+        img {
+        width: 30px;
+    }
+
+    #committee__detail
+        #accordion
+        .my_card
+        .card-header[aria-expanded="true"]
+        .d-flex
+        img {
+        width: 30px;
+    }
+}
