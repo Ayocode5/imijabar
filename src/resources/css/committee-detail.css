@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Zeyada&display=swap");
 
+#committee__detail {
+    overflow-x: hidden;
+}
 .committee__detail-image {
     max-width: 100%;
     max-height: 500px;
