@@ -81,6 +81,9 @@
     font-size: 24px;
     font-weight: 700;
 }
+.name_text_overlay:hover {
+    color: #ffffff;
+}
 
 .role_text_overlay {
     font-weight: 500;
