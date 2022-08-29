@@ -25,7 +25,7 @@
                         @foreach($team_member as $committee)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('uploads/'.$committee->photo) }}" alt="" class="w_150"></td>
+                            <td><img src="{{ asset('uploads/committee/'.$committee->photo) }}" alt="" class="w_150"></td>
                             <td>{{ $committee->name }}</td>
                             <td>{{ $committee->designation }}</td>
                             <td style="display: flex; flex-direction: row; flex: 50%;">

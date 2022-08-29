@@ -20,7 +20,7 @@ class DynamicPageKIS extends Seeder
                 'dynamic_page_slug' => 'registration-kis-head-page',
                 'dynamic_page_content1' => '<p>Berkas Persyarata Dan Tata Cara Pengajuan Kartu Izin Start Di IMI Jawa Barat.</p>',
                 'dynamic_page_content2' => '<p>Saat ini fitur pendaftaran KIS (Kartu Izin Start) di website ini masih dalam tahap pengembangan, Untuk sementara anda bisa mendaftar melalui google form dengan mengklik tombol dibawah ini. Terima Kasih Atas Pengertiannya.</p>',
-                'dynamic_page_link1' => 'https://www.default-url.com',
+                'dynamic_page_link1' => 'https://www.imijabar.org/registration/kis/form',
                 'dynamic_page_link2' => 'https://www.defualt-url.com',
                 'dynamic_page_banner' => 'http://pictures/1.png',
             ],
@@ -48,6 +48,15 @@ class DynamicPageKIS extends Seeder
                 'dynamic_page_link1' => '',
                 'dynamic_page_link2' => '',
                 'dynamic_page_banner' => 'http://pictures/1.png',
+            ],
+            [
+                'dynamic_page_name' => 'Registration KIS Success Page',
+                'dynamic_page_slug' => 'registration-kis-page-success-section',
+                'dynamic_page_content1' => 'Berhasil Mendaftarkan Kis, silahkan tunggu informasi selanjutnya melalui email',
+                'dynamic_page_content2' => '',
+                'dynamic_page_link1' => '',
+                'dynamic_page_link2' => '',
+                'dynamic_page_banner' => '',
             ],
 
         ];

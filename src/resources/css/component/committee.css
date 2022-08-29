@@ -3,7 +3,7 @@
 */
 #strukturPengurus {
     border-bottom: 1px solid rgba(38, 56, 64, 0.5);
-    background-color: #FBFBFB;
+    background-color: #fbfbfb;
 }
 
 #strukturPengurus .head_strukturPengurus {
@@ -18,11 +18,11 @@
 #strukturPengurus .border_heading_strukturPengurus {
     padding: 2px;
     width: 155px;
-    background-color: #5996EC;
+    background-color: #5996ec;
 }
 
 .link_selengkapnya_struktur_pengurus span {
-    color: #0078C1;
+    color: #0078c1;
     font-size: 20px;
     display: inline-block;
     transform: translate(0, 0);
@@ -52,7 +52,7 @@
 .overlay_multiple_item_carousel {
     opacity: 0;
     transition: all 0.9s ease-in-out;
-    color: #F4F4F9;
+    color: #f4f4f9;
     z-index: 9;
     left: 0;
     right: 0;
@@ -77,8 +77,12 @@
 }
 
 .name_text_overlay {
+    color: #ffffff;
     font-size: 24px;
     font-weight: 700;
+}
+.name_text_overlay:hover {
+    color: #ffffff;
 }
 
 .role_text_overlay {
@@ -100,8 +104,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
-
     /* 
         Start Struktur Pengurus style
     */
@@ -113,7 +115,7 @@
     #strukturPengurus .border_heading_strukturPengurus {
         width: 310px;
     }
-
 }
 
-@media screen and (min-width: 992px) {}
+@media screen and (min-width: 992px) {
+}

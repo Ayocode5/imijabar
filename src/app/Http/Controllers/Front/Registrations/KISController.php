@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Registrations;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendKISRegistrationSuccessNotification;
 use App\Repository\Registration\KISRegistrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +54,6 @@ class KISController extends Controller
             return abort(404);
         }
 
-
         $section2 = DB::table('dynamic_pages')
             ->select(
                 'dynamic_page_name as name',
@@ -75,7 +75,6 @@ class KISController extends Controller
             ->first();
 
         // dd($section3);
-
         return view('pages.registrations.kis.index', compact('settings', 'section1', 'section2', 'section3'));
     }
 
@@ -114,10 +113,32 @@ class KISController extends Controller
             "q78_uploadSurat" => "mimes:png,jpg,jpeg,pdf|max:1024",
         ]);
 
-        if($validator->fails()) return redirect()->back()->withErrors($validator);
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
 
-        if($this->registrationRepository->storeData($request)) {
-            return view("pages.registrations.kis.success");
+        if ($this->registrationRepository->storeData($request)) {
+
+            $email_template_data = DB::table('email_templates')->where('id', 91)->first();
+            $subject = $email_template_data->et_subject;
+            $message = $email_template_data->et_content;
+
+            $message = str_replace('[[registrar_name]]', $request->q19_namaLengkap, $message);
+
+            SendKISRegistrationSuccessNotification::dispatch([
+                'recipent' => $request->q301_email,
+                'subject' => $subject,
+                'message' => $message
+            ]);
+
+            $success_section = DB::table('dynamic_pages')
+                ->select(
+                    'dynamic_page_name as name',
+                    'dynamic_page_content1 as content1',
+                    'seo_title',
+                    'seo_meta_description'
+                )->where('dynamic_page_slug', 'registration-kis-page-success-section')
+                ->first();
+
+            return view("pages.registrations.kis.success", compact("success_section"));
         }
 
         return "kesalahan";

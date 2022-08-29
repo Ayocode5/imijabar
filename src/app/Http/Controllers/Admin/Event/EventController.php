@@ -13,9 +13,22 @@ use Ramsey\Uuid\Uuid;
 
 class EventController extends Controller
 {
+
+    private $IMAGE_PATH;
+
     public function __construct()
     {
         $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->eventFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
     }
 
     public function index()
@@ -98,7 +111,7 @@ class EventController extends Controller
         $ext = $request->file('event_featured_photo')->getClientOriginalExtension();
         $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $ext;
 
-        $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+        $request->file('event_featured_photo')->move($this->getImagePath(), $fileName);
         $data['event_featured_photo'] = $fileName;
         $data['event_slug'] = Str::slug($request->event_name);
 
@@ -151,9 +164,9 @@ class EventController extends Controller
 
         if ($request->hasFile('event_featured_photo')) {
 
-            if (file_exists(public_path('uploads/' . $event->event_featured_photo)) && !empty($event->event_featured_photo)) {
+            if (file_exists($this->getImagePath(). $event->event_featured_photo) && !empty($event->event_featured_photo)) {
 
-                unlink(public_path('uploads/' . $event->event_featured_photo));
+                unlink($this->getImagePath() . $event->event_featured_photo);
 
                 // preg_match('/(event-featured-photo-)(.*).(jpg|png|jpeg|gif)/', $event->event_featured_photo, $event_photo_format_split);
                 // $fileName = $event_photo_format_split[1] . $event_photo_format_split[2] . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
@@ -161,13 +174,13 @@ class EventController extends Controller
                 // $data['event_featured_photo'] = $fileName;
 
                 $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
-                $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+                $request->file('event_featured_photo')->move($this->getImagePath(), $fileName);
                 $data['event_featured_photo'] = $fileName;
 
             } else {
 
                 $fileName = 'event-featured-photo-' . Uuid::uuid4() . '.' . $request->file('event_featured_photo')->getClientOriginalExtension();
-                $request->file('event_featured_photo')->move(public_path('uploads/'), $fileName);
+                $request->file('event_featured_photo')->move($this->getImagePath(), $fileName);
                 $data['event_featured_photo'] = $fileName;
             }
         } else {
@@ -186,12 +199,12 @@ class EventController extends Controller
         $this->authorize('delete', Event::class);
 
         $event = Event::findOrFail($id);
-        unlink(public_path('uploads/' . $event->event_featured_photo));
+        unlink($this->getImagePath() . $event->event_featured_photo);
         $event->delete();
 
         $event_photo = EventPhoto::where('event_id', $id)->get();
         foreach ($event_photo as $row) {
-            unlink(public_path('uploads/' . $row->event_photo));
+            unlink($this->getImagePath() . $row->event_photo);
             DB::table('event_photos')->where('event_id', $row->event_id)->delete();
         }
 
@@ -215,7 +228,7 @@ class EventController extends Controller
         ]);
 
         $fileName = 'event-photo-' . Uuid::uuid4() . '.' . $request->file('event_photo')->getClientOriginalExtension();
-        $request->file('event_photo')->move(public_path('uploads/'), $fileName);
+        $request->file('event_photo')->move($this->getImagePath(), $fileName);
 
         $data['event_photo'] = $fileName;
         $data['event_id'] = $request->event_id;
@@ -227,7 +240,7 @@ class EventController extends Controller
     public function gallerydelete($id)
     {
         $event_photo = EventPhoto::findOrFail($id);
-        unlink(public_path('uploads/' . $event_photo->event_photo));
+        unlink($this->getImagePath() . $event_photo->event_photo);
         $event_photo->delete();
         return Redirect()->back()->with('success', 'Event Photo is deleted successfully!');
     }

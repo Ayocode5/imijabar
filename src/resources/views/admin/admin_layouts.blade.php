@@ -426,7 +426,7 @@
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('name') }}</span>
                             <img class="img-profile rounded-circle"
-                                 src="{{ asset('uploads/' . auth()->user()->photo) }}">
+                                 src="{{ asset('uploads/users/' . auth()->user()->photo) }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

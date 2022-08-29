@@ -45,7 +45,10 @@ $(document).ready(function () {
         ".featured_image_event_detail"
     );
 
-    featuredImageEvent.style.height = `${
-        contentOvrlayEvent.clientHeight + 48
-    }px`;
+    if (featuredImageEvent != null) {
+        featuredImageEvent.style.height = `${
+            contentOvrlayEvent.clientHeight + 48
+        }px`;
+    }
+
 });

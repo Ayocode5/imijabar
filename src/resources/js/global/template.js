@@ -13,7 +13,7 @@ const newsCardTemplate = (
             <a href="/news/${slug}" class="text-decoration-none">
                 <div class="card">
                     <div class="header_card_image">
-                        <img src="/uploads/${photo}"
+                        <img src="/uploads/news/${photo}"
                             class="card-img-top" alt="${title}">
                         <div
                             class="label_header_card_image d-flex justify-content-between align-items-center px-3">
@@ -68,7 +68,7 @@ const eventsCardTemplate = (
             <div class="card">
                 <div class="header_card_image shadow">
                     <div class="feature_image_event_list">
-                        <img src="/uploads/${photo}"
+                        <img src="/uploads/events/${photo}"
                             class="card-img-top image_feature_event" alt="featured image">
                         <div class="ribbon_wrapper">
                             ${categories
@@ -352,6 +352,7 @@ const klubMobilityCardTemplate = (
 };
 
 const cardCommitteeTemplate = (
+    id,
     name,
     designation,
     address,
@@ -359,55 +360,57 @@ const cardCommitteeTemplate = (
     listSocialMedia
 ) => {
     return `
-    <div class="col mb-4">
-        <div class="wrap_committe_image selectDisable">
+    <div class="col-4 mb-4">
+            <div class="wrap_committe_image selectDisable">
 
-            <img class="photo_committe selectDisable" src="/uploads/${photo}" alt="pengurus imi">
-            <div class="ribbon_committee">
+                <img class="photo_committe selectDisable" src="/uploads/committee/${photo}" alt="pengurus imi">
+                <div class="ribbon_committee">
 
-                <div class="d-flex align-items-center">
-                    <div class="col-3 small_logo">
-                        <img src="/images/logoSmall.svg" alt="logoimi">
+                    <div class="d-flex align-items-center">
+                        <div class="col-3 small_logo">
+                            <img src="/images/logoSmall.svg" alt="logoimi">
+                        </div>
+                        <div class="col-1 sparator">
+                            <img src="/images/sparator.svg" alt="sparator">
+                        </div>
+                        <div class="col-8 small_tag">
+                            <p>
+                                Official Management of IMI Jawa Barat
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-1 sparator">
-                        <img src="/images/sparator.svg" alt="sparator">
-                    </div>
-                    <div class="col-8 small_tag">
-                        <p>
-                            Official Management of IMI Jawa Barat
-                        </p>
-                    </div>
+
                 </div>
+                <div class="wrap_animation_img_overlay_committe">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="content_overlay_committes">
+                    <a href="/organizations/committee/${id}">
+                        <h2 class="selecDisable name_committe text-center selectDisable">
+                            ${name}
+                        </h2>
+                    </a>
+                    <p class="selectDisable position_committee text-center">${designation}</p>
 
-            </div>
-            <div class="wrap_animation_img_overlay_committe">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="content_overlay_committes">
-                <h2 class="selecDisable name_committe text-center selectDisable">
-                    ${name}
-                </h2>
-                <p class="selectDisable position_committee">${designation}</p>
-
-                <div class="sosial_media_committe">
-                    ${Object.keys(listSocialMedia)
-                        .map((key) =>
-                            listSocialMedia[key] === null
-                                ? false
-                                : key === "email"
-                                ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
-                    class="fa fa-envelope fa-2xl"></i></a>`
-                                : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
-                    class="fab fa-${key}"></i></a>`
-                        )
-                        .join("")}
+                    <div class="sosial_media_committe">
+                        ${Object.keys(listSocialMedia)
+                            .map((key) =>
+                                listSocialMedia[key] === null
+                                    ? null
+                                    : key === "email"
+                                    ? `<a target="_blank" rel="noopener noreferrer" href="mailto:${listSocialMedia[key]}"><i
+                        class="fa fa-envelope fa-2xl"></i></a>`
+                                    : `<a target="_blank" rel="noopener noreferrer" href="${listSocialMedia[key]}"><i
+                        class="fab fa-${key}"></i></a>`
+                            )
+                            .join("")}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     `;
 };
 

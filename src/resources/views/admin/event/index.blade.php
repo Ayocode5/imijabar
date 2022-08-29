@@ -27,7 +27,7 @@
                         @foreach($events as $event)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('uploads/'.$event->featured_photo) }}" alt="" class="w_200"></td>
+                            <td><img src="{{ asset('uploads/events/'.$event->featured_photo) }}" alt="" class="w_200"></td>
                             <td>{{ $event->name }}</td>
                             <td>{{ $event->sports}}</td>
                             <td>{{ $event->categories}}</td>

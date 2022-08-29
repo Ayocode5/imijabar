@@ -10,9 +10,21 @@ use Ramsey\Uuid\Uuid;
 
 class PhotoController extends Controller
 {
+    private $IMAGE_PATH;
+
     public function __construct()
     {
         $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->galleriesFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
     }
 
     public function index()
@@ -48,7 +60,7 @@ class PhotoController extends Controller
         ]);
 
         $fileName = 'photo-' . Uuid::uuid4() . '.' . $request->file('photo_name')->getClientOriginalExtension();
-        $request->file('photo_name')->move(public_path('uploads/'), $fileName);
+        $request->file('photo_name')->move($this->getImagePath(), $fileName);
 
         Photo::create([
             'photo_name' => $fileName,
@@ -86,16 +98,16 @@ class PhotoController extends Controller
 
         if ($request->hasFile('photo_name')) {
 
-            if (!is_null($photo->photo_name) && file_exists(public_path('uploads/' . $photo->photo_name))) {
-                unlink(public_path('uploads/' . $photo->photo_name));
+            if (!is_null($photo->photo_name) && file_exists($this->getImagePath() . $photo->photo_name)) {
+                unlink($this->getImagePath() . $photo->photo_name);
                 // preg_match('/(photo-)(.*).(jpg|png|jpeg|gif)/', $photo->photo_name, $photo_name_format_split);
                 // $fileName = $photo_name_format_split[1] . $photo_name_format_split[2] . '.' . $request->file('photo_name')->getClientOriginalExtension();
-                // $request->file('photo_name')->move(public_path('uploads/'), $fileName);
+                // $request->file('photo_name')->move($this->getImagePath(), $fileName);
                 $fileName = 'photo-' . Uuid::uuid4() . '.' . $request->file('photo_name')->getClientOriginalExtension();
-                $request->file('photo_name')->move(public_path('uploads/'), $fileName);
+                $request->file('photo_name')->move($this->getImagePath(), $fileName);
             } else {
                 $fileName = 'photo-' . Uuid::uuid4() . '.' . $request->file('photo_name')->getClientOriginalExtension();
-                $request->file('photo_name')->move(public_path('uploads/'), $fileName);
+                $request->file('photo_name')->move($this->getImagePath(), $fileName);
             }
         }
 
@@ -115,7 +127,7 @@ class PhotoController extends Controller
 
         $photo = Photo::findOrFail($id);
         $photo->photo_name != '' ?
-            unlink(public_path('uploads/' . $photo->photo_name)) :
+            unlink($this->getImagePath() . $photo->photo_name) :
             null;
         $photo->delete();
         return Redirect()->back()->with('success', 'Photo is deleted successfully!');

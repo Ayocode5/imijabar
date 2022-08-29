@@ -63,6 +63,10 @@ class GalleryController extends Controller
 
         $categories = DB::table('gallery_categories')->select('slug', 'name','created_at')->get();
 
+        if (count($galleries) == 0) {
+            return abort(404);
+        }
+
         return view('pages.gallery', compact('settings', 'galleries', 'categories', 'gallery_settings'));
     }
 

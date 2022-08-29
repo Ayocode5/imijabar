@@ -26,7 +26,7 @@
                                 <div class="overlay_jumbotron">
 
                                 </div>
-                                <img src="{{ asset('uploads') . "/$crl_event->photo" }}" alt="{{ $crl_event->name }}"
+                                <img src="{{ asset('uploads/events/') . "/$crl_event->photo" }}" alt="{{ $crl_event->name }}"
                                     width="100%" height="600">
                                 <div class="carousel-caption">
                                     <p class="date_author">
@@ -45,7 +45,7 @@
                             </div>
                         @endforeach
                     @else
-                        <img src="{{ asset('uploads') . "/$event_banner_default->banner" }}"
+                        <img src="{{ asset('uploads/events/') . "/$event_banner_default->banner" }}"
                             alt="Default Event Page Banner" width="100%" height="600">
                     @endif
 
@@ -123,7 +123,7 @@
                                         <div class="header_card_image shadow">
                                             <div class="feature_image_event_list">
 
-                                                <img src="{{ asset('uploads/') . "/$event->photo" }}"
+                                                <img src="{{ asset('uploads/events/') . "/$event->photo" }}"
                                                     class="card-img-top image_feature_event" alt="featured image">
 
                                                 <div class="ribbon_wrapper">

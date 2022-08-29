@@ -31,7 +31,7 @@
                                     <div class="col-12 col-md-4 order-1 order-md-2 my-auto">
                                         <div class="img-wrap">
                                             <img class="cover-berita"
-                                                src="{{ asset("uploads/$news_data->blog_photo") }}" alt="cover berita">
+                                                src="{{ asset("uploads/news/$news_data->blog_photo") }}" alt="cover berita">
                                         </div>
                                     </div>
                                 </div>

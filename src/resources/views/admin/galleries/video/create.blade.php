@@ -34,12 +34,12 @@
                             <label for="">Category *</label>
                             <select required type="text" name="category_id" class="form-control"
                                 value="{{ old('category_id') }}">
-                                @if (count($categories) != 0) 
+                                @if (count($categories) != 0)
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 @else
-                                    <option>Category Not Found!</option>
+                                    <option value="">Category Not Found!</option>
                                 @endif
                             </select>
                         </div>

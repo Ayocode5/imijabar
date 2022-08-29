@@ -13,7 +13,7 @@ $(document).ready(() => {
             if ($(this).parent().find(`.frame_modal_body_photo`).children().length > 0) {
 
             } else {
-                $(this).parent().find(`.frame_modal_body_photo`).append(`<img loading="lazy" class="d-block w-100 skeleton" src="uploads/${$(this).attr("srcModal")}">`);
+                $(this).parent().find(`.frame_modal_body_photo`).append(`<img loading="lazy" class="d-block w-100 skeleton" src="uploads/galleries/${$(this).attr("srcModal")}">`);
             }
             // $(this).parent().find('.frame_modal_gallery img').attr('src', '');
             // $(this).parent().find('.frame_modal_gallery img').attr('src', `public/uploads/${$(this).attr("srcModal")}`);

@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label for="">Existing Photo *</label>
                             <div>
-                                <img id="photo_preview" src="{{ asset('uploads/'.$admin_data->photo) }}" alt="" class="w_150">
+                                <img id="photo_preview" src="{{ asset('uploads/users/'.$admin_data->photo) }}" alt="" class="w_150">
                             </div>
                         </div>
                         <div class="form-group">
@@ -25,7 +25,7 @@
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </div>
-            </form>        
+            </form>
         </div>
     </div>
 

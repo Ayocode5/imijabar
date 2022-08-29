@@ -11,6 +11,23 @@ use Ramsey\Uuid\Uuid;
 
 class EventSponsorController extends Controller
 {
+    private $IMAGE_PATH;
+
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+        parent::__construct();
+        $this->setImagePath($this->eventSponsorsFilePath);
+    }
+
+    public function setImagePath(string $path) {
+        $this->IMAGE_PATH = $path;
+    }
+
+    public function getImagePath(): string {
+        return $this->IMAGE_PATH;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +70,7 @@ class EventSponsorController extends Controller
 
         $fileName = 'sponsor-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
 
-        $request->file('image')->move(public_path('uploads/'), $fileName);
+        $request->file('image')->move($this->getImagePath(), $fileName);
 
         Sponsor::create([
             'name' => $request->name,
@@ -103,25 +120,25 @@ class EventSponsorController extends Controller
 
         // dd($request);
         if ($request->hasFile('image')) {
-            if (file_exists(public_path('uploads/') . $sponsor->image) && !empty($sponsor->image)) {
+            if (file_exists($this->getImagePath() . $sponsor->image) && !empty($sponsor->image)) {
 
                 //Remove old image
-                unlink(public_path('uploads/' . $sponsor->image));
+                unlink($this->getImagePath() . $sponsor->image);
 
-                // Rebuild the name of photo and 
+                // Rebuild the name of photo and
                 // Separates photo name and extension
                 preg_match('/(sponsor-)(.*).(jpg|png|jpeg|gif|svg)/', $sponsor->image, $sponsor_photo_split);
 
                 $fileName = $sponsor_photo_split[1] . $sponsor_photo_split[2] . '.' . $request->file('image')->getClientOriginalExtension();
 
                 //Store new Photo
-                $request->file('image')->move(public_path('uploads/'), $fileName);
+                $request->file('image')->move($this->getImagePath(), $fileName);
 
             } else {
 
                 //Create new Photo
                 $fileName = 'sponsor-' . Uuid::uuid4() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(public_path('uploads/'), $fileName);
+                $request->file('image')->move($this->getImagePath(), $fileName);
             }
         }
 
@@ -151,7 +168,7 @@ class EventSponsorController extends Controller
         $sponsor = Sponsor::find($id);
 
         if($sponsor) {
-            unlink(public_path('uploads/' . $sponsor->image));
+            unlink($this->getImagePath() . $sponsor->image);
         }
 
         $sponsor->delete();

@@ -14,7 +14,8 @@ class AdvertisementController extends Controller
     public function __construct()
     {
         $this->middleware("auth:web");
-        self::setAdsImageLocation(public_path('uploads/'));
+        parent::__construct();
+        self::setAdsImageLocation($this->advertisementsFilePath);
     }
 
     /**
@@ -76,10 +77,10 @@ class AdvertisementController extends Controller
         /*
          * Store the image and its name
          * */
-        $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
+        $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
 
         Advertisement::create([
-            "image" => "advertisements/".$fileName,
+            "image" => $fileName,
             "redirect_url" => $request->redirect_url,
             "order" => $request->order,
             "show" => $request->show
@@ -151,18 +152,18 @@ class AdvertisementController extends Controller
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'ads-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
+                $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = "advertisements/$fileName";
+                $new_data['image'] = $fileName;
 
             } else {
                 /* Get the image file and rename it */
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'ads-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$ADS_IMAGE_LOCATION."advertisements/", $fileName);
+                $request->file('image')->move(self::$ADS_IMAGE_LOCATION, $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = "advertisements/$fileName";
+                $new_data['image'] = $fileName;
             }
         }
 

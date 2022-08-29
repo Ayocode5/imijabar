@@ -16,8 +16,8 @@
                     <div class="item position-relative">
                         <div class="overlay_multiple_item_carousel position-absolute">
                             <div class="content_overlay_multiple_item_carousel">
-                                <p class="name_text_overlay">{{ $committee->name }}</p>
-                                <p class="role_text_overlay">{{ $committee->designation }}</p>
+                                <a href="/organizations/committee/{{ $committee->id }}" class="name_text_overlay">{{ $committee->name }}</a>
+                                <p class="role_text_overlay text-decoration-none">{{ $committee->designation }}</p>
                                 <div class="sossial_media_multiple_carousel d-flex justify-content-center mb-5">
                                     @if ($committee->facebook)
                                         <a href="{{ $committee->facebook }}" class="text-decoration-none text-white">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <img style="height: 100%; object-fit: cover;"
-                            src="{{ asset('uploads/') . "/$committee->photo" }}" alt="commite1">
+                            src="{{ asset('uploads/committee/') . "/$committee->photo" }}" alt="commite1">
                     </div>
                 @endforeach
             </div>

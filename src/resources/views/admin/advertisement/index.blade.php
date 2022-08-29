@@ -26,7 +26,7 @@
                         @foreach($advertisements as $ads)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img src="{{ asset("uploads/$ads->image") }}" alt="" class="w_200"></td>
+                                <td><img src="{{ asset("uploads/advertisements/$ads->image") }}" alt="" class="w_200"></td>
                                 <td>{{ $ads->redirect_url }}</td>
                                 <td>{{ $ads->order }}</td>
                                 <td style="display: flex; flex-direction: row; flex: 50%;">

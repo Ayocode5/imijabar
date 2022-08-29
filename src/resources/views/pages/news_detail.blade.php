@@ -7,7 +7,7 @@
 
         <header id="header_detail_berita">
             <div class="image_feature_detail_berita">
-                <img class="featured_image" src="{{ asset('uploads') . "/$news->photo" }}" alt="featured image">
+                <img class="featured_image" src="{{ asset('uploads/news/') . "/$news->photo" }}" alt="featured image">
             </div>
             <div class="wrap_header_detail_berita my-md-5">
                 <div class="content_header_detail_berita py-2 py-md-3">

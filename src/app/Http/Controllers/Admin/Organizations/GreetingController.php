@@ -15,7 +15,8 @@ class GreetingController extends Controller
     public function __construct()
     {
         $this->middleware('auth:web');
-        self::setStoredImageLocation(public_path("uploads/"));
+        parent::__construct();
+        self::setStoredImageLocation($this->greetingsFilePath);
     }
     /**
      * @param string $STORED_IMAGE_LOCATION
@@ -71,11 +72,11 @@ class GreetingController extends Controller
         $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
 
         /* Store the image and its name */
-        $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
+        $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
 
         /* Store Data */
         CommitteeGreeting::create([
-            "image" => "greetings/".$fileName,
+            "image" => $fileName,
             "order" => $request->order,
             "show" => $request->show
         ]);
@@ -143,18 +144,18 @@ class GreetingController extends Controller
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
+                $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = "greetings/".$fileName;
-                
+                $new_data['image'] = $fileName;
+
             } else {
                 /* Get the image file and rename it */
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileName = 'greeting-' . Uuid::uuid4() . '.' . $ext;
                 /* Store new Image */
-                $request->file('image')->move(self::$STORED_IMAGE_LOCATION."greetings/", $fileName);
+                $request->file('image')->move(self::$STORED_IMAGE_LOCATION, $fileName);
                 /* insert image name to the new_data */
-                $new_data['image'] = "greetings/".$fileName;
+                $new_data['image'] = $fileName;
             }
         }
 

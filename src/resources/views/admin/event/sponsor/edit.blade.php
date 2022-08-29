@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="">Current Image</label>
                     <div>
-                        <img id="sponsor_preview_image" src="{{ asset('uploads/'. $sponsor->image) }}" alt="" class="w_300">
+                        <img id="sponsor_preview_image" src="{{ asset('uploads/events/sponsors/'. $sponsor->image) }}" alt="" class="w_300">
                     </div>
                 </div>
                 <div class="form-group">
