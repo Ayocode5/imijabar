@@ -10,4 +10,8 @@ class CommitteeGreeting extends Model
     use HasFactory;
 
     protected $fillable = ["image", "order", "show"];
+
+    public function getImageUrlAttribute(): string {
+        return "greetings/" . $this->image;
+    }
 }
