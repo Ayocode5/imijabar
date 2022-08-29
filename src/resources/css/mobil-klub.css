@@ -225,7 +225,7 @@ body {
     }
 
     .head_klub_mobil p {
-        max-width: 400px;
+        /* max-width: 400px; */
         margin: 0 auto;
         word-wrap: break-word;
         font-size: 1.2em;
@@ -265,7 +265,7 @@ body {
     }
 
     .head_klub_mobil p {
-        max-width: 500px;
+        /* max-width: 500px; */
         font-size: 24px;
     }
 

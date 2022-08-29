@@ -58,7 +58,7 @@
                                     </div> -->
                                     <a target="_blank" rel="noopener noreferrer" href="{{ $ag->redirect_url ? $ag->redirect_url : '#' }}">
 
-                                        <img src="{{ asset("uploads/advertisements/$ag->image") }}" class="d-block w-100"
+                                        <img src="{{ asset("uploads/$ag->image_url") }}" class="d-block w-100"
                                             alt="iteration">
                                     </a>
                                 </div>

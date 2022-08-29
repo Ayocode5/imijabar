@@ -100,7 +100,6 @@ class HomeController extends Controller
 		/** Merge Ads & Greetings */
 		$ads_greetings = collect($advertisements)->merge($greetings);
 
-
 		return view('pages.index', compact('news', 'events', 'ads_greetings', 'event_categories', 'settings', 'home_banner_default', 'home_settings', 'home_event_registration_section', 'committee'));
 	}
 }

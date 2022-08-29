@@ -11,4 +11,8 @@ class Advertisement extends Model
 
     protected $fillable = ["order","image","redirect_url", "show"];
 
+    public function getImageUrlAttribute(): string {
+        return "advertisements/" . $this->image;
+    }
+
 }
